@@ -1,0 +1,456 @@
+---
+title: "Outbreak analysis template in R"
+author: "Jcb"
+date: "21/07/2014"
+output: html_document
+---
+source: Tomas J. Aragon __Applied Epidemiology Using R__, appendix B.
+
+Utilise le package __epitools__, orienté maladies infectieuses.
+
+Exemple de template d'analyse d'une épidémie avec le pckage __epitools__. L'exemple traite d'une épidémie de West Nile Virus (WNV) survenu en Californie en 2004.
+
+Les données source sont acessibles à cette adresse:
+```{}
+wnv <-read.table("http://www.medepi.net/data/wnv/wnv2004raw.txt",sep = ",", header = TRUE, na.strings = ".")
+```
+On les sauvegarde localement:
+```{}
+save(wnv, file = "wnv.Rda")
+load("wnv.Rda")
+```
+
+Analyse de base
+----------------
+```{r}
+load("wnv.Rda")
+str(wnv) #display data set structure
+head(wnv) #display first 6 lines
+names(wnv) # noms des variables
+```
+Conversion des dates non-standard en dates juliennes
+------------------------------------------
+Une nouvelles colonne est crée, ce qui permet de conserver la colonne d'origine.
+```{r}
+wnv$date.onset2 <- as.Date(wnv$date.onset, format="%m/
+%d/%Y")
+wnv$date.tested2 <- as.Date(wnv$date.tested, format="%
+m/%d/%Y")
+```
+
+Afficher l' histogramme des dates de début (courbe épidémique)
+--------------------------------------------------------------
+```{r epidemic_curve}
+hist(wnv$date.onset2, breaks= 26, freq=TRUE, col="slategray1")
+```
+
+Description d'une variable continue (ex. age)
+---------------------------------------------
+```{r age}
+summary(wnv$age) # no standard deviation provided
+range(wnv$age, na.rm=TRUE); 
+mean(wnv$age, na.rm=TRUE)
+median(wnv$age, na.rm=TRUE); 
+sd(wnv$age, na.rm=TRUE)
+```
+
+Describe continuous variable, stratified by a categorical variable
+------------------------------------------------------------------
+```{r age_sexe}
+tapply(wnv$age, wnv$sex, mean, na.rm = TRUE)
+tapply(wnv$age, wnv$county, mean, na.rm = TRUE)
+```
+
+Display a continuous variable
+-----------------------------
+```{r hist_age}
+hist(wnv$age, main="Histogramme de l'age", ylab = "effectifs", xlab="Age", col="skyblue")
+```
+
+Description d'une variable catégorielle (e.g., sex)
+-------------------------------------------
+La fonction __xtabs__ forme un tableau croisé ou table de contingence d'une variable possédant plusieurs modalités.
+```{r}
+sex.tab <- xtabs(~sex, data = wnv)
+sex.dist <- prop.table(sex.tab)
+cbind(sex.tab, sex.dist)
+```
+
+Affichage d'une variable catégorielle
+-------------------------------------
+```{r hist}
+barplot(sex.tab, col="pink", ylab="Frequence", main="Sexe")
+```
+
+Recodage d'une variable continue (ex. age)
+------------------------------------------
+```{r}
+wnv$age3 <- cut(wnv$age, breaks=c(0,45,65,100), right=FALSE)
+age3.tab <- xtabs(~age3, data = wnv)
+age3.dist <- prop.table(age3.tab)
+cbind(age3.tab, age3.dist)
+```
+
+Décrire deux variales catégorielles (sexe et age)
+-------------------------------------------------
+```{r}
+sexage <- xtabs(~ sex + age3, data = wnv)
+sexage
+prop.table(sexage) #joint distribution
+prop.table(sexage, 1) #row distribution
+prop.table(sexage, 2) #column distribution
+```
+
+Afficher age versus le sexe
+---------------------------
+```{r agesexe}
+barplot(sexage, legend.text=TRUE,xlab="Age", ylab="Frequency", main="title")
+barplot(sexage, legend.text=TRUE, beside=TRUE,xlab="Age", ylab="Frequency", main="title")
+barplot(t(sexage), legend.text=TRUE, ylim=c(0, 650),xlab="Sex", ylab="Frequency", main="title")
+barplot(t(sexage), legend.text=TRUE, beside=TRUE, ylim=c(0, 300),xlab="Sex", ylab="Frequency", main="title")
+```
+
+Hypothesis testing using 2-way contingency tables
+-------------------------------------------------
+```{r}
+library(epitools)
+tab.age3 <- xtabs(~ age3 + death, data = wnv)
+tab.age3
+epitab(tab.age3) #default is odds ratio
+epitab(tab.age3, method = "riskratio")
+prop.table(tab.age3, 1) #display row distribution (2=column)
+prop.test(tab.age3[,2:1]) #remember to reverse columns
+chisq.test(tab.age3) #Chi-square test
+fisher.test(tab.age3) #Fisher exact test
+```
+
+Graphical display of epidemiologic data
+---------------------------------------
+
+#### Histogramme (variables continues ou dates)
+
+```{r histo}
+hist(wnv$age, xlab="x", ylab="y", main="title", col="skyblue")
+hist(wnv$date.onset2, breaks= 26, freq=TRUE, col="slategray1")
+```
+
+#### Barplot (variables catégorielles)
+
+```{r barplot}
+barplot(table(wnv$sex), col="skyblue", xlab="Sex", ylab="Freq",main="title", legend = TRUE, ylim=c(0,600))
+```
+
+#### Stacked bar chart (2 variables catégorielles ou plus)
+
+```{r stacked}
+barplot(table(wnv$sex, wnv$age3), col=c("blue","green"), xlab="Sex", ylab="Freq", main="WNV Disease, Sex by Age",legend = TRUE, ylim=c(0,400))
+```
+
+#### Group bar chart (2 variables catégorielles ou plus):
+
+```{r group_bar}
+barplot(table(wnv$sex, wnv$age3), beside=TRUE, xlab="Sex",ylab="Freq", main="Sex by Age", col=c("blue","green"),legend = TRUE, ylim=c(0,250))
+
+```
+
+#### Proportion bar chart (2 variables catégorielles ou plus):
+
+```{r propbar}
+sexage <- xtabs(~ sex + age3, data = wnv)
+barplot(prop.table(sexage, 2), xlab="Sex", ylab="Proportion", main="WNV Disease, Sex by Age", col=c("blue","green"),legend = TRUE, ylim=c(0,1.2))
+
+```
+
+Time series (single x values vs. single y values)
+-------------------------------------------------
+United States measles surveillance data:
+
+measles <- read.table("http://www.medepi.net/data/measles.txt",sep="", header=TRUE)  
+save(measles, file = "Outbreak_Analysis/measles.Rda")  
+
+```{r}
+load("measles.Rda")
+str(measles); head(measles)
+plot(measles$year, measles$cases, type="l", lwd=2, col="navy")
+plot(measles$year, measles$cases, type="l", lwd=2, log="y")
+```
+
+Time series (multiple x values vs multiple y values)
+----------------------------------------------------
+
+United State AIDS and hepatitis B surveillance data
+```{}
+aids <- read.table("http://www.medepi.net/data/aids.txt",sep="", header=TRUE, na.strings=".")
+hepb <- read.table("http://www.medepi.net/data/hepb.txt",sep="", header=TRUE)
+save(hepb, file = "Outbreak_Analysis/hepb.Rda")
+save(aids, file = "Outbreak_Analysis/aids.Rda")
+```
+
+```{r}
+load("aids.Rda")
+load("hepb.Rda")
+years <- cbind(aids$year, hepb$year)
+cases <- cbind(aids$cases, hepb$cases)
+matplot(years, cases, type="l", lwd=2, col=1:2, main="title")
+legend(x=1980, y=80000, legend= c("AIDS","Hepatitis B"),lty=1:2, col=1:2, lwd=2)
+
+```
+
+Créer une coube épidémique manuellement
+---------------------------------------
+```{r epidemie1}
+labs <- c("Sun", "Mon","Tue","Wed","Thu","Fri", "Sat")
+cases <- c(0, 25, 15, 5, 10, 20, 0)
+names(cases) <- labs
+barplot(cases, space=0, col="skyblue", xlab="Day", ylab="Cases",main="Title")
+```
+
+variante
+
+```{r épidemie2}
+xv <- barplot(cases, space=0, col="red", xlab="Day",ylab="Cases", main="Title", axisnames=FALSE)
+axis(side=1, at=xv, labels=labs, las=2)
+
+```
+
+Stratified by second variable
+
+```{r epi3}
+male.cases <- c(0, 15, 10, 3, 5, 5, 0)
+female.cases <- c(0, 10, 5, 2, 5, 15, 0)
+cases2 <- rbind(Male = male.cases, Female = female.cases)
+colnames(cases2) <- labs
+xv <- barplot(cases2, space=0, col=c("blue", "green"),xlab="Day", ylab="Cases", main="Title",axisnames=FALSE, legend.text=TRUE, ylim=c(0, 30))
+axis(side=1, at=xv, labels=labs, las=2)
+
+```
+
+Multivariable analysis
+----------------------
+
+Logistic regression (binomial data: cohort, case-control)
+Using WNV data with age3 variable created previously:
+
+```{r}
+mod1 <- glm(death ~ age3, family=binomial, data=wnv)
+mod1 <- glm(death ~ age3, family=binomial, data=wnv)
+summary(mod1) #full results
+exp(mod1$coef) #calculate odds ratio
+mod2 <- glm(death ~ age3 + sex, family=binomial, data=wnv)
+summary(mod2) #full results
+exp(mod2$coef) #calculate odds ratio
+```
+
+Utilisation de epicurve
+-----------------------
+
+Epicurve permet de tracer des courbes épidémiques avec des données irrégulières et des variables qualitatives à 1 ou plusieurs classes (sexe, tranches d'age, localisation). Il ya plusieurs familles de courbes epicurve, correspondant à des chronologies différentes:
+- epicurve.dates
+- epicurve.weeks
+- epicurve.months
+- epicurve.hours
+- epicurve.table
+
+Ces fonctions facilitent le tracé des courbes avec R. Normalement pour tracer une courbe épidémiques dans R, il faut faire ce qui suit: (1) avoir les dates d'apparition d'une maladie au format date, (2) convertir ces dates d'apparition en facteur avec des niveaux spécifiés par la plage de dates du calendrier pour l'axe des x de la courbe de l'épidémique, (3) convertir ce facteur dans une table (avec ou sans stratification), (4) utiliser ce tableau comme un argument dans la fonction barplot pour tracer la courbe épidémique, et (5) faire les derniers ajustements (étiquettes, titres, etc.)
+
+Pourquoi utiliser la fonction barplot? Strictement parlant, une courbe épidémique est un histogramme illustrant la répartition des dates d'apparition qui sont classés , par exemple, en dates. Toutefois, les fonctions de l'histogramme semble fonctionner mieux pour les mesures continues (par exemple, taille, poids). En revanche, les courbes épidémiques sont construits à partir des données temporelles qui sont réparties en jours, semaines ou mois. Pour ce type de données catégorielles, un barplot donne un meilleur résultat. La mise en garde, cependant, est que nous avons besoin de spécifier la plage de dates possibles, en semaines, voire en mois pour construire le graphe approprié. Pour ce faire, nous convertissons les données en facteur avec les niveaux spécifiés par les valeurs de dates possibles.
+
+Pour rendre ce processus plus facile, et pour générer des données supplémentaires qui peuventt être utilisées pour annoter votre courbe de épidémique, les fonctions epicurve ont été créés.
+
+Les fonctions épicurve renvoient un objet list contenant de nombreuses données intermédaires qui peuvent être réutilisées.
+
+NB par date julienne on entend le nombre de jours écoulés depuis de 1/1/1970
+
+#### epicurve.dates  returns list:
+
+- _$dates_  les dates d'entrée sont converties au format de date calendaires standard (class = Date)
+- _$dates2_	 les dates d'entrée sont converties en facteursdont les niveaux sont déterminés par les dates calendaires ($cdates) utilisées pour plotter la courbe épidémique (class = factor.
+- _$xvals_  vecteur numérique correspondant aux abcisses de l'axe des X utilisées pour tracer la courbe épidémique. Ces valeurs sont fournies par la fonction barplot. Utile pour positionner la légende.
+- _$cdates_ calendrier utilisé pour tracer la courbe. Il couvvre toute la période avec une date par jour. Les fonctions _min_ et _max_ ou _range_ permettent de retrouver l'étendue de la période.
+- _$cmday_  vecteur contenant le n° du jour (1-31) du calendrier. Correspond à $cdates avec uniquement le n° du jour.
+- _$cmonth_ idem que précédemment mais avec le nom abrégé du mois	(Jan, Feb, Mar, ...).
+- _$cyear_  idem que précédemment mais avec l'année sur 4 chiffres (e.g., 1996, 2001, ...) 
+
+```{r}
+sampdates <- seq(as.Date("2004-07-15"), as.Date("2004-09-15"), 1)
+length(sampdates)
+x <- sample(sampdates, 100, rep=TRUE)
+a <- epicurve.dates(x)
+a$dates[1:5]
+a$dates2[1:5]
+a$xvals[1:15]
+a$cdates[1:5]
+min(a$cdates)
+max(a$cdates)
+range(a$cdates)
+a$cmday[1:10]
+```
+
+
+#### epicurve.weeks  returns list:
+
+- _$dates_  les dates d'entrée sont converties au format de date calendaires standard (class = Date)
+- _$firstday_ Premier jour de la semaine. Par défaut c'est le dimanche. Pour que ce soit le lundi, mettre sunday = FALSE.	
+- _$week_ n° de la semaine dans l'année (1 - 53). Noter que les semaines 52 et 53 représentent à la fois la dernière semaine de l'année et les premiers jours du début de l'année. Correspond à $dates converties en n° de semaine.
+- _$stratum_  date julienne correspondant au jour du mileu de la semaine correspondante. Par ex. le "2004-07-08" correspond à la date julienne 12606 et le milieu de la semaine contenant cette date à pour date julienne 12613.
+- _$stratum2_	idem que $stratum mais de type factor
+- _$stratum3_	idem mais la date est en clair
+- _$xvals_  vecteur numérique correspondant aux abcisses de l'axe des X utilisées pour tracer la courbe épidémique. Ces valeurs sont fournies par la fonction barplot. Utile pour positionner la légende.
+- _$cweek_    n°de la semine dans l'année. Le vecteur énumère les semaine du début à la fin de la période couverte par les données, dans un ordre chronologique. Sert de base pour tracer l'axe des X.
+- _$cstratum_ 	vecteur des dates julienne correspondant au milieu des semaines définies par $cweek.
+- _$cstratum2_ 	idem que précédemment mais les dates sont en clair
+- _$cmday_      idem que précédemment mais le vecteur ne contient que le jour du mois (1 - 31)	
+- _$cmonth_	    idem que précédemment mais le vecteur ne contient que le nom du mois (e.g., 1996, 2001, ...)
+- _$cyear_	    idem que précédemment mais le vecteur ne contient que l'année sur 4 chiffres.
+
+```{r}
+a <- epicurve.weeks(x)
+a$week[1:15]
+a$stratum[1:15]
+min(a$stratum)
+a$stratum3[1:15]
+a$stratum2[1:15]
+a$cstratum2[1:15]
+a$xvals
+a$cweek
+a$cstratum
+a$cstratum2
+a$cmday
+a$cmonth
+
+```
+
+epicurve.months  returns list:
+------------------------------
+
+$dates	
+input dates are converted to standard calendar date format
+
+$mon	
+month of the year (1-12)
+
+$month	
+month of the year (Jan, Feb, Mar, ...)
+
+$stratum	
+the Julian date for the mid-month day of the $mon value
+
+$stratum2	
+the Julian date for the mid-month day of the $mon value converted to a factor with levels determined by the Julian dates ($cstratum)used to plot the epidemic curve
+
+$stratum3	
+the mid-month day of the $mon value converted to standard calendar dates
+
+$xvals	
+x-axis numeric values used for plotting the epidemic curve; this comes from the barplot function
+
+$cmon	
+the month of the year (1-12) used for plotting the x-axis of the epidemic curve
+
+$cmonth	
+the months (Jan, Feb, Mar, ...) for the calendar dates used for plotting the x-axis of the epidemic curve
+
+$cstratum	
+the Julian date for the mid-month day of the $cmonth value used for plotting the x-axis of the epidemic curve
+
+$cstratum2	
+the standard calendar date for the mid-month day of the $cmonth value used for plotting the x-axis of the epidemic curve
+
+$cmday	
+the day of the mon (1-31) for the calendar dates used for plotting the x-axis of the epidemic curve
+
+$cyear	
+the years (e.g., 1996, 2001, ...) for the calendar dates used for plotting the x-axis of the epidemic curve
+
+epicurve.hours  returns list:
+------------------------------
+
+$ct	
+Date-time object that contains the number of seconds since the beginning of 1970 as a numeric vector and produced by as.POSIXct. You can use as.POSIXlt to convert this output in human legible (already done by this function).
+
+$sec	
+seconds
+
+$min	
+minutes
+
+$hour	
+hours (0-23)
+
+$hour12	
+hours (1-12)
+
+$stratum	
+number of hours or 1/2 hours since beginning of 1970
+
+$stratum2	
+factor (categorical variable) with number of hours of 1/2 hours since beginning of 1970 using $cstratum as the levels
+
+$stratum3	
+factor (categorical variable) in standard date-time format indicating number of hours or 1/2 hours since beginning of 1970 using
+
+$xvals	
+$cstratum	
+levels for creating $stratum2 factor
+
+$cstratum2	
+levels for creating $stratum3 factor
+
+$csec	
+seconds from $cstratum2
+
+$cmin	
+minutes from $cstratum2
+
+$chour	
+hours from $cstratum2 in 24-hour format
+
+$chour12	
+hours from $cstratum2 in 12-hour format
+
+$campm	
+corresponding 'AM' or 'PM' for $chour12
+
+$campm2	
+corresponding 'am' or 'pm' for $chour12
+
+$cweekday	
+day of the week for $cstratum2
+
+$cwkday	
+abbreviated day of the week for $cstratum2
+
+$cmday	
+day of the month for $cstratum2
+
+$cmonth	
+month for $cstratum2
+
+$cmon	
+abbreviated month for $cstratum2
+
+$cyear	
+year for $cstratum2
+
+$half.hour	
+FALSE (default) for 1-hour categories; TRUE for 1/2-hour categories
+
+epicurve.table	
+returns numeric vector:
+
+xvals	
+x-axis numeric values used for plotting the epidemic curve; this comes from the barplot function
+
+```{r epicurve}
+a <- epicurve.weeks(wnv$date.onset2, sunday = FALSE, axisnames = FALSE, main="Cas par semaine", ylab="fréquence")
+axis(1, at = a$xvals, labels = a$cweek, tick = FALSE, line = 0)
+axis(1, at = a$xvals, labels = a$cmonth, tick = FALSE, line = 1)
+
+a <- epicurve.weeks(wnv$date.onset2, sunday = FALSE, strata = wnv$sex, axisnames = FALSE, main="Cas par semaine et par sexe")
+axis(1, at = a$xvals, labels = a$cweek, tick = FALSE, line = 0)
+
+a <- epicurve.weeks(wnv$date.onset2, sunday = FALSE, strata = wnv$age3, axisnames = FALSE, main="Cas par semaine et par age3")
+
+
+```
+

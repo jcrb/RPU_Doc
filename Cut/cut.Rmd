@@ -1,0 +1,24 @@
+---
+title: "Cut"
+author: "Jcb"
+date: "20/07/2014"
+output: html_document
+---
+
+La méthode __cut__ transforme une variable numérique en groupes en fonction d'un ensemble de points de coupure.
+Remarques:
+
+1. le nombre de points est égal au nombre d'intervalles + 1
+2. par défaut les intervalles sont ouverts à gauche et fermé à droite. Pour faire l'inverse, préciser __right = FALSE__
+3. le point le plus petit est exclu par défaut. Pour l'inclure __include.lowest=TRUE__.
+
+```{r}
+a <- 0:30
+b <- cut(a, seq(0, 30, 5))
+table(b) # le 0 n'est ps compté
+b <- cut(a, seq(0, 30, 5), include.lowest=TRUE)
+table(b) # le 0 est compté
+b <- cut(a, seq(0, 30, 5), include.lowest=TRUE, right = FALSE)
+table(b) # type intervalle INSEE 0-4, 5-9...
+```
+
