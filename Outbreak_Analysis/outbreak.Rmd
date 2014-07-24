@@ -6,7 +6,7 @@ output: html_document
 ---
 source: Tomas J. Aragon __Applied Epidemiology Using R__, appendix B.
 
-Utilise le package __epitools__, orienté maladies infectieuses.
+Utilise le package __epitools__, orienté maladies infectieuses. Epitools permet de tracer une courbe épidémique par heure, semaine ou mois. L'information de base est un vecteur de date (i.e ENTREE), chaque date correspondant à la date d'apparition des signes pour 1 individu. Ce vecteur date peut être complété par un vecteur de données qualitatives (sexe, tranche d'age, localisation, etc.) permettant de stratifier e vecteur date.
 
 Exemple de template d'analyse d'une épidémie avec le pckage __epitools__. L'exemple traite d'une épidémie de West Nile Virus (WNV) survenu en Californie en 2004.
 
@@ -365,81 +365,111 @@ the years (e.g., 1996, 2001, ...) for the calendar dates used for plotting the x
 epicurve.hours  returns list:
 ------------------------------
 
-$ct	
-Date-time object that contains the number of seconds since the beginning of 1970 as a numeric vector and produced by as.POSIXct. You can use as.POSIXlt to convert this output in human legible (already done by this function).
+- _$ct_	Date-time object contenant le nombre de secondes depuis 1970 sous forme d'un vecteur numérique et produit par as.POSIXct. On peut utiliser as.POSIXlt pour convertir ce vecteur en quelque chose de lisible pour un humain  (already done by this function).
 
-$sec	
-seconds
+- _sec_	secondes
 
-$min	
-minutes
+- _$min_	minutes
 
-$hour	
-hours (0-23)
+- _$hour_	heure (0-23)
 
-$hour12	
-hours (1-12)
+- _$hour12_	hours (1-12)
 
-$stratum	
-number of hours or 1/2 hours since beginning of 1970
+- _$stratum_	number of hours or 1/2 hours since beginning of 1970
 
-$stratum2	
-factor (categorical variable) with number of hours of 1/2 hours since beginning of 1970 using $cstratum as the levels
+- $stratum2	factor (categorical variable) with number of hours of 1/2 hours since beginning of 1970 using $cstratum as the levels
 
-$stratum3	
-factor (categorical variable) in standard date-time format indicating number of hours or 1/2 hours since beginning of 1970 using
+- $stratum3	factor (categorical variable) in standard date-time format indicating number of hours or 1/2 hours since beginning of 1970 using
 
-$xvals	
-$cstratum	
-levels for creating $stratum2 factor
+- _$xvals_	
 
-$cstratum2	
-levels for creating $stratum3 factor
+- _$cstratum_	levels for creating $stratum2 factor
 
-$csec	
-seconds from $cstratum2
+- _$cstratum2_	levels for creating $stratum3 factor
 
-$cmin	
-minutes from $cstratum2
+- _$csec_	seconds from $cstratum2
 
-$chour	
-hours from $cstratum2 in 24-hour format
+- $cmin	minutes from $cstratum2
 
-$chour12	
-hours from $cstratum2 in 12-hour format
+- $chour	hours from $cstratum2 in 24-hour format
 
-$campm	
-corresponding 'AM' or 'PM' for $chour12
+- $chour12	hours from $cstratum2 in 12-hour format
 
-$campm2	
-corresponding 'am' or 'pm' for $chour12
+- $campm	corresponding 'AM' or 'PM' for $chour12
 
-$cweekday	
-day of the week for $cstratum2
+- $campm2	corresponding 'am' or 'pm' for $chour12
 
-$cwkday	
-abbreviated day of the week for $cstratum2
+- $cweekday	day of the week for $cstratum2
 
-$cmday	
-day of the month for $cstratum2
+- $cwkday	abbreviated day of the week for $cstratum2
 
-$cmonth	
-month for $cstratum2
+- $cmday	day of the month for $cstratum2
 
-$cmon	
-abbreviated month for $cstratum2
+- $cmonth	month for $cstratum2
 
-$cyear	
-year for $cstratum2
+- $cmon	abbreviated month for $cstratum2
 
-$half.hour	
-FALSE (default) for 1-hour categories; TRUE for 1/2-hour categories
+- $cyear	year for $cstratum2
 
-epicurve.table	
-returns numeric vector:
+- $half.hour	FALSE (default) for 1-hour categories; TRUE for 1/2-hour categories
 
-xvals	
-x-axis numeric values used for plotting the epidemic curve; this comes from the barplot function
+Exemple d'application: intoxication alimentaire (data oswego): 75 observations et 21 variables (à tester avec le gabarit allemand):
+- etat-civil: "id","age", "sex"
+- repas: "meal.time"
+- malade ou pas: "ill" (o/n)
+- date et heure des symptomes: "onset.date", "onset.time"
+- aliments consommés: "baked.ham", "spinach", "mashed.potato", "cabbage.salad", "jello", "rolls", "brown.bread", "milk", "coffee", "water", "cakes", "vanilla.ice.cream", "chocolate.ice.cream", "fruit.salad"        
+
+```{r oswego}
+data(oswego)
+# on crée un vector la date et l'heure du repas en combinant la date du repas le 18/4/1940
+mdt <- paste("4/18/1940", oswego$meal.time)
+mdt[1:10]
+# conversion en date time standard. strptime est une fonction qui convertit une chaine de caractères en objets de la classe posixlt ou posixct
+meal.dt <- strptime(mdt, "%m/%d/%Y %I:%M %p")
+meal.dt[1:10]
+# création d'un vecteur avec le date time des premiers signes
+odt <- paste(paste(oswego$onset.date,"/1940",sep=""), oswego$onset.time)
+odt[1:10]
+# conversion en date time standard
+onset.dt <- strptime(odt, "%m/%d/%Y %I:%M %p")
+onset.dt[1:10]
+
+# vecteur des couleurs
+col3seq.d <- c("#43A2CA", "#A8DDB5", "#E0F3DB")
+par.fin <- par()$fin
+par(fin=c(5,3.4))
+
+## 1-hour categories
+xv <- epicurve.hours(onset.dt, "1940-04-18 12:00:00", "1940-04-19 12:00:00",axisnames = FALSE, axes = FALSE, ylim = c(0,11),col = col3seq.d[1], segments =  TRUE, strata = oswego$sex)
+hh <- xv$chour12==3 | xv$chour12== 6 | xv$chour12== 9
+hh2 <- xv$chour12==12
+hh3 <- xv$chour12==1
+hlab <- paste(xv$chour12,xv$campm2,sep="")
+hlab2 <- paste(xv$cmonth,xv$cmday)
+axis(1, at = xv$xval[hh], labels = xv$chour12[hh], tick = FALSE, line = -.2)
+axis(1, at = xv$xval[hh2], labels = hlab[hh2], tick = FALSE, line = -.2)
+axis(1, at = xv$xval[hh3], labels = hlab2[hh3], tick = FALSE, line = 1.0)
+axis(2, las = 1)
+title(main = "Figure 1. Cas de TIA par heure d'apparition des symptomes (heure) Oswego County, New York, April 18-19, 2004", xlab = "Heure de début", ylab = "Cases")
+
+```
+
+epicurve.table	returns numeric vector:
+---------------------------------------
+- xvals	x-axis numeric values used for plotting the epidemic curve; this comes from the barplot function
+
+```{r epicurve.table}
+xvec <- c(1,2,3,4,5,4,3,2,1)
+names(xvec) <- 1991:1999
+epicurve.table(xvec)
+xmtx <- rbind(xvec, xvec)
+rownames(xmtx) <- c("Male", "Female")
+epicurve.table(xmtx)
+epicurve.table(xmtx, seg = TRUE)
+
+```
+
 
 ```{r epicurve}
 a <- epicurve.weeks(wnv$date.onset2, sunday = FALSE, axisnames = FALSE, main="Cas par semaine", ylab="fréquence")
@@ -450,7 +480,68 @@ a <- epicurve.weeks(wnv$date.onset2, sunday = FALSE, strata = wnv$sex, axisnames
 axis(1, at = a$xvals, labels = a$cweek, tick = FALSE, line = 0)
 
 a <- epicurve.weeks(wnv$date.onset2, sunday = FALSE, strata = wnv$age3, axisnames = FALSE, main="Cas par semaine et par age3")
+```
 
+```{r wnv2}
+load("wnv.Rda")
+epicurve.months(wnv$date.onset, format = "%d/%m/%Y", strata = wnv$syndrome, legend = levels(wnv$syndrome))
+epicurve.months(wnv$date.onset, format = "%d/%m/%Y", strata = wnv$syndrome, legend = levels(wnv$syndrome), segments = TRUE)
 
 ```
+Les autres éléments utiles du graphe héritent de barplot:
+
+- cex.names taille des caractères de  l'axe des X
+- las = 2 orientation verticale de l'axe des X
+- width = 0.3 pour avoir des barplot étroits. Pour que cela ait un effet, il faut ajouter xlim=c(0,20) par ex.
+- col = heat.colors(3) pour colorier avec 3 couleurs (jaune, orange, rouge)
+
+```{r demo}
+epicurve.months(wnv$date.onset, format = "%d/%m/%Y", strata = wnv$syndrome, legend = levels(wnv$syndrome), col = heat.colors(3), width = 0.3, xlim=c(0,20), las=2, cex.names=0.3)
+```
+
+
+Notion de standardisation
+=========================
+
+Analyse de l'article du Bulletin épidémiologique vol.23 n°3 de septembre 2002. _Epitools_ possède 2 fonctions por faire de la standardisation directe et indirecte mais elles supposent que l'on utilise des données brutes. L'article explique les 2 méthodes de standardisation à partir d'exemple où les taux sont déjà connus. Dans ce cas un calcul manuel est plus rapide.
+
+Méthode directe
+---------------
+
+On compare les taux de mortalité entre le Mexique et les USA en utilisant une population type définie par Waterhouse:
+```{r pop_type}
+stdpop <- c(2400,9600,19000,17000,26000,19000,7000)
+dir <- data.frame(stdpop=c(2400,9600,19000,17000,26000,19000,7000))
+Age <- c(">1", "1-4","5-14", "15-24", "25-44", "45-64", "65+")
+```
+Le taux de mortalité brut pour les USA en 1995-97 est de 8.7 pour1000 habitant contre 4.7 pour le mexique. Cependant la structure d'age n'est pas la même entre ces 2 pays. Pour éliminer ce biais on standardise la mortalité en éliminant l'influence de l'age. Pour cela on a besoin des taux de mortalité des deux pays dans les mêmes strates d'age.
+
+Taux de mortalité par groupe d'age pour 100.000 h au Mexique:
+```{r}
+mexique <- c(1693.2,112.5,36.2,102.9,209.6,841.1,4967.4)
+```
+Taux de mortalité par groupe d'age pour 100.000 h aux USA:
+```{r}
+usa <- c(737.8,38.5,21.7,90.3,176.4,702.3,5062.6)
+```
+Puis on va appliquer ces taux à la population standard:
+```{r}
+deces.attendus.mex <- mexique * stdpop/100000
+deces.attendus.usa <- usa * stdpop/100000
+```
+- taux de mortalité ajusté pour l'age - Mexique: `r sum(round(deces.attendus.mex/100, 1))` pour 1000
+- taux de mortalité ajusté pour l'age - USA: `r sum(round(deces.attendus.usa/100, 1))` pour 1000
+
+Tableau récapitulatif:
+```{r}
+Age <- c(">1", "1-4","5-14", "15-24", "25-44", "45-64", "65+")
+dir <- data.frame(Age, stdpop, mexique, usa, deces.attendus.mex, deces.attendus.usa)
+dir
+tot <-colSums(dir[,-1])
+a <- c("total",tot)
+dir$Age <- as.character(dir$Age)
+dir <- rbind(dir,a)
+```
+
+
 
