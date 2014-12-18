@@ -1,0 +1,22 @@
+---
+title: "Github et R"
+author: "JcB"
+date: "14/12/2014"
+output: html_document
+---
+
+Github et R
+===========
+
+Transférer un projet local vers GitHub
+--------------------------------------
+
+1. ouvrir une console
+2. se déplacer vers le répertoire où se trouve le projet (cd)
+3. ouvrir _Github_ et créer un nouveau projet
+  - cliquer sur la tête de chat en haut à gauche
+  - dans le cartouche "your repositories", cliquer sur le bouton vert __new repository__
+  - donner un nom,au nouveau dépot public
+  - sur la page qui apparait, utiliser le paragraphe __Push an existing directory from the command line__
+  - copier les deux instructions et les coller dans la console
+  - executer: le programme local est copié sur Github.

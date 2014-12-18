@@ -1,0 +1,67 @@
+---
+title: "R et JSON"
+author: "JcB"
+date: "14/12/2014"
+output: html_document
+---
+
+R et JSON
+=========
+
+Sources
+-------
+
+- Très bon tutoriel [Standford](https://class.stanford.edu/courses/DB/JSON/SelfPaced/courseware/ch-json_data/seq-vid-json_introduction/)
+
+JSON: Java Script Objet Notation
+--------------------------------
+
+JSon s'appuie sur 2 types de composants qui peuvent s'imbriquer à l'infini:
+
+- les __objets__ entourés par des _accolades_. Chaque objet est formé de deux parties séparées par "__:__"
+    - un __label__
+    - une __valeur__. La _valeur_ pouvant être un _objet_ ou un _tableau_
+    - exemple { label : value }
+
+- les __tableaux__ où les objets qui le composent sont séparés par des __,__
+    - exemple: [ , ]
+
+{ "books" :     <- label
+  [             <- value = array of objects
+  ],
+  
+  "Magazine" : 
+  [
+  ]
+}
+
+on peut écrire 
+
+- var = { }
+- var = { label1 : value1, label2 : value2 }
+- var = { {}, {}, {}}
+
+```{}
+{ "books" :     
+  [   
+    {
+      "isbn" : "123456789",
+      "prix" : 85,
+      "titre" : "Le titre du livre",
+      "auteurs" : [ { "prénom" : "Jean", "nom" : "Claude" },
+                    { "prénom" : "marie", "nom" : "Stuart"} ]
+    },
+    {
+      "isbn" : "123654987",
+      "prix" : 40,
+      
+    }
+  ],
+  
+  "Magazine" : 
+  [
+  ]
+}
+```
+
+
