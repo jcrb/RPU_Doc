@@ -1,0 +1,46 @@
+---
+title: "Xts"
+author: "Jcb"
+date: "19/07/2014"
+output: html_document
+---
+
+Comment utiliser eXtended Time Series (XTs)
+===========================================
+
+Documentation
+-------------
+
+- ebook [r_cookbook.pdf](~/Bureau/Livres/Livres R/r_cookbook.pdf)
+- [shading and points with plot.xts from xtsExtra](http://bl.ocks.org/timelyportfolio/5062480)
+- [Quantitative Finance Applications in R – 3: Plotting xts Time Series](http://tagteam.harvard.edu/hub_feeds/1981/feed_items/339417)
+- [R graph with two y axes](http://robjhyndman.com/hyndsight/r-graph-with-two-y-axes/): comment dessiner sur la même figure, 2 courbes ayant les mêmes abcisses et des ordonnées différentes (par exemple le nombre de passages et le nombre d'hospitalisations).
+- [Liste de ressources pour R en français](http://eric.univ-lyon2.fr/~ricco/cours/cours_programmation_R.html)
+
+
+Format de date
+--------------
+
+Décrit au paragraphe: ?strptime
+
+#### N° de la semaine française (de 00 à 53),
+symbole __%V__ est défini par la norme ISO 8601. La semaine commence le lundi. Si la semaine contenant le 1er janvier comporte 4 jours ou plus dans la nouvelle année, alors elle est considérée comme la semaine 1. Sinon il s'agit de la dernière semaine de l'année précédente et la semaine suivante est la semaine 1.
+
+#### N° de la semaine US (de 00 à 53),
+symbole __%U__ commence le _dimanche_.
+
+Compléments
+-----------
+
+Pour fournir certains résultats, XTs a besoin d'une bibliothèque complmentaire __xtsExtra__ qui ne fait pas partie de cran et qui se charge à l'adresse: 
+```{}
+install.packages("xtsExtra", repos="http://R-Forge.R-project.org")
+```
+Une fois téléchargé, on trouve le dossier dans _/home/jcb/R/i686-pc-linux-gnu-library/3.1_. Le dossier _Doc_ contient un pdf consacré à plot.xts.
+
+Cette extension toujours activement dévelopée est née pendant le Google Summer Camp en 2012. Les auteurs ont pris grand soins de rester parfaitement compatible avec la version XTS de base.
+
+barplot.xts
+-----------
+
+Nécessite xtsExtra.

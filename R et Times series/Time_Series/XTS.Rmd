@@ -1,0 +1,36 @@
+XTS
+========================================================
+
+Etude du package __xts__. _xts_ pour _extended time series_ permet de travailler avec pratiquement tous les packages analysant les séries temporelles et notamment __zoo__ dont il dérive.
+
+On peut facilemnt créér un objet _xts_ à partir d'un objet existant. Deux informations sont nécessaires:
+- un objet de type _matrix_, _dataframe_, _ts_, _zoo_, _irts_, _its_ ou _time_series_, comportant une colonne de type Date ou DateTime
+- un _index_ précisant le type d'objet date qui servira de référence. _as.xts_ détermine alors automatiquement la colonne qui servira d'index. Si on ne précise pas cette information, _xts_ utilise par défaut le type _POSIXct_. Les type temporels acceptés sont _Date_, _POSIXct_, _chron_ package chron), _yearmon_ (package zoo), _yearqrt_ (package zoo), _timeDate_ (package timeDate).
+
+```{r test}
+library("xts", lib.loc="/home/jcb/R/x86_64-pc-linux-gnu-library/3.1")
+data(sample_matrix) # matrice de démo
+head(sample_matrix) # première col = Date
+matrix_xts <- as.xts(sample_matrix, dateFormat="Date") # on en fait un objet Xts
+# on précise simplement le type d'objet temporel qui servira d'index. Xts trouve
+# automatiquement la bonne colonne
+head(matrix_xts)
+str(matrix_xts)
+plot(matrix_xts$Open) # plot n'accepte que des données univariées => il faut
+# préciser le vecteur à tracer
+lines(matrix_xts$High, col="blue", lty=2) # on complète avec line
+lines(matrix_xts$Low, col="green", lty=2)
+# la méthode subsetting de vts permet de sélectionner une partie du tracé, ici 
+# le mois de mars, our en changer la couleur
+lines(matrix_xts$Open["2007-03"], col="red", lw=3)
+
+```
+
+On peut également créer directement un objet _xts_ à partir de la fonction __xts()__:
+
+```{r xts}
+xts(1:10, Sys.Date()+1:10)
+
+```
+
+
