@@ -16,6 +16,7 @@ Documentation
 - [Quantitative Finance Applications in R – 3: Plotting xts Time Series](http://tagteam.harvard.edu/hub_feeds/1981/feed_items/339417)
 - [R graph with two y axes](http://robjhyndman.com/hyndsight/r-graph-with-two-y-axes/): comment dessiner sur la même figure, 2 courbes ayant les mêmes abcisses et des ordonnées différentes (par exemple le nombre de passages et le nombre d'hospitalisations).
 - [Liste de ressources pour R en français](http://eric.univ-lyon2.fr/~ricco/cours/cours_programmation_R.html)
+- Utilisation de [XtsExta](http://www.r-bloggers.com/shading-and-points-with-xtsextra-plot-xts/)
 
 
 Format de date
@@ -44,3 +45,54 @@ barplot.xts
 -----------
 
 Nécessite xtsExtra.
+
+Utilisation
+-----------
+
+XTS étend la classe ZOO. En particulier on peut utilisser un dataframe comprenant plusieurs colonnes. Une de ces colonnes doit être du type __Date__ et sera indiquée par la variable __order.by__.
+
+```{r}
+# dataframe pour la démo:
+path <- "Analyse/Activite_SAMU/"
+file <- "samu67_2014.csv"
+d67 <- read.csv(paste0(path,file))
+d67$date <- as.Date(d67$date, "%d/%m/%Y")
+
+# création d'un objet XTS
+a <- xts(d67, order.by = d67$date)
+plot(a$affaires) # Précise la colonne à plotter
+plot(a$affaires, minor.ticks = FALSE) # supprime les graduations mineures. Indiqué lorsque l'échelle de temps est imôrtante
+plot(a$affaires[1:30], minor.ticks = TRUE) # uniquement les 30 PREMIERS JOURS
+# marquer les dimanches
+points(c(a$date[5], a$affaires[5]), col = "red")
+points(c(a$date[12], a$affaires[12]), col = "red")
+
+```
+
+Divers
+------
+
+Exploration de diverses fonctions de date:
+
+- month.abb: constantes listant les noms de mois abbrégés
+- month.names: noms des mois en anglais et méthode de francisation via la fonction format qui utilise la variable __locale__
+
+```{r divers}
+nth <- paste0(1:12, c("st", "nd", rep.int("th", 10)))
+nth
+month.abb
+format(ISOdate(2000, 1:12, 1), "%B")
+month.name
+month.name <- format(ISOdate(2000, 1:12, 1), "%b")
+month.name
+month.name <- format(ISOdate(2000, 1:12, 1), "%B")
+month.name
+format(Sys.time(), "%a %d %b %Y %X %Z")
+format(ISOdate(2000, 1:7, 1), "%a")
+
+```
+
+
+
+
+
