@@ -11,12 +11,130 @@ Comment utiliser eXtended Time Series (XTs)
 Documentation
 -------------
 
-- ebook [r_cookbook.pdf](~/Bureau/Livres/Livres R/r_cookbook.pdf)
+- ebook [r_cookbook.pdf](~/Bureau/Livres/Livres R/r_cookbook.pdf) chapitre 14.
 - [shading and points with plot.xts from xtsExtra](http://bl.ocks.org/timelyportfolio/5062480)
 - [Quantitative Finance Applications in R – 3: Plotting xts Time Series](http://tagteam.harvard.edu/hub_feeds/1981/feed_items/339417)
 - [R graph with two y axes](http://robjhyndman.com/hyndsight/r-graph-with-two-y-axes/): comment dessiner sur la même figure, 2 courbes ayant les mêmes abcisses et des ordonnées différentes (par exemple le nombre de passages et le nombre d'hospitalisations).
 - [Liste de ressources pour R en français](http://eric.univ-lyon2.fr/~ricco/cours/cours_programmation_R.html)
 - Utilisation de [XtsExta](http://www.r-bloggers.com/shading-and-points-with-xtsextra-plot-xts/)
+
+Fichier utilisé pour la démo
+----------------------------
+
+Activité du SAMU 67 en 2014. Les données sont fournies par le serveur de veille et d'alerte SAGEC.
+
+```{r}
+# dataframe pour la démo:
+library(xts)
+path <- "../RPU_2014/Analyse/Activite_SAMU/" # pour lancer depuis la console
+path <- "../../RPU_2014/Analyse/Activite_SAMU/" # pour machine XPS maison
+file <- "samu67_2014.csv"
+d67 <- read.csv(paste0(path,file))
+d67$date <- as.Date(d67$date, "%d/%m/%Y")
+```
+
+
+R time series
+--------------
+
+On peut identifier trois classes:
+
+ - __ts__ est la classe de base. En pratique elle est à éviter car trop restrictive et comprtant peu de fonctions utiles.
+ - __zoo__ hérite de la précédente
+ - __xts__ étend les capacité de zoo. Il est également optimisé pour la vitesse et doit être préféré pour de gros volumes de données.
+ 
+ On peut compléter avec deux documents de référence:
+ 
+ 
+Créer un objet Time Series (ts)
+--------------------------------
+```{}
+vignette("zoo")
+vignette("xts")
+```
+
+```{}
+ts <- xts(x, dt)
+
+zts <- zoo(x, dt)
+
+ts <- as.xts(zoo)
+
+```
+- x un vecteur, une matrice ou un dataframe. _x_ doit être de type __numeric__
+- dt un vecteur de type _Date_ ou équivalent. Ce vecteur est appelé _index_. Son implémentation diffère entre _zoo_ et _xts_:
+  - zoo: l'index peut être n'importe quelles valeurs ordonnées comme des objets _Date_, _POSIXct_, integers ou des flottants.
+  - xts: sont atorisés Date , POSIXct , et les objets de type chron (yearmon , yearqtr , and dateTime objects). _xts_ est plus restrictif que _zoo_ car il implémente des fonctions avancées qui nécessitent impérativement des objets de type _date_.
+
+Application: création d'un objet xts à partir du fichier SAMU 67
+
+```{r}
+# création d'un objet XTS
+a <- xts(d67, order.by = d67$date)
+```
+ou plus simplement: a <- xts(d67, d67$date). L'_index_ est une des colonnes du dataframe. On peut d'ailleurs supprimer cette colonne au moment de la création de l'objet xts:
+```{r}
+a <- xts(d67[,-2], d67$date)
+
+```
+Deux méthodes permettent de récupérer séparément l'index (__index__) et les données (__core.data__). La méthode _index_ remplace la fonction _rownames_ qui n'est pas implémenté pour _xts_.
+
+```{r}
+head(index(a))
+head(coredata(a))
+
+```
+
+Tracer le graphe d'une série temporelle
+---------------------------------------
+XTS étend la classe ZOO. En particulier on peut utilisser un dataframe comprenant plusieurs colonnes. Une de ces colonnes doit être du type __Date__ et sera indiquée par la variable __order.by__.
+
+La méthode __plot__ permet de tracer des TS simples ou multipes:
+
+```{r}
+plot(a$affaires,type="l")
+plot.ts(a$affaires)
+```
+__xts__ ne sait dessiner qu'une série temporelle à la fois. Pour en tacer deux simultannément, il faut utiliser __zoo__. On forme un objet __zoo__ comportant 2 colonnes, affaires et moyenne. En jouant avec le paramètres _screens_ on peut afficher les graphes sur le même graphique ou sur deux graphiques distincts
+
+```{r}
+b <- zoo(a[, c(2:3)])
+
+# Plot the two time series in one plot
+plot(b, screens = 1, ylim = c(500,1700), col = c("blue", "red"), main = "SAMU 67 - 2014", xlab= "", ylab = "Affaires")
+legend(as.Date("2014-01-01"), 1650, c("affaires","moyenne"), lty=c("solid", "solid"), col = c("blue", "red"), bty = "n")
+
+
+# Plot the two time series in two plots
+plot(b, screens = c(1,2), ylim = c(500,1700), col = c("blue", "red"), main = "SAMU 67 - 2014", xlab= "")
+
+head(b)
+
+```
+
+
+```{r}
+plot(a$affaires) # Précise la colonne à plotter
+plot(a$affaires, minor.ticks = FALSE) # supprime les graduations mineures. Indiqué lorsque l'échelle de temps est imôrtante
+plot(a$affaires[1:30], minor.ticks = TRUE) # uniquement les 30 PREMIERS JOURS
+# marquer les dimanches
+points(c(a$date[5], a$affaires[5]), col = "red")
+points(c(a$date[12], a$affaires[12]), col = "red")
+
+```
+Première et dernière observations
+----------------------------------
+
+Les objets _ts_ rangent les observations par ordre chronologique, on peut utiliser les méthodes __head__ et __tail__ pour retrouver les observations extrêmes. _xts_ propose également:
+
+- __first__: "3 weeks", "5 days", "months", "years", "2 quarter". Voir help(first.xts)
+- __last___: vir help(last.xts)
+
+```{r}
+first(as.xts(b), "3 weeks")
+last(as.xts(b), "3 days")
+
+```
 
 
 Format de date
@@ -46,28 +164,6 @@ barplot.xts
 
 Nécessite xtsExtra.
 
-Utilisation
------------
-
-XTS étend la classe ZOO. En particulier on peut utilisser un dataframe comprenant plusieurs colonnes. Une de ces colonnes doit être du type __Date__ et sera indiquée par la variable __order.by__.
-
-```{r}
-# dataframe pour la démo:
-path <- "Analyse/Activite_SAMU/"
-file <- "samu67_2014.csv"
-d67 <- read.csv(paste0(path,file))
-d67$date <- as.Date(d67$date, "%d/%m/%Y")
-
-# création d'un objet XTS
-a <- xts(d67, order.by = d67$date)
-plot(a$affaires) # Précise la colonne à plotter
-plot(a$affaires, minor.ticks = FALSE) # supprime les graduations mineures. Indiqué lorsque l'échelle de temps est imôrtante
-plot(a$affaires[1:30], minor.ticks = TRUE) # uniquement les 30 PREMIERS JOURS
-# marquer les dimanches
-points(c(a$date[5], a$affaires[5]), col = "red")
-points(c(a$date[12], a$affaires[12]), col = "red")
-
-```
 
 Divers
 ------
@@ -76,6 +172,10 @@ Exploration de diverses fonctions de date:
 
 - month.abb: constantes listant les noms de mois abbrégés
 - month.names: noms des mois en anglais et méthode de francisation via la fonction format qui utilise la variable __locale__
+
+[Norme ISO pour les semaines](http://www.wikiwand.com/fr/Num%C3%A9rotation_ISO_des_semaines). La première semaine de l'année correspond à celle contenant le 1er jeudi de l'année civile cad la semaine du __4 janvier__.
+
+Voir aussi le programme [IsoWeek](http://www.r-bloggers.com/iso-week/)
 
 ```{r divers}
 nth <- paste0(1:12, c("st", "nd", rep.int("th", 10)))
@@ -88,11 +188,138 @@ month.name
 month.name <- format(ISOdate(2000, 1:12, 1), "%B")
 month.name
 format(Sys.time(), "%a %d %b %Y %X %Z")
-format(ISOdate(2000, 1:7, 1), "%a")
+
+# ISOdate(année, mois, jours)
+format(ISOdate(2000, 1, 1:7), "%a")
+format(ISOdate(2000, 1, 1:7), "%A")
+
+# format utilise les indications LOCALE pour convertir les données date-time en chaine de caractères. Permet de franciser les noms. Voir la rubrique strptime pour une info détaillée.
+format(as.Date("2015-01-01"), "%a")
+format(as.Date("2015-01-01"), "%A")
+format(as.Date("2015-01-01"), "%b")
+format(as.Date("2015-01-01"), "%B")
+format(as.Date("2015-01-01"), "%A %B")
+format(as.Date("2015-01-01"), "%e")
+format(as.Date("2015-01-01"), "%c")
+format(as.Date("2015-01-01"), "%C")
+format(as.Date("2015-01-01"), "%d")
+format(as.Date("2015-01-01"), "%D")
+format(as.Date("2015-01-01"), "%e")
+format(as.Date("2015-01-01"), "%E")
+format(as.Date("2015-01-01"), "%F")
+format(as.Date("2015-01-01"), "%g")
+format(as.Date("2015-01-01"), "%G")
+format(as.Date("2015-01-01"), "%h")
+format(as.Date("2015-01-01"), "%H")
+format(as.Date("2015-01-01"), "%I")
+format(as.Date("2015-01-01"), "%j")
+format(as.Date("2015-01-01"), "%m")
+format(as.Date("2015-01-01"), "%M")
+format(as.Date("2015-01-01"), "%n")
+format(as.Date("2015-01-01"), "%p")
+format(as.Date("2015-01-01"), "%r")
+format(as.Date("2015-01-01"), "%R")
+format(as.Date("2015-01-01"), "%S")
+format(as.Date("2015-01-01"), "%t")
+format(as.Date("2015-01-01"), "%T")
+# Weekday as a decimal number (1–7, Monday is 1).
+format(as.Date("2015-01-01"), "%u")
+# Week of the year as decimal number (00–53) using Sunday as the first day 1 of the week (and typically with the first Sunday of the year as day 1 of week 1). The US convention.
+format(as.Date("2015-01-01"), "%U")
+format(as.Date("2015-01-01"), "%V")
+format(as.Date("2015-01-01"), "%w")
+format(as.Date("2015-01-01"), "%W")
+format(as.Date("2015-01-01"), "%x")
+format(as.Date("2015-01-01"), "%X")
+format(as.Date("2015-01-01"), "%y")
+format(as.Date("2015-01-01"), "%Y")
+format(as.Date("2015-01-01"), "%z")
+format(as.Date("2015-01-01"), "%Z")
+format(as.Date("2015-01-01"), "%k")
+format(as.Date("2015-01-01"), "%l")
+format(as.Date("2015-01-01"), "%s")
+format(as.Date("2015-01-01"), "%+")
+format(as.Date("2015-01-01"), "%O")
+format(as.Date("2015-01-01"), "%E")
+format(as.Date("2015-01-01"), "%OS")
+format(Sys.time(), "%H:%M:%OS3")
+Sys.getlocale("LC_TIME")
+
+```
+
+Nombre de jours par mois
+------------------------
+
+Pb: déterminer le nombre de jours par mois sur une période donnée.
+
+source: [Number of days in each month](https://stat.ethz.ch/pipermail/r-help/2007-August/138116.html) Gabor Grothendieck ggrothendieck at gmail.com
+
+
+```{r}
+date1 <- as.Date("2014-01-01")
+date2 <- as.Date("2015-01-01")
+jour.mois <- ts(diff(seq(date1, date2, by="month")), start = c(2014, 01), freq = 12)
+jour.mois
+as.numeric(jour.mois)
 
 ```
 
 
+Appliquer une fonction sur une période calendaire
+-------------------------------------------------
+
+Le package xts fournit des fonctions pour traiter les séries temporelles par jour, semaine, mois, trimestre ou années:
+
+```{}
+apply.daily(ts, f)
+apply.weekly(ts, f)
+apply.monthly(ts, f)m <- apply.monthly(a[,3], mean)
+
+apply.quarterly(ts, f)
+apply.yearly(ts, f)
+```
+
+Où _ts_ est une série temporelle de type xts et _f_ est une fonction à appliquer à la période. Si ts est un objet de type,_zoo_ il faut d'abord le convertir en _xts_.
+```{}
+apply.monthly(as.xts(ts), f)
+```
+
+exemple: nombre moyen d'affaires par mois
+ 
+```{r}
+a <- xts(d67, order.by = d67$date)
+mean.affaires.mois <- apply.monthly(a$affaires, mean)
+barplot(mean.affaires.mois, names.arg = format(ISOdate(2014, 1:12, 1), "%b"), main = "SAMU 67 - Nombre moyens d'affaires en 2014", cex.names = 0.8)
+
+```
+
+méthode alternative:
+```{r}
+a <- xts(d67, d67$date) # écriture plus simple
+mean.affaires.mois <- apply.monthly(a$affaires, mean) # idem
+# on utilise index pour retrouver le nom des colonnes
+barplot(mean.affaires.mois, names.arg = format(index(mean.affaires.mois), "%b"), main = "SAMU 67 - Nombre moyens d'affaires en 2014", cex.names = 0.8)
+
+```
+
+La fonction __sum__ ne fonctionne pas ? On peut contourner le problème en créant une fonction _somme_ :
+```{r}
+somme <- function(x){sum(as.numeric(x))}
+affaires.mois <- apply.monthly(a$affaires, somme)
+affaires.mois
+plot(affaires.mois)
+barplot(affaires.mois, names.arg = format(ISOdate(2014, 1:12, 1), "%b"), main = "SAMU 67 - Nombre moyens d'affaires en 2014", cex.names = 0.8)
+
+```
+exemple: nombre d'affaires par mois standard de 30 jours
+
+Le nombre brut d'affaires mensuelles est divisé par le nombre de jours de mois (cf.supra) puis multiplié par 30. Cette standardisation montre que l'ativité ne baisse pas au mois de février, contrairement à ce que peut faire prnser le graphe des valeurs brutes.
+
+```{r}
+j <- as.numeric(jour.mois) # nb de jours par mois en 2014
+affaires.mois.standard <- 30 * affaires.mois / j
+barplot(affaires.mois.standard, names.arg = format(ISOdate(2014, 1:12, 1), "%b"), main = "SAMU 67 - Nombre moyens d'affaires en 2014 par mois standards", cex.names = 0.8)
+```
 
 
 
