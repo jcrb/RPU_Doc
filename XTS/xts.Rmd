@@ -2,7 +2,9 @@
 title: "Xts"
 author: "Jcb"
 date: "19/07/2014"
-output: html_document
+output:
+  html_document:
+    toc: yes
 ---
 
 Comment utiliser eXtended Time Series (XTs)
@@ -135,6 +137,27 @@ first(as.xts(b), "3 weeks")
 last(as.xts(b), "3 days")
 
 ```
+
+Extraction de sous ensembles
+----------------------------
+
+_xts_ rend possible l'extraction d'objets par années, semaines, jours ou même secondes. L'opérateur __[]__ accepte des indices numériques habituels, mais également des _datetime_ au format ISO:8601 time format — “CCYY-MM-DD HH:MM:SS”. En pratique cela veut dire que pour extraire un mois particulier, il est nécessaire de spécifier l'année. Pour identifier une heure particulière, par exemple 8 heures le 1er janvier 2014, il faut inclure la date complète en plus de l'heure:  “2014-01-01 08”.
+Il est aussi possible de rechercher explicitement un intervalle de temps en utilisant le sépatateur "/" recommandé par la norme ISO. La forme de base est _“from/to”_ où _from_ et _to_ sont optionnels. Si l'un des deux (ou les deux) est manquant, c'est interprété comme "rechercher depuis le début", ou "jusqu'à la fin" selon le cas. "/" équivaut à récupérer toutes les données. Cela permet également d'extraire de données sans savoir exactement quelles sont les limites.
+
+Exemples:
+
+#### Toutes les données du mois de mars
+```{r}
+mars <- a['2014-03']
+head(mars)
+tail(mars)
+```
+#### Toutes les données depuis le début jusqu'au 15 février
+```{r}
+mars <- a['/2014-02-15']
+```
+
+
 
 
 Format de date

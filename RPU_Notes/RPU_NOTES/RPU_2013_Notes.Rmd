@@ -208,6 +208,8 @@ table \ref{tab1}, page \pageref{tab1}.
 
 *xtable* génère une erreur si l'intitulé d'une colonne est *<na>*. Dans ce cas il faut transformer les <na> en "NA" et refaire le tableau (voir sortie.rnw par exemple).
 
+Pour supprimer les commantaires commenant par %: print(xtable, comment = FALSE) [stackoverflow](http://stackoverflow.com/questions/24400308/how-to-remove-the-lines-in-xtable-table-output-by-knitr)
+
 
 #### Pour présenter en latex un tableau type *summary*:
 

@@ -67,6 +67,24 @@ img {
 <h4 class="date"><em>19/07/2014</em></h4>
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#comment-utiliser-extended-time-series-xts">Comment utiliser eXtended Time Series (XTs)</a><ul>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#fichier-utilise-pour-la-demo">Fichier utilisé pour la démo</a></li>
+<li><a href="#r-time-series">R time series</a></li>
+<li><a href="#creer-un-objet-time-series-ts">Créer un objet Time Series (ts)</a></li>
+<li><a href="#tracer-le-graphe-dune-serie-temporelle">Tracer le graphe d’une série temporelle</a></li>
+<li><a href="#extraction-de-sous-ensembles">Extraction de sous ensembles</a></li>
+<li><a href="#format-de-date">Format de date</a></li>
+<li><a href="#complements">Compléments</a></li>
+<li><a href="#barplot.xts">barplot.xts</a></li>
+<li><a href="#divers">Divers</a></li>
+<li><a href="#nombre-de-jours-par-mois">Nombre de jours par mois</a></li>
+<li><a href="#appliquer-une-fonction-sur-une-periode-calendaire">Appliquer une fonction sur une période calendaire</a></li>
+</ul></li>
+</ul>
+</div>
 
 <div id="comment-utiliser-extended-time-series-xts" class="section level1">
 <h1>Comment utiliser eXtended Time Series (XTs)</h1>
@@ -216,6 +234,49 @@ points(c(a$date[12], a$affaires[12]), col = &quot;red&quot;)</code></pre>
 ## 2014-12-28 &quot;1170&quot;   &quot;1002.0000&quot;
 ## 2014-12-29 &quot;1174&quot;   &quot;1055.2857&quot;</code></pre>
 </div>
+<div id="extraction-de-sous-ensembles" class="section level2">
+<h2>Extraction de sous ensembles</h2>
+<p><em>xts</em> rend possible l’extraction d’objets par années, semaines, jours ou même secondes. L’opérateur <strong>[]</strong> accepte des indices numériques habituels, mais également des <em>datetime</em> au format ISO:8601 time format — “CCYY-MM-DD HH:MM:SS”. En pratique cela veut dire que pour extraire un mois particulier, il est nécessaire de spécifier l’année. Pour identifier une heure particulière, par exemple 8 heures le 1er janvier 2014, il faut inclure la date complète en plus de l’heure: “2014-01-01 08”. Il est aussi possible de rechercher explicitement un intervalle de temps en utilisant le sépatateur “/” recommandé par la norme ISO. La forme de base est <em>“from/to”</em> où <em>from</em> et <em>to</em> sont optionnels. Si l’un des deux (ou les deux) est manquant, c’est interprété comme “rechercher depuis le début”, ou “jusqu’à la fin” selon le cas. “/” équivaut à récupérer toutes les données. Cela permet également d’extraire de données sans savoir exactement quelles sont les limites.</p>
+<p>Exemples:</p>
+<div id="toutes-les-donnees-du-mois-de-mars" class="section level4">
+<h4>Toutes les données du mois de mars</h4>
+<pre class="r"><code>mars &lt;- a['2014-03']
+head(mars)</code></pre>
+<pre><code>##            jour       affaires moyenne     ecart.type  St            
+## 2014-03-01 &quot;samedi&quot;   &quot; 887&quot;   &quot; 840.2857&quot; &quot;130.39902&quot; &quot;-0.441758924&quot;
+## 2014-03-02 &quot;dimanche&quot; &quot;1184&quot;   &quot; 864.4286&quot; &quot;125.13973&quot; &quot; 1.753716753&quot;
+## 2014-03-03 &quot;lundi&quot;    &quot; 746&quot;   &quot; 848.4286&quot; &quot;111.48073&quot; &quot;-1.718800717&quot;
+## 2014-03-04 &quot;mardi&quot;    &quot; 672&quot;   &quot; 873.5714&quot; &quot;161.90929&quot; &quot;-2.044965161&quot;
+## 2014-03-05 &quot;mercredi&quot; &quot; 823&quot;   &quot; 848.5714&quot; &quot;166.80214&quot; &quot;-0.953303964&quot;
+## 2014-03-06 &quot;jeudi&quot;    &quot; 698&quot;   &quot; 837.5714&quot; &quot;176.70772&quot; &quot;-1.589843403&quot;
+##            Cusum        
+## 2014-03-01 &quot;0.000000000&quot;
+## 2014-03-02 &quot;1.753716753&quot;
+## 2014-03-03 &quot;0.034916036&quot;
+## 2014-03-04 &quot;0.000000000&quot;
+## 2014-03-05 &quot;0.000000000&quot;
+## 2014-03-06 &quot;0.000000000&quot;</code></pre>
+<pre class="r"><code>tail(mars)</code></pre>
+<pre><code>##            jour       affaires moyenne     ecart.type  St            
+## 2014-03-26 &quot;mercredi&quot; &quot; 696&quot;   &quot; 788.1429&quot; &quot;182.18802&quot; &quot;-1.305756937&quot;
+## 2014-03-27 &quot;jeudi&quot;    &quot; 677&quot;   &quot; 783.5714&quot; &quot;185.05932&quot; &quot;-1.375877118&quot;
+## 2014-03-28 &quot;vendredi&quot; &quot; 649&quot;   &quot; 790.1429&quot; &quot;180.28073&quot; &quot;-1.582905940&quot;
+## 2014-03-29 &quot;samedi&quot;   &quot; 981&quot;   &quot; 792.2857&quot; &quot;178.58491&quot; &quot; 0.256720200&quot;
+## 2014-03-30 &quot;dimanche&quot; &quot; 995&quot;   &quot; 798.5714&quot; &quot;171.52926&quot; &quot; 0.345160749&quot;
+## 2014-03-31 &quot;lundi&quot;    &quot; 842&quot;   &quot; 781.4286&quot; &quot;139.22028&quot; &quot;-0.364923806&quot;
+##            Cusum        
+## 2014-03-26 &quot;0.000000000&quot;
+## 2014-03-27 &quot;0.000000000&quot;
+## 2014-03-28 &quot;0.000000000&quot;
+## 2014-03-29 &quot;0.256720200&quot;
+## 2014-03-30 &quot;0.601880948&quot;
+## 2014-03-31 &quot;0.236957143&quot;</code></pre>
+</div>
+<div id="toutes-les-donnees-depuis-le-debut-jusquau-15-fevrier" class="section level4">
+<h4>Toutes les données depuis le début jusqu’au 15 février</h4>
+<pre class="r"><code>mars &lt;- a['/2014-02-15']</code></pre>
+</div>
+</div>
 <div id="format-de-date" class="section level2">
 <h2>Format de date</h2>
 <p>Décrit au paragraphe: ?strptime</p>
@@ -273,7 +334,7 @@ month.name</code></pre>
 ##  [6] &quot;juin&quot;      &quot;juillet&quot;   &quot;août&quot;      &quot;septembre&quot; &quot;octobre&quot;  
 ## [11] &quot;novembre&quot;  &quot;décembre&quot;</code></pre>
 <pre class="r"><code>format(Sys.time(), &quot;%a %d %b %Y %X %Z&quot;)</code></pre>
-<pre><code>## [1] &quot;mer. 31 déc. 2014 09:31:14 CET&quot;</code></pre>
+<pre><code>## [1] &quot;mer. 31 déc. 2014 18:57:00 CET&quot;</code></pre>
 <pre class="r"><code># ISOdate(année, mois, jours)
 format(ISOdate(2000, 1, 1:7), &quot;%a&quot;)</code></pre>
 <pre><code>## [1] &quot;sam.&quot; &quot;dim.&quot; &quot;lun.&quot; &quot;mar.&quot; &quot;mer.&quot; &quot;jeu.&quot; &quot;ven.&quot;</code></pre>
@@ -376,7 +437,7 @@ format(as.Date(&quot;2015-01-01&quot;), &quot;%U&quot;)</code></pre>
 <pre class="r"><code>format(as.Date(&quot;2015-01-01&quot;), &quot;%OS&quot;)</code></pre>
 <pre><code>## [1] &quot;00&quot;</code></pre>
 <pre class="r"><code>format(Sys.time(), &quot;%H:%M:%OS3&quot;)</code></pre>
-<pre><code>## [1] &quot;09:31:14.938&quot;</code></pre>
+<pre><code>## [1] &quot;18:57:00.526&quot;</code></pre>
 <pre class="r"><code>Sys.getlocale(&quot;LC_TIME&quot;)</code></pre>
 <pre><code>## [1] &quot;fr_FR.UTF-8&quot;</code></pre>
 </div>
