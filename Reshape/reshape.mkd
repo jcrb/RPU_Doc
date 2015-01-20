@@ -1,0 +1,34 @@
+Reshape
+=======
+
+Fonction R permettant de passer du format long au format large
+
+exemple
+-------
+
+date <- c("2014-12-01", "2014-12-05", "2014-12-10")
+pays <- c("Liberia", "Liberia", "Liberia")
+nb.cas <- c(100,120,140)
+ebola <- data.frame(date, pays, nb.cas)
+
+ebola
+        date    pays nb.cas
+1 2014-12-01 Liberia    100
+2 2014-12-05 Liberia    120
+3 2014-12-10 Liberia    140
+
+Les données sont au format long: 1 ligne par observation. Le format long est caractérisé par un nombre important de lignes comprtant des redondances (ici pays).
+
+ebola.wide <- reshape(ebola, direction = "wide", timevar = "date", idvar = c("pays"))
+
+     pays nb.cas.2014-12-01 nb.cas.2014-12-05 nb.cas.2014-12-10
+1 Liberia               100               120               140
+
+ebola.long <- reshape(ebola.wide, direction = "long")
+ebola.long
+                      pays       date nb.cas.2014-12-01
+Liberia.2014-12-01 Liberia 2014-12-01               100
+Liberia.2014-12-05 Liberia 2014-12-05               120
+Liberia.2014-12-10 Liberia 2014-12-10               140
+
+Voir __?reshape__
