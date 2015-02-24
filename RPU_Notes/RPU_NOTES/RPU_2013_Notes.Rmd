@@ -1,14 +1,20 @@
+---
+title: "R - Notes techniques"
+author: "JcB"
+date: "28/01/2015"
+output:
+  html_document:
+    keep_md: yes
+    number_sections: yes
+    toc: yes
+  pdf_document:
+    toc: yes
+---
 Notes techniques
 ========================================================
 ```{r}
 library(knitr)
 ```
-
-Table des matières
-------------------
-1. notes techniques
-2. cartographie
-3. population
 
 Notes Pandoc
 ============
@@ -45,10 +51,9 @@ Dans un commentaire comme dans xtable utiliser un double échappement:
 
 
 
-Notes techniques
+R - RStudio
 ================
-RStudio
--------
+
 - Tools/project options/Sweave weave Rnw file using *choisir* **knitr**
 - symbole plus ou moins: $\pm \Sexpr{x}$ (ne pas oublier les parenthèses)
 

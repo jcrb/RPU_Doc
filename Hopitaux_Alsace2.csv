@@ -1,0 +1,18 @@
+HOPITAL,RPU_NAME,FINESSG,FINESSJ,GROUPE,TERRITOIRE,ZONEP,TYPE,STATUT,LITS_TOT,LITS_MED,LITS_CHIR,COMPETENCE
+CH Wissembourg,Wis,670000272,670780543,NA,1,,CH,public,130,90,40,polyvalent
+CH Haguenau,Hag,670000157,670780337,NA,1,,CH,public,347,257,90,polyvalent
+CH Saverne,Sav,670000135,670780345,NA,1,,CH,public,244,187,57,polyvalent
+Clinique Ste Odile,Odi,670016237,670016211,Cliniques de Strasboug,2,,PSPH,epic,148,40,108,polyvalent
+Clinique Ste Anne,Ane,670780212,670014604,GHSV,2,,PSPH,epic,52,26,26,polyvalent
+HUS,Hus,670000025,67078055,HUS,2,,CHU,public,,,,adulte
+Diaconat Strasbourg,Dts,,,Cliniques de Strasboug,2,,PSPH,epic,,,,mains
+Clinique St Luc,Luc,670798636,670014604,GHSV,2,,PSPH,epic,,,,polyvalent
+CH Guebwiller,Geb,680000700,680001005,NA,3,,CH,public,43,40,3,polyvalent
+CH Colmar,Col,680000684,680000973,CHC,3,,CH,public,840,535,305,polyvalent
+CH Sélestat,Sel,670000397,670780691,NA,3,,CH,public,188,116,72,polyvalent
+CH Mulhouse,Mul,680004546,680000486,GHSA,4,,CH,public,835,532,303,polyvalent
+CH Thann,Tan,680000601,680000437,GHSA,4,,CH,public,69,41,28,polyvalent
+Clinique des trois frontières,3Fr,680000197,680000049,GHSA,4,,CH,public,107,60,47,polyvalent
+CH Altkirch,Alk,680000544,680000395,NA,4,,CH,public,93,50,43,polyvalent
+Diaconat Fonderie,Dia,680000320,680000643,Diaconat,4,,PSPH,epic,130,31,99,polyvalent
+Diaconat Roosvelt,Ros,680000320,,Diaconat,4,,PSPH,epic,,,,mains
