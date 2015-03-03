@@ -1,0 +1,48 @@
+---
+title: "Time serie anomalies"
+author: "JcB"
+date: "13/02/2015"
+output: html_document
+---
+
+source: [twitter](http://blog.revolutionanalytics.com/2015/01/twitters-new-r-package-for-anomaly-detection.html)
+
+site github: https://github.com/twitter/AnomalyDetection
+
+Installer la lbtairie via github:
+---------------------------------
+```{r}
+devtools::install_github("twitter/AnomalyDetection")
+library(AnomalyDetection)
+
+```
+
+exemple maison:
+--------------
+```{r}
+data(raw_data)
+head(raw_data)
+res = AnomalyDetectionTs(raw_data, max_anoms=0.02, direction='both', plot=TRUE)
+res$plot
+
+```
+
+Application avec d14
+----------------------
+Créer une TS où:
+
+- colonne 1 = timestamp au format POSIXct
+- colonne 2 = numérique
+
+exemple avec les entrées de 2014:
+```{r}
+t <- tapply(as.Date(d14$ENTREE), as.Date(d14$ENTREE), length)t2 <- data.frame(rownames(t), t)
+t2$rownames.t. <- as.POSIXct(t2$rownames.t.)
+head(t2)
+
+res = AnomalyDetectionTs(t2, max_anoms=0.02, direction='both', plot=TRUE)
+res$plot
+
+
+```
+

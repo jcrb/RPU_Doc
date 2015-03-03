@@ -5,6 +5,9 @@ date: "19/07/2014"
 output:
   html_document:
     toc: yes
+  pdf_document:
+    number_sections: yes
+    toc: yes
 ---
 
 Comment utiliser eXtended Time Series (XTs)
@@ -19,6 +22,7 @@ Documentation
 - [R graph with two y axes](http://robjhyndman.com/hyndsight/r-graph-with-two-y-axes/): comment dessiner sur la même figure, 2 courbes ayant les mêmes abcisses et des ordonnées différentes (par exemple le nombre de passages et le nombre d'hospitalisations).
 - [Liste de ressources pour R en français](http://eric.univ-lyon2.fr/~ricco/cours/cours_programmation_R.html)
 - Utilisation de [XtsExta](http://www.r-bloggers.com/shading-and-points-with-xtsextra-plot-xts/)
+- [Data manipulation in R] de P. Spector(http://book.isito.kg/%D0%98%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0/%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5/R/Spector%20P.%20-%20Data%20Manipulation%20with%20R%20-%20Use%20R%20-%202008.pdf) pages 57-66. Manipulation des dates au travers de _Date_, _chron_, _posix_. Ouvrage en pdf.
 
 Fichier utilisé pour la démo
 ----------------------------
@@ -33,6 +37,8 @@ path <- "../../RPU_2014/Analyse/Activite_SAMU/" # pour machine XPS maison
 file <- "samu67_2014.csv"
 d67 <- read.csv(paste0(path,file))
 d67$date <- as.Date(d67$date, "%d/%m/%Y")
+# on se limite à 2014
+d67 <- d67[d67$date < "2015-01-01",]
 ```
 
 
@@ -345,4 +351,19 @@ barplot(affaires.mois.standard, names.arg = format(ISOdate(2014, 1:12, 1), "%b")
 ```
 
 
+Xts et Dygraphs
+===============
+
+```{ xts_dygraphs}
+
+library(dygraphs)
+path <- "../../RPU_2014/Analyse/Activite_SAMU/" # pour lancer depuis la console
+file <- "samu67_2014.csv"
+d67 <- read.csv(paste0(path,file))
+d67$date <- as.Date(d67$date, "%d/%m/%Y")
+a <- xts(d67, order.by = d67$date)
+d <- dygraph(a[,3:4], main = "SAMU 67 - 2014", ylab = "Affaires")
+d
+
+```
 
