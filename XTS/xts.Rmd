@@ -349,6 +349,18 @@ j <- as.numeric(jour.mois) # nb de jours par mois en 2014
 affaires.mois.standard <- 30 * affaires.mois / j
 barplot(affaires.mois.standard, names.arg = format(ISOdate(2014, 1:12, 1), "%b"), main = "SAMU 67 - Nombre moyens d'affaires en 2014 par mois standards", cex.names = 0.8)
 ```
+Remarques sur "format"
+======================
+
+a <- 123456.789
+a
+format(a)
+# nombre de chiffres significatifs
+format(a, digits = 20)
+# nombre MINIMUM de chiffres après la virgule
+format(a, nsmall = 3)
+format(a, nsmall = 3, big.mark = ' ')
+format(a, nsmall = 3, big.mark = ' ', decimal.mark = ",")
 
 
 Xts et Dygraphs

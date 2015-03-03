@@ -1,14 +1,20 @@
+---
+title: "R - Notes techniques"
+author: "JcB"
+date: "28/01/2015"
+output:
+  html_document:
+    keep_md: yes
+    number_sections: yes
+    toc: yes
+  pdf_document:
+    toc: yes
+---
 Notes techniques
 ========================================================
 ```{r}
 library(knitr)
 ```
-
-Table des matières
-------------------
-1. notes techniques
-2. cartographie
-3. population
 
 Notes Pandoc
 ============
@@ -45,10 +51,9 @@ Dans un commentaire comme dans xtable utiliser un double échappement:
 
 
 
-Notes techniques
+R - RStudio
 ================
-RStudio
--------
+
 - Tools/project options/Sweave weave Rnw file using *choisir* **knitr**
 - symbole plus ou moins: $\pm \Sexpr{x}$ (ne pas oublier les parenthèses)
 
@@ -556,3 +561,37 @@ df2[,c(1,3,2,4)]
 pour sauvegarder: write.csv(df2, file="somedf.csv")
 ```
 [source](http://stackoverflow.com/questions/5620885/how-does-one-reorder-columns-in-r)
+
+Remarques sur "format"
+======================
+```{}
+a <- 123456.789
+a
+format(a)
+# nombre de chiffres significatifs
+format(a, digits = 20)
+# nombre MINIMUM de chiffres après la virgule
+format(a, nsmall = 3)
+format(a, nsmall = 3, big.mark = ' ')
+format(a, nsmall = 3, big.mark = ' ', decimal.mark = ",")
+
+```
+
+graphe avec 2 axes y pour les passages et le taux d'hospitalisation. 
+====================
+```{}
+# premier graphique
+plot(d.xts$passages, minor.ticks = FALSE, main = "")
+# permet de dessiner un second graphique avec ses propres paramètres
+par(new = T) 
+# second graphique
+plot(d.xts$taux, axes = F, ylim = c(0, 100),  col = "blue", main="")
+axis(4, ylim = c(0, 100),  col = "blue" ) # utilise l'axe de droite. Prévoir plus de marge
+```
+
+Ajouter une légende à un graphique
+----------------------------------
+```{}
+legend("topleft", legend = c("Passages","Taux d'hospitalisation"), col = c("black", "blue"), lty = 1, bty = "n")
+```
+
