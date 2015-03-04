@@ -16,6 +16,16 @@ Notes techniques
 library(knitr)
 ```
 
+Notes [Knitr](http://rmarkdown.rstudio.com/)
+===========
+
+Pour inclure des options de __Knitr__ dans un document RStudio:
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) # si one ne met pas library(knitr)
+set_alias(w = "fig.width", h = "fig.height")
+```
+
+
 Notes Pandoc
 ============
 
@@ -56,6 +66,50 @@ R - RStudio
 
 - Tools/project options/Sweave weave Rnw file using *choisir* **knitr**
 - symbole plus ou moins: $\pm \Sexpr{x}$ (ne pas oublier les parenthèses)
+
+Référencer le travail
+---------------------
+
+> citation('lubridate')
+
+To cite lubridate in publications use:
+
+  Garrett Grolemund, Hadley Wickham (2011). Dates and Times Made Easy with lubridate. Journal of Statistical Software, 40(3),
+  1-25. URL http://www.jstatsoft.org/v40/i03/.
+
+A BibTeX entry for LaTeX users is
+
+  @Article{,
+    title = {Dates and Times Made Easy with {lubridate}},
+    author = {Garrett Grolemund and Hadley Wickham},
+    journal = {Journal of Statistical Software},
+    year = {2011},
+    volume = {40},
+    number = {3},
+    pages = {1--25},
+    url = {http://www.jstatsoft.org/v40/i03/},
+  }
+
+> citation()
+
+To cite R in publications use:
+
+  R Core Team (2014). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna,
+  Austria. URL http://www.R-project.org/.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {R: A Language and Environment for Statistical Computing},
+    author = {{R Core Team}},
+    organization = {R Foundation for Statistical Computing},
+    address = {Vienna, Austria},
+    year = {2014},
+    url = {http://www.R-project.org/},
+  }
+
+We have invested a lot of time and effort in creating R, please cite it when using it for data analysis. See also
+‘citation("pkgname")’ for citing R packages.
 
 Librairies
 ----------
