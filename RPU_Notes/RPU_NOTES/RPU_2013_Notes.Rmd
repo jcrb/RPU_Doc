@@ -20,9 +20,17 @@ Notes [Knitr](http://rmarkdown.rstudio.com/)
 ===========
 
 Pour inclure des options de __Knitr__ dans un document RStudio:
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE) # si one ne met pas library(knitr)
 set_alias(w = "fig.width", h = "fig.height")
+```
+ou
+
+```{ Declarations, echo=FALSE, include=FALSE}
+library(knitr)
+# set global chunk options
+opts_chunk$set(echo = FALSE, cache=TRUE, warning=FALSE, tidy=FALSE, fig.width=8, fig.height=6)
 ```
 
 
@@ -66,6 +74,15 @@ R - RStudio
 
 - Tools/project options/Sweave weave Rnw file using *choisir* **knitr**
 - symbole plus ou moins: $\pm \Sexpr{x}$ (ne pas oublier les parenthèses)
+
+Utilisation du nom de l'ordinateur pour définir un chemin d'accès:
+------------------------------------------------------------------
+```{}
+if(as.character(Sys.info()["nodename"]) == "MacBook-Air-de-JCB.local")
+  file.reg <- "~/Documents/FEDORU/Codes_regroupement_ORUMIP/Regroupements ORUMiP Thésaurus SFMU.csv" else
+  file.reg <- "~/Documents/Resural/FEDORU/Codes_regroupement_ORUMIP/Regroupement_ORUMIP/Regroupements ORUMiP Thésaurus SFMU.csv"
+reg <- read.csv(file.reg, skip = 1)
+```
 
 Référencer le travail
 ---------------------

@@ -1,0 +1,72 @@
+---
+title: "Merging avec le fichier des recours de l'ORUMIP"
+author: "JcB"
+date: "21/03/2015"
+output: pdf_document
+---
+
+L'[ORUMIP]() a développé un fichier de regroupement des codes CIM10 utilisés pour les RPU. L'utilisation de ces regroupements est recommandé par la [FEDORU]() pour la rédaction des rapports annuels. Le fichier original de l'ORUMIP comporte plusieurs onglets. L'onglet pertinent est enregistré au format _.csv_ sous le nom de __Regroupements ORUMiP Thésaurus SFMU.csv__ dans le dossier _~/Documents/Resural/FEDORU/Codes_regroupement_ORUMIP/Regroupement_ORUMIP/Regroupements ORUMiP Thésaurus SFMU.csv_.
+
+Description
+-----------
+
+Le fichier de recours de l'ORUMIP est chargé sous le nom de __reg__.
+
+La version 2014 du fichier de recours comporte 2158 lignes et 13 colonnes:
+```{}
+ [1] "CIM10"                            "Code.Type.Urgences"              
+ [3] "Libéllé.Type.Urgences"            "Code.Discipline...Topographie"   
+ [5] "Libellé.Discipline...Topographie" "Code.Type.Pathologie"            
+ [7] "Libéllé.Type.de.Pathologie"       "X"                               
+ [9] "X.1"                              "X.2"                             
+[11] "X.3"                              "X.4"                             
+[13] "X.5"  
+```
+
+Les colonnes 9 à 13 sont des compléments pas indispensables. 
+
+Exemple d'utilisation du nom de l'ordinateur pour définir un chemin d'accès:
+```{r init}
+if(as.character(Sys.info()["nodename"]) == "MacBook-Air-de-JCB.local")
+  file.reg <- "~/Documents/FEDORU/Codes_regroupement_ORUMIP/Regroupements ORUMiP Thésaurus SFMU.csv" else
+  file.reg <- "~/Documents/Resural/FEDORU/Codes_regroupement_ORUMIP/Regroupement_ORUMIP/Regroupements ORUMiP Thésaurus SFMU.csv"
+
+reg <- read.csv(file.reg, skip = 1)
+
+# limitation du nombre de colonnes
+reg <- reg[, 1:8]
+
+head(reg)
+
+```
+
+La colonne 1 (CIM10) comprend des codes de 3 à 6 caractèes:
+```{r}
+a<- sapply(as.character(reg$CIM10), nchar)
+table(a)
+
+```
+
+Exemple de merging
+------------------
+
+Les colonnes communes aux deux fichiers sont:
+
+- CIM10 pour le fichier _reg_
+- DP pour le fichier des RPU
+
+```{r merge}
+
+library(epicalc)
+
+# on utilise le fichier de Demo de RPU_Doc (janvier 2015)
+file <- "/home/jcb/Documents/Resural/Stat Resural/RPU_Doc/rpu_demo.Rda"
+load(file) # d01
+
+# merging des 2 fichiers
+greg <- merge(d01, reg, by.x = "DP", by.y = "CIM10", all.x)
+
+tab1(greg$Code.Type.Urgences, sort.group = "increasing", main = "Type d'urgence", ylab = "Fréquence")
+
+```
+
