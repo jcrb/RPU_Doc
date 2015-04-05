@@ -1,0 +1,250 @@
+---
+title: "Radar"
+author: "jcb"
+date: "28 mars 2015"
+output: html_document
+---
+
+Les diagrammes en radar sont très utilisés par les RPU. Voir la bibliothèque __rapport_2014.R__.
+
+Dessiner un radar avec plotrix
+==============================
+
+Plot values sur une grille circulaire de 0 à 2*pi radians
+
+Description
+-----------
+
+Trace des valeurs numériques sous forme de distance par rapport au centre d'un cercle selon une direction définie par un angle exprimé en radians.
+
+Usage
+-----
+
+ radial.plot(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FALSE,
+ start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
+ line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
+ show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,rad.col="gray",
+ grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
+ point.symbols=1,point.col=par("fg"),show.centroid=FALSE,radial.lim=NULL,
+ radial.labels=NULL,boxed.radial=TRUE,poly.col=NA,add=FALSE,...)
+ 
+Arguments
+=========
+
+lengths   
+-------
+Un vecteur de données numériques ou une matrice. Si c'est une maatrice, les lignes seront considérées comme des vecteurs de données séparés.
+
+radial.pos
+----------
+Un vecteur de données numériques ou une matrice de positions en radians. Elles sont interprétées comme commençant à droite (0 radians) et évoluant vers sens contraire des aiguilles d'une montre. Si c'est une matrice, leslignes doivent correspondre aux lignes  
+de lengths.
+
+labels
+------
+Une chaine de caractères qui sera placée à l'extrémité distale de la ligne. La valeur NA empêche l'affichage des labels. Si elle manque les valeurs de radial.pos seront utilisée.
+
+label.pos
+---------
+La position des labels autour du graphe en radians.
+
+radlab
+------
+Whether to rotate the outer labels to a radial orientation.
+
+start
+-----
+Emplacement du point 0. Par défaut correspond à 3 heures ( midi = 90)
+
+clockwise
+---------
+Whether to interpret positive positions as clockwise from the starting point. The default is counterclockwise.
+
+rp.type
+-------
+Type de graphique à dessiner:
+- r = lignes radiaires
+- p = polygone
+- s = symbole
+Ces trois éléments peuvent être combinés. Si lengths est une matrice et rp.type est un vecteur, chaque lignes de lengths peut être affichée différemment.
+
+label.prop
+-----------
+Le rayon de position des labels sous forme de proportion de la longueur de ligne maximale. Peut s'exprimer sous forme:
+
+- d'un chiffre unique. Si 1 le label est sur la circonférence du cercle le plus externe. Si inférieur à 1, le label est à l'intérieur et supérieur à 1, on s'éloigne. On a de bon résultat avec un chiffre compris entre 1 et 1.25
+- d'un vecteur: permet de positionner individuellement chaque label.
+
+main
+----
+Le titre du graphique.
+
+xlab,ylab
+---------
+Normalement les titres des axes X et Y sont supprimés.
+
+line.col
+--------
+Couleur des lignes radiaires ou du polygone.
+
+lty
+---
+Line type: type de ligne utilisé pour les lignes radiaires ou les polygones.
+
+lwd
+---
+
+Line width(s): épaisseur du trait utilisé pour les lignes radiaires ou les polygones.
+
+mar
+---
+Marges du graphique. Allows the user to leave space for legends, long labels, etc.
+
+show.grid
+---------
+Logical - whether to draw a circular grid.
+
+show.grid.labels
+----------------
+Affichage ou non de l'échelle de la grille (valeur de chaque cercle)
+Vaut FALSE ou 1:4
+
+- 1 echelle verticale inférieure
+- 2 échelle horizontale gauche
+- 3 echelle verticale supérieure
+- 4 échelle horizontale droite
+
+show.radial.grid
+-----------------
+Whether to draw radial lines to the plot labels.
+
+rad.col	
+-------
+Couleur des rayons de la grille.
+
+grid.col
+---------
+Couleur des lignes circulaires
+
+grid.bg	
+---------
+Couleur de l'arrière plan.
+
+grid.left
+---------
+Whether to place the radial grid labels on the left side.
+
+grid.unit
+---------
+Description optionnelle des unités utilisées pour la grille. grid.unit = "g/L"
+
+point.symbols
+-------------
+Symbole à dessiner (voir pch).
+
+point.col
+---------
+Couleur des symbols.
+
+show.centroid
+-------------
+Affichage ou non du centre du graphique.
+
+radial.lim	
+----------
+Etendue de la grille circulaire. Par défaut correspond à range(lengths), mais si plus de 2 valeurs sont passées, les valeurs exactes sont utilisées.
+
+radial.labels
+--------------
+Labels optionnels pour la grille radiaire. Par défaut correspond aux valeurs de radial.lim.
+
+boxed.radial
+------------
+TRUE ou FALSE. Utiliser ou non __boxed.labels __ ou un texte pour les radial labels.
+
+poly.col
+--------
+Couleur de remplissage si des polygones sont dessinées. Utiliser NA pour ne pas remplir.
+
+add	
+---
+Whether to add one or more series to an existing plot.
+
+...	
+Additional arguments are passed to plot.
+
+Details
+=======
+radial.plot displays a plot of radial lines, polygon(s), symbols or a combination of these centered at the midpoint of the plot frame, the lengths, vertices or positions corresponding to the numeric magnitudes of the data values. 
+
+If show.centroid is TRUE, an enlarged point at the centroid of values is displayed. The centroid is calculated as the average of x and y values unless rp.type="p". In this case, the barycenter of the polygon is calculated. Make sure that these suit your purpose, otherwise calculate the centroid that you really want and add it with the points function. 
+Note that if the observations are not taken at equal intervals around the circle, the centroid may not mean much.
+
+If the user wants to plot several sets of lines, points or symbols by passing matrices or data frames of lengths and radial.pos, remember that these will be grouped by row, so transpose if the data are grouped by columns.
+
+If more series are added to an existing plot, radial.plot will try to maintain the current plot parameters. Resetting the parameters after doing the initial plot will almost certainly mess up any series that are added. Series that are added will be plotted "on top" of the existing plot, possibly overplotting other things. If the added series have a larger range than the initial series, set radial.lim to account for this in the initial plot, and if radial.lim is specified in the initial plot, remember to repeat it for added series as in the example.
+
+The size of the labels on the outside of the plot can be adjusted by setting par(cex.axis=) and that of the labels inside by setting par(cex.lab=). If radlab is TRUE, the labels will be rotated to a radial alignment. This may help when there are many values and labels. If some labels are still crowded, try running label.pos through the spreadout function. 
+
+If the __show.grid.labels__ argument is a number from 1 to 4, the labels will be placed along a horizontal or vertical radius. The numbers represent the same positions as in axis, with the default (4) on the right.
+
+The radial.plot family of plots is useful for illustrating cyclic data such as wind direction or speed (but see oz.windrose for both), activity at different times of the day, and so on. While radial.plot actually does the plotting, another function is usually called for specific types of cyclic data.
+
+Value
+
+The par values that are changed in the function as they were at the time radial.plot was called.
+
+Author(s)
+
+Jim Lemon - thanks to Jeremy Claisse and Antonio Hernandez Matias for the lty and rp.type suggestions respectively, Patrick Baker for the request that led to radlab, Thomas Steiner for the request for the radial.lim and radial.labels modifications, Evan Daugharty for requesting the add argument, James MacCarthy for requesting better radial labels, Steve Ellison for noticing that the return values of the functions had changed, Don Dennerline for requesting the rank clock, Mehdi Nellen for the different colors for the radial and circumferential lines for the grid and Mayeul Kauffmann for noticing the radial label bug when a separate radial.grid was included.
+
+See Also
+
+polar.plot,clock24.plot
+
+Examples
+--------
+```{r exemples}
+library(plotrix)
+
+testlen<-runif(10,0,10)
+ testpos<-seq(0,18*pi/10,length=10)
+ testlab<-letters[1:10]
+ oldpar<-radial.plot(testlen,testpos,main="Test Radial Lines",line.col="red",
+  lwd=3,rad.col="lightblue")
+ testlen<-c(sin(seq(0,1.98*pi,length=100))+2+rnorm(100)/10)
+ testpos<-seq(0,1.98*pi,length=100)
+ radial.plot(testlen,testpos,rp.type="p",main="Test Polygon",line.col="blue",
+  labels=LETTERS[1:8])
+
+ # now do a 12 o'clock start with clockwise positive
+ radial.plot(testlen,testpos,start=pi/2,clockwise=TRUE,show.grid.labels=2,
+  rp.type="s",main="Test Symbols (clockwise)",radial.lim=c(0,3.5),
+  point.symbols=16,point.col="green",show.centroid=TRUE,labels=LETTERS[1:6])
+ # one without the circular grid and multiple polygons
+ # see the "diamondplot" function for variation on this
+ posmat<-matrix(sample(2:9,30,TRUE),nrow=3)
+ radial.plot(posmat,labels=paste("X",1:10,sep=""),rp.type="p",
+  main="Spiderweb plot",line.col=2:4,show.grid=FALSE,lwd=1:3,
+  radial.lim=c(0,10))
+ # dissolved ions in water
+ ions<-c(3.2,5,1,3.1,2.1,4.5)
+ ion.names<-c("Na","Ca","Mg","Cl","HCO3","SO4")
+ radial.plot(ions,labels=ion.names,rp.type="p",main="Dissolved ions in water",
+  grid.unit="meq/l",radial.lim=c(0,5),poly.col="yellow",show.grid.labels=1)
+ # add points inside the polygon - radial.lim is supplied by plotrix_env
+ radial.plot(ions-0.4,rp.type="s",point.symbols=4,point.col="red",add=TRUE)
+ radmat<-matrix(c(sample(1:4,4),sample(1:4,4),sample(1:4,4),sample(1:4,4),
+  sample(1:4,4),sample(1:4,4),sample(1:4,4),sample(1:4,4),
+  sample(1:4,4),sample(1:4,4)),nrow=4)
+ # finally a rank clock
+ radial.plot(radmat,rp.type="l",radial.pos=seq(0,20*pi/11.1,length.out=10),
+  label.pos=seq(0,20*pi/11.1,length.out=10),start=pi/2,clockwise=TRUE,
+  labels=2001:2010,radial.lim=c(0.2,4),main="Rank clock")
+ legend(-1.7,4,c("Black","Red","Green","Blue"),col=1:4,lty=1)
+ par(xpd=oldpar$xpd,mar=oldpar$mar,pty=oldpar$pty)
+ # reset the margins
+  par(mar=c(5,4,4,2))
+```
+
+ 

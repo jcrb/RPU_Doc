@@ -15,9 +15,19 @@ Notes techniques
 ```{r}
 library(knitr)
 ```
+Notes Github
+============
+
+git push origin master:
+
+- git push: on pousse le dépot git
+- origin: dans le dépot d'origine
+- master: branche master
+
+Si on travaille toujours sur le dépot master de la branche origin, un simple push suffit.
 
 Notes [Knitr](http://rmarkdown.rstudio.com/)
-===========
+============================================
 
 Pour inclure des options de __Knitr__ dans un document RStudio:
 

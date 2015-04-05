@@ -1,0 +1,78 @@
+---
+title: "Document dynamique"
+author: "jcb"
+date: "2 avril 2015"
+output: html_document
+---
+
+Dynamic document with R and knitr
+=================================
+
+Xihui Xie
+
+Rédigé pendant le vol Paris - Montreal (rencontré Ceylan et Julian)
+
+Idée originale de D.Knuth(litterate programming): mélanger du codenet du texte dans le même document. Le traitement du code peut se faire de deux façons:
+
+- mode interprété appelé _tangle_
+- mode compilé appelé _weave_
+L'ensemble constitue un document dynamique qui est assimilable à un programme informatique. U programme est une succession de lignes de code accompnée de commentaires explicatifs. Un document dynamique est un ensemble de pages de texte, accompagnées de lignes de code illustrant le propos.Le principe général est d'isoler au sein de la page de présentation la partie du code qui doit être exécutée à l'aide de marqueurs spécifiques.
+```
+La réponse correcte est {{6 * pi}}
+```
+{{ et }} constituent une paire de marqueurs qui signanlent à R d'exécuter la commande 6 * pi, ce qui donnerait avec R:
+```
+La réponse correcte est `r 6 * pi`
+```
+
+Il y a deux sortes de commandes:
+
+- __inline__ pour des instructions tenant en une ligne comme l'exemple ci-dessus.
+- __chunk__ pour un code plus complexe sur plusieurs lignes.
+
+exemple de _chunk_:
+
+```{r chunk, echo=FALSE}
+set.seed(1234)
+x <- cumsum(rnorm(100))
+plot(x, type = "l", ylab = "$x_{i+1}=x_i + \\epsilon_{i+1}$", xlab = "pas", main="Simulation d'un mouvement brownien")
+```
+__knitr__ est un language de programmation litterale. Il peut produire des documents HTML, Latex, Markdown et supporte différents language de programmation: R, Python, awk, C++ ou des scripts shell.
+
+Son utilisation est très simple:
+
+```{}
+library(knitr)
+knit("mon_fichier.Rnw")
+```
+
+où _mon_fichier.Rnw_ est généralement un fichier _Tex_ avec du code R. Le code produit peut ensuite être transformé en __PDF__. 
+
+Le code R est inclu au sein de latex avec les marqueurs suivants:
+```{}
+<< [options] >>=
+...
+@
+
+Se la même façon on peut mettre du code R gans un document __markdown__ pour en faire un document __HTML__. Le code R est inclu au sein de markdown avec les marqueurs suivants:
+```{}
+\```{r}
+```
+```
+Lorsqu'on a crée un fichier _.Rnw_ ou _Rmd_, on peut récupérer le code R pour créer des des fonctions par exemple, en utilisant la méthode __purl__ :
+
+```{}
+library(knitr)
+purl("helico/helico.Rmd")
+```
+crée un fichier _helico.R_ avec tous les chunk de helic.Rmd.
+
+
+On peut également documenter un script R aec la foction __stich__:
+```{}
+library(knitr)
+stitch("helico.R")
+```
+
+produit un document latex.
+
