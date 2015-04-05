@@ -12,9 +12,15 @@ output:
 ---
 Notes techniques
 ========================================================
-```{r}
+```{r, echo=FALSE}
 library(knitr)
 ```
+- Notes Github
+- Notes Knitr
+- Notes Pandoc
+- Notes Latex
+- Notes R et RStudio
+
 Notes Github
 ============
 
@@ -31,13 +37,15 @@ Notes [Knitr](http://rmarkdown.rstudio.com/)
 
 Pour inclure des options de __Knitr__ dans un document RStudio:
 
-```{r setup, include=FALSE}
+```
+# ```{r setup, include=FALSE} 
 knitr::opts_chunk$set(echo = TRUE) # si one ne met pas library(knitr)
 set_alias(w = "fig.width", h = "fig.height")
 ```
 ou
 
-```{ Declarations, echo=FALSE, include=FALSE}
+``` 
+# ```{r Declarations, echo=FALSE, include=FALSE}
 library(knitr)
 # set global chunk options
 opts_chunk$set(echo = FALSE, cache=TRUE, warning=FALSE, tidy=FALSE, fig.width=8, fig.height=6)

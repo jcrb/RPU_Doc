@@ -4,9 +4,42 @@ JcB
 Notes techniques
 ========================================================
 
-```r
-library(knitr)
+- Notes Github
+- Notes Knitr
+- Notes Pandoc
+- Notes Latex
+- Notes R et RStudio
+
+Notes Github
+============
+
+git push origin master:
+
+- git push: on pousse le dépot git
+- origin: dans le dépot d'origine
+- master: branche master
+
+Si on travaille toujours sur le dépot master de la branche origin, un simple push suffit.
+
+Notes [Knitr](http://rmarkdown.rstudio.com/)
+============================================
+
+Pour inclure des options de __Knitr__ dans un document RStudio:
+
 ```
+# ```{r setup, include=FALSE} 
+knitr::opts_chunk$set(echo = TRUE) # si one ne met pas library(knitr)
+set_alias(w = "fig.width", h = "fig.height")
+```
+ou
+
+``` 
+# ```{r Declarations, echo=FALSE, include=FALSE}
+library(knitr)
+# set global chunk options
+opts_chunk$set(echo = FALSE, cache=TRUE, warning=FALSE, tidy=FALSE, fig.width=8, fig.height=6)
+```
+
 
 Notes Pandoc
 ============
@@ -48,6 +81,59 @@ R - RStudio
 
 - Tools/project options/Sweave weave Rnw file using *choisir* **knitr**
 - symbole plus ou moins: $\pm \Sexpr{x}$ (ne pas oublier les parenthèses)
+
+Utilisation du nom de l'ordinateur pour définir un chemin d'accès:
+------------------------------------------------------------------
+```{}
+if(as.character(Sys.info()["nodename"]) == "MacBook-Air-de-JCB.local")
+  file.reg <- "~/Documents/FEDORU/Codes_regroupement_ORUMIP/Regroupements ORUMiP Thésaurus SFMU.csv" else
+  file.reg <- "~/Documents/Resural/FEDORU/Codes_regroupement_ORUMIP/Regroupement_ORUMIP/Regroupements ORUMiP Thésaurus SFMU.csv"
+reg <- read.csv(file.reg, skip = 1)
+```
+
+Référencer le travail
+---------------------
+
+> citation('lubridate')
+
+To cite lubridate in publications use:
+
+  Garrett Grolemund, Hadley Wickham (2011). Dates and Times Made Easy with lubridate. Journal of Statistical Software, 40(3),
+  1-25. URL http://www.jstatsoft.org/v40/i03/.
+
+A BibTeX entry for LaTeX users is
+
+  @Article{,
+    title = {Dates and Times Made Easy with {lubridate}},
+    author = {Garrett Grolemund and Hadley Wickham},
+    journal = {Journal of Statistical Software},
+    year = {2011},
+    volume = {40},
+    number = {3},
+    pages = {1--25},
+    url = {http://www.jstatsoft.org/v40/i03/},
+  }
+
+> citation()
+
+To cite R in publications use:
+
+  R Core Team (2014). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna,
+  Austria. URL http://www.R-project.org/.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {R: A Language and Environment for Statistical Computing},
+    author = {{R Core Team}},
+    organization = {R Foundation for Statistical Computing},
+    address = {Vienna, Austria},
+    year = {2014},
+    url = {http://www.R-project.org/},
+  }
+
+We have invested a lot of time and effort in creating R, please cite it when using it for data analysis. See also
+‘citation("pkgname")’ for citing R packages.
 
 Librairies
 ----------
@@ -553,3 +639,37 @@ df2[,c(1,3,2,4)]
 pour sauvegarder: write.csv(df2, file="somedf.csv")
 ```
 [source](http://stackoverflow.com/questions/5620885/how-does-one-reorder-columns-in-r)
+
+Remarques sur "format"
+======================
+```{}
+a <- 123456.789
+a
+format(a)
+# nombre de chiffres significatifs
+format(a, digits = 20)
+# nombre MINIMUM de chiffres après la virgule
+format(a, nsmall = 3)
+format(a, nsmall = 3, big.mark = ' ')
+format(a, nsmall = 3, big.mark = ' ', decimal.mark = ",")
+
+```
+
+graphe avec 2 axes y pour les passages et le taux d'hospitalisation. 
+====================
+```{}
+# premier graphique
+plot(d.xts$passages, minor.ticks = FALSE, main = "")
+# permet de dessiner un second graphique avec ses propres paramètres
+par(new = T) 
+# second graphique
+plot(d.xts$taux, axes = F, ylim = c(0, 100),  col = "blue", main="")
+axis(4, ylim = c(0, 100),  col = "blue" ) # utilise l'axe de droite. Prévoir plus de marge
+```
+
+Ajouter une légende à un graphique
+----------------------------------
+```{}
+legend("topleft", legend = c("Passages","Taux d'hospitalisation"), col = c("black", "blue"), lty = 1, bty = "n")
+```
+
