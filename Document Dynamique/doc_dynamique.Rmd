@@ -2,8 +2,21 @@
 title: "Document dynamique"
 author: "jcb"
 date: "2 avril 2015"
-output: html_document
+output:
+  pdf_document:
+    highlight: haddock
+  html_document:
+    theme: spacelab
 ---
+Ce document fait partie de RPU_Doc.
+
+```{r}
+library(knitr)
+knitr::knit_theme$set("matrix")
+
+thm = knitr::knit_theme$get("zmrok")  # parse the theme to a list
+knitr::knit_theme$set(thm)
+```
 
 Dynamic document with R and knitr
 =================================
@@ -76,3 +89,21 @@ stitch("helico.R")
 
 produit un document latex.
 
+Les thèmes
+==========
+Knitr fornit environ 80 thèmes pour HTML et Latex. On peut obteni la liste avec la commande __knitr::knit_theme$get()__: `r knitr::knit_theme$get()`
+
+```{r themes}
+library(knitr)
+
+opts_knit$set(out.format = "latex")
+knit_theme$set("edit-vim")
+
+knit_theme$get()  # names of all available themes
+
+thm = knit_theme$get("acid")  # parse the theme to a list
+knit_theme$set(thm)
+
+opts_knit$set(out.format = NULL)  # restore option
+
+```
