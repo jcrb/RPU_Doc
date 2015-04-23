@@ -587,6 +587,8 @@ Packages installés
 
 source: http://www.ats.ucla.edu/stat/r/faq/packages.htm
 
+ou http://stackoverflow.com/questions/2169118/installing-all-cran-packages-that-are-not-already-installed
+
 Liste de tous les packages installés sur la machine:
 
 ```{}
