@@ -12,6 +12,10 @@ superficie.68 <- 3525
 
 pop.als.tot.2014 <- 1868773 # chiffre insee au 1/1/2014 (http://www.insee.fr/fr/themes/tableau.asp?reg_id=15&ref_id=poptc02104)
 
+# Autre source
+#Nombre de résidents dans la région. Estimation au 1er janvier 2014: 1868773
+#http://www.insee.fr/fr/themes/detail.asp?ref_id=estim-pop&reg_id=99 <- ce fichier donne la pop par région et déprtement depuis 1975
+
 dens.als.2014 <- pop.als.tot.2014 / superficie.alsace
 
 pop0<-21655
@@ -40,7 +44,7 @@ french.long.week <- c("Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Di
 
 mois.short <- c("Jan","Fev","Mar","Avr","Mai","Jun","Jui","Aou","Sep","Oct","Nov","Dec")
 
-mois.long <- c("Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Decembre")
+mois.long <- c("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre")
 
 #=========================================================================================
 #
@@ -66,6 +70,9 @@ population <- function(place, year){
 #   densite
 #
 #'@name densite
+#'@description retourne la densité de la population sur une surface donnée
+#'@param place: Alsace, 67, 68
+#'@param year: 2014
 #'
 densite <- function(place, year, quoi = NULL){
     # surfaces régionales
@@ -79,3 +86,17 @@ densite <- function(place, year, quoi = NULL){
     # calcul de la densité
     return(population(place, year) / s)
 }
+
+#=========================================================================================
+#
+#    is.cpals
+#
+#'@ est-ce un code postal alsacien ?
+#'@param cp code postal
+#'@return TRUE ou FALSE
+#'@usage is.cpals(as.factor("67550")), is.cpals("56000")
+#'
+is.cpals <- function(cp){
+    ifelse(as.character(cp) >  "66999" & as.character(cp) < "69000", TRUE, FALSE)
+}
+
