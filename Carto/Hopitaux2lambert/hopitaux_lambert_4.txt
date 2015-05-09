@@ -1,0 +1,38 @@
+IGN / SGN / Information géodésique                Samedi 24/8/2013 -- 23:56:37
+2 avenue Pasteur, 94165 Saint Mandé Cedex.
+Tel : 01 43 98 80 00  /  Fax : 01 43 98 84 50 / Site internet : www.ign.fr
+
+--------------------------------------------------------------------------------
+ Transformation de type Grille
+--------------------------------------------------------------------------------
+COORDONNÉES INITIALES :  Fichier C:\Users\Direction\Desktop\hopitaux.txt
+Référentiel géodésique : RGF93
+Ellipsoïde             : GRS 1980(a= 6378137.000, e2= 0.006694380025
+Méridien origine       : Greenwich
+Coordonnées géographiques en Degrés décimaux(lon, lat, altitude)
+
+COORDONNÉES FINALES :  Fichier C:\Users\Direction\Desktop\hopitaus_lambert_4
+Référentiel géodésique : RGF93
+Ellipsoïde             : GRS 1980(a= 6378137.000, e2= 0.006694380025)
+Projection             : LAMBERT-93
+Coordonnées planes E, N, Altitude en mètres
+--------------------------------------------------------------------------------
+Système altimétrique   : IGN69
+--------------------------------------------------------------------------------
+
+             SteAnne    7.78804740   48.61489980    0.000 |     1052730.208    6845664.803      0.000 		 aucune information 		 de 1 à 5cm
+                 HTP    7.70714690   48.59323950    0.000 |     1046920.941    6842902.748      0.000 		 aucune information 		 de 1 à 5cm
+                 NHC    7.74104320   48.57536360    0.000 |     1049535.382    6841068.541      0.000 		 aucune information 		 de 1 à 5cm
+            SteOdile    7.75780840   48.56514470    0.000 |     1050838.318    6840008.934      0.000 		 aucune information 		 de 1 à 5cm
+            Diaconat    7.33130170   47.74951510    0.000 |     1024390.647    6747690.459      0.000 		 aucune information 		 de 1 à 5cm
+             EMuller    7.34344870   47.72490350    0.000 |     1025449.812    6745010.097      0.000 		 aucune information 		 de 1 à 5cm
+                 3Fr    7.55113910   47.58249980    0.000 |     1041906.351    6730091.780      0.000 		 aucune information 		 de 5 à 10cm
+          Guebwiller    7.21575570   47.90794590    0.000 |     1014805.840    6764800.373      0.000 		 aucune information 		 de 1 à 5cm
+               Thann    7.09567220   47.81325770    0.000 |     1006392.396    6753821.525      0.000 		 aucune information 		 de 1 à 5cm
+            Altkirch    7.25341060   47.62426690    0.000 |     1019311.931    6733478.215      0.000 		 aucune information 		 de 1 à 5cm
+              Colmar    7.33731220   48.07491630    0.000 |     1022855.267    6783818.002      0.000 		 aucune information 		 de 1 à 5cm
+            Selestat    7.43438970   48.26115820    0.000 |     1028912.137    6804884.625      0.000 		 aucune information 		 de 1 à 5cm
+               StLuc    7.22398380   48.48286130    0.000 |     1012003.369    6828636.172      0.000 		 aucune information 		 de 1 à 5cm
+            Haguenau    7.77857800   48.79733580    0.000 |     1050806.723    6865868.720      0.000 		 aucune information 		 de 1 à 5cm
+         Wissembourg    7.93197620   49.04175240    0.000 |     1060357.108    6893687.634      0.000 		 aucune information 		 de 1 à 5cm
+             Saverne    7.34948860   48.74597440    0.000 |     1019654.098    6858345.856      0.000 		 aucune information 		 de 1 à 5cm

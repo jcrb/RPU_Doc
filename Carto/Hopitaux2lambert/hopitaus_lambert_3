@@ -1,0 +1,35 @@
+*Samedi 24/8/2013 -- 23:55:20
+*Résultat de la transformation de type Grille entre :
+*SYSTEME :        RGF93
+*COORDONNÉES :   Géographiques
+*ELLIPSOÏDE :     GRS 1980
+*MERIDIEN :      Greenwich
+*UNITÉ :          Degrés décimaux
+
+*SYSTEME :        RGF93
+*COORDONNÉES :   Planes
+*ELLIPSOÏDE :     GRS 1980
+*PROJECTION:    LAMBERT-93
+
+*SYSTEME ALTIMETRIQUE :       IGN69
+
+
+
+*          Nom              E              N             Alt		préc. plani		préc alti
+             SteAnne    1052730.208    6845664.803      0.000 		 aucune information 		 de 1 à 5cm
+                 HTP    1046920.941    6842902.748      0.000 		 aucune information 		 de 1 à 5cm
+                 NHC    1049535.382    6841068.541      0.000 		 aucune information 		 de 1 à 5cm
+            SteOdile    1050838.318    6840008.934      0.000 		 aucune information 		 de 1 à 5cm
+            Diaconat    1024390.647    6747690.459      0.000 		 aucune information 		 de 1 à 5cm
+             EMuller    1025449.812    6745010.097      0.000 		 aucune information 		 de 1 à 5cm
+                 3Fr    1041906.351    6730091.780      0.000 		 aucune information 		 de 5 à 10cm
+          Guebwiller    1014805.840    6764800.373      0.000 		 aucune information 		 de 1 à 5cm
+               Thann    1006392.396    6753821.525      0.000 		 aucune information 		 de 1 à 5cm
+            Altkirch    1019311.931    6733478.215      0.000 		 aucune information 		 de 1 à 5cm
+              Colmar    1022855.267    6783818.002      0.000 		 aucune information 		 de 1 à 5cm
+            Selestat    1028912.137    6804884.625      0.000 		 aucune information 		 de 1 à 5cm
+               StLuc    1012003.369    6828636.172      0.000 		 aucune information 		 de 1 à 5cm
+            Haguenau    1050806.723    6865868.720      0.000 		 aucune information 		 de 1 à 5cm
+         Wissembourg    1060357.108    6893687.634      0.000 		 aucune information 		 de 1 à 5cm
+             Saverne    1019654.098    6858345.856      0.000 		 aucune information 		 de 1 à 5cm
+* Fin Samedi 24/8/2013 -- 23:55:20
