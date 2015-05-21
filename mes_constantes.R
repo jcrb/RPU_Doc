@@ -26,6 +26,11 @@ pop15_75<-1368317
 pop75_85<-108426
 pop85<-37647
 
+# nombre de passages aux urgences en 2013 - chiffres SAE
+passages.2013.SAE <- 493321
+# nombre de RPU en 2013
+n.rpu.2013 <- 340338
+
 hop.short <- c("Wis","Hag","Sav","Hus","Odi","Sel","Col","Geb","Mul","3Fr","Alk","Dia")
 
 hop.long <- c("CH Wissembourg","CH Haguenau","CH Saverne","HUS","CL Ste Odile","CH Séletat","CH Colmar","CH Guebwiller",
