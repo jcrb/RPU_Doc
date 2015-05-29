@@ -1,0 +1,17 @@
+Pipe R %>% - Magrittr
+=====================
+
+[Simpler R coding with pipes > the present and future of the magrittr package](http://www.r-statistics.com/2014/08/simpler-r-coding-with-pipes-the-present-and-future-of-the-magrittr-package/)
+
+[Magrittr](http://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)
+
+[Introduction to dplyr](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+
+[Databases and dplyr](http://cran.rproject.org/web/packages/dplyr/vignettes/databases.html)
+
+[Non-standard evaluation](http://cran.r-project.org/web/packages/dplyr/vignettes/nse.html)
+
+[Introduction to dplyr](https://stat545-ubc.github.io/block009_dplyr-intro.html)
+
+[How to Recode Data in R](http://rprogramming.net/recode-data-in-r/)
+
