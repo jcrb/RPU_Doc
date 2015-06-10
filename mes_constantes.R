@@ -31,10 +31,10 @@ passages.2013.SAE <- 493321
 # nombre de RPU en 2013
 n.rpu.2013 <- 340338
 
-hop.short <- c("Wis","Hag","Sav","Hus","Odi","Sel","Col","Geb","Mul","3Fr","Alk","Dia")
+hop.short <- c("Wis","Hag","Sav","Hus","Odi","Sel","Col","Geb","Mul","3Fr","Alk","Dia","Ros")
 
 hop.long <- c("CH Wissembourg","CH Haguenau","CH Saverne","HUS","CL Ste Odile","CH Séletat","CH Colmar","CH Guebwiller",
-              "CH Mulhouse", "CL 3 Frontières","CH Alkirch","Diaconat-Fonderie")
+              "CH Mulhouse", "CL 3 Frontières","CH Alkirch","Diaconat-Fonderie","Diaconat-Roosvelt")
 
 rpu.names <- c("Entrée","Sexe","Age","Commune","ZIP","Provenance","PEC Transport",
                "Mode Transport","Mode entrée","CCMU","Motif","DP","Sortie", "Mode sortie","Orientation","Destination")
