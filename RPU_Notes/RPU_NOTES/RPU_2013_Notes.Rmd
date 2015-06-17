@@ -3,11 +3,12 @@ title: "R - Notes techniques"
 author: "JcB"
 date: "28/01/2015"
 output:
+  pdf_document:
+    number_sections: yes
+    toc: yes
   html_document:
     keep_md: yes
     number_sections: yes
-    toc: yes
-  pdf_document:
     toc: yes
 ---
 Notes techniques
@@ -72,7 +73,9 @@ Ecriture d'un nombre et virgule
 
 Package _numprint_
 
+```{}
 \\Sexpr{\\np{3,14}} permet d'écrire la valeur sans qu'apparaisse un blanc entre 3 et 14. 
+```
 
 
 #### La commande \\DecimalMathComma (pp 58)
@@ -91,7 +94,11 @@ R - RStudio
 ================
 
 - Tools/project options/Sweave weave Rnw file using *choisir* **knitr**
-- symbole plus ou moins: $\pm \Sexpr{x}$ (ne pas oublier les parenthèses)
+- symbole plus ou moins: 
+```{}
+$\pm \Sexpr{x}$ (ne pas oublier les parenthèses)
+```
+
 
 Utilisation du nom de l'ordinateur pour définir un chemin d'accès:
 ------------------------------------------------------------------
@@ -312,8 +319,9 @@ stargazer(as.data.frame(a2[1:length(a)]),summary=TRUE,digit.separator=" ",digits
 stargazer(as.data.frame(data$total),summary=TRUE,digit.separator=" ",digits=2, median=TRUE, iqr=TRUE, title ="Totalité des passages: résumé des principales caractéristiques")
 
 #### Séparateur de milliers:
-
+```{}
 \np{x} génère une erreur si x est en notation scientifique
+```
 
 #### Se débarasser des NA
 
@@ -338,7 +346,9 @@ plot(x,y,xlab="PC1",ylab="PC2", col = ifelse(x < 0,'red','green'), pch = 19 )
 
 Transformer une date *R* en date *française*:  
 date<-"2013-02-05"
+```{}
 \Sexpr{format(date,format="%d %B %Y")}
+```
 
 #### tab1
 
@@ -388,6 +398,7 @@ print.xtable {x} permet d'utiliser d'autres arguments notamment longtable.
 ```
 
 #### afficher un tableau en Latex
+```{}
 \begin{figure}[ht!]
  \centering
   <<duree_gravite2,echo=FALSE,fig.width=8>>=
@@ -396,6 +407,7 @@ print.xtable {x} permet d'utiliser d'autres arguments notamment longtable.
  \caption{Durée de passage en fonction de l'âge}
  \label{toucan}
 \end{figure}
+```
 
 La figure~\ref{toucan} (pp.\pageref{toucan}) montre une photographie de toucan. Le tilde (\~) dans l'exemple ci-dessus est un symbole spécial en Latex. Il représente un espace insécable. Il est utile ici parce qu'il garde « figure » et le numéro quel qu'il soit auquel \\ref se rapporte comme un tout, et ne les coupera pas sur une ligne ou une page lors de la production du document.
 
