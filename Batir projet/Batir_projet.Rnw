@@ -1,0 +1,23 @@
+\documentclass{article}
+
+\begin{document}
+
+
+custom = personalise
+knit = tricot
+chunks = morceau, fragment (chunk of wood: un morceau de bois )
+
+
+<< mon-theme, eval=FALSE >>=
+library("ggplot2")
+theme(legend.text = element_text(size = 12, angle = 45)) + theme(legend.position = "bottom")
+@
+
+On peut reutiliser theme comme un sous programme:
+
+<<>>=
+library("ggplot2")
+qplot(carat, price, data = diamonds, color = cut) + "mon-theme"
+@
+
+\end{document}

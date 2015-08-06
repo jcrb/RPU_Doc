@@ -1,0 +1,207 @@
+Cartographie - population Alsace
+========================================================
+```{r}
+wd<-"~/Documents/Resural/Stat Resural/carto&pop"
+setwd(wd)
+```
+
+cartographie
+------------
+Ref: Notes on spatial data operations in R (Frank Davenport mars 2013)
+
+voir aussi: http://help.nceas.ucsb.edu/r:spatial
+
+- OSM: données source pour l'alsace: *http://download.geofabrik.de/europe/france/alsace.html*
+
+```{r}
+# install.packages("maptools")
+# ---------- package pour lire/écrire/manipuler des données spatiales -----------------------
+library("maptools") # contient les fonctions d'overlay
+library("rgrs")
+library("rgeos") #nécessaire pour ggplot2::fortify.sp
+library("rgdal") # contient read/writeOGR pour lire les shapefiles et read/writeRGDAL pour lire les raster
+library("spdep") # fonctions statistiques spatiales utiles
+library("spatstat") # génère des points au hasard
+# ---------- Packages pour visualiser des données et es manipuler ----------------------------
+library("ggplot2")
+library("reshape2")
+library("scales")
+```
+Pour créer les fichiers utiles, il faut d'abord charger tout le fichier IGN pour extraire les données propres à l'Alsace. Cette opération est longue. Elle n'est à faire qu'une fois. Pour les autres utilisations on peut faire appel directement aux fichiers créés:
+- carto67.rda pour le Bas-Rhin
+- carto68.rda pour le Haut-Rhin
+- carto_alsace pour la région
+```{r}
+file<-"~/Documents/cartographie/Donnee_IGN/GEOFLA_1-1_SHP_LAMB93_FR-ED111/COMMUNES/COMMUNE.SHP"
+com<-readShapeSpatial(file)
+```
+Uniquement le bas-rhin:
+```{r}
+st<-com[com$CODE_DEPT==67,]
+# save(st,file="carto67.rda")
+class(st)
+names(st)
+plot(st)
+```
+nom d'une commune:st[1,17]$NOM_COMM'
+nom région: st[1,18]$NOM_REGION
+code de la région:st[1,17]$CODE_REG
+
+Haut-Rhin
+---------
+```{r}
+hr<-com[com$CODE_DEPT==68,]
+#save(hr,file="carto68.rda")
+```
+dessine les communes  du haut-rhin
+```{r plot68}
+plot(hr)
+```
+
+
+
+Alsace
+------
+```{r alsace}
+als<-com[com$CODE_REG==42,]
+#save(als,file="carto_alsace.rda")
+```
+dessine toutes les communes d'Alsace
+```{r plot_alsace}
+plot(als)
+```
+
+
+
+Population
+==========
+source: fichier fournit par l'INSEE
+
+Population du Bas-Rhin
+-----------------------
+```{r pop67}
+file<-"~/Documents/Open Data/Population_alsace_2013/dep67_communes.csv"
+pop67<-read.csv(file,header=TRUE,sep=",",skip=7,colClasses = "character")
+pop67$insee<-as.factor(paste(pop67$Code.département,pop67$Code.commune,sep=""))
+
+pop67$Population.totale<-sub("[^0-9]","",pop67$Population.totale)
+pop67$Population.comptée.à.part<-sub("[^0-9]","",pop67$Population.comptée.à.part)
+pop67$Population.municipale<-sub("[^0-9]","",pop67$Population.municipale)
+
+pop67$Population.totale<-as.numeric(pop67$Population.totale)
+pop67$Population.comptée.à.part<-as.numeric(pop67$Population.comptée.à.part)
+pop67$Population.municipale<-as.numeric(pop67$Population.municipale)
+
+save(pop67,file="pop67.rda")
+```
+Population du Haut-Rhin
+-----------------------
+```{r pop 68}
+file<-"~/Documents/Open Data/Population_alsace_2013/dep68_communes.csv"
+pop68<-read.csv(file,header=TRUE,sep=",",skip=7,colClasses = "character")
+pop68$insee<-as.factor(paste(pop68$Code.département,pop68$Code.commune,sep=""))
+
+pop68$Population.totale<-sub("[^0-9]","",pop68$Population.totale)
+pop68$Population.comptée.à.part<-sub("[^0-9]","",pop68$Population.comptée.à.part)
+pop68$Population.municipale<-sub("[^0-9]","",pop68$Population.municipale)
+
+pop68$Population.totale<-as.numeric(pop68$Population.totale)
+pop68$Population.comptée.à.part<-as.numeric(pop68$Population.comptée.à.part)
+pop68$Population.municipale<-as.numeric(pop68$Population.municipale)
+
+save(pop68,file="pop68.rda")
+```
+
+Mélange
+=======
+Le fichier *pop67* a une colonne *insee* et le fichier *st* a une colonne *INSEE_COM* qui contiennent le code Inseee de la commune => on peut les lier par ces colonnes:
+```{r}
+carte.prop(st,pop67,"Population.totale",sp.key="INSEE_COM",data.key="insee")
+```
+Carte avec 5 nuances et pas de limites de commune visible:
+```{r}
+carte.prop(st,pop67,"Population.totale",sp.key="INSEE_COM",data.key="insee",at=c(1000,5000,10000,20000,30000),lty="blank")
+```
+ou
+```{r}
+carte.prop(st,pop67,"Population.totale",sp.key="INSEE_COM",data.key="insee",at=c(1000,5000,10000,20000,30000),lty="blank",cex=0.5,main="population du bas-Rhin (2012)",sub="(recensement 2010)")
+```
+Pour sélectionner une commune
+-----------------------------
+On veut isoler Haguenau, code Insee = 67180:
+```{r}
+hag<-st[st@data$INSEE_COM=="67180",]
+plot(hag)
+```
+Sélectionner les arrondissements:
+---------------------------------
+```{r}
+load("carto67.rda")
+contour<-unionSpatialPolygons(st,IDs=st@data$CODE_ARR)
+plot(contour)
+```
+Pour l'Alsace:
+```{r}
+contour<-unionSpatialPolygons(als,IDs=als@data$CODE_ARR)
+plot(contour)
+```
+Utilisation de readOGR{rgdal}
+=============================
+C'est la méthodes préconisée par Davenport. Je suis arrivé à la faire fonctionner qu'en imposant le directory où sont les fichiers IGN
+```{r}
+file<-"~/Documents/cartographie/Donnee_IGN/GEOFLA_1-1_SHP_LAMB93_FR-ED111/COMMUNES"
+setwd(file)
+ds<-readOGR(dsn="COMMUNE.shp",layer="COMMUNE")
+summary(ds)
+str(ds,2)
+```
+Villes d'Alsace
+---------------
+La liste et les coordonnées des villes d'Alsace sont fournies par l'IGN à partir du fichier **RGC 2012** à l'adresse http://professionnels.ign.fr/rgc#tab-3 (taille environ 4 MB au format TXT) contenant toutes les communes de France. Stockées dans le dossier *Documents/cartographie/Donnees_IGN/RGC2012*
+
+file<-"~/Documents/cartographie/Donnee_IGN/RGC2012/RGC_2012.txt"
+rgc<-read.csv(file,header=TRUE,sep="\t")
+
+dim(rgc)
+[1] 36571    20
+
+names(rgc)
+[1] "DEP"       "COM"       "ARRD"      "CANT"      "ADMI"      "POPU"      "SURFACE"  
+ [8] "NOM"       "XLAMB2"    "YLAMB2"    "XLAMBZ"    "YLAMBZ"    "XLAMB93"   "YLAMB93"  
+[15] "LONGI_GRD" "LATI_GRD"  "LONGI_DMS" "LATI_DMS"  "ZMIN"      "ZMAX"   
+
+v<-c("WISSEMBOURG","HAGUENAU","SAVERNE","STRASBOURG","SCHIRMECK","SELESTAT","COLMAR","MULHOUSE","SAINT-LOUIS","THANN","ALTKIRCH","GUEBWILLER")
+
+On extrait les villes d'Alsace, chef lieu d'un territoire de santé dont on ne retient que le nom et les coorddonées X et Y en Lambert93:
+
+villes<-rgc[rgc$NOM %in% v,c(8,13,14)]
+# on enlève SAINT-LOUIS en Moselle
+tsvilles<-villes[-1,]
+
+On sauvegarde le fichier pour une utilisation ultérieure:
+
+save(tsvilles,file="tsvilles.Rda")
+load(tsvilles.Rda)
+
+              NOM XLAMB93 YLAMB93
+27201 WISSEMBOURG   10614   68933
+27481    SELESTAT   10304   68048
+27520    HAGUENAU   10514   68680
+27574     SAVERNE   10206   68579
+27638   SCHIRMECK   10117   68281
+27661  STRASBOURG   10504   68409
+27807 SAINT-LOUIS   10429   67305
+27868       THANN   10071   67531
+27886    ALTKIRCH   10183   67333
+27940      COLMAR   10241   67846
+27970    MULHOUSE   10250   67476
+28053  GUEBWILLER   10144   67647
+
+
+Dessine un point bleu avec le nom de la ville sur le fond de carte **ctss** = territoire de santé d'Alsace issu du fichier **als_ts.Rda**:
+
+plot(ctss)  
+points(villes[,2]*100,villes[,3]*100,pch=20,col="blue")  
+text(villes[,2]*100,villes[,3]*100,villes[,1],cex=0.6,pos=4)  
+
+

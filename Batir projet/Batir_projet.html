@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Batir un projet</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>Batir un projet</h1>
+
+<p>Pour commencer un projet de recherche, créer un <em>dépot</em> pour ce projet dans gitHub. Un projet qui dérive de façon sustantielle d&#39;un travail antérieur peuvent débuter comme un <em>clone</em> de ce travail. Une nouvelle direction à partir d&#39;un projet existant peut comencer comme une branche de ce projet et être secondairement fusionné ou totalement scindé.</p>
+
+<p>Chaque dépot est organisé comme un package R, avec les <em>répertoires</em> de base:</p>
+
+<ul>
+<li>R/ fournit les fonctions R utilisées pour les analyses</li>
+<li>src/ fpournit le code source en C des fonctions R lorsqu&#39;elles sont trop lentes</li>
+<li>man/ contient la documentaion générée automatiquement par ROxygen pour les fonctions précédentes.</li>
+<li>data/ contient les fichiers de données. Le gestionnaire de version n&#39;est pas l&#39;idéal pour les fichiers volumineux. A la place un fichier README contient les metadata et les liens vers les données stockées sur un autre serveur.</li>
+<li>inst/examples/ contient les investigations sous la forme de fichiers <em>knitR</em> permettant de mélanger des commentaires et des séquences d&#39;instruction. Les séquences trop longues sont transformées en fonctions stockées dans R/ où elles sont documentées.</li>
+<li>inst/doc les exemples matures sont stockés là.</li>
+<li>DESCRIPTION: fichier de type metadata donnant des inforations comme l&#39;auteur ou les dépendances</li>
+<li>RE</li>
+</ul>
+
+<p>Le paquet est installable directement à partir de gitHub.</p>
+
+<h1>Dynamic document with R and knitr</h1>
+
+<h2>Chapitre 9 - Cross references (References croisees)</h2>
+
+<p>custom = personalise
+knit = tricot
+chunks = morceau, fragment (chunk of wood: un morceau de bois )</p>
+
+<p>&lt;&lt; mon-theme, eval=FALSE &gt;&gt;=
+library(&ldquo;ggplot2&rdquo;)
+theme(legend.text = element_text(size = 12, angle = 45)) + theme(legend.position = &ldquo;bottom&rdquo;)
+@</p>
+
+<p>On peut reutiliser theme comme un sous programme:
+&lt;&lt;&gt;&gt;=
+library(&ldquo;ggplot2&rdquo;)
+qplot(carat, price, data = diamonds, color = cut) + &ldquo;mon-theme&rdquo;
+@</p>
+
+</body>
+
+</html>
+

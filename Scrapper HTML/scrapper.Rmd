@@ -1,0 +1,70 @@
+---
+title: "Fantasy Football Analytics"
+author: "
+    by Isaac Petersen
+    in Projections · R
+    — 27 Jun, 2014
+"
+date: "29/06/2014"
+output: html_document
+---
+
+source:
+
+http://fantasyfootballanalytics.net/2014/06/scraping-fantasy-football-projections.html
+
+ Dans ce post, je montre comment télécharger des projections de football fantastique à partir du Web en utilisant R. Dans les messages précédents, j'ai montré comment gratter projections de [ESPN](http://fantasyfootballanalytics.net/2013/03/download-fantasy-football-projections.html) , [CBS](http://fantasyfootballanalytics.net/2013/03/downloading-cbs-fantasy-football.html) , [NFL.com](http://fantasyfootballanalytics.net/2013/03/downloading-nflcom-fantasy-football.html) , et [FantasyPros](http://fantasyfootballanalytics.net/2013/05/downloading-fantasypros-fantasy.html) . Dans ce post, je compile les scripts R pour racler les projections de ces sites, en plus des sites suivants: [AccuScore](http://accuscore.com/fantasy-sports/nfl-fantasy-sports) , [FantasySharks](http://www.fantasysharks.com/apps/Projections/SeasonProjections.php?pos=ALL) , [FFtoday](http://www.fftoday.com/rankings/playerproj.php?PosID=10&LeagueID=1)       , [FOX Sports](http://msn.foxsports.com/fantasy/football/commissioner/Research/Projections.aspx) , et [Yahoo](http://football.fantasysports.yahoo.com/) . 
+
+
+ Pourquoi projections Gratter?
+
+Grattage projections à partir de plusieurs sources sur le web nous permet d'automatiser l'importation des projections avec un simple script. Automatisation rend l'importation plus efficace si nous n'avons pas de télécharger manuellement les projections chaque fois qu'ils sont mis à jour. Une fois que nous importons toutes les projections, il ya beaucoup que nous pouvons faire avec eux, comme:
+
+    [Déterminer qui a les projections les plus précises]()
+    Calculer les projections pour votre ligue
+    Calculer le niveau de risque des joueurs
+    Calculer la valeur des joueurs sur le remplacement
+    Identifier les traverses
+    Calculer la valeur la plus élevée que vous devriez offrir sur un lecteur dans un projet de vente aux enchères
+    Projet le meilleur onze de départ
+    Gagnez votre enchère projet
+    Gagnez votre serpent projet 
+
+Les scripts de R
+
+Pour gratter les projections à partir des sites Web, j'utilise le [readHTMLTable](http://www.inside-r.org/packages/cran/XML/docs/readHTMLTable) fonction du paquet XML dans R. Voici un exemple de la façon de gratter projections de FantasyPros:
+
+#### Load libraries library("XML") 
+#### Download fantasy football projections from FantasyPros.com 
+
+qb_fp <- readHTMLTable(" http://www.fantasypros.com/nfl/projections/qb.php ", stringsAsFactors = FALSE)$data 
+
+rb_fp <- readHTMLTable(" http://www.fantasypros.com/nfl/projections/rb.php ", stringsAsFactors = FALSE)$data 
+
+wr_fp <- readHTMLTable(" http://www.fantasypros.com/nfl/projections/wr.php ", stringsAsFactors = FALSE)$data 
+
+te_fp <- readHTMLTable(" http://www.fantasypros.com/nfl/projections/te.php ", stringsAsFactors = FALSE)$data 
+
+ Les scripts R pour racler les différentes sources se trouvent ci-dessous:
+
+[AccuScore](https://github.com/dadrivr/FantasyFootballAnalyticsR/blob/master/R%20Scripts/Projections/Accuscore%20Projections.R)
+
+[CBS - Jamey Eisenberg](https://github.com/dadrivr/FantasyFootballAnalyticsR/blob/master/R%20Scripts/Projections/CBS1%20Projections.R)
+
+[CBS - Dave Richard](https://github.com/dadrivr/FantasyFootballAnalyticsR/blob/master/R%20Scripts/Projections/CBS2%20Projections.R)
+    
+[CBS - Moyenne](https://github.com/dadrivr/FantasyFootballAnalyticsR/blob/master/R%20Scripts/Projections/CBS%20Projections.R)
+    
+[ESPN](https://github.com/dadrivr/FantasyFootballAnalyticsR/blob/master/R%20Scripts/Projections/ESPN%20Projections.R)
+    
+[FantasyPros](https://github.com/dadrivr/FantasyFootballAnalyticsR/blob/master/R%20Scripts/Projections/FantasyPros%20Projections.R)
+    
+[FantasySharks](https://github.com/dadrivr/FantasyFootballAnalyticsR/blob/master/R%20Scripts/Projections/FantasySharks%20Projections.R)
+    
+[FFtoday](https://github.com/dadrivr/FantasyFootballAnalyticsR/blob/master/R%20Scripts/Projections/FFtoday%20Projections.R)
+    
+[FOX Sports](https://github.com/dadrivr/FantasyFootballAnalyticsR/blob/master/R%20Scripts/Projections/FOX%20Projections.R)
+    
+[NFL.com](https://github.com/dadrivr/FantasyFootballAnalyticsR/blob/master/R%20Scripts/Projections/NFL%20Projections.R)
+    
+[Yahoo](https://github.com/dadrivr/FantasyFootballAnalyticsR/blob/master/R%20Scripts/Projections/Yahoo%20Projections.R)

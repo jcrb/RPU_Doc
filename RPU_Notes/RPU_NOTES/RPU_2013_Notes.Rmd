@@ -698,3 +698,25 @@ Ajouter une légende à un graphique
 legend("topleft", legend = c("Passages","Taux d'hospitalisation"), col = c("black", "blue"), lty = 1, bty = "n")
 ```
 
+Transformer Latin 1 (windows) en UTF8 (linux)
+---------------------------------------------
+La plupart des fichiers disponibles via Open Data ont été préparés avec windows et sont de fait en codage Latin1.
+```{}
+# correction des caractères accentués (nom descommunes), les données provenant de windows...
+# si les données sont de type factor, il faut d'abord les transcoder en character
+b <- as.character(cp67@data$LIB)
+Encoding(b) <- "latin1"
+cp67@data$LIB <- b
+```
+
+%in% et !%in%
+-------------
+L'expression:
+```{}
+df1$id %in% idNums1
+```
+produit un vecteur logique. Pour le négativer il faut négativer la totalité du vecteur:
+```{}
+!(df1$id %in% idNums1)
+```
+[source](http://stackoverflow.com/questions/9852832/r-not-in-subset)
