@@ -56,6 +56,7 @@ passages.2013.SAE <- 493321
 passages.2014.SAE <- 521129
 passages.2014.SAE.nhc <- 32177
 passages.2014.SAE.htp <- 75226
+passages.2014.SAE.hus <- 32177 + 75226
 passages.2014.SAE.hag <- 44380
 passages.2014.SAE.sav <- 27889
 passages.2014.SAE.wis <- 12709
@@ -64,10 +65,13 @@ passages.2014.SAE.odi <- 27655
 passages.2014.SAE.ane <- 16558
 passages.2014.SAE.dts <- 12350
 passages.2014.SAE.dia <- 29368
+passages.2014.SAE.ros <- NA
 passages.2014.SAE.alk <- 16295
 passages.2014.SAE.tan <- 15496
+passages.2014.SAE.mul <- 14201 + 62722
 passages.2014.SAE.has <- 14201
 passages.2014.SAE.emr <- 62722
+passages.2014.SAE.col <- 47529 + 18816
 passages.2014.SAE.lpr <- 47529 # pasteur
 passages.2014.SAE.prc <- 18816 # parc
 passages.2014.SAE.geb <- 21124
