@@ -250,6 +250,12 @@ This is necessary because the margintable environment does not allow placement o
 > x.small <- xtable(x, label ='tabsmall', caption ='A margin table')
 > print(x.small,floating.environment='margintable',latex.environments = "", table.placement = NULL)
 
+- Pour supprimer le commentaire (date, n° de version) rajouter xtable(t, comment = FALSE)
+
+- Pour afficher un tableau en html print.xtable(xtable(t, comment = FALSE), type = "html")
+
+- Pour afficher un tableau en latex print.xtable(xtable(t, comment = FALSE, caption = "un titre"), type = "latex")
+
 #### xprop.table(x) [mes_fonctions.R]  
 
 Affiche un vecteur de FACTOR sur deux lignes: n et %  
@@ -665,6 +671,12 @@ pour sauvegarder: write.csv(df2, file="somedf.csv")
 ```
 [source](http://stackoverflow.com/questions/5620885/how-does-one-reorder-columns-in-r)
 
+Renomer une colonne
+-------------------
+
+- colnames(dataframe)[n°colonne] <- "name"
+- ex: colnames(dx)[1] <- "date"
+
 Remarques sur "format"
 ======================
 ```{}
@@ -720,3 +732,9 @@ produit un vecteur logique. Pour le négativer il faut négativer la totalité d
 !(df1$id %in% idNums1)
 ```
 [source](http://stackoverflow.com/questions/9852832/r-not-in-subset)
+
+Boxplot
+=======
+
+Augmenter/diminuer la taille des labels d'un boxplot: utiliser préalablement par(cex.lab = 1.5) ou par(cex.axis = 1.5)
+
