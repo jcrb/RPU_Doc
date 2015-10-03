@@ -29,7 +29,7 @@ Méthode de [Hadley Whikam](http://r-pkgs.had.co.nz/intro.html)
 ```{}
 R CMD Rd2pdf -o RPU2_1.pdf --encoding=UTF-8  --force man/*.Rd
 ```
-UTF8 est indispensable pour que les caractères accentués soient pris en charge.
+UTF8 est indispensable pour que les caractères accentués soient pris en charge. Cependant si __title__ comporte un caractère accentué, NA est imprimé à la place du titre ?
 
 sources: http://stackoverflow.com/questions/25773189/rd2pdf-special-and-german-characters
 
@@ -68,3 +68,14 @@ Options:
 The output papersize is set by the environment variable R_PAPERSIZE.
 The PDF previewer is set by the environment variable R_PDFVIEWER.
 ```
+
+Description des items
+======================
+
+- __title__: description de la fonction en une ligne
+- __description__: description longue de la fonction
+- __usage__: la fonction complète avec tous ses paramètres
+- __param__: une ligne par paramètre
+- __return__: ce que la fonction retourne
+- __details__: précisions sur la fonction
+- __examples__: exemple d'utilisation de la fonction. Attention, ne pas oublier le __s__ final (risque de confusion avec example sans s)

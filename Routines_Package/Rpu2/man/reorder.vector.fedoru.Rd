@@ -4,7 +4,7 @@
 \alias{reorder.vector.fedoru}
 \title{Réordonne les colonnes pour être contorme à l'ordre RPU}
 \usage{
-\method{reorder}{vector.fedoru}(dx)
+reorder.vector.fedoru(dx)
 }
 \arguments{
 \item{dx}{un dataframe du typr RPU}

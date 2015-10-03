@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{summary.age}
 \alias{summary.age}
-\title{résumé du vecteur des AGE}
+\title{Resume du vecteur des AGE}
 \usage{
-summary.dp(dx$AGE)
+summary.age(vx)
 }
 \arguments{
 \item{vx}{vecteur char AGE}
@@ -16,5 +16,8 @@ summary.dp(dx$AGE)
 }
 \description{
 résumé du vecteur vx des AGE
+}
+\examples{
+summary.dp(dx$AGE)
 }
 

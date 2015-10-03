@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{evolution}
 \alias{evolution}
-\title{Evolution d'une années sur l'autre}
+\title{Evolution d'une annee sur l'autre}
 \usage{
-evolution(n.rpu, n.rpu.2013)
+evolution(a, b)
 }
 \arguments{
 \item{a}{chiffre de l'année courante}
@@ -16,5 +16,8 @@ pourcentage d'augmentation ou de diminution
 }
 \description{
 calcule l'évolution entre 2 chiffres
+}
+\examples{
+evolution(n.rpu, n.rpu.2013)
 }
 

@@ -4,7 +4,7 @@
 \alias{summary.sexe}
 \title{analyse un vecteur formé d'une suite de H, F, ou I}
 \usage{
-\method{summary}{sexe}(vx)
+summary.sexe(vx)
 }
 \arguments{
 \item{vx}{vecteur de Char (sexe)}

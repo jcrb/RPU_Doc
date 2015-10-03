@@ -74,6 +74,7 @@ img {
 <p>source: <a href="http://www.ecofog.gf/img/pdf/r-rstudio.pdf">UTILISATION AVANCÉE DE R AVEC RSTUDIO</a> page 20</p>
 <p><a href="http://wukan.ums-riate.fr/elementR/elementR.html" class="uri">http://wukan.ums-riate.fr/elementR/elementR.html</a></p>
 <p><a href="https://pjnewcombe.wordpress.com/2014/06/02/how-to-develop-an-r-package-in-rstudio-with-roxygen-comments/" class="uri">https://pjnewcombe.wordpress.com/2014/06/02/how-to-develop-an-r-package-in-rstudio-with-roxygen-comments/</a></p>
+<p><a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html">Writing R extension</a></p>
 <div id="methode-de-hadley-whikam" class="section level1">
 <h1>Méthode de <a href="http://r-pkgs.had.co.nz/intro.html">Hadley Whikam</a></h1>
 <ul>
@@ -81,8 +82,8 @@ img {
 <li>devtools::document()</li>
 <li>Build &amp; Reload pour que la bibliothèque apparaisse dans les packages</li>
 <li><p>pour créer une documentation complète: en mode console (Shell…) se déplacer dans le dossier RPU2 et saisir:</p>
-<pre><code>R CMD Rd2pdf -o RPU2_1.pdf --encoding=UTF-8  man/*.Rd</code></pre>
-<p>UTF8 est indispensable pour que les caractères accentués soient pris en charge.</p></li>
+<pre><code>R CMD Rd2pdf -o RPU2_1.pdf --encoding=UTF-8  --force man/*.Rd</code></pre>
+<p>UTF8 est indispensable pour que les caractères accentués soient pris en charge. Cependant si <strong>title</strong> comporte un caractère accentué, NA est imprimé à la place du titre ?</p></li>
 </ul>
 <p>sources: <a href="http://stackoverflow.com/questions/25773189/rd2pdf-special-and-german-characters" class="uri">http://stackoverflow.com/questions/25773189/rd2pdf-special-and-german-characters</a></p>
 <div id="cmd-rd2pdf-help" class="section level2">
@@ -114,6 +115,18 @@ Options:
 The output papersize is set by the environment variable R_PAPERSIZE.
 The PDF previewer is set by the environment variable R_PDFVIEWER.</code></pre>
 </div>
+</div>
+<div id="description-des-items" class="section level1">
+<h1>Description des items</h1>
+<ul>
+<li><strong>title</strong>: description de la fonction en une ligne</li>
+<li><strong>description</strong>: description longue de la fonction</li>
+<li><strong>usage</strong>: la fonction complète avec tous ses paramètres</li>
+<li><strong>param</strong>: une ligne par paramètre</li>
+<li><strong>return</strong>: ce que la fonction retourne</li>
+<li><strong>details</strong>: précisions sur la fonction</li>
+<li><strong>examples</strong>: exemple d’utilisation de la fonction. Attention, ne pas oublier le <strong>s</strong> final (risque de confusion avec example sans s)</li>
+</ul>
 </div>
 
 

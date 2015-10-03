@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{pdsa}
 \alias{pdsa}
-\title{Détermine si on est en horaire de PDS}
+\title{Determine si on est en horaire de PDS.}
 \usage{
-x <- "2009-09-02 12:23:33"; weekdays(as.Date(x)); pds(x) # NPDS
+pdsa(dx)
 }
 \arguments{
 \item{dx}{vecteur date/heure au format YYYY-MM-DD HH:MM:SS}
@@ -19,5 +19,8 @@ ou hors horaire de PDS (NPDS)
 }
 \details{
 REM sur xps les jours commencent par une minuscule alors que sur le Mac c'est une majuscule ?
+}
+\examples{
+x <- "2009-09-02 12:23:33"; weekdays(as.Date(x)); pds(x) # NPDS
 }
 

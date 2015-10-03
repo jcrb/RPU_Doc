@@ -4,7 +4,7 @@
 \alias{summary.passages}
 \title{analyse un objet de type duree.passage2}
 \usage{
-\method{summary}{passages}(dp)
+summary.passages(dp)
 }
 \arguments{
 \item{dp}{un objet de type duree.passage2. Correspond à un dataframe d'éléments du RPU dont

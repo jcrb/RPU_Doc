@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{summary.destination}
 \alias{summary.destination}
-\title{Résumé de la DESTINATION}
+\title{Resume de la DESTINATION}
 \usage{
-\method{summary}{destination}(dx, correction = TRUE)
+summary.destination(dx, correction = TRUE)
 }
 \arguments{
 \item{dx}{dataframe RPU}

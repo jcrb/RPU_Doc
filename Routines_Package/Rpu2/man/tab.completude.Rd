@@ -2,17 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{tab.completude}
 \alias{tab.completude}
-\title{tableau de complétude par jour}
+\title{tableau de completude par jour}
 \usage{
-hus <- d15[d15$FINESS == hus,]
-      d1 <- as.Date("2015-01-01")
-      d2 <- as.Date("2015-01-31")
-      t <- tab.completude(hus, d1, d2)
-      plot(t[,"DATE DE SORTIE"], type = "l", main = "Mode de sortie", ylab = "Taux de completude")
-      t.zoo <- zoo(t) # nécessite la librairie zoo
-      plot(xts(t.zoo$DP, order.by = as.Date(rownames(t.zoo))), las = 2,
-             main = "Diagnostic principal", ylab = "Taux de completude", cex.axis = 0.8)
-     boxplot(t, las = 2, cex.axis = 0.8, ylab = "\% de completude", main = "Complétude RPU")
+tab.completude(dx, d1, d2, finess = NULL)
 }
 \arguments{
 \item{dx}{dataframe de type RPU}
@@ -27,5 +19,16 @@ d'un établissement.}
 \description{
 faire un tableau de complétude par jour pendant une période donnée
 Permet de suivre les taux de complétude pour une structure et par période
+}
+\examples{
+hus <- d15[d15$FINESS == hus,]
+      d1 <- as.Date("2015-01-01")
+      d2 <- as.Date("2015-01-31")
+      t <- tab.completude(hus, d1, d2)
+      plot(t[,"DATE DE SORTIE"], type = "l", main = "Mode de sortie", ylab = "Taux de completude")
+      t.zoo <- zoo(t) # nécessite la librairie zoo
+      plot(xts(t.zoo$DP, order.by = as.Date(rownames(t.zoo))), las = 2,
+             main = "Diagnostic principal", ylab = "Taux de completude", cex.axis = 0.8)
+     boxplot(t, las = 2, cex.axis = 0.8, ylab = "\\\% de completude", main = "Complétude RPU")
 }
 

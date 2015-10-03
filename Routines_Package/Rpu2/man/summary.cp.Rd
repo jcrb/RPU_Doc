@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{summary.cp}
 \alias{summary.cp}
-\title{résumé du vecteur CODE_POSTAL (cp)}
+\title{resume du vecteur CODE_POSTAL (cp)}
 \usage{
-summary.cp(dx$CODE_POSTAL)
+summary.cp(vx)
 }
 \arguments{
 \item{vx}{vecteur char CODE_POSTAL}
@@ -19,5 +19,8 @@ résumé du vecteur vx des CODE_POSTAL (cp)
 }
 \details{
 NECESSITE LA BIBLIOTHEQUE RPU_Doc/mes.constantes
+}
+\examples{
+summary.cp(dx$CODE_POSTAL)
 }
 

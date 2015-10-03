@@ -2,10 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{tarru}
 \alias{tarru}
-\title{Taux de Recours régional aux Urgences}
+\title{Taux de Recours Regional aux Urgences}
 \usage{
-pop.region <- pop.als.tot.2014 <- 1868773
-       tarru(dx$CODE_POSTAL, pop.als.tot.2014)
+tarru(cp, pop.region, rpu.region)
 }
 \arguments{
 \item{cp}{vecteur des codes postaux. Détermine le nb de RPU générés par des Alsaciens}
@@ -18,5 +17,9 @@ un pourcentage
 \description{
 Les RPU générés par les habitants de la région sont comptés à partir du vecteur des codes postaux.
              Le rapport est calculé en divisant le nombre de RPU régionaux par la population de la région.
+}
+\examples{
+pop.region <- pop.als.tot.2014 <- 1868773
+          tarru(dx$CODE_POSTAL, pop.als.tot.2014)
 }
 

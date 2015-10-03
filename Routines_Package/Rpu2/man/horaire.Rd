@@ -4,7 +4,7 @@
 \alias{horaire}
 \title{extrait l'heure d'une date AAAA-MM-DD HH:MM:SS}
 \usage{
-e <- datetime(dx$ENTREE); he <- horaire(e)
+horaire(date)
 }
 \arguments{
 \item{date}{une date ou un vecteur au format DATE}
@@ -14,5 +14,8 @@ un vecteur d'heures au format HH:MM:SS
 }
 \description{
 extrait l'heure d'une date AAAA-MM-DD HH:MM:SS
+}
+\examples{
+e <- datetime(dx$ENTREE); he <- horaire(e)
 }
 

@@ -15,4 +15,7 @@ moyenne, écart-type, médiane par sexe
 \description{
 résumé des vecteurs AGE et SEXE
 }
+\examples{
+summary.age.sexe(dx)
+}
 

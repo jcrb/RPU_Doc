@@ -4,7 +4,7 @@
 \alias{summary.transport}
 \title{analyse du vecteur TRANSPORT}
 \usage{
-summary.transport(pop75$TRANSPORT)
+summary.transport(vx)
 }
 \arguments{
 \item{vx}{vecteur de Factor}
@@ -15,5 +15,8 @@ summary.transport(pop75$TRANSPORT)
 }
 \description{
 analyse du vecteur TRANSPORT
+}
+\examples{
+summary.transport(pop75$TRANSPORT)
 }
 

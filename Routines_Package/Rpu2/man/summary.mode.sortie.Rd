@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{summary.mode.sortie}
 \alias{summary.mode.sortie}
-\title{résumé du vecteur vx des MODE_SORTIE}
+\title{Resume du vecteur vx des MODE_SORTIE}
 \usage{
-summary.mode.sortie(dx$MODE_SORTIE)
+summary.mode.sortie(vx)
 }
 \arguments{
 \item{vx}{vecteur char MODE_SORTIE}
@@ -15,5 +15,8 @@ summary.mode.sortie(dx$MODE_SORTIE)
 }
 \description{
 résumé du vecteur vx des MODE_SORTIE
+}
+\examples{
+summary.mode.sortie(dx$MODE_SORTIE)
 }
 

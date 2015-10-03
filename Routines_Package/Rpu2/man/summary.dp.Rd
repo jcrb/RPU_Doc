@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{summary.dp}
 \alias{summary.dp}
-\title{résumé du vecteur DP (diagnostic principal)}
+\title{Resume du vecteur DP (diagnostic principal)}
 \usage{
-summary.dp(dx$DP)
+summary.dp(vx)
 }
 \arguments{
 \item{vx}{vecteur char DP}
@@ -14,5 +14,8 @@ summary.dp(dx$DP)
 }
 \description{
 résumé du vecteur vx des DP (diagnostic principal)
+}
+\examples{
+summary.dp(dx$DP)
 }
 

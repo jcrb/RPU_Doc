@@ -4,7 +4,7 @@
 \alias{passage}
 \title{Horaires de passages}
 \usage{
-e <- datetime(dx$ENTREE); he <- horaire(e); nuit <- passage(he, "nuit")
+passage(he, horaire = "nuit")
 }
 \arguments{
 \item{he}{vecteur time de type hms}
@@ -21,6 +21,9 @@ Horaires de passages
 \note{
 necessite lubridate. Prend en compte toutes les heures et pas seulement celles
      comprises entre 0 et 72h (voir passage2)
+}
+\examples{
+e <- datetime(dx$ENTREE); he <- horaire(e); nuit <- passage(he, "nuit")
 }
 \seealso{
 horaire

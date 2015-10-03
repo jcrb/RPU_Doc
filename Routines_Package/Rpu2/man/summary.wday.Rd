@@ -4,7 +4,7 @@
 \alias{summary.wday}
 \title{Nombre de RPU par jour de semaine}
 \usage{
-summary.wday(dx$ENTREE)
+summary.wday(vx)
 }
 \arguments{
 \item{vx}{vecteur datetime}
@@ -18,5 +18,8 @@ vecteur nommé commençant le lundi
 }
 \details{
 La semaine américaine est modifiée pour correspondre à la semaine française commençant un lundi.
+}
+\examples{
+summary.wday(dx$ENTREE)
 }
 

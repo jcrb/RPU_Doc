@@ -4,7 +4,10 @@
 \alias{format.n}
 \title{formate un nombre}
 \usage{
-format.n(7890.14) -> "7 890,14"
+format.n(x)
+}
+\arguments{
+\item{x}{un nombre entier ou décimal}
 }
 \description{
 formate un nombre en ajoutant un espace pour les milliers
@@ -12,7 +15,7 @@ formate un nombre en ajoutant un espace pour les milliers
                                           pas de notation scientifique
                                           deux chiffres significatifs
 }
-\author{
-JcB - 2015-03-12
+\examples{
+format.n(7890.14) -> "7 890,14"
 }
 

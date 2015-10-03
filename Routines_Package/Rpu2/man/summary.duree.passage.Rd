@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{summary.duree.passage}
 \alias{summary.duree.passage}
-\title{Durée de passage résumé}
+\title{Resume de la Duree de passage.}
 \usage{
-\method{summary}{duree.passage}(dp)
+summary.duree.passage(dp)
 }
 \arguments{
 \item{dp}{un objet de type duree.passage2}

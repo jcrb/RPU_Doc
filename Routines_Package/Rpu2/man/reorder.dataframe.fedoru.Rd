@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{reorder.dataframe.fedoru}
 \alias{reorder.dataframe.fedoru}
-\title{Réordonne les colonnes du dataframe RPU dans l'ordre défini par la FEDORU.}
+\title{Reordonne les colonnes du dataframe RPU dans l'ordre defini par la FEDORU.}
 \usage{
-\method{reorder}{dataframe.fedoru}(dx)
+reorder.dataframe.fedoru(dx)
 }
 \arguments{
 \item{dx}{un dataframe de type RPU}

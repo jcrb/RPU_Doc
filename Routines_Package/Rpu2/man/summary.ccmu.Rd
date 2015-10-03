@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{summary.ccmu}
 \alias{summary.ccmu}
-\title{résumé du vecteur vx des CCMU}
+\title{Resume du vecteur vx des CCMU}
 \usage{
-summary.ccmu(dx$GRAVITE)
+summary.ccmu(vx)
 }
 \arguments{
 \item{vx}{vecteur de factor CCMU}
@@ -15,5 +15,8 @@ summary.ccmu(dx$GRAVITE)
 }
 \description{
 résumé du vecteur vx des CCMU
+}
+\examples{
+summary.ccmu(dx$GRAVITE)
 }
 

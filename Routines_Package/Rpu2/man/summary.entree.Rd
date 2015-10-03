@@ -4,7 +4,7 @@
 \alias{summary.entree}
 \title{analyse du vecteur ENTREE ou SORTIE}
 \usage{
-summary.entree(as.Date(pop75$ENTREE))
+summary.entree(vx)
 }
 \arguments{
 \item{vx}{vecteur de Date ou de DateTime}
@@ -17,5 +17,8 @@ analyse du vecteur ENTREE ou SORTIE
 }
 \note{
 min et max ne s'affichent pas sous forme de date. Que donne hms
+}
+\examples{
+summary.entree(as.Date(pop75$ENTREE))
 }
 

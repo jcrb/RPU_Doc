@@ -4,7 +4,7 @@
 \alias{datetime}
 \title{met une string date au format YYYY-MM-DD HH:MM:SS}
 \usage{
-Transforme des rubriques ENTREE et SORTIE en objet datetime
+datetime(date)
 }
 \arguments{
 \item{date}{une chaine de caractère de type Date}
@@ -17,6 +17,9 @@ met une string date au format YYYY-MM-DD HH:MM:SS
 }
 \note{
 nécessite lubridate
+}
+\examples{
+Transforme des rubriques ENTREE et SORTIE en objet datetime
 }
 \seealso{
 horaire, passage.nuit

@@ -4,8 +4,7 @@
 \alias{pyramide.age}
 \title{pyramide des ages}
 \usage{
-pyramide.age(dx, cut = 5, gap = 1, cex = 0.8, col.h = "light green",
-  col.f = "khaki1")
+pyramide.age(dx, cut = 5, gap = 1, cex = 0.8,col.h = "light green", col.f = "khaki1")
 }
 \arguments{
 \item{dx}{datafrae RPU ou DF à 2 colonnes: AGE et SEXE}

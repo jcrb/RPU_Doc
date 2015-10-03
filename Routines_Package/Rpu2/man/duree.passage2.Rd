@@ -2,7 +2,7 @@
 % Please edit documentation in R/Rapport.R
 \name{duree.passage2}
 \alias{duree.passage2}
-\title{Calcul de la durée de passage}
+\title{Calcul de la duree de passage}
 \usage{
 duree.passage2(dx, h1 = 0, h2 = 4320, hors_uhcd = TRUE)
 }

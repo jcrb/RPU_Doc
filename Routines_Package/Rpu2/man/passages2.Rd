@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{passages2}
 \alias{passages2}
-\title{Nombre de RPU sur une plage horaire donnée}
+\title{Nombre de RPU sur une plage horaire donnee}
 \usage{
-n.passages.nuit <- passages2(pop18$ENTREE, "nuit")
+passages2(vx, h1, h2 = NULL)
 }
 \arguments{
 \item{vx}{vecteur de type datetime (dx$ENTREE, dx$SORTIE par exemple). Transformé par ymd_hms
@@ -20,6 +20,12 @@ integer
 }
 \description{
 Détermine le nombre de RPU sur une plage horaire donnée
+}
+\details{
+nécessite lubridate library(lubridate)
+}
+\examples{
+n.passages.nuit <- passages2(pop18$ENTREE, "nuit")
 }
 \author{
 jcb

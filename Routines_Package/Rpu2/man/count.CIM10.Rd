@@ -4,7 +4,7 @@
 \alias{count.CIM10}
 \title{Combien de codes CIM10}
 \usage{
-count.CIM10(dx[dx$FINESS == "Col", "MOTIF"])
+count.CIM10(vx)
 }
 \arguments{
 \item{vx}{un vecteur de character}
@@ -15,6 +15,9 @@ n nombre de codes CIM1
 \description{
 examine un vecteur de caractères et compte le nombre de mots compatibles avec un code CIM10
 NA n'est pas compté comme un code CIM10
+}
+\examples{
+count.CIM10(dx[dx$FINESS == "Col", "MOTIF"])
 }
 \author{
 JcB

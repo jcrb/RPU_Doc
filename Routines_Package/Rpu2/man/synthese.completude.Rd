@@ -2,10 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{synthese.completude}
 \alias{synthese.completude}
-\title{alcule le tableau des taux de complétude de l'ensemble des Finess.}
+\title{Calcule le tableau des taux de completude de l'ensemble des Finess.}
 \usage{
 synthese.completude(dx)
-synthese.completude(dx[dx$FINESS == "Hag",]) pour un seul établissement
 }
 \arguments{
 \item{dx}{dataframe de type RPU}
@@ -23,5 +22,9 @@ nom des établissements, en abcisse les différents items du RPU et à l'interse
 ligne/colonne la complétude correspondante. dx peut comprter un ou plusieurs Finess
 et concerner une période variable (semaine, mois, année...)
 Nécessite la librairie plyr pour la fonction ddply()
+}
+\examples{
+synthese.completude(dx)
+synthese.completude(dx[dx$FINESS == "Hag",]) pour un seul établissement
 }
 

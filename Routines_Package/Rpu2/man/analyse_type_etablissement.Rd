@@ -2,11 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{analyse_type_etablissement}
 \alias{analyse_type_etablissement}
-\title{Analyse établissement}
+\title{Analyse etablissement}
 \usage{
-# es non SAMU, siège de SMUR
-         es <- dx[dx$FINESS %in% c("Wis","Hag","Sav","Sel","Col"),]
-         analyse_type_etablissement(es)
+analyse_type_etablissement(es)
 }
 \arguments{
 \item{es}{dataframe RPU (es = établissement de santé)}
@@ -25,5 +23,10 @@
 \description{
 fournit une liste d'indicateur à partir des données d'un établissement
              ou d'un groupe d'établissements. Voir rapport 2014: Analyse par type d'étblissement
+}
+\examples{
+# es non SAMU, siège de SMUR
+         es <- dx[dx$FINESS \%in\% c("Wis","Hag","Sav","Sel","Col"),]
+         analyse_type_etablissement(es)
 }
 

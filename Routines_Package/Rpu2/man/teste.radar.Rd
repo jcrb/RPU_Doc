@@ -9,4 +9,7 @@ teste.radar()
 \description{
 data pour créer automatiquement un radar RPU et faire des test
 }
+\examples{
+teste.radar()
+}
 

@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{radar.completude}
 \alias{radar.completude}
-\title{dessine un graphe en étoile}
+\title{dessine un graphe en etoile}
 \usage{
-radar.completude(completude(dx))
+radar.completude(completude, finess = NULL, titre = NULL)
 }
 \arguments{
 \item{completude}{taux de completude global calculé par la fonction completude}
@@ -16,6 +16,9 @@ diagramme en étoile
 }
 \description{
 dessine un graphe en étoile à partir des données retournées par "completude"
+}
+\examples{
+radar.completude(completude(dx))
 }
 \author{
 JcB 2013-02-01

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Rapport.R
 \name{completude}
 \alias{completude}
-\title{taux de complétude global.}
+\title{taux de completude global.}
 \usage{
 completude(dx, calcul = "percent", tri = FALSE)
 }

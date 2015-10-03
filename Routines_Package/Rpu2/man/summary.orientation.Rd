@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{summary.orientation}
 \alias{summary.orientation}
-\title{Résumé de ORIENTATION}
+\title{Resume de ORIENTATION}
 \usage{
-\method{summary}{orientation}(dx, correction = TRUE)
+summary.orientation(dx, correction = TRUE)
 }
 \arguments{
 \item{dx}{dataframe RPU}

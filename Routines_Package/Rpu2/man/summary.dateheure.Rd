@@ -2,9 +2,9 @@
 % Please edit documentation in R/Rapport.R
 \name{summary.dateheure}
 \alias{summary.dateheure}
-\title{résumé du vecteur des ENTREE ou SORTIE}
+\title{Resume du vecteur des ENTREE ou SORTIE}
 \usage{
-summary.ccmu(dx$SORTIE)
+summary.dateheure(vx)
 }
 \arguments{
 \item{vx}{vecteur ENTREE ou SORTIE}
@@ -14,5 +14,8 @@ summary.ccmu(dx$SORTIE)
 }
 \description{
 résumé du vecteur vx des ENTREE ou SORTIE
+}
+\examples{
+summary.ccmu(dx$SORTIE)
 }
 
