@@ -6,13 +6,10 @@ Date: 2015-09-27
 Authors@R: person("JC", "Bartier", email = "jeanclaude.bartier@gmail.com", role = c("aut", "cre"))
 Maintainer: Who to complain to <yourfault@somewhere.net>
 Description: More about what it does (maybe more than one line)
-Depends:
-    R (>= 3.1.0)
+Depends: R (>= 3.1.0)
 License: What license is it under?
 LazyData: true
-Imports:
-    dplyr,
-    lubridate,
-    xtable,
-    openintro,
-    plotrix
+Imports: dplyr, lubridate, xtable, openintro, plotrix
+NeedsCompilation: no
+Packaged: 2015-10-13 16:56:46 UTC; jcb
+Author: JC Bartier [aut, cre]

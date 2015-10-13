@@ -13,7 +13,7 @@
 The DESCRIPTION file:
 \packageDESCRIPTION{Rpu2}
 \packageIndices{Rpu2}
-Routines utilées poar analyser un fichier de RPU.
+~~ An overview of how to use the package, including the most important functions ~~
 }
 \author{
 \packageAuthor{Rpu2}
@@ -21,7 +21,7 @@ Routines utilées poar analyser un fichier de RPU.
 Maintainer: \packageMaintainer{Rpu2}
 }
 \references{
-Site de RESURAL
+~~ Literature or other references for background information ~~
 }
 ~~ Optionally other standard keywords, one per line, from file KEYWORDS in the R documentation directory ~~
 \keyword{ package }

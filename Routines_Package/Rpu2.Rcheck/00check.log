@@ -1,0 +1,385 @@
+* using log directory ‘/home/jcb/Documents/Resural/Stat Resural/RPU_Doc/Routines_Package/Rpu2.Rcheck’
+* using R version 3.2.2 (2015-08-14)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using option ‘--as-cran’
+* checking for file ‘Rpu2/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘Rpu2’ version ‘0.1’
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘Rpu2’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: /tmp/RtmpXWazJl/Rbuild34534db9b1a7/Rpu2/man/Rpu2-package.Rd:26: All text must be in a section
+  Warning: /home/jcb/Documents/Resural/Stat Resural/RPU_Doc/Routines_Package/Rpu2.Rcheck/00_pkg_src/Rpu2/man/factor2table.Rd:14: unexpected section header '\value'
+  Warning: /home/jcb/Documents/Resural/Stat Resural/RPU_Doc/Routines_Package/Rpu2.Rcheck/00_pkg_src/Rpu2/man/factor2table.Rd:17: unexpected section header '\description'
+  Warning: /home/jcb/Documents/Resural/Stat Resural/RPU_Doc/Routines_Package/Rpu2.Rcheck/00_pkg_src/Rpu2/man/factor2table.Rd:20: unexpected section header '\examples'
+  Warning: /home/jcb/Documents/Resural/Stat Resural/RPU_Doc/Routines_Package/Rpu2.Rcheck/00_pkg_src/Rpu2/man/factor2table.Rd:32: unexpected END_OF_INPUT '
+See ‘/home/jcb/Documents/Resural/Stat Resural/RPU_Doc/Routines_Package/Rpu2.Rcheck/00install.out’ for details.
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+Non-standard license specification:
+  What license is it under?
+Standardizable: FALSE
+* checking top-level files ... NOTE
+Non-standard files/directories found at top level:
+  ‘RPU2_1.pdf’ ‘Read-me.Rmd’ ‘Read-me.html’ ‘Rpu2.Rproj’
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... WARNING
+Found the following file with non-ASCII characters:
+  Rapport.R
+Portable packages must use only ASCII characters in their R code,
+except perhaps in comments.
+Use \uxxxx escapes for other characters.
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... WARNING
+Error : l'objet 'reorder' est introuvable pendant le chargement de l'espace de noms 'Rpu2'
+Erreur : le chargement du package ou de l'espace de noms a échoué pour ‘Rpu2’
+Exécution arrêtée
+
+It looks like this package (or one of its dependent packages) has an
+unstated dependence on a standard package.  All dependencies must be
+declared in DESCRIPTION.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* checking whether the package can be unloaded cleanly ... WARNING
+Error : l'objet 'reorder' est introuvable pendant le chargement de l'espace de noms 'Rpu2'
+Erreur : le chargement du package ou de l'espace de noms a échoué pour ‘Rpu2’
+Exécution arrêtée
+* checking whether the namespace can be loaded with stated dependencies ... WARNING
+Erreur : l'objet 'reorder' est introuvable pendant le chargement de l'espace de noms 'Rpu2'
+Exécution arrêtée
+
+A namespace must be able to be loaded with just the base namespace
+loaded: otherwise if the namespace gets loaded by a saved object, the
+session will be unable to start.
+
+Probably some imports need to be declared in the NAMESPACE file.
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking dependencies in R code ... NOTE
+Erreur : package or namespace load failed for ‘Rpu2’
+Séquence d'appel :
+2: stop(gettextf("package or namespace load failed for %s", sQuote(package)), 
+       call. = FALSE, domain = NA)
+1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
+Exécution arrêtée
+* checking S3 generic/method consistency ... WARNING
+format:
+  function(x, ...)
+format.n:
+  function(x)
+
+print:
+  function(x, ...)
+print.summary.rpu:
+  function(x, sens, cnames, rnames, caption, type, ref)
+
+print:
+  function(x, ...)
+print.table.rpu:
+  function(t, caption, type, ref)
+
+summary:
+  function(object, ...)
+summary.ccmu:
+  function(vx)
+
+summary:
+  function(object, ...)
+summary.duree.passage:
+  function(dp)
+
+summary:
+  function(object, ...)
+summary.entree:
+  function(vx)
+
+summary:
+  function(object, ...)
+summary.passages:
+  function(dp)
+
+summary:
+  function(object, ...)
+summary.rpu:
+  function(dx)
+
+summary:
+  function(object, ...)
+summary.sexe:
+  function(vx)
+
+summary:
+  function(object, ...)
+summary.transport:
+  function(vx)
+
+reorder:
+  function(x, ...)
+reorder.dataframe.fedoru:
+  function(dx)
+
+reorder:
+  function(x, ...)
+reorder.vector.fedoru:
+  function(dx)
+
+See section ‘Generic functions and methods’ in the ‘Writing R
+Extensions’ manual.
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+completude.time: no visible global function definition for ‘ddply’
+completude.time: no visible global function definition for ‘.’
+completude.time: no visible global function definition for ‘month’
+completude.time: no visible global function definition for ‘yday’
+completude.time: no visible global function definition for ‘wday’
+completude.time: no visible global function definition for ‘year’
+completude.time: no visible global function definition for ‘week’
+datetime: no visible global function definition for ‘ymd_hms’
+duree.passage2: no visible global function definition for ‘ymd_hms’
+duree.passage2: no visible global function definition for ‘hms’
+horaire: no visible global function definition for ‘hms’
+horaire3: no visible global function definition for ‘hms’
+passage: no visible global function definition for ‘hms’
+passages.en.moins.de.4h: no visible global function definition for
+  ‘ymd_hms’
+passages2: no visible global function definition for ‘ymd_hms’
+passages2: no visible global function definition for ‘hms’
+pdsa: no visible global function definition for ‘hms’
+plot.xts2: no visible global function definition for ‘axTicksByTime’
+plot.xts2: no visible global function definition for ‘.index’
+plot.xts2: no visible global function definition for
+  ‘plot.ohlc.candles’
+print.summary.rpu: no visible global function definition for
+  ‘print.xtable’
+print.summary.rpu: no visible global function definition for ‘xtable’
+print.table.rpu: no visible global function definition for
+  ‘print.xtable’
+print.table.rpu: no visible global function definition for ‘xtable’
+pyramide.age: no visible binding for global variable ‘n.rpu’
+pyramide.age: no visible global function definition for ‘pyramid.plot’
+radar.completude: no visible global function definition for
+  ‘radial.plot’
+radar.completude: no visible global function definition for ‘fadeColor’
+rpu.par.jour: no visible global function definition for ‘yday’
+rpu.par.jour: no visible global function definition for ‘rollmean’
+rpu.par.mois: no visible global function definition for ‘year’
+rpu2xts: no visible global function definition for ‘xts’
+summary.cp: no visible binding for global variable ‘is.cpals’
+summary.wday: no visible global function definition for ‘wday’
+synthese.completude: no visible global function definition for ‘ddply’
+synthese.completude: no visible global function definition for ‘.’
+synthese.completude: no visible binding for global variable ‘FINESS’
+tarru: no visible binding for global variable ‘is.cpals’
+
+Found the following assignments to the global environment:
+File ‘Rpu2/R/Rapport.R’:
+  assign(".plot.xts", recordPlot(), .GlobalEnv)
+* checking Rd files ... WARNING
+prepare_Rd: Rpu2-package.Rd:26: All text must be in a section
+prepare_Rd: Rpu2-package.Rd:32-34: Dropping empty section \examples
+add.territoire.Rd: non-ASCII input and no declared encoding
+analyse_type_etablissement.Rd: non-ASCII input and no declared encoding
+completude.Rd: non-ASCII input and no declared encoding
+completude.time.Rd: non-ASCII input and no declared encoding
+copyright.Rd: non-ASCII input and no declared encoding
+count.CIM10.Rd: non-ASCII input and no declared encoding
+datetime.Rd: non-ASCII input and no declared encoding
+duree.passage2.Rd: non-ASCII input and no declared encoding
+evolution.Rd: non-ASCII input and no declared encoding
+factor2table.Rd: non-ASCII input and no declared encoding
+finess2territoires.Rd: non-ASCII input and no declared encoding
+format.n.Rd: non-ASCII input and no declared encoding
+passage.Rd: non-ASCII input and no declared encoding
+passages.en.moins.de.4h.Rd: non-ASCII input and no declared encoding
+passages2.Rd: non-ASCII input and no declared encoding
+pdsa.Rd: non-ASCII input and no declared encoding
+plot.xts2.Rd: non-ASCII input and no declared encoding
+print.summary.rpu.Rd: non-ASCII input and no declared encoding
+print.table.rpu.Rd: non-ASCII input and no declared encoding
+pyramide.age.Rd: non-ASCII input and no declared encoding
+radar.completude.Rd: non-ASCII input and no declared encoding
+reorder.dataframe.fedoru.Rd: non-ASCII input and no declared encoding
+reorder.vector.fedoru.Rd: non-ASCII input and no declared encoding
+rpu.par.jour.Rd: non-ASCII input and no declared encoding
+rpu.par.mois.Rd: non-ASCII input and no declared encoding
+rpu2xts.Rd: non-ASCII input and no declared encoding
+summary.age.Rd: non-ASCII input and no declared encoding
+summary.age.sexe.Rd: non-ASCII input and no declared encoding
+summary.ccmu.Rd: non-ASCII input and no declared encoding
+summary.cp.Rd: non-ASCII input and no declared encoding
+summary.dateheure.Rd: non-ASCII input and no declared encoding
+summary.destination.Rd: non-ASCII input and no declared encoding
+summary.dp.Rd: non-ASCII input and no declared encoding
+summary.duree.passage.Rd: non-ASCII input and no declared encoding
+summary.entree.Rd: non-ASCII input and no declared encoding
+summary.mode.sortie.Rd: non-ASCII input and no declared encoding
+summary.orientation.Rd: non-ASCII input and no declared encoding
+summary.passages.Rd: non-ASCII input and no declared encoding
+summary.rpu.Rd: non-ASCII input and no declared encoding
+summary.sexe.Rd: non-ASCII input and no declared encoding
+summary.wday.Rd: non-ASCII input and no declared encoding
+synthese.completude.Rd: non-ASCII input and no declared encoding
+tab.completude.Rd: non-ASCII input and no declared encoding
+tarru.Rd: non-ASCII input and no declared encoding
+teste.radar.Rd: non-ASCII input and no declared encoding
+problems found in ‘add.territoire.Rd’, ‘analyse_type_etablissement.Rd’, ‘completude.Rd’, ‘completude.time.Rd’, ‘copyright.Rd’, ‘count.CIM10.Rd’, ‘datetime.Rd’, ‘duree.passage2.Rd’, ‘evolution.Rd’, ‘factor2table.Rd’, ‘finess2territoires.Rd’, ‘format.n.Rd’, ‘passage.Rd’, ‘passages.en.moins.de.4h.Rd’, ‘passages2.Rd’, ‘pdsa.Rd’, ‘plot.xts2.Rd’, ‘print.summary.rpu.Rd’, ‘print.table.rpu.Rd’, ‘pyramide.age.Rd’, ‘radar.completude.Rd’, ‘reorder.dataframe.fedoru.Rd’, ‘reorder.vector.fedoru.Rd’, ‘rpu.par.jour.Rd’, ‘rpu.par.mois.Rd’, ‘rpu2xts.Rd’, ‘summary.age.Rd’, ‘summary.age.sexe.Rd’, ‘summary.ccmu.Rd’, ‘summary.cp.Rd’, ‘summary.dateheure.Rd’, ‘summary.destination.Rd’, ‘summary.dp.Rd’, ‘summary.duree.passage.Rd’, ‘summary.entree.Rd’, ‘summary.mode.sortie.Rd’, ‘summary.orientation.Rd’, ‘summary.passages.Rd’, ‘summary.rpu.Rd’, ‘summary.sexe.Rd’, ‘summary.wday.Rd’, ‘synthese.completude.Rd’, ‘tab.completude.Rd’, ‘tarru.Rd’, ‘teste.radar.Rd’
+* checking Rd metadata ... OK
+* checking Rd line widths ... NOTE
+Rd file 'plot.xts2.Rd':
+  \usage lines wider than 90 characters:
+     plot.xts2(x, y = NULL, type = "l", auto.grid = TRUE, major.ticks = "auto", minor.ticks = TRUE, major.format = TRUE,
+
+Rd file 'rpu.par.mois.Rd':
+  \examples lines wider than 100 characters:
+     legend("topleft", inset = c(0, -0.1), legend = c("Brut","Standardisé"), bty = "n", col = c("black","gray80"), pch = 15)
+
+These lines will be truncated in the PDF manual.
+* checking Rd cross-references ... WARNING
+Unknown package ‘<pkg>’ in Rd xrefs
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... WARNING
+Codoc mismatches from documentation object 'rpu.par.jour':
+rpu.par.jour
+  Code: function(d, roll = 7)
+  Docs: function(dx)
+  Argument names in code not in docs:
+    d roll
+  Argument names in docs not in code:
+    dx
+  Mismatches in argument names:
+    Position: 1 Code: d Docs: dx
+
+Codoc mismatches from documentation object 'rpu2xts':
+rpu2xts
+  Code: function(d)
+  Docs: function(dx)
+  Argument names in code not in docs:
+    d
+  Argument names in docs not in code:
+    dx
+  Mismatches in argument names:
+    Position: 1 Code: d Docs: dx
+
+* checking Rd \usage sections ... WARNING
+Documented arguments not in \usage in documentation object 'completude.time':
+  ‘t’
+
+Undocumented arguments in documentation object 'finess2territoires'
+  ‘finess’
+
+Undocumented arguments in documentation object 'plot.xts2'
+  ‘x’ ‘y’ ‘type’ ‘auto.grid’ ‘major.ticks’ ‘minor.ticks’ ‘major.format’
+  ‘bar.col’ ‘candle.col’ ‘ann’ ‘axes’ ‘col’ ‘...’
+
+Undocumented arguments in documentation object 'print.summary.rpu'
+  ‘caption’ ‘type’ ‘ref’
+
+Undocumented arguments in documentation object 'print.table.rpu'
+  ‘ref’
+Documented arguments not in \usage in documentation object 'print.table.rpu':
+  ‘label’
+
+Undocumented arguments in documentation object 'pyramide.age'
+  ‘cex’
+
+Undocumented arguments in documentation object 'radar.completude'
+  ‘titre’
+
+Undocumented arguments in documentation object 'rpu.par.jour'
+  ‘roll’
+Documented arguments not in \usage in documentation object 'rpu.par.jour':
+  ‘roll:’
+
+Undocumented arguments in documentation object 'tarru'
+  ‘rpu.region’
+
+Functions with \usage entries need to have the appropriate \alias
+entries, and all their arguments documented.
+The \usage entries must correspond to syntactically valid R code.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+S3 methods shown with full name in documentation object 'format.n':
+  ‘format.n’
+
+S3 methods shown with full name in documentation object 'plot.xts2':
+  ‘plot.xts2’
+
+S3 methods shown with full name in documentation object 'print.summary.rpu':
+  ‘print.summary.rpu’
+
+S3 methods shown with full name in documentation object 'print.table.rpu':
+  ‘print.table.rpu’
+
+S3 methods shown with full name in documentation object 'reorder.dataframe.fedoru':
+  ‘reorder.dataframe.fedoru’
+
+S3 methods shown with full name in documentation object 'reorder.vector.fedoru':
+  ‘reorder.vector.fedoru’
+
+S3 methods shown with full name in documentation object 'summary.ccmu':
+  ‘summary.ccmu’
+
+S3 methods shown with full name in documentation object 'summary.duree.passage':
+  ‘summary.duree.passage’
+
+S3 methods shown with full name in documentation object 'summary.entree':
+  ‘summary.entree’
+
+S3 methods shown with full name in documentation object 'summary.passages':
+  ‘summary.passages’
+
+S3 methods shown with full name in documentation object 'summary.rpu':
+  ‘summary.rpu’
+
+S3 methods shown with full name in documentation object 'summary.sexe':
+  ‘summary.sexe’
+
+S3 methods shown with full name in documentation object 'summary.transport':
+  ‘summary.transport’
+
+The \usage entries for S3 methods should use the \method markup and not
+their full name.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+* checking Rd contents ... WARNING
+Argument items with no description in Rd object 'copyright':
+  ‘titre’
+
+* checking for unstated dependencies in examples ... WARNING
+Warning: erreur d'analyse de code dans le fichier 'Rpu2-Ex.R' :
+84:12: unexpected symbol
+83: 
+84: Transforme des
+               ^
+* checking examples ... ERROR
+Running examples in ‘Rpu2-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: analyse_type_etablissement
+> ### Title: Analyse etablissement
+> ### Aliases: analyse_type_etablissement
+> 
+> ### ** Examples
+> 
+> # es non SAMU, siège de SMUR
+>          es <- dx[dx$FINESS %in% c("Wis","Hag","Sav","Sel","Col"),]
+Error: object 'dx' not found
+Execution halted
+* checking PDF version of manual ... OK
+* DONE
+Status: 1 ERROR, 12 WARNINGs, 5 NOTEs
