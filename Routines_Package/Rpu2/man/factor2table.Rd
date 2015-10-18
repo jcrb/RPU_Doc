@@ -9,7 +9,7 @@ factor2table(vx, pc = TRUE)
 \arguments{
 \item{vx}{un vecteur de facteurs ou d'entiers}
 
-\item{pc}{si TRUE crée une colonne de %}
+\item{pc}{si TRUE crée une colonne de \%}
 }
 \value{
 une table

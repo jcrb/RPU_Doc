@@ -6,6 +6,9 @@
 \usage{
 finess2territoires(finess)
 }
+\arguments{
+\item{finess}{code finess de létablissement}
+}
 \description{
 réorganiser les FINESS par territoires de santé
 }

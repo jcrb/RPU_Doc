@@ -13,7 +13,7 @@ print.table.rpu(t, caption = "", type = "latex", ref = "")
 
 \item{type}{"latex" ou "html"}
 
-\item{label}{référence du tableau (latex)}
+\item{ref}{référence du tableau (latex)}
 }
 \description{
 imprime une table avec xtable. Par défaut l'environnement est du type latex, le

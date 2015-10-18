@@ -49,6 +49,27 @@ Type 'q()' to quit R.
 > ### ** Examples
 > 
 > # es non SAMU, siège de SMUR
->          es <- dx[dx$FINESS %in% c("Wis","Hag","Sav","Sel","Col"),]
-Error: object 'dx' not found
+>           # es <- dx[dx$FINESS %in% c("Wis","Hag","Sav","Sel","Col"),]
+>           # analyse_type_etablissement(es)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("analyse_type_etablissement", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("barplot.week.variations")
+> ### * barplot.week.variations
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: barplot.week.variations
+> ### Title: Variation du nombre de RPU par semaine
+> ### Aliases: barplot.week.variations
+> 
+> ### ** Examples
+> 
+> v <- week.variations(dx[dx$FINESS == "3Fr",])
+Error in diff(vx) : object 'dx' not found
+Calls: week.variations -> diff
 Execution halted

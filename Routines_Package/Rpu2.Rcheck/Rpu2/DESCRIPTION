@@ -11,6 +11,6 @@ License: What license is it under?
 LazyData: true
 Imports: dplyr, lubridate, xtable, openintro, plotrix
 NeedsCompilation: no
-Packaged: 2015-10-13 16:56:46 UTC; jcb
+Packaged: 2015-10-18 20:49:33 UTC; jcb
 Author: JC Bartier [aut, cre]
-Built: R 3.2.2; ; 2015-10-13 16:56:47 UTC; unix
+Built: R 3.2.2; ; 2015-10-18 20:49:34 UTC; unix

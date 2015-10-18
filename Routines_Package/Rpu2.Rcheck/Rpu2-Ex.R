@@ -30,13 +30,39 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 ### ** Examples
 
 # es non SAMU, siège de SMUR
-         es <- dx[dx$FINESS %in% c("Wis","Hag","Sav","Sel","Col"),]
-         analyse_type_etablissement(es)
+          # es <- dx[dx$FINESS %in% c("Wis","Hag","Sav","Sel","Col"),]
+          # analyse_type_etablissement(es)
 
 
 
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 base::cat("analyse_type_etablissement", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("barplot.week.variations")
+### * barplot.week.variations
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: barplot.week.variations
+### Title: Variation du nombre de RPU par semaine
+### Aliases: barplot.week.variations
+
+### ** Examples
+
+v <- week.variations(dx[dx$FINESS == "3Fr",])
+barplot.week.variations(v[-length(v)], las = 2, main = "test", ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10),
+ylab = "Variations hebdomadaires")
+
+###
+v <- week.variations(week.rpu(dx[dx$FINESS == "Col",]))
+barplot.week.variations(v[-length(v)], las = 2, main = "CH Colmar - 2015",
+ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10), ylab = "Variations hebdomadaires", dx = 5)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("barplot.week.variations", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 cleanEx()
 nameEx("completude.time")
 ### * completude.time
@@ -128,6 +154,33 @@ evolution(n.rpu, n.rpu.2013)
 
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 base::cat("evolution", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("factor2table")
+### * factor2table
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: factor2table
+### Title: cr<c3><a9>e une table <c3><a0> 2 colonnes
+### Aliases: factor2table
+
+### ** Examples
+
+a <- c(1,2,3,4,5,5,5,5,1,1,2); factor2table(a); print.table.rpu(a)
+     #        Fréq.     %
+     #      1     3 27.27
+     #      2     2 18.18
+     #      3     1  9.09
+     #      4     1  9.09
+     #      5     4 36.36
+     #
+     #     factor2table(pop18$GRAVITE, TRUE)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("factor2table", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 cleanEx()
 nameEx("finess2territoires")
 ### * finess2territoires
@@ -317,6 +370,25 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 ### ** Examples
 
 rpu.par.jour(d04)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("rpu.par.jour", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("rpu.par.jour2")
+### * rpu.par.jour2
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: rpu.par.jour2
+### Title: A partir d'un vecteur de dates, calcule le nombre de RPU par
+###   jour
+### Aliases: rpu.par.jour2
+
+### ** Examples
+
 p2013 <- rpu.par.jour(j2013$ENTREE)
        plot(p2013$V2, type="l") # les RPU
        lines(p2013$V3, p2013$V4) # moyenne mobile
@@ -324,7 +396,7 @@ p2013 <- rpu.par.jour(j2013$ENTREE)
 
 
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-base::cat("rpu.par.jour", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+base::cat("rpu.par.jour2", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 cleanEx()
 nameEx("rpu.par.mois")
 ### * rpu.par.mois
@@ -667,6 +739,48 @@ teste.radar()
 
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 base::cat("teste.radar", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("week.rpu")
+### * week.rpu
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: week.rpu
+### Title: Calcule le nombre de RPU par mois
+### Aliases: week.rpu
+
+### ** Examples
+
+s <- week.rpu(dx)
+tot <- sum(s) # nombre total de RPU
+p = s/tot # % de RPU par semaine
+summary(p)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("week.rpu", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("week.variations")
+### * week.variations
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: week.variations
+### Title: Variation du nombre de RPU par semaine
+### Aliases: week.variations
+
+### ** Examples
+
+# d3 <- week.rpu(dx[dx$FINESS == "3Fr",])
+# v <- week.variations(d3)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("week.variations", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 ### * <FOOTER>
 ###
 options(digits = 7L)

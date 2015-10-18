@@ -12,8 +12,6 @@ completude.time(dx, finess,  time = "month")
 \item{finess}{établissement concerné ('Wis', 'Hag', 'Sav', ...)}
 
 \item{time}{factor de découpage}
-
-\item{t}{un dataframe}
 }
 \description{
 Pour un etablissement donne, calcule le aux de completude par mois, semaine, jours

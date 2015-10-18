@@ -177,7 +177,6 @@ synthese.completude <- function(dx){
 #' @param dx un dataframe de type RPU
 #' @param finess établissement concerné ('Wis', 'Hag', 'Sav', ...)
 #' @param time factor de découpage
-#' @param t un dataframe
 #' @examples load("~/Documents/Resural/Stat Resural/RPU_2014/rpu2015d0112_provisoire.Rda")
 #'        # old
 #'        sav <- d15[d15$FINESS == "Sav",] # Saverne 2015
@@ -1142,8 +1141,8 @@ summary.cp <- function(vx){
 #' @usage analyse_type_etablissement(es)
 #' @param es dataframe RPU (es = établissement de santé)
 #' @examples # es non SAMU, siège de SMUR
-#'          es <- dx[dx$FINESS %in% c("Wis","Hag","Sav","Sel","Col"),]
-#'          analyse_type_etablissement(es)
+#'           # es <- dx[dx$FINESS %in% c("Wis","Hag","Sav","Sel","Col"),]
+#'           # analyse_type_etablissement(es)
 #' @return "n.passages", "n.age.ren", "n.inf1an", "n.inf15ans", "n.75ans", "n.cp.rens",
 #' "n.etrangers", "n.lun", "n.mar", "n.mer", "n.jeu", "n.ven", "n.sam", "n.dim", 
 #' "n.nuit", "n.pds", "n.h.rens", "n.trans.rens", "n.fo",
@@ -1503,7 +1502,7 @@ summary.rpu <- function(dx){
 #' @param t un objet de type table
 #' @param caption une légende. Mettre c("légende", "sommaire") si nécessaire
 #' @param type "latex" ou "html"
-#' @param label référence du tableau (latex)
+#' @param ref référence du tableau (latex)
 #' 
 #' @examples   print.table.rpu(t)
 #'          print.table.rpu(t, "table de test")
@@ -1565,7 +1564,7 @@ print.summary.rpu <- function(x, sens = "colonne", cnames = NULL, rnames = NULL,
 #' @description crée une table à 2 colonnes: fréquence et pourcentage
 #' @usage factor2table(vx, pc = TRUE)
 #' @param vx un vecteur de facteurs ou d'entiers
-#' @param pc si TRUE crée une colonne de %
+#' @param pc si TRUE crée une colonne de \%
 #' @return une table
 #' @examples a <- c(1,2,3,4,5,5,5,5,1,1,2); factor2table(a); print.table.rpu(a)
 #'      #        Fréq.     %
@@ -1728,6 +1727,7 @@ rpu.par.jour <- function(dx){
 #=======================================
 #' @title réorganiser les FINESS par territoires de santé
 #' @usage finess2territoires(finess)
+#' @param finess code finess de létablissement
 #' @examples dx$FINESS <- finess2territoires(dx)
 #' @export
 #'
@@ -1759,7 +1759,7 @@ add.territoire <- function(dx){
 
 #=======================================
 #
-# rpu.par.jour
+# rpu.par.jour2
 #
 #=======================================
 #' @title A partir d'un vecteur de dates, calcule le nombre de RPU par jour
@@ -1773,7 +1773,7 @@ add.territoire <- function(dx){
 #'        lines(p2013$V3, p2013$V4) # moyenne mobile
 #' @export
 
-rpu.par.jour <- function(d, roll = 7){
+rpu.par.jour2 <- function(d, roll = 7){
     # janvier 2013
     t <- tapply(as.Date(d), as.Date(d), length)
     df <- as.data.frame(cbind(names(t), as.numeric(t)), stringsAsFactors = FALSE)
@@ -1869,4 +1869,93 @@ rpu2xts <- function(d){
     ts <- xts(a, order.by = a$date)
     ts
 }
+
+#===========================================================================
+#
+# Nombre de RPU par semaine 
+#
+#===========================================================================
+#' @title Calcule le nombre de RPU par mois
+#' @description Calcule le nombre de RPU par mois de tous les ES présents dans le dataframe
+#' @usage week.rpu(dx)
+#' @param dx un dataframe de type RPU. Doit comporter au moins une colonne ENTREE
+#' @details Nécessite Lubridate. dx peut regroupper tous les ES ou ne converner qu'un ES Particulier.
+#' @return un vecteur du nombre de RPU par mois
+#' @examples 
+#' s <- week.rpu(dx)
+#' tot <- sum(s) # nombre total de RPU
+#' p = s/tot # % de RPU par semaine
+#' summary(p)
+#' 
+#' @export
+#' 
+week.rpu <- function(dx){
+    s <- tapply(as.Date(dx$ENTREE), week(as.Date(dx$ENTREE)), length)
+    return(s)
+}
+
+#===========================================================================
+#
+# Variation du nombre de RPU par semaines
+#
+#===========================================================================
+#' @title Variation du nombre de RPU par semaine
+#' @description Variation du nombre de RPU par semaine
+#' @usage week.variations(vx, last = FALSE)
+#' @param vx vecteur du nombre de RPU pr semaine (voir week.rpu)
+#' @param last boolean Si TRUE, on élimine la dernière semaine qui est souvent incomplète. FALSE par défaut.
+#' @return un vecteur d'entiers positifs ou négatifs
+#' @examples 
+#' # d3 <- week.rpu(dx[dx$FINESS == "3Fr",])
+#' # v <- week.variations(d3)
+#' @export
+#' 
+week.variations <- function(vx, last = FALSE){
+    # calcul de la différence d'une semaine à 'autre
+    x <- diff(vx)
+    # x compte une unité de moins que vx. Le 1er chiffre de d3 correspond à la semaine 2
+    # ajout de 0 en tête du vecteur pour remplacer la première semaine
+    x <- c(0, x)
+    # pour supprimer la denière semaine qui est souvent incomplète (option)
+    if(last == TRUE)
+        x <-x[-length(x)]
+    return(x)
+}
+
+#===========================================================================
+#
+# Représentation graphique des variations hebdomadaires
+#
+#===========================================================================
+#' @title Variation du nombre de RPU par semaine
+#' @description Variation du nombre de RPU par semaine
+#' @usage barplot.week.variations()
+#' @param x vecteur du nombre de RPU pr semaine (voir week.rpu)
+#' @param coltitre bool, si TRUE la valeur de la barre est inscrite au dessus ou en dessous
+#' @param colmoins couleur des barres négatives. Red par défaut
+#' @param colplus couleur des barres positives. Blue par défaut
+#' @param xlab nom pour l'axe des X. 'Semaines' par défaut
+#' @param cex.names échelle pour le titre des barres (n° de la semaine). 0.8 par défaut
+#' @param cex.col échelle pour les valeurs des colonnes. Utile que si coltitre = TRUE. Défaut 0.8
+#' @param dx écart entre le sommet de la barre et l'affichage de sa valeur. Utile que si coltitre = TRUE. Défaut 3.
+#' @param ... autres paramètres pour boxplot
+#' @return le vecteur des abcisses des colonnes
+#' @examples v <- week.variations(dx[dx$FINESS == "3Fr",])
+#' barplot.week.variations(v[-length(v)], las = 2, main = "test", ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10), 
+#' ylab = "Variations hebdomadaires")
+#' 
+#' ###
+#' v <- week.variations(week.rpu(dx[dx$FINESS == "Col",]))
+#' barplot.week.variations(v[-length(v)], las = 2, main = "CH Colmar - 2015", 
+#' ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10), ylab = "Variations hebdomadaires", dx = 5)
+#' 
+#' @export
+barplot.week.variations <- function(x, coltitre = TRUE, colmoins = "red", colplus = "blue", xlab = "Semaines", 
+                                    cex.names = 0.8, cex.col =  0.8, dx = 3, ...){
+    # barplot sauf la dernière semaine qui est souvent incomplète
+    b <- barplot(x, col = ifelse(x > 0, colplus, colmoins), names.arg = 1:length(x), cex.names = cex.names,  xlab = xlab, ...)
+    if(coltitre == TRUE)
+        text(b, ifelse(x > 0, x + dx,  x - dx), x, cex = cex.col)
+}
+
 

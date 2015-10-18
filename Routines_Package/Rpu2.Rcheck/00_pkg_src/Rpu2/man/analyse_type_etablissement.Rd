@@ -26,7 +26,7 @@ fournit une liste d'indicateur à partir des données d'un établissement
 }
 \examples{
 # es non SAMU, siège de SMUR
-         es <- dx[dx$FINESS \%in\% c("Wis","Hag","Sav","Sel","Col"),]
-         analyse_type_etablissement(es)
+          # es <- dx[dx$FINESS \%in\% c("Wis","Hag","Sav","Sel","Col"),]
+          # analyse_type_etablissement(es)
 }
 

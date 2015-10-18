@@ -1,6 +1,7 @@
 Rpu2-package	Rpu2-package
 add.territoire	add.territoire
 analyse_type_etablissement	analyse_type_etablissement
+barplot.week.variations	barplot.week.variations
 completude	completude
 completude.time	completude.time
 copyright	copyright
@@ -25,6 +26,7 @@ radar.completude	radar.completude
 reorder.dataframe.fedoru	reorder.dataframe.fedoru
 reorder.vector.fedoru	reorder.vector.fedoru
 rpu.par.jour	rpu.par.jour
+rpu.par.jour2	rpu.par.jour2
 rpu.par.mois	rpu.par.mois
 Rpu2	Rpu2-package
 rpu2xts	rpu2xts
@@ -48,3 +50,5 @@ synthese.completude	synthese.completude
 tab.completude	tab.completude
 tarru	tarru
 teste.radar	teste.radar
+week.rpu	week.rpu
+week.variations	week.variations

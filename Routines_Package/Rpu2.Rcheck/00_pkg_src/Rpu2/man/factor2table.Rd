@@ -9,7 +9,7 @@ factor2table(vx, pc = TRUE)
 \arguments{
 \item{vx}{un vecteur de facteurs ou d'entiers}
 
-\item{pc}{si TRUE crée une colonne de %}
+\item{pc}{si TRUE crée une colonne de \%}
 }
 \value{
 une table
@@ -19,13 +19,13 @@ crée une table à 2 colonnes: fréquence et pourcentage
 }
 \examples{
 a <- c(1,2,3,4,5,5,5,5,1,1,2); factor2table(a); print.table.rpu(a)
-             Fréq.     \%
-           1     3 27.27
-           2     2 18.18
-           3     1  9.09
-           4     1  9.09
-           5     4 36.36
-
-           factor2table(pop18$GRAVITE, TRUE)
+     #        Fréq.     \%
+     #      1     3 27.27
+     #      2     2 18.18
+     #      3     1  9.09
+     #      4     1  9.09
+     #      5     4 36.36
+     #
+     #     factor2table(pop18$GRAVITE, TRUE)
 }
 

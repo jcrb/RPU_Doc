@@ -2,6 +2,8 @@ Rpu2-package            Routines pour RPU
 add.territoire          Crée une colonne TERRITOIRE
 analyse_type_etablissement
                         Analyse etablissement
+barplot.week.variations
+                        Variation du nombre de RPU par semaine
 completude              taux de completude global.
 completude.time         Pour un etablissement donne, calcule le aux de
                         completude par mois, semaine, jours
@@ -32,6 +34,8 @@ reorder.dataframe.fedoru
 reorder.vector.fedoru   Réordonne les colonnes pour être contorme à
                         l'ordre RPU
 rpu.par.jour            Nombre de RPU par jour et par FINESS
+rpu.par.jour2           A partir d'un vecteur de dates, calcule le
+                        nombre de RPU par jour
 rpu.par.mois            Nombre de RPU par mois
 rpu2xts                 Transforme RPU eb XTS
 summary.age             Resume du vecteur des AGE
@@ -58,3 +62,5 @@ tab.completude          tableau de completude par jour
 tarru                   Taux de Recours Regional aux Urgences
 teste.radar             data pour créer automatiquement un radar RPU et
                         faire des test
+week.rpu                Calcule le nombre de RPU par mois
+week.variations         Variation du nombre de RPU par semaine

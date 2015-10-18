@@ -2,12 +2,7 @@
 ** R
 ** preparing package for lazy loading
 ** help
-Warning: /tmp/RtmpXWazJl/Rbuild34534db9b1a7/Rpu2/man/Rpu2-package.Rd:26: All text must be in a section
-Warning: /home/jcb/Documents/Resural/Stat Resural/RPU_Doc/Routines_Package/Rpu2.Rcheck/00_pkg_src/Rpu2/man/factor2table.Rd:14: unexpected section header '\value'
-Warning: /home/jcb/Documents/Resural/Stat Resural/RPU_Doc/Routines_Package/Rpu2.Rcheck/00_pkg_src/Rpu2/man/factor2table.Rd:17: unexpected section header '\description'
-Warning: /home/jcb/Documents/Resural/Stat Resural/RPU_Doc/Routines_Package/Rpu2.Rcheck/00_pkg_src/Rpu2/man/factor2table.Rd:20: unexpected section header '\examples'
-Warning: /home/jcb/Documents/Resural/Stat Resural/RPU_Doc/Routines_Package/Rpu2.Rcheck/00_pkg_src/Rpu2/man/factor2table.Rd:32: unexpected END_OF_INPUT '
-'
+Warning: /tmp/RtmphXNC2c/Rbuild3fb575ff71b2/Rpu2/man/Rpu2-package.Rd:26: All text must be in a section
 *** installing help indices
 ** building package indices
 ** testing if installed package can be loaded

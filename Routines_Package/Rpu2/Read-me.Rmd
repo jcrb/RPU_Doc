@@ -27,7 +27,7 @@ Méthode de [Hadley Whikam](http://r-pkgs.had.co.nz/intro.html)
 - Build & Reload pour que la bibliothèque apparaisse dans les packages
 - pour créer une documentation complète: en mode console (Shell...) se déplacer dans le dossier RPU2 et saisir: 
 ```{}
-R CMD Rd2pdf -o RPU2_1.pdf --encoding=UTF-8  --force man/*.Rd
+R CMD Rd2pdf -o RPU2_1.pdf --encoding=UTF-8  --force man/*.Rd --title=RPU2
 ```
 UTF8 est indispensable pour que les caractères accentués soient pris en charge. Cependant si __title__ comporte un caractère accentué, NA est imprimé à la place du titre ?
 
