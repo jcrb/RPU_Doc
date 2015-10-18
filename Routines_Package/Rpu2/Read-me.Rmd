@@ -33,6 +33,8 @@ UTF8 est indispensable pour que les caractères accentués soient pris en charge
 
 sources: http://stackoverflow.com/questions/25773189/rd2pdf-special-and-german-characters
 
+Pour créer les packages ssource et binaires: build/more/build source package
+
 CMD Rd2pdf --help
 -----------------
 Generate PDF output from the Rd sources specified by files, by either giving the paths to the files, or the path to a directory with
