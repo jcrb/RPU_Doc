@@ -14,10 +14,7 @@
 * checking for hidden files and directories ... OK
 * checking for portable file names ... OK
 * checking for sufficient/correct file permissions ... OK
-* checking whether package ‘Rpu2’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: /tmp/RtmphXNC2c/Rbuild3fb575ff71b2/Rpu2/man/Rpu2-package.Rd:26: All text must be in a section
-See ‘/home/jcb/Documents/Resural/Stat Resural/RPU_Doc/Routines_Package/Rpu2.Rcheck/00install.out’ for details.
+* checking whether package ‘Rpu2’ can be installed ... OK
 * checking installed package size ... OK
 * checking package directory ... OK
 * checking DESCRIPTION meta-information ... NOTE
@@ -89,7 +86,37 @@ print.table.rpu:
 
 summary:
   function(object, ...)
+summary.age:
+  function(vx)
+
+summary:
+  function(object, ...)
+summary.age.sexe:
+  function(dx)
+
+summary:
+  function(object, ...)
 summary.ccmu:
+  function(vx)
+
+summary:
+  function(object, ...)
+summary.cp:
+  function(vx)
+
+summary:
+  function(object, ...)
+summary.dateheure:
+  function(vx)
+
+summary:
+  function(object, ...)
+summary.destination:
+  function(dx, correction)
+
+summary:
+  function(object, ...)
+summary.dp:
   function(vx)
 
 summary:
@@ -101,6 +128,16 @@ summary:
   function(object, ...)
 summary.entree:
   function(vx)
+
+summary:
+  function(object, ...)
+summary.mode.sortie:
+  function(vx)
+
+summary:
+  function(object, ...)
+summary.orientation:
+  function(dx, correction)
 
 summary:
   function(object, ...)
@@ -120,6 +157,11 @@ summary.sexe:
 summary:
   function(object, ...)
 summary.transport:
+  function(vx)
+
+summary:
+  function(object, ...)
+summary.wday:
   function(vx)
 
 barplot:
@@ -257,8 +299,7 @@ Rd file 'rpu.par.mois.Rd':
      legend("topleft", inset = c(0, -0.1), legend = c("Brut","Standardisé"), bty = "n", col = c("black","gray80"), pch = 15)
 
 These lines will be truncated in the PDF manual.
-* checking Rd cross-references ... WARNING
-Unknown package ‘<pkg>’ in Rd xrefs
+* checking Rd cross-references ... OK
 * checking for missing documentation entries ... OK
 * checking for code/documentation mismatches ... WARNING
 Codoc mismatches from documentation object 'barplot.week.variations':
@@ -343,14 +384,38 @@ S3 methods shown with full name in documentation object 'reorder.dataframe.fedor
 S3 methods shown with full name in documentation object 'reorder.vector.fedoru':
   ‘reorder.vector.fedoru’
 
+S3 methods shown with full name in documentation object 'summary.age':
+  ‘summary.age’
+
+S3 methods shown with full name in documentation object 'summary.age.sexe':
+  ‘summary.age.sexe’
+
 S3 methods shown with full name in documentation object 'summary.ccmu':
   ‘summary.ccmu’
+
+S3 methods shown with full name in documentation object 'summary.cp':
+  ‘summary.cp’
+
+S3 methods shown with full name in documentation object 'summary.dateheure':
+  ‘summary.dateheure’
+
+S3 methods shown with full name in documentation object 'summary.destination':
+  ‘summary.destination’
+
+S3 methods shown with full name in documentation object 'summary.dp':
+  ‘summary.dp’
 
 S3 methods shown with full name in documentation object 'summary.duree.passage':
   ‘summary.duree.passage’
 
 S3 methods shown with full name in documentation object 'summary.entree':
   ‘summary.entree’
+
+S3 methods shown with full name in documentation object 'summary.mode.sortie':
+  ‘summary.mode.sortie’
+
+S3 methods shown with full name in documentation object 'summary.orientation':
+  ‘summary.orientation’
 
 S3 methods shown with full name in documentation object 'summary.passages':
   ‘summary.passages’
@@ -363,6 +428,9 @@ S3 methods shown with full name in documentation object 'summary.sexe':
 
 S3 methods shown with full name in documentation object 'summary.transport':
   ‘summary.transport’
+
+S3 methods shown with full name in documentation object 'summary.wday':
+  ‘summary.wday’
 
 The \usage entries for S3 methods should use the \method markup and not
 their full name.
@@ -395,4 +463,4 @@ Calls: week.variations -> diff
 Execution halted
 * checking PDF version of manual ... OK
 * DONE
-Status: 1 ERROR, 12 WARNINGs, 5 NOTEs
+Status: 1 ERROR, 10 WARNINGs, 5 NOTEs

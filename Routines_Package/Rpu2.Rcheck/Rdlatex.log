@@ -81,29 +81,29 @@ Overfull \hbox (14.1886pt too wide) in alignment at lines 63--63
 (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1zi4.fd) [2]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [3]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (6.35663pt too wide) in paragraph at lines 178--180
+Overfull \hbox (6.35663pt too wide) in paragraph at lines 173--175
 []\T1/ptm/m/n/10 fournit une liste d'indicateur à par-tir des don-nées d'un éta
 b-lisse-ment ou d'un groupe d'établissements.
 
-Overfull \hbox (26.07762pt too wide) in paragraph at lines 195--204
+Overfull \hbox (26.07762pt too wide) in paragraph at lines 190--199
 \T1/ptm/m/n/10 "n.ccmu3", "n.ccmu4", "n.ccmu5", "n.ccmuP", "n.ccmuD", "n.ccmu45
 ", "n.sorties.conf", "mean.passage",
 
-Overfull \hbox (19.51749pt too wide) in paragraph at lines 195--204
+Overfull \hbox (19.51749pt too wide) in paragraph at lines 190--199
 \T1/ptm/m/n/10 "me-dian.passage", "n.passage4", "n.hosp.passage4", "n.dom.passa
 ge4", "n.dom", "n.hosp", "n.transfert",
-[4] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [4]
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-Overfull \hbox (126.78094pt too wide) in paragraph at lines 255--255
+Overfull \hbox (126.78094pt too wide) in paragraph at lines 250--250
  []\T1/zi4/m/n/9 barplot.week.variations(v[-length(v)], las = 2, main = "test",
  ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10),[] 
 
-Overfull \hbox (36.78094pt too wide) in paragraph at lines 261--261
+Overfull \hbox (36.78094pt too wide) in paragraph at lines 256--256
  []\T1/zi4/m/n/9 ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10), ylab =
  "Variations hebdomadaires", dx = 5)[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [5]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [6]
-Overfull \hbox (5.281pt too wide) in paragraph at lines 347--347
+Overfull \hbox (5.281pt too wide) in paragraph at lines 342--342
  []       \T1/zi4/m/n/9 plot(x[, "DP"], main = "CH Saverne - DIAGNOSTIC PRINCIP
 AL", ylab = "\% de complétude")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [7]
@@ -118,33 +118,33 @@ AL", ylab = "\% de complétude")[]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [12]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [13]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (10.22803pt too wide) in paragraph at lines 717--719
+Overfull \hbox (10.22803pt too wide) in paragraph at lines 712--714
 []\T1/ptm/m/n/10 n.so.conforme.dom, n.duree.passage.inf4h.dom, p.passages.en.mo
 ins.de.4h.dom, n.so.conforme.hosp,
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (0.7078pt too wide) in paragraph at lines 741--743
+Overfull \hbox (0.7078pt too wide) in paragraph at lines 736--738
 \T1/ptm/m/n/10 par ymd_hms Trans-form dates stored as char-ac-ter or nu-meric v
 ec-tors to POSIXct
 [14]
-Overfull \hbox (5.28091pt too wide) in paragraph at lines 765--765
+Overfull \hbox (5.28091pt too wide) in paragraph at lines 760--760
  []\T1/zi4/m/n/9 n.passages.nuit <- passages2(pop18$ENTREE, "nuit"); n.passages
 .nuit[1]; n.passages.nuit[2][] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [15]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (161.78088pt too wide) in paragraph at lines 811--811
+Overfull \hbox (161.78088pt too wide) in paragraph at lines 806--806
  []\T1/zi4/m/n/10 plot.xts2(x, y = NULL, type = "l", auto.grid = TRUE, major.ti
 cks = "auto", minor.ticks = TRUE, major.format = TRUE,[] 
 
-Overfull \hbox (9.78088pt too wide) in paragraph at lines 812--812
+Overfull \hbox (9.78088pt too wide) in paragraph at lines 807--807
  []\T1/zi4/m/n/10 bar.col = "grey", candle.col = "white", ann = TRUE, axes = TR
 UE, col = "black", ...)[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (28.681pt too wide) in paragraph at lines 852--852
+Overfull \hbox (28.681pt too wide) in paragraph at lines 847--847
  []       \T1/zi4/m/n/9 print.summary.rpu(x, cnames = c("Jour","n"), caption = 
 "Nombre de RPU par jour de semaine")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [16]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (14.78088pt too wide) in paragraph at lines 897--897
+Overfull \hbox (14.78088pt too wide) in paragraph at lines 892--892
  []\T1/zi4/m/n/10 pyramide.age(dx, cut = 5, gap = 1, cex = 0.8,col.h = "light g
 reen", col.f = "khaki1")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [17]
@@ -153,14 +153,14 @@ reen", col.f = "khaki1")[]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [19]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [20]
-Overfull \hbox (125.88098pt too wide) in paragraph at lines 1093--1093
+Overfull \hbox (125.88098pt too wide) in paragraph at lines 1088--1088
  []\T1/zi4/m/n/9 legend("topleft", inset = c(0, -0.1), legend = c("Brut","Stand
 ardisé"), bty = "n", col = c("black","gray80"), pch = 15)[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [21]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [22]
-Overfull \hbox (25.14818pt too wide) in paragraph at lines 1205--1207
+Overfull \hbox (25.14818pt too wide) in paragraph at lines 1200--1202
 \T1/ptm/m/n/10 "n.ccmup", "n.ccmud", "p.ccmu1", "p.ccmu2", "p.ccmu3", "p.ccmu4"
 , "p.ccmu5", "p.ccmup", "p.ccmud") 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [23]
@@ -171,27 +171,27 @@ Overfull \hbox (25.14818pt too wide) in paragraph at lines 1205--1207
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [26]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (10.43814pt too wide) in paragraph at lines 1448--1453
+Overfull \hbox (10.43814pt too wide) in paragraph at lines 1443--1448
 \T1/ptm/m/n/10 "n.ho", "n.hdt", "n.reo", "n.scam", "n.psa", "p.chir", "p.med", 
 "p.obst", "p.si", "p.sc", "p.rea", "p.uhcd",
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (70.18681pt too wide) in paragraph at lines 1475--1487
+Overfull \hbox (70.18681pt too wide) in paragraph at lines 1470--1482
 \T1/ptm/m/n/10 d'un pas-sage en min-utes duree.mediane.passage durée mé-di-ane 
 d'un pas-sage en min-utes duree.moyenne.passage.dom
 [27] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [28]
-Overfull \hbox (4.53748pt too wide) in paragraph at lines 1558--1560
+Overfull \hbox (4.53748pt too wide) in paragraph at lines 1553--1555
 []\T1/ptm/m/n/10 vecteur nommé: "N", "n.na", "n.rens", "p.rens", "n.hommes", "n
 .femmes", "p.hommes", "p.femmes",
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [29]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [30]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (26.88101pt too wide) in paragraph at lines 1694--1694
+Overfull \hbox (26.88101pt too wide) in paragraph at lines 1689--1689
  []      \T1/zi4/m/n/9 plot(t[,"DATE DE SORTIE"], type = "l", main = "Mode de s
 ortie", ylab = "Taux de completude")[] 
 
-Overfull \hbox (0.781pt too wide) in paragraph at lines 1698--1698
+Overfull \hbox (0.781pt too wide) in paragraph at lines 1693--1693
  []     \T1/zi4/m/n/9 boxplot(t, las = 2, cex.axis = 0.8, ylab = "\% de complet
 ude", main = "Complétude RPU")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [31]
@@ -206,23 +206,21 @@ Package rerunfilecheck Warning: File `Rd2.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
  )
-(see the transcript file for additional information)pdfTeX warning (dest): name
-{Rfn.<pkg>} has been referenced but does not exist, replaced by a fixed one
-
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/sha
-re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dis
-t/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/share/texlive/texmf-dist/fonts/
-type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
-w/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (34 pages, 127345 bytes).
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsola
+ta/i4-t1-0.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/inconsolata/In
+consolata-zi4r.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (34 pages, 127148 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (62 entries accepted, 0 rejected).
-Sorting entries....done (361 comparisons).
-Generating output file Rd2.ind....done (111 lines written, 0 warnings).
+Scanning input file Rd2.idx....done (61 entries accepted, 0 rejected).
+Sorting entries....done (347 comparisons).
+Generating output file Rd2.ind....done (110 lines written, 0 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -297,31 +295,31 @@ b/texmf/fonts/map/pdftex/updmap/pdftex.map}])
 Overfull \hbox (14.1886pt too wide) in alignment at lines 63--63
  [] [] 
 [2] (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1zi4.fd) [3]
-[4] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [4]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (6.35663pt too wide) in paragraph at lines 178--180
+Overfull \hbox (6.35663pt too wide) in paragraph at lines 173--175
 []\T1/ptm/m/n/10 fournit une liste d'indicateur à par-tir des don-nées d'un éta
 b-lisse-ment ou d'un groupe d'établissements.
 
-Overfull \hbox (26.07762pt too wide) in paragraph at lines 195--204
+Overfull \hbox (26.07762pt too wide) in paragraph at lines 190--199
 \T1/ptm/m/n/10 "n.ccmu3", "n.ccmu4", "n.ccmu5", "n.ccmuP", "n.ccmuD", "n.ccmu45
 ", "n.sorties.conf", "mean.passage",
 
-Overfull \hbox (19.51749pt too wide) in paragraph at lines 195--204
+Overfull \hbox (19.51749pt too wide) in paragraph at lines 190--199
 \T1/ptm/m/n/10 "me-dian.passage", "n.passage4", "n.hosp.passage4", "n.dom.passa
 ge4", "n.dom", "n.hosp", "n.transfert",
 [5] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-Overfull \hbox (126.78094pt too wide) in paragraph at lines 255--255
+Overfull \hbox (126.78094pt too wide) in paragraph at lines 250--250
  []\T1/zi4/m/n/9 barplot.week.variations(v[-length(v)], las = 2, main = "test",
  ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10),[] 
 
-Overfull \hbox (36.78094pt too wide) in paragraph at lines 261--261
+Overfull \hbox (36.78094pt too wide) in paragraph at lines 256--256
  []\T1/zi4/m/n/9 ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10), ylab =
  "Variations hebdomadaires", dx = 5)[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [6]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [7]
-Overfull \hbox (5.281pt too wide) in paragraph at lines 347--347
+Overfull \hbox (5.281pt too wide) in paragraph at lines 342--342
  []       \T1/zi4/m/n/9 plot(x[, "DP"], main = "CH Saverne - DIAGNOSTIC PRINCIP
 AL", ylab = "\% de complétude")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [8]
@@ -336,33 +334,33 @@ AL", ylab = "\% de complétude")[]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [13]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [14]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (10.22803pt too wide) in paragraph at lines 717--719
+Overfull \hbox (10.22803pt too wide) in paragraph at lines 712--714
 []\T1/ptm/m/n/10 n.so.conforme.dom, n.duree.passage.inf4h.dom, p.passages.en.mo
 ins.de.4h.dom, n.so.conforme.hosp,
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (0.7078pt too wide) in paragraph at lines 741--743
+Overfull \hbox (0.7078pt too wide) in paragraph at lines 736--738
 \T1/ptm/m/n/10 par ymd_hms Trans-form dates stored as char-ac-ter or nu-meric v
 ec-tors to POSIXct
 [15]
-Overfull \hbox (5.28091pt too wide) in paragraph at lines 765--765
+Overfull \hbox (5.28091pt too wide) in paragraph at lines 760--760
  []\T1/zi4/m/n/9 n.passages.nuit <- passages2(pop18$ENTREE, "nuit"); n.passages
 .nuit[1]; n.passages.nuit[2][] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [16]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (161.78088pt too wide) in paragraph at lines 811--811
+Overfull \hbox (161.78088pt too wide) in paragraph at lines 806--806
  []\T1/zi4/m/n/10 plot.xts2(x, y = NULL, type = "l", auto.grid = TRUE, major.ti
 cks = "auto", minor.ticks = TRUE, major.format = TRUE,[] 
 
-Overfull \hbox (9.78088pt too wide) in paragraph at lines 812--812
+Overfull \hbox (9.78088pt too wide) in paragraph at lines 807--807
  []\T1/zi4/m/n/10 bar.col = "grey", candle.col = "white", ann = TRUE, axes = TR
 UE, col = "black", ...)[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (28.681pt too wide) in paragraph at lines 852--852
+Overfull \hbox (28.681pt too wide) in paragraph at lines 847--847
  []       \T1/zi4/m/n/9 print.summary.rpu(x, cnames = c("Jour","n"), caption = 
 "Nombre de RPU par jour de semaine")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [17]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (14.78088pt too wide) in paragraph at lines 897--897
+Overfull \hbox (14.78088pt too wide) in paragraph at lines 892--892
  []\T1/zi4/m/n/10 pyramide.age(dx, cut = 5, gap = 1, cex = 0.8,col.h = "light g
 reen", col.f = "khaki1")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [18]
@@ -371,14 +369,14 @@ reen", col.f = "khaki1")[]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [20]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [21]
-Overfull \hbox (125.88098pt too wide) in paragraph at lines 1093--1093
+Overfull \hbox (125.88098pt too wide) in paragraph at lines 1088--1088
  []\T1/zi4/m/n/9 legend("topleft", inset = c(0, -0.1), legend = c("Brut","Stand
 ardisé"), bty = "n", col = c("black","gray80"), pch = 15)[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [22]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [23]
-Overfull \hbox (25.14818pt too wide) in paragraph at lines 1205--1207
+Overfull \hbox (25.14818pt too wide) in paragraph at lines 1200--1202
 \T1/ptm/m/n/10 "n.ccmup", "n.ccmud", "p.ccmu1", "p.ccmu2", "p.ccmu3", "p.ccmu4"
 , "p.ccmu5", "p.ccmup", "p.ccmud") 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [24]
@@ -389,27 +387,27 @@ Overfull \hbox (25.14818pt too wide) in paragraph at lines 1205--1207
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [27]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (10.43814pt too wide) in paragraph at lines 1448--1453
+Overfull \hbox (10.43814pt too wide) in paragraph at lines 1443--1448
 \T1/ptm/m/n/10 "n.ho", "n.hdt", "n.reo", "n.scam", "n.psa", "p.chir", "p.med", 
 "p.obst", "p.si", "p.sc", "p.rea", "p.uhcd",
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (70.18681pt too wide) in paragraph at lines 1475--1487
+Overfull \hbox (70.18681pt too wide) in paragraph at lines 1470--1482
 \T1/ptm/m/n/10 d'un pas-sage en min-utes duree.mediane.passage durée mé-di-ane 
 d'un pas-sage en min-utes duree.moyenne.passage.dom
 [28] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [29]
-Overfull \hbox (4.53748pt too wide) in paragraph at lines 1558--1560
+Overfull \hbox (4.53748pt too wide) in paragraph at lines 1553--1555
 []\T1/ptm/m/n/10 vecteur nommé: "N", "n.na", "n.rens", "p.rens", "n.hommes", "n
 .femmes", "p.hommes", "p.femmes",
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [30]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [31]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (26.88101pt too wide) in paragraph at lines 1694--1694
+Overfull \hbox (26.88101pt too wide) in paragraph at lines 1689--1689
  []      \T1/zi4/m/n/9 plot(t[,"DATE DE SORTIE"], type = "l", main = "Mode de s
 ortie", ylab = "Taux de completude")[] 
 
-Overfull \hbox (0.781pt too wide) in paragraph at lines 1698--1698
+Overfull \hbox (0.781pt too wide) in paragraph at lines 1693--1693
  []     \T1/zi4/m/n/9 boxplot(t, las = 2, cex.axis = 0.8, ylab = "\% de complet
 ude", main = "Complétude RPU")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [32]
@@ -419,7 +417,7 @@ ude", main = "Complétude RPU")[]
 [35]
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 75.
+(Font)              using `T1/zi4/m/n' instead on input line 74.
 
 [36]) (./Rd2.aux)
 
@@ -431,24 +429,22 @@ Package rerunfilecheck Warning: File `Rd2.out' has changed.
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
-(see the transcript file for additional information)pdfTeX warning (dest): name
-{Rfn.<pkg>} has been referenced but does not exist, replaced by a fixed one
-
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/sha
-re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dis
-t/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/share/texlive/texmf-dist/fonts/
-type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
-s/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (36 pages, 146071 bytes).
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsola
+ta/i4-t1-0.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/inconsolata/In
+consolata-zi4r.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmri8a.pfb>
+Output written on Rd2.pdf (36 pages, 145477 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (62 entries accepted, 0 rejected).
-Sorting entries....done (361 comparisons).
-Generating output file Rd2.ind....done (111 lines written, 0 warnings).
+Scanning input file Rd2.idx....done (61 entries accepted, 0 rejected).
+Sorting entries....done (347 comparisons).
+Generating output file Rd2.ind....done (110 lines written, 0 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -523,31 +519,31 @@ b/texmf/fonts/map/pdftex/updmap/pdftex.map}])
 Overfull \hbox (14.1886pt too wide) in alignment at lines 63--63
  [] [] 
 [2] [3] (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
-[4] [5] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+[4] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [5]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (6.35663pt too wide) in paragraph at lines 178--180
+Overfull \hbox (6.35663pt too wide) in paragraph at lines 173--175
 []\T1/ptm/m/n/10 fournit une liste d'indicateur à par-tir des don-nées d'un éta
 b-lisse-ment ou d'un groupe d'établissements.
 
-Overfull \hbox (26.07762pt too wide) in paragraph at lines 195--204
+Overfull \hbox (26.07762pt too wide) in paragraph at lines 190--199
 \T1/ptm/m/n/10 "n.ccmu3", "n.ccmu4", "n.ccmu5", "n.ccmuP", "n.ccmuD", "n.ccmu45
 ", "n.sorties.conf", "mean.passage",
 
-Overfull \hbox (19.51749pt too wide) in paragraph at lines 195--204
+Overfull \hbox (19.51749pt too wide) in paragraph at lines 190--199
 \T1/ptm/m/n/10 "me-dian.passage", "n.passage4", "n.hosp.passage4", "n.dom.passa
 ge4", "n.dom", "n.hosp", "n.transfert",
 [6] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-Overfull \hbox (126.78094pt too wide) in paragraph at lines 255--255
+Overfull \hbox (126.78094pt too wide) in paragraph at lines 250--250
  []\T1/zi4/m/n/9 barplot.week.variations(v[-length(v)], las = 2, main = "test",
  ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10),[] 
 
-Overfull \hbox (36.78094pt too wide) in paragraph at lines 261--261
+Overfull \hbox (36.78094pt too wide) in paragraph at lines 256--256
  []\T1/zi4/m/n/9 ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10), ylab =
  "Variations hebdomadaires", dx = 5)[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [7]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [8]
-Overfull \hbox (5.281pt too wide) in paragraph at lines 347--347
+Overfull \hbox (5.281pt too wide) in paragraph at lines 342--342
  []       \T1/zi4/m/n/9 plot(x[, "DP"], main = "CH Saverne - DIAGNOSTIC PRINCIP
 AL", ylab = "\% de complétude")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [9]
@@ -562,33 +558,33 @@ AL", ylab = "\% de complétude")[]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [14]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [15]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (10.22803pt too wide) in paragraph at lines 717--719
+Overfull \hbox (10.22803pt too wide) in paragraph at lines 712--714
 []\T1/ptm/m/n/10 n.so.conforme.dom, n.duree.passage.inf4h.dom, p.passages.en.mo
 ins.de.4h.dom, n.so.conforme.hosp,
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (0.7078pt too wide) in paragraph at lines 741--743
+Overfull \hbox (0.7078pt too wide) in paragraph at lines 736--738
 \T1/ptm/m/n/10 par ymd_hms Trans-form dates stored as char-ac-ter or nu-meric v
 ec-tors to POSIXct
 [16]
-Overfull \hbox (5.28091pt too wide) in paragraph at lines 765--765
+Overfull \hbox (5.28091pt too wide) in paragraph at lines 760--760
  []\T1/zi4/m/n/9 n.passages.nuit <- passages2(pop18$ENTREE, "nuit"); n.passages
 .nuit[1]; n.passages.nuit[2][] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [17]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (161.78088pt too wide) in paragraph at lines 811--811
+Overfull \hbox (161.78088pt too wide) in paragraph at lines 806--806
  []\T1/zi4/m/n/10 plot.xts2(x, y = NULL, type = "l", auto.grid = TRUE, major.ti
 cks = "auto", minor.ticks = TRUE, major.format = TRUE,[] 
 
-Overfull \hbox (9.78088pt too wide) in paragraph at lines 812--812
+Overfull \hbox (9.78088pt too wide) in paragraph at lines 807--807
  []\T1/zi4/m/n/10 bar.col = "grey", candle.col = "white", ann = TRUE, axes = TR
 UE, col = "black", ...)[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (28.681pt too wide) in paragraph at lines 852--852
+Overfull \hbox (28.681pt too wide) in paragraph at lines 847--847
  []       \T1/zi4/m/n/9 print.summary.rpu(x, cnames = c("Jour","n"), caption = 
 "Nombre de RPU par jour de semaine")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [18]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (14.78088pt too wide) in paragraph at lines 897--897
+Overfull \hbox (14.78088pt too wide) in paragraph at lines 892--892
  []\T1/zi4/m/n/10 pyramide.age(dx, cut = 5, gap = 1, cex = 0.8,col.h = "light g
 reen", col.f = "khaki1")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [19]
@@ -597,14 +593,14 @@ reen", col.f = "khaki1")[]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [21]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [22]
-Overfull \hbox (125.88098pt too wide) in paragraph at lines 1093--1093
+Overfull \hbox (125.88098pt too wide) in paragraph at lines 1088--1088
  []\T1/zi4/m/n/9 legend("topleft", inset = c(0, -0.1), legend = c("Brut","Stand
 ardisé"), bty = "n", col = c("black","gray80"), pch = 15)[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [23]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [24]
-Overfull \hbox (25.14818pt too wide) in paragraph at lines 1205--1207
+Overfull \hbox (25.14818pt too wide) in paragraph at lines 1200--1202
 \T1/ptm/m/n/10 "n.ccmup", "n.ccmud", "p.ccmu1", "p.ccmu2", "p.ccmu3", "p.ccmu4"
 , "p.ccmu5", "p.ccmup", "p.ccmud") 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [25]
@@ -615,27 +611,27 @@ Overfull \hbox (25.14818pt too wide) in paragraph at lines 1205--1207
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [28]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (10.43814pt too wide) in paragraph at lines 1448--1453
+Overfull \hbox (10.43814pt too wide) in paragraph at lines 1443--1448
 \T1/ptm/m/n/10 "n.ho", "n.hdt", "n.reo", "n.scam", "n.psa", "p.chir", "p.med", 
 "p.obst", "p.si", "p.sc", "p.rea", "p.uhcd",
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (70.18681pt too wide) in paragraph at lines 1475--1487
+Overfull \hbox (70.18681pt too wide) in paragraph at lines 1470--1482
 \T1/ptm/m/n/10 d'un pas-sage en min-utes duree.mediane.passage durée mé-di-ane 
 d'un pas-sage en min-utes duree.moyenne.passage.dom
 [29] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [30]
-Overfull \hbox (4.53748pt too wide) in paragraph at lines 1558--1560
+Overfull \hbox (4.53748pt too wide) in paragraph at lines 1553--1555
 []\T1/ptm/m/n/10 vecteur nommé: "N", "n.na", "n.rens", "p.rens", "n.hommes", "n
 .femmes", "p.hommes", "p.femmes",
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [31]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [32]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (26.88101pt too wide) in paragraph at lines 1694--1694
+Overfull \hbox (26.88101pt too wide) in paragraph at lines 1689--1689
  []      \T1/zi4/m/n/9 plot(t[,"DATE DE SORTIE"], type = "l", main = "Mode de s
 ortie", ylab = "Taux de completude")[] 
 
-Overfull \hbox (0.781pt too wide) in paragraph at lines 1698--1698
+Overfull \hbox (0.781pt too wide) in paragraph at lines 1693--1693
  []     \T1/zi4/m/n/9 boxplot(t, las = 2, cex.axis = 0.8, ylab = "\% de complet
 ude", main = "Complétude RPU")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [33]
@@ -645,31 +641,29 @@ ude", main = "Complétude RPU")[]
 [36]
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 75.
+(Font)              using `T1/zi4/m/n' instead on input line 74.
 
 [37]) (./Rd2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
-(see the transcript file for additional information)pdfTeX warning (dest): name
-{Rfn.<pkg>} has been referenced but does not exist, replaced by a fixed one
-
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/sha
-re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dis
-t/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/share/texlive/texmf-dist/fonts/
-type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
-s/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (37 pages, 145801 bytes).
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsola
+ta/i4-t1-0.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/inconsolata/In
+consolata-zi4r.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmri8a.pfb>
+Output written on Rd2.pdf (37 pages, 145277 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (62 entries accepted, 0 rejected).
-Sorting entries....done (361 comparisons).
-Generating output file Rd2.ind....done (111 lines written, 0 warnings).
+Scanning input file Rd2.idx....done (61 entries accepted, 0 rejected).
+Sorting entries....done (347 comparisons).
+Generating output file Rd2.ind....done (110 lines written, 0 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -744,31 +738,31 @@ b/texmf/fonts/map/pdftex/updmap/pdftex.map}])
 Overfull \hbox (14.1886pt too wide) in alignment at lines 63--63
  [] [] 
 [2] [3] (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
-[4] [5] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+[4] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [5]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (6.35663pt too wide) in paragraph at lines 178--180
+Overfull \hbox (6.35663pt too wide) in paragraph at lines 173--175
 []\T1/ptm/m/n/10 fournit une liste d'indicateur à par-tir des don-nées d'un éta
 b-lisse-ment ou d'un groupe d'établissements.
 
-Overfull \hbox (26.07762pt too wide) in paragraph at lines 195--204
+Overfull \hbox (26.07762pt too wide) in paragraph at lines 190--199
 \T1/ptm/m/n/10 "n.ccmu3", "n.ccmu4", "n.ccmu5", "n.ccmuP", "n.ccmuD", "n.ccmu45
 ", "n.sorties.conf", "mean.passage",
 
-Overfull \hbox (19.51749pt too wide) in paragraph at lines 195--204
+Overfull \hbox (19.51749pt too wide) in paragraph at lines 190--199
 \T1/ptm/m/n/10 "me-dian.passage", "n.passage4", "n.hosp.passage4", "n.dom.passa
 ge4", "n.dom", "n.hosp", "n.transfert",
 [6] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-Overfull \hbox (126.78094pt too wide) in paragraph at lines 255--255
+Overfull \hbox (126.78094pt too wide) in paragraph at lines 250--250
  []\T1/zi4/m/n/9 barplot.week.variations(v[-length(v)], las = 2, main = "test",
  ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10),[] 
 
-Overfull \hbox (36.78094pt too wide) in paragraph at lines 261--261
+Overfull \hbox (36.78094pt too wide) in paragraph at lines 256--256
  []\T1/zi4/m/n/9 ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10), ylab =
  "Variations hebdomadaires", dx = 5)[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [7]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [8]
-Overfull \hbox (5.281pt too wide) in paragraph at lines 347--347
+Overfull \hbox (5.281pt too wide) in paragraph at lines 342--342
  []       \T1/zi4/m/n/9 plot(x[, "DP"], main = "CH Saverne - DIAGNOSTIC PRINCIP
 AL", ylab = "\% de complétude")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [9]
@@ -783,33 +777,33 @@ AL", ylab = "\% de complétude")[]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [14]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [15]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (10.22803pt too wide) in paragraph at lines 717--719
+Overfull \hbox (10.22803pt too wide) in paragraph at lines 712--714
 []\T1/ptm/m/n/10 n.so.conforme.dom, n.duree.passage.inf4h.dom, p.passages.en.mo
 ins.de.4h.dom, n.so.conforme.hosp,
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (0.7078pt too wide) in paragraph at lines 741--743
+Overfull \hbox (0.7078pt too wide) in paragraph at lines 736--738
 \T1/ptm/m/n/10 par ymd_hms Trans-form dates stored as char-ac-ter or nu-meric v
 ec-tors to POSIXct
 [16]
-Overfull \hbox (5.28091pt too wide) in paragraph at lines 765--765
+Overfull \hbox (5.28091pt too wide) in paragraph at lines 760--760
  []\T1/zi4/m/n/9 n.passages.nuit <- passages2(pop18$ENTREE, "nuit"); n.passages
 .nuit[1]; n.passages.nuit[2][] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [17]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (161.78088pt too wide) in paragraph at lines 811--811
+Overfull \hbox (161.78088pt too wide) in paragraph at lines 806--806
  []\T1/zi4/m/n/10 plot.xts2(x, y = NULL, type = "l", auto.grid = TRUE, major.ti
 cks = "auto", minor.ticks = TRUE, major.format = TRUE,[] 
 
-Overfull \hbox (9.78088pt too wide) in paragraph at lines 812--812
+Overfull \hbox (9.78088pt too wide) in paragraph at lines 807--807
  []\T1/zi4/m/n/10 bar.col = "grey", candle.col = "white", ann = TRUE, axes = TR
 UE, col = "black", ...)[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (28.681pt too wide) in paragraph at lines 852--852
+Overfull \hbox (28.681pt too wide) in paragraph at lines 847--847
  []       \T1/zi4/m/n/9 print.summary.rpu(x, cnames = c("Jour","n"), caption = 
 "Nombre de RPU par jour de semaine")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [18]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (14.78088pt too wide) in paragraph at lines 897--897
+Overfull \hbox (14.78088pt too wide) in paragraph at lines 892--892
  []\T1/zi4/m/n/10 pyramide.age(dx, cut = 5, gap = 1, cex = 0.8,col.h = "light g
 reen", col.f = "khaki1")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [19]
@@ -818,14 +812,14 @@ reen", col.f = "khaki1")[]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [21]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [22]
-Overfull \hbox (125.88098pt too wide) in paragraph at lines 1093--1093
+Overfull \hbox (125.88098pt too wide) in paragraph at lines 1088--1088
  []\T1/zi4/m/n/9 legend("topleft", inset = c(0, -0.1), legend = c("Brut","Stand
 ardisé"), bty = "n", col = c("black","gray80"), pch = 15)[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [23]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [24]
-Overfull \hbox (25.14818pt too wide) in paragraph at lines 1205--1207
+Overfull \hbox (25.14818pt too wide) in paragraph at lines 1200--1202
 \T1/ptm/m/n/10 "n.ccmup", "n.ccmud", "p.ccmu1", "p.ccmu2", "p.ccmu3", "p.ccmu4"
 , "p.ccmu5", "p.ccmup", "p.ccmud") 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [25]
@@ -836,27 +830,27 @@ Overfull \hbox (25.14818pt too wide) in paragraph at lines 1205--1207
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [28]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (10.43814pt too wide) in paragraph at lines 1448--1453
+Overfull \hbox (10.43814pt too wide) in paragraph at lines 1443--1448
 \T1/ptm/m/n/10 "n.ho", "n.hdt", "n.reo", "n.scam", "n.psa", "p.chir", "p.med", 
 "p.obst", "p.si", "p.sc", "p.rea", "p.uhcd",
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (70.18681pt too wide) in paragraph at lines 1475--1487
+Overfull \hbox (70.18681pt too wide) in paragraph at lines 1470--1482
 \T1/ptm/m/n/10 d'un pas-sage en min-utes duree.mediane.passage durée mé-di-ane 
 d'un pas-sage en min-utes duree.moyenne.passage.dom
 [29] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [30]
-Overfull \hbox (4.53748pt too wide) in paragraph at lines 1558--1560
+Overfull \hbox (4.53748pt too wide) in paragraph at lines 1553--1555
 []\T1/ptm/m/n/10 vecteur nommé: "N", "n.na", "n.rens", "p.rens", "n.hommes", "n
 .femmes", "p.hommes", "p.femmes",
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [31]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [32]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (26.88101pt too wide) in paragraph at lines 1694--1694
+Overfull \hbox (26.88101pt too wide) in paragraph at lines 1689--1689
  []      \T1/zi4/m/n/9 plot(t[,"DATE DE SORTIE"], type = "l", main = "Mode de s
 ortie", ylab = "Taux de completude")[] 
 
-Overfull \hbox (0.781pt too wide) in paragraph at lines 1698--1698
+Overfull \hbox (0.781pt too wide) in paragraph at lines 1693--1693
  []     \T1/zi4/m/n/9 boxplot(t, las = 2, cex.axis = 0.8, ylab = "\% de complet
 ude", main = "Complétude RPU")[] 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [33]
@@ -866,27 +860,25 @@ ude", main = "Complétude RPU")[]
 [36]
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 75.
+(Font)              using `T1/zi4/m/n' instead on input line 74.
 
 [37]) (./Rd2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
-(see the transcript file for additional information)pdfTeX warning (dest): name
-{Rfn.<pkg>} has been referenced but does not exist, replaced by a fixed one
-
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/sha
-re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dis
-t/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/share/texlive/texmf-dist/fonts/
-type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
-s/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (37 pages, 145739 bytes).
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsola
+ta/i4-t1-0.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/inconsolata/In
+consolata-zi4r.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmri8a.pfb>
+Output written on Rd2.pdf (37 pages, 145200 bytes).
 Transcript written on Rd2.log.
 Saving output to 'Rpu2-manual.pdf' ...
 Done
-You may want to clean up by 'rm -rf /tmp/Rtmpj14AH5/Rd2pdf3fd6632203e0'
+You may want to clean up by 'rm -rf /tmp/Rtmp8KOghh/Rd2pdf1cc63bea6ab5'

@@ -261,6 +261,7 @@ reorder.vector.fedoru <- function(dx){
 #' @title  data pour créer automatiquement un radar RPU et faire des test
 #' @export
 #' @examples teste.radar()
+#' @export
 #' 
 teste.radar <- function(){
     n <- c("FINESS","id","EXTRACT","CODE_POSTAL","COMMUNE","NAISSANCE", "SEXE","ENTREE","MODE_ENTREE","PROVENANCE","TRANSPORT",
@@ -286,6 +287,7 @@ teste.radar <- function(){
 #' @param vx un vecteur de character
 #' @return n nombre de codes CIM1
 #' @examples count.CIM10(dx[dx$FINESS == "Col", "MOTIF"])
+#'  @export
 #'
 count.CIM10 <- function(vx){
     Encoding(vx) <- "latin1" # suprime les caractères bloquants pour grep. Il s'agit de Colmar avec des caractères window du type \x9
@@ -850,6 +852,7 @@ summary.ccmu <- function(vx){
 #' @param vx vecteur ENTREE ou SORTIE
 #' @examples summary.ccmu(dx$SORTIE)
 #' @return "n", "n.na", "p.na", "n.rens", "p.rens"
+#' @export
 #' 
 summary.dateheure <- function(vx){
     n <- length(vx) # nb de valeurs
@@ -877,6 +880,7 @@ summary.dateheure <- function(vx){
 #' @examples summary.mode.sortie(dx$MODE_SORTIE)
 #' @return "n", "n.na", "p.na", "n.rens", "p.rens", 
 #' "n.dom", "n.hosp", "n.transfert", "n.mutation", "n.deces", "p.dom", "p.hosp", "p.transfert", "p.mutation", "p.deces")
+#' @export
 #' 
 summary.mode.sortie <- function(vx){
     n <- length(vx) # nb de valeurs
@@ -918,6 +922,7 @@ summary.mode.sortie <- function(vx){
 #' @param vx vecteur char DP
 #' @examples summary.dp(dx$DP)
 #' @return "n", "n.na", "p.na", "n.rens", "p.rens"
+#' @export
 #' 
 summary.dp <- function(vx){
     n <- length(vx) # nb de valeurs
@@ -945,6 +950,7 @@ summary.dp <- function(vx){
 #' @return "n", "n.na", "p.na", "n.rens", "p.rens","n.inf1an", "n.inf15ans", "n.inf18ans", "n.75ans", "n.85ans", "n.90ans",
 #' "p.inf1an", "p.inf15ans", "p.inf18ans", "p.75ans", "p.85ans", "p.90ans",
 #' "mean.age", "sd.age", "median.age", "min.age", "max.age", "q1", "q3")
+#' @export
 #' 
 summary.age <- function(vx){
     n <- length(vx) # nb de valeurs
@@ -998,6 +1004,7 @@ summary.age <- function(vx){
 #' @param dx dataframe RPU
 #' @examples summary.age.sexe(dx)
 #' @return moyenne, écart-type, médiane par sexe
+#' @export
 #' 
 summary.age.sexe <- function(dx){
     
@@ -1035,6 +1042,7 @@ summary.age.sexe <- function(dx){
 #' @param col.f couleur pour les femmes
 #' @param gap largeur de la colonne age (N = 1, varie de 0 à ...)
 #' @details pyramid nécessite epicalc, pyramid.plot nécessite plotrix
+#' @export
 
 pyramide.age <- function(dx, cut = 5, gap = 1, cex = 0.8,col.h = "light green", col.f = "khaki1"){
     # découpage du vecteur AGE en classes
@@ -1070,6 +1078,7 @@ pyramide.age <- function(dx, cut = 5, gap = 1, cex = 0.8,col.h = "light green", 
 #' @return un pourcentage
 #' @examples pop.region <- pop.als.tot.2014 <- 1868773
 #'           tarru(dx$CODE_POSTAL, pop.als.tot.2014)
+#' @export
 
 tarru <- function(cp, pop.region, rpu.region){
     rpu.region <- sum(sapply(cp, is.cpals))
@@ -1090,6 +1099,7 @@ tarru <- function(cp, pop.region, rpu.region){
 #' @return vecteur nommé commençant le lundi
 #' @examples summary.wday(dx$ENTREE)
 #' @details La semaine américaine est modifiée pour correspondre à la semaine française commençant un lundi.
+#' @export
 #' 
 summary.wday <- function(vx){
     a <- tapply(as.Date(vx), wday(as.Date(vx), label = TRUE), length)
@@ -1113,6 +1123,7 @@ summary.wday <- function(vx){
 #' @return - nb de CP renseignés
 #'          - nb de résidents alsaciens
 #'          - nb d'étrangers
+#' @export
 #' 
 summary.cp <- function(vx){
     n <- length(vx) # nb de valeurs
@@ -1152,6 +1163,7 @@ summary.cp <- function(vx){
 #' "median.passage", "n.passage4", "n.hosp.passage4", "n.dom.passage4", "n.dom", 
 #' "n.hosp", "n.transfert", "n.deces", "n.mode.sortie",
 #' "n.mutation2"
+#' @export
 #' 
 analyse_type_etablissement <- function(es){
     # nombre de passages déclarés
@@ -1271,6 +1283,7 @@ analyse_type_etablissement <- function(es){
 #'                           correspondant à une hospitalisation
 #' @return "n", "n.na", "p.na", "n.rens", "p.rens"
 #' @details MANQUE LE SUMMARY DU VECTEUR.
+#' @export
 
 summary.destination <- function(dx, correction = TRUE){
     if(correction == TRUE){
@@ -1307,6 +1320,7 @@ summary.destination <- function(dx, correction = TRUE){
 #' "n.reo", "n.scam", "n.psa",
 #' "p.chir", "p.med", "p.obst", "p.si", "p.sc", "p.rea", "p.uhcd", "p.ho", "p.hdt", 
 #' "p.reo", "p.scam", "p.psa"
+#' @export
 
 summary.orientation <- function(dx, correction = TRUE){
     if(correction == TRUE){
