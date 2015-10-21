@@ -579,7 +579,7 @@ duree.passage2 <- function(dx, h1 = 0, h2 = 4320, hors_uhcd = TRUE){
 
 #===============================================
 #
-# summary.duree.passage
+# resume.duree.passage
 #
 #===============================================
 #' @title Resume de la Duree de passage.
@@ -599,7 +599,7 @@ duree.passage2 <- function(dx, h1 = 0, h2 = 4320, hors_uhcd = TRUE){
 #'         - 3ème quartile
 #' @export
 #' 
-summary.duree.passage <- function(dp){
+resume.duree.passage <- function(dp){
     n <- nrow(dp) # nb de valeurs
     s <- summary(dp$duree) # summary de la colonne durée
     sd <- sd(dp$duree)
@@ -612,7 +612,7 @@ summary.duree.passage <- function(dp){
 
 #===============================================
 #
-# summary.passages
+# resume.passages
 #
 #===============================================
 #' @title analyse un objet de type duree.passage2
@@ -635,7 +635,7 @@ summary.duree.passage <- function(dp){
 #'         n.dom                    nombre de retours à domicile
 #' @export
 #' 
-summary.passages <- function(dp){
+resume.passages <- function(dp){
     # dp <- duree.passage2(dx)
     
     tmax <- 4 * 60 + 1 # < 4 heures
@@ -688,7 +688,7 @@ summary.passages <- function(dp){
 
 #===============================================
 #
-# summary.sexe
+# resume.sexe
 #
 #===============================================
 #' @title analyse un vecteur formé d'une suite de H, F, ou I
@@ -700,7 +700,7 @@ summary.passages <- function(dp){
 #'          "sex.ratio", "tx.masculinité"
 #' @export
 #' 
-summary.sexe <- function(vx){
+resume.sexe <- function(vx){
     sexe <- table(as.factor(vx))
     n <- length(vx) # nb de valeurs
     n.na <- sum(is.na(vx)) # nb de valeurs non renseignées
@@ -723,7 +723,34 @@ summary.sexe <- function(vx){
 
 #===============================================
 #
-# summary.entree
+# resume.motif
+#
+#===============================================
+#' @title analyse un vecteur de MOTIF
+#' @description retourne: le nombre d'éléments du vecteur (NA inclus), le nombre de NA, nombre et pourcentage de valeurs renseignées,
+#' @usage summary.motif(vx)
+#' @param vx vecteur de Char (motif)
+#' @return vecteur nommé:  "n.na", "p.na", "n.rens", "p.rens"
+#' @export
+#' 
+resume.motif <- function(vx){
+    motif <- table(as.factor(vx))
+    
+    n.na <- sum(is.na(vx)) # nb de valeurs non renseignées
+    p.na <- mean(is.na(vx)) # % de valeurs non renseignées
+    n.rens <- sum(!is.na(vx)) # nb de valeurs renseignées
+    p.rens <- mean(!is.na(vx)) # % de valeurs renseignées
+    
+    a <- c(n, n.na, n.rens, p.rens)
+    names(a) <- c("N", "n.na", "n.rens", "p.rens")
+    
+    return(a)
+    
+}
+
+#===============================================
+#
+# resume.entree
 #
 #===============================================
 #' @title analyse du vecteur ENTREE ou SORTIE
@@ -735,7 +762,7 @@ summary.sexe <- function(vx){
 #' @note min et max ne s'affichent pas sous forme de date. Que donne hms
 #' @export
 #' 
-summary.entree <- function(vx){
+resume.entree <- function(vx){
     n <- length(vx) # nb de valeurs
     n.na <- sum(is.na(vx)) # nb de valeurs non renseignées
     p.na <- mean(is.na(vx)) # % de valeurs non renseignées
@@ -750,7 +777,7 @@ summary.entree <- function(vx){
 
 #===============================================
 #
-# summary.transport
+# resume.transport
 #
 #===============================================
 #' @title analyse du vecteur TRANSPORT
@@ -762,7 +789,7 @@ summary.entree <- function(vx){
 #' @examples summary.transport(pop75$TRANSPORT)
 #' @export
 
-summary.transport <- function(vx){
+resume.transport <- function(vx){
     n <- length(vx) # nb de valeurs
     n.na <- sum(is.na(vx)) # nb de valeurs non renseignées
     p.na <- mean(is.na(vx)) # % de valeurs non renseignées
@@ -795,7 +822,7 @@ summary.transport <- function(vx){
 
 #===============================================
 #
-# summary.ccmu
+# resume.ccmu
 #
 #===============================================
 #' @title Resume du vecteur vx des CCMU
@@ -807,7 +834,7 @@ summary.transport <- function(vx){
 #' "n.ccmu4", "n.ccmu5", "n.ccmup", "n.ccmud", "p.ccmu1", "p.ccmu2", "p.ccmu3", "p.ccmu4", "p.ccmu5", "p.ccmup", "p.ccmud")
 #' @export
 #' 
-summary.ccmu <- function(vx){
+resume.ccmu <- function(vx){
     n <- length(vx) # nb de valeurs
     n.na <- sum(is.na(vx)) # nb de valeurs non renseignées
     p.na <- mean(is.na(vx)) # % de valeurs non renseignées
@@ -843,7 +870,7 @@ summary.ccmu <- function(vx){
 
 #===============================================
 #
-# summary.dateheure
+# resume.dateheure
 #
 #===============================================
 #' @title Resume du vecteur des ENTREE ou SORTIE
@@ -854,7 +881,7 @@ summary.ccmu <- function(vx){
 #' @return "n", "n.na", "p.na", "n.rens", "p.rens"
 #' @export
 #' 
-summary.dateheure <- function(vx){
+resume.dateheure <- function(vx){
     n <- length(vx) # nb de valeurs
     n.na <- sum(is.na(vx)) # nb de valeurs non renseignées
     p.na <- mean(is.na(vx)) # % de valeurs non renseignées
@@ -870,7 +897,7 @@ summary.dateheure <- function(vx){
 
 #===============================================
 #
-# summary.mode.sortie
+# resume.mode.sortie
 #
 #===============================================
 #' @title Resume du vecteur vx des MODE_SORTIE
@@ -882,7 +909,7 @@ summary.dateheure <- function(vx){
 #' "n.dom", "n.hosp", "n.transfert", "n.mutation", "n.deces", "p.dom", "p.hosp", "p.transfert", "p.mutation", "p.deces")
 #' @export
 #' 
-summary.mode.sortie <- function(vx){
+resume.mode.sortie <- function(vx){
     n <- length(vx) # nb de valeurs
     n.na <- sum(is.na(vx)) # nb de valeurs non renseignées
     p.na <- mean(is.na(vx)) # % de valeurs non renseignées
@@ -897,9 +924,9 @@ summary.mode.sortie <- function(vx){
     n.deces <- s["Décès"]           # nombre de décès
     
     p.dom <- n.dom / n.rens
-    p.hosp <- n.hosp / n.rens
     p.transfert <- n.transfert / n.rens
     p.mutation <- n.mutation / n.rens
+    p.hosp <- p.transfert + p.mutation
     p.deces <- n.deces / n.rens
     
     a <- c(n, n.na, p.na, n.rens, p.rens, n.dom, n.hosp, n.transfert, n.mutation, n.deces,
@@ -913,7 +940,7 @@ summary.mode.sortie <- function(vx){
 
 #===============================================
 #
-# summary.dp
+# resume.dp
 #
 #===============================================
 #' @title Resume du vecteur DP (diagnostic principal)
@@ -924,7 +951,7 @@ summary.mode.sortie <- function(vx){
 #' @return "n", "n.na", "p.na", "n.rens", "p.rens"
 #' @export
 #' 
-summary.dp <- function(vx){
+resume.dp <- function(vx){
     n <- length(vx) # nb de valeurs
     n.na <- sum(is.na(vx)) # nb de valeurs non renseignées
     p.na <- mean(is.na(vx)) # % de valeurs non renseignées
@@ -939,7 +966,7 @@ summary.dp <- function(vx){
 
 #===============================================
 #
-# summary.age
+# resume.age
 #
 #===============================================
 #' @title Resume du vecteur des AGE
@@ -952,7 +979,7 @@ summary.dp <- function(vx){
 #' "mean.age", "sd.age", "median.age", "min.age", "max.age", "q1", "q3")
 #' @export
 #' 
-summary.age <- function(vx){
+resume.age <- function(vx){
     n <- length(vx) # nb de valeurs
     n.na <- sum(is.na(vx)) # nb de valeurs non renseignées
     p.na <- mean(is.na(vx)) # % de valeurs non renseignées
@@ -995,7 +1022,7 @@ summary.age <- function(vx){
 
 #===============================================
 #
-# summary.age.sexe
+# sresume.age.sexe
 #
 #===============================================
 #' @title résumé des vecteurs AGE et SEXE
@@ -1006,7 +1033,7 @@ summary.age <- function(vx){
 #' @return moyenne, écart-type, médiane par sexe
 #' @export
 #' 
-summary.age.sexe <- function(dx){
+resume.age.sexe <- function(dx){
     
     sd <- tapply(dx$AGE, dx$SEXE, sd, na.rm = TRUE)
     sd.age.h <- sd[['M']]
@@ -1420,7 +1447,7 @@ mn2h <- function(x){
 
 #===============================================
 #
-# summary.rpu
+# resume.rpu
 #
 #===============================================
 #' @title calcule le nombre de RPU par SU, territoire de sante et
@@ -1444,7 +1471,7 @@ mn2h <- function(x){
 #'@examples s <- summary.rpu(d15); s[1]; s$debut; s$n
 #'@export
 
-summary.rpu <- function(dx){
+resume.rpu <- function(dx){
     
     debut <- min(as.Date(dx$ENTREE))
     fin <- max(as.Date(dx$ENTREE))

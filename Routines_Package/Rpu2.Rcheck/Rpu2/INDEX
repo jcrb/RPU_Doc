@@ -1,4 +1,3 @@
-Rpu2-package            Routines pour RPU
 add.territoire          Crée une colonne TERRITOIRE
 analyse_type_etablissement
                         Analyse etablissement
@@ -33,28 +32,29 @@ reorder.dataframe.fedoru
                         l'ordre defini par la FEDORU.
 reorder.vector.fedoru   Réordonne les colonnes pour être contorme à
                         l'ordre RPU
+resume.age              Resume du vecteur des AGE
+resume.age.sexe         résumé des vecteurs AGE et SEXE
+resume.ccmu             Resume du vecteur vx des CCMU
+resume.dateheure        Resume du vecteur des ENTREE ou SORTIE
+resume.dp               Resume du vecteur DP (diagnostic principal)
+resume.entree           analyse du vecteur ENTREE ou SORTIE
+resume.mode.sortie      Resume du vecteur vx des MODE_SORTIE
+resume.motif            analyse un vecteur de MOTIF
+resume.passages         analyse un objet de type duree.passage2
+resume.rpu              calcule le nombre de RPU par SU, territoire de
+                        sante et departement.
+resume.sexe             analyse un vecteur formé d'une suite de H, F,
+                        ou I
+resume.transport        analyse du vecteur TRANSPORT
 rpu.par.jour            Nombre de RPU par jour et par FINESS
 rpu.par.jour2           A partir d'un vecteur de dates, calcule le
                         nombre de RPU par jour
 rpu.par.mois            Nombre de RPU par mois
 rpu2xts                 Transforme RPU eb XTS
-summary.age             Resume du vecteur des AGE
-summary.age.sexe        résumé des vecteurs AGE et SEXE
-summary.ccmu            Resume du vecteur vx des CCMU
 summary.cp              resume du vecteur CODE_POSTAL (cp)
-summary.dateheure       Resume du vecteur des ENTREE ou SORTIE
 summary.destination     Resume de la DESTINATION
-summary.dp              Resume du vecteur DP (diagnostic principal)
 summary.duree.passage   Resume de la Duree de passage.
-summary.entree          analyse du vecteur ENTREE ou SORTIE
-summary.mode.sortie     Resume du vecteur vx des MODE_SORTIE
 summary.orientation     Resume de ORIENTATION
-summary.passages        analyse un objet de type duree.passage2
-summary.rpu             calcule le nombre de RPU par SU, territoire de
-                        sante et departement.
-summary.sexe            analyse un vecteur formé d'une suite de H, F,
-                        ou I
-summary.transport       analyse du vecteur TRANSPORT
 summary.wday            Nombre de RPU par jour de semaine
 synthese.completude     Calcule le tableau des taux de completude de
                         l'ensemble des Finess.

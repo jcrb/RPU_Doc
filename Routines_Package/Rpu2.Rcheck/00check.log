@@ -5,7 +5,7 @@
 * using option ‘--as-cran’
 * checking for file ‘Rpu2/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘Rpu2’ version ‘0.1’
+* this is package ‘Rpu2’ version ‘0.1.2’
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
@@ -17,10 +17,9 @@
 * checking whether package ‘Rpu2’ can be installed ... OK
 * checking installed package size ... OK
 * checking package directory ... OK
-* checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
+* checking DESCRIPTION meta-information ... WARNING
 Non-standard license specification:
-  What license is it under?
+  GNU
 Standardizable: FALSE
 * checking top-level files ... NOTE
 Non-standard files/directories found at top level:
@@ -86,27 +85,7 @@ print.table.rpu:
 
 summary:
   function(object, ...)
-summary.age:
-  function(vx)
-
-summary:
-  function(object, ...)
-summary.age.sexe:
-  function(dx)
-
-summary:
-  function(object, ...)
-summary.ccmu:
-  function(vx)
-
-summary:
-  function(object, ...)
 summary.cp:
-  function(vx)
-
-summary:
-  function(object, ...)
-summary.dateheure:
   function(vx)
 
 summary:
@@ -116,48 +95,8 @@ summary.destination:
 
 summary:
   function(object, ...)
-summary.dp:
-  function(vx)
-
-summary:
-  function(object, ...)
-summary.duree.passage:
-  function(dp)
-
-summary:
-  function(object, ...)
-summary.entree:
-  function(vx)
-
-summary:
-  function(object, ...)
-summary.mode.sortie:
-  function(vx)
-
-summary:
-  function(object, ...)
 summary.orientation:
   function(dx, correction)
-
-summary:
-  function(object, ...)
-summary.passages:
-  function(dp)
-
-summary:
-  function(object, ...)
-summary.rpu:
-  function(dx)
-
-summary:
-  function(object, ...)
-summary.sexe:
-  function(vx)
-
-summary:
-  function(object, ...)
-summary.transport:
-  function(vx)
 
 summary:
   function(object, ...)
@@ -185,6 +124,18 @@ Extensions’ manual.
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
 * checking R code for possible problems ... NOTE
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.age’
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.dateheure’
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.transport’
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.ccmu’
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.passages’
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.mode.sortie’
 completude.time: no visible global function definition for ‘ddply’
 completude.time: no visible global function definition for ‘.’
 completude.time: no visible global function definition for ‘month’
@@ -218,6 +169,7 @@ pyramide.age: no visible global function definition for ‘pyramid.plot’
 radar.completude: no visible global function definition for
   ‘radial.plot’
 radar.completude: no visible global function definition for ‘fadeColor’
+resume.motif: no visible binding for global variable ‘n’
 rpu.par.jour2: no visible global function definition for ‘yday’
 rpu.par.jour2: no visible global function definition for ‘rollmean’
 rpu.par.mois: no visible global function definition for ‘year’
@@ -234,7 +186,6 @@ Found the following assignments to the global environment:
 File ‘Rpu2/R/Rapport.R’:
   assign(".plot.xts", recordPlot(), .GlobalEnv)
 * checking Rd files ... WARNING
-Rpu2-package.Rd: non-ASCII input and no declared encoding
 add.territoire.Rd: non-ASCII input and no declared encoding
 analyse_type_etablissement.Rd: non-ASCII input and no declared encoding
 barplot.week.variations.Rd: non-ASCII input and no declared encoding
@@ -259,23 +210,24 @@ pyramide.age.Rd: non-ASCII input and no declared encoding
 radar.completude.Rd: non-ASCII input and no declared encoding
 reorder.dataframe.fedoru.Rd: non-ASCII input and no declared encoding
 reorder.vector.fedoru.Rd: non-ASCII input and no declared encoding
+resume.age.Rd: non-ASCII input and no declared encoding
+resume.age.sexe.Rd: non-ASCII input and no declared encoding
+resume.ccmu.Rd: non-ASCII input and no declared encoding
+resume.dateheure.Rd: non-ASCII input and no declared encoding
+resume.dp.Rd: non-ASCII input and no declared encoding
+resume.entree.Rd: non-ASCII input and no declared encoding
+resume.mode.sortie.Rd: non-ASCII input and no declared encoding
+resume.motif.Rd: non-ASCII input and no declared encoding
+resume.passages.Rd: non-ASCII input and no declared encoding
+resume.rpu.Rd: non-ASCII input and no declared encoding
+resume.sexe.Rd: non-ASCII input and no declared encoding
 rpu.par.jour2.Rd: non-ASCII input and no declared encoding
 rpu.par.mois.Rd: non-ASCII input and no declared encoding
 rpu2xts.Rd: non-ASCII input and no declared encoding
-summary.age.Rd: non-ASCII input and no declared encoding
-summary.age.sexe.Rd: non-ASCII input and no declared encoding
-summary.ccmu.Rd: non-ASCII input and no declared encoding
 summary.cp.Rd: non-ASCII input and no declared encoding
-summary.dateheure.Rd: non-ASCII input and no declared encoding
 summary.destination.Rd: non-ASCII input and no declared encoding
-summary.dp.Rd: non-ASCII input and no declared encoding
 summary.duree.passage.Rd: non-ASCII input and no declared encoding
-summary.entree.Rd: non-ASCII input and no declared encoding
-summary.mode.sortie.Rd: non-ASCII input and no declared encoding
 summary.orientation.Rd: non-ASCII input and no declared encoding
-summary.passages.Rd: non-ASCII input and no declared encoding
-summary.rpu.Rd: non-ASCII input and no declared encoding
-summary.sexe.Rd: non-ASCII input and no declared encoding
 summary.wday.Rd: non-ASCII input and no declared encoding
 synthese.completude.Rd: non-ASCII input and no declared encoding
 tab.completude.Rd: non-ASCII input and no declared encoding
@@ -283,7 +235,7 @@ tarru.Rd: non-ASCII input and no declared encoding
 teste.radar.Rd: non-ASCII input and no declared encoding
 week.rpu.Rd: non-ASCII input and no declared encoding
 week.variations.Rd: non-ASCII input and no declared encoding
-problems found in ‘Rpu2-package.Rd’, ‘add.territoire.Rd’, ‘analyse_type_etablissement.Rd’, ‘barplot.week.variations.Rd’, ‘completude.Rd’, ‘completude.time.Rd’, ‘copyright.Rd’, ‘count.CIM10.Rd’, ‘datetime.Rd’, ‘duree.passage2.Rd’, ‘evolution.Rd’, ‘factor2table.Rd’, ‘finess2territoires.Rd’, ‘format.n.Rd’, ‘passage.Rd’, ‘passages.en.moins.de.4h.Rd’, ‘passages2.Rd’, ‘pdsa.Rd’, ‘plot.xts2.Rd’, ‘print.summary.rpu.Rd’, ‘print.table.rpu.Rd’, ‘pyramide.age.Rd’, ‘radar.completude.Rd’, ‘reorder.dataframe.fedoru.Rd’, ‘reorder.vector.fedoru.Rd’, ‘rpu.par.jour2.Rd’, ‘rpu.par.mois.Rd’, ‘rpu2xts.Rd’, ‘summary.age.Rd’, ‘summary.age.sexe.Rd’, ‘summary.ccmu.Rd’, ‘summary.cp.Rd’, ‘summary.dateheure.Rd’, ‘summary.destination.Rd’, ‘summary.dp.Rd’, ‘summary.duree.passage.Rd’, ‘summary.entree.Rd’, ‘summary.mode.sortie.Rd’, ‘summary.orientation.Rd’, ‘summary.passages.Rd’, ‘summary.rpu.Rd’, ‘summary.sexe.Rd’, ‘summary.wday.Rd’, ‘synthese.completude.Rd’, ‘tab.completude.Rd’, ‘tarru.Rd’, ‘teste.radar.Rd’, ‘week.rpu.Rd’, ‘week.variations.Rd’
+problems found in ‘add.territoire.Rd’, ‘analyse_type_etablissement.Rd’, ‘barplot.week.variations.Rd’, ‘completude.Rd’, ‘completude.time.Rd’, ‘copyright.Rd’, ‘count.CIM10.Rd’, ‘datetime.Rd’, ‘duree.passage2.Rd’, ‘evolution.Rd’, ‘factor2table.Rd’, ‘finess2territoires.Rd’, ‘format.n.Rd’, ‘passage.Rd’, ‘passages.en.moins.de.4h.Rd’, ‘passages2.Rd’, ‘pdsa.Rd’, ‘plot.xts2.Rd’, ‘print.summary.rpu.Rd’, ‘print.table.rpu.Rd’, ‘pyramide.age.Rd’, ‘radar.completude.Rd’, ‘reorder.dataframe.fedoru.Rd’, ‘reorder.vector.fedoru.Rd’, ‘resume.age.Rd’, ‘resume.age.sexe.Rd’, ‘resume.ccmu.Rd’, ‘resume.dateheure.Rd’, ‘resume.dp.Rd’, ‘resume.entree.Rd’, ‘resume.mode.sortie.Rd’, ‘resume.motif.Rd’, ‘resume.passages.Rd’, ‘resume.rpu.Rd’, ‘resume.sexe.Rd’, ‘rpu.par.jour2.Rd’, ‘rpu.par.mois.Rd’, ‘rpu2xts.Rd’, ‘summary.cp.Rd’, ‘summary.destination.Rd’, ‘summary.duree.passage.Rd’, ‘summary.orientation.Rd’, ‘summary.wday.Rd’, ‘synthese.completude.Rd’, ‘tab.completude.Rd’, ‘tarru.Rd’, ‘teste.radar.Rd’, ‘week.rpu.Rd’, ‘week.variations.Rd’
 * checking Rd metadata ... OK
 * checking Rd line widths ... NOTE
 Rd file 'barplot.week.variations.Rd':
@@ -302,6 +254,45 @@ These lines will be truncated in the PDF manual.
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... OK
 * checking for code/documentation mismatches ... WARNING
+Functions or methods with usage in documentation object 'resume.age' but not in code:
+  summary.age
+
+Functions or methods with usage in documentation object 'resume.age.sexe' but not in code:
+  summary.age.sexe
+
+Functions or methods with usage in documentation object 'resume.ccmu' but not in code:
+  summary.ccmu
+
+Functions or methods with usage in documentation object 'resume.dateheure' but not in code:
+  summary.dateheure
+
+Functions or methods with usage in documentation object 'resume.dp' but not in code:
+  summary.dp
+
+Functions or methods with usage in documentation object 'resume.entree' but not in code:
+  summary.entree
+
+Functions or methods with usage in documentation object 'resume.mode.sortie' but not in code:
+  summary.mode.sortie
+
+Functions or methods with usage in documentation object 'resume.motif' but not in code:
+  summary.motif
+
+Functions or methods with usage in documentation object 'resume.passages' but not in code:
+  summary.passages
+
+Functions or methods with usage in documentation object 'resume.rpu' but not in code:
+  summary.rpu
+
+Functions or methods with usage in documentation object 'resume.sexe' but not in code:
+  summary.sexe
+
+Functions or methods with usage in documentation object 'resume.transport' but not in code:
+  summary.transport
+
+Functions or methods with usage in documentation object 'summary.duree.passage' but not in code:
+  summary.duree.passage
+
 Codoc mismatches from documentation object 'barplot.week.variations':
 barplot.week.variations
   Code: function(x, coltitre = TRUE, colmoins = "red", colplus =
@@ -351,6 +342,42 @@ Undocumented arguments in documentation object 'pyramide.age'
 Undocumented arguments in documentation object 'radar.completude'
   ‘titre’
 
+Objects in \usage without \alias in documentation object 'resume.age':
+  ‘summary.age’
+
+Objects in \usage without \alias in documentation object 'resume.age.sexe':
+  ‘summary.age.sexe’
+
+Objects in \usage without \alias in documentation object 'resume.ccmu':
+  ‘summary.ccmu’
+
+Objects in \usage without \alias in documentation object 'resume.dateheure':
+  ‘summary.dateheure’
+
+Objects in \usage without \alias in documentation object 'resume.dp':
+  ‘summary.dp’
+
+Objects in \usage without \alias in documentation object 'resume.entree':
+  ‘summary.entree’
+
+Objects in \usage without \alias in documentation object 'resume.mode.sortie':
+  ‘summary.mode.sortie’
+
+Objects in \usage without \alias in documentation object 'resume.motif':
+  ‘summary.motif’
+
+Objects in \usage without \alias in documentation object 'resume.passages':
+  ‘summary.passages’
+
+Objects in \usage without \alias in documentation object 'resume.rpu':
+  ‘summary.rpu’
+
+Objects in \usage without \alias in documentation object 'resume.sexe':
+  ‘summary.sexe’
+
+Objects in \usage without \alias in documentation object 'resume.transport':
+  ‘summary.transport’
+
 Undocumented arguments in documentation object 'rpu.par.jour2'
   ‘roll’
 Documented arguments not in \usage in documentation object 'rpu.par.jour2':
@@ -384,50 +411,14 @@ S3 methods shown with full name in documentation object 'reorder.dataframe.fedor
 S3 methods shown with full name in documentation object 'reorder.vector.fedoru':
   ‘reorder.vector.fedoru’
 
-S3 methods shown with full name in documentation object 'summary.age':
-  ‘summary.age’
-
-S3 methods shown with full name in documentation object 'summary.age.sexe':
-  ‘summary.age.sexe’
-
-S3 methods shown with full name in documentation object 'summary.ccmu':
-  ‘summary.ccmu’
-
 S3 methods shown with full name in documentation object 'summary.cp':
   ‘summary.cp’
-
-S3 methods shown with full name in documentation object 'summary.dateheure':
-  ‘summary.dateheure’
 
 S3 methods shown with full name in documentation object 'summary.destination':
   ‘summary.destination’
 
-S3 methods shown with full name in documentation object 'summary.dp':
-  ‘summary.dp’
-
-S3 methods shown with full name in documentation object 'summary.duree.passage':
-  ‘summary.duree.passage’
-
-S3 methods shown with full name in documentation object 'summary.entree':
-  ‘summary.entree’
-
-S3 methods shown with full name in documentation object 'summary.mode.sortie':
-  ‘summary.mode.sortie’
-
 S3 methods shown with full name in documentation object 'summary.orientation':
   ‘summary.orientation’
-
-S3 methods shown with full name in documentation object 'summary.passages':
-  ‘summary.passages’
-
-S3 methods shown with full name in documentation object 'summary.rpu':
-  ‘summary.rpu’
-
-S3 methods shown with full name in documentation object 'summary.sexe':
-  ‘summary.sexe’
-
-S3 methods shown with full name in documentation object 'summary.transport':
-  ‘summary.transport’
 
 S3 methods shown with full name in documentation object 'summary.wday':
   ‘summary.wday’
@@ -463,4 +454,4 @@ Calls: week.variations -> diff
 Execution halted
 * checking PDF version of manual ... OK
 * DONE
-Status: 1 ERROR, 10 WARNINGs, 5 NOTEs
+Status: 1 ERROR, 11 WARNINGs, 4 NOTEs

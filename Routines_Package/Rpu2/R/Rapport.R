@@ -723,6 +723,33 @@ resume.sexe <- function(vx){
 
 #===============================================
 #
+# resume.motif
+#
+#===============================================
+#' @title analyse un vecteur de MOTIF
+#' @description retourne: le nombre d'éléments du vecteur (NA inclus), le nombre de NA, nombre et pourcentage de valeurs renseignées,
+#' @usage summary.motif(vx)
+#' @param vx vecteur de Char (motif)
+#' @return vecteur nommé:  "n.na", "p.na", "n.rens", "p.rens"
+#' @export
+#' 
+resume.motif <- function(vx){
+    motif <- table(as.factor(vx))
+    
+    n.na <- sum(is.na(vx)) # nb de valeurs non renseignées
+    p.na <- mean(is.na(vx)) # % de valeurs non renseignées
+    n.rens <- sum(!is.na(vx)) # nb de valeurs renseignées
+    p.rens <- mean(!is.na(vx)) # % de valeurs renseignées
+    
+    a <- c(n, n.na, n.rens, p.rens)
+    names(a) <- c("N", "n.na", "n.rens", "p.rens")
+    
+    return(a)
+    
+}
+
+#===============================================
+#
 # resume.entree
 #
 #===============================================
@@ -897,9 +924,9 @@ resume.mode.sortie <- function(vx){
     n.deces <- s["Décès"]           # nombre de décès
     
     p.dom <- n.dom / n.rens
-    p.hosp <- n.hosp / n.rens
     p.transfert <- n.transfert / n.rens
     p.mutation <- n.mutation / n.rens
+    p.hosp <- p.transfert + p.mutation
     p.deces <- n.deces / n.rens
     
     a <- c(n, n.na, p.na, n.rens, p.rens, n.dom, n.hosp, n.transfert, n.mutation, n.deces,
