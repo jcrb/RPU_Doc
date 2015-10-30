@@ -6,13 +6,17 @@ completude.time	completude.time
 copyright	copyright
 count.CIM10	count.CIM10
 datetime	datetime
+df.duree.pas	df.duree.pas
 duree.passage2	duree.passage2
 evolution	evolution
 factor2table	factor2table
 finess2territoires	finess2territoires
 format.n	format.n
 horaire	horaire
+is.present.at	is.present.at
 mn2h	mn2h
+n.isna	n.isna
+p.isna	p.isna
 passage	passage
 passages.en.moins.de.4h	passages.en.moins.de.4h
 passages2	passages2

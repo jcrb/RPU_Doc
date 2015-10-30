@@ -33,6 +33,18 @@ Type 'q()' to quit R.
 > 
 > ### * </HEADER>
 > library('Rpu2')
+Loading required package: lubridate
+Loading required package: xtable
+Loading required package: openintro
+Please visit openintro.org for free statistics materials
+
+Attaching package: ‘openintro’
+
+The following object is masked from ‘package:datasets’:
+
+    cars
+
+Loading required package: plotrix
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > cleanEx()

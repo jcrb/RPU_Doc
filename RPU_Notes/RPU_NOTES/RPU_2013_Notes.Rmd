@@ -738,3 +738,13 @@ Boxplot
 
 Augmenter/diminuer la taille des labels d'un boxplot: utiliser préalablement par(cex.lab = 1.5) ou par(cex.axis = 1.5)
 
+Graphisme
+=========
+
+desiner hors limites
+--------------------
+```{}
+ par(xpd=TRUE)
+```
+ref: http://stackoverflow.com/questions/3932038/plot-a-legend-outside-of-the-plotting-area-in-base-graphics
+

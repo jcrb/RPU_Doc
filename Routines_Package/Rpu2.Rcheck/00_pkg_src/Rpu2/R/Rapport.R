@@ -1999,4 +1999,116 @@ barplot.week.variations <- function(x, coltitre = TRUE, colmoins = "red", colplu
         text(b, ifelse(x > 0, x + dx,  x - dx), x, cex = cex.col)
 }
 
+#===============================================
+#
+# p.isna
+#
+#===============================================
+# pour mesurer le pourcentage de non réponses
+#
+#' @title Pourcentage de NA
+#' @description Pourcentage de NA dans un vecteur
+#' @usage p.isna(x)
+#' @param x un vecteur quelconque
+#' @return un pourcentage
+#' 
+p.isna <- function(x){return(mean(is.na(x)))}
 
+#===============================================
+#
+# n.isna
+#
+#===============================================
+# pour mesurer le pourcentage de non réponses
+#
+#' @title Nombre de NA
+#' @description Nombre de NA dans un vecteur
+#' @usage n.isna(x)
+#' @param x un vecteur quelconque
+#' @return en entier
+#' 
+n.isna <- function(x){return(sum(is.na(x)))}
+
+#===============================================
+#
+# df.duree.pas
+#
+#===============================================
+#' @title Dataframe Durée de passage
+#' @description fabrique à partir d'un dataframe de type RPU, un dataframe de type duree_passage comportant les colonnes suivantes:
+#' date/heure d'ebtree, date/heure de sortie, durée de passage (en minutes par défaut), l'heure d'entrée (HMS), l'heure de sortie
+#' @usage df.duree.pas(dx, unit = "mins", mintime = 0, maxtime = 3)
+#' @param dx un dataframe de type RPU
+#' @param unit unité de temps. Défaut = mins
+#' @param mintime défaut = 0. Durée de passage minimale
+#' @param maxtime défaut = 3 (72 heures). Durée de passage maximale
+#' @return dataframe de type duree_passage
+#' @examples df <- df.duree.pas(dx)
+df.duree.pas <- function(dx, unit = "mins", mintime = 0, maxtime = 3){
+    pas <- dx[, c("ENTREE", "SORTIE", "MODE_SORTIE", "ORIENTATION", "AGE")]
+    
+    # on ne conserve que les couples complets
+    pas2 <- pas[complete.cases(pas[, c("ENTREE", "SORTIE")]),]
+    
+    # calcul de la rurée de passage
+    e <- ymd_hms(pas2$ENTREE)
+    s <- ymd_hms(pas2$SORTIE)
+    pas2$duree <- as.numeric(difftime(s, e, units = unit))
+    
+    # on ne garde que les passages dont la durées > 0 et < ou = 72 heures
+    pas3 <- pas2[pas2$duree > mintime & pas2$duree < maxtime * 24 * 60 + 1,]
+    
+    # mémorise les heures d'entrée et de sortie
+    pas3$he <- horaire(pas3$ENTREE)
+    pas3$hs <- horaire(pas3$SORTIE)
+    
+    return(pas3)
+    
+}
+
+#===============================================
+#
+# is.present.at
+#
+#===============================================
+#' @title Un patient est-il présent à une heure donnée ?
+#' @description Crée le vecteur des personnes présentes à une heure donnée
+#' @usage is.present.at((dp, heure = "15:00:00"))
+#' @param dp dataframe de type duree_passage
+#' @param heure heure au format HH:MM:SS. C'es l'heure à laquelle on veut mesurer les passages
+#' @return np vecteur de boolean: TRUE si présent à l'heure analysee et FALSE sinon
+#' @examples dp <- df.duree.pas(dx)
+#'           dp$present.a.15h <- is.present.at(dp)
+#'           # nombre moyen de patients présents à 15h tous les jours
+#'           n.p15 <- tapply(dp$present.a.15h, yday(as.Date(dp$ENTREE)), sum)
+#'           summary(n.p15)
+#'           sd(n.p15)
+#'           # transformation en xts
+#'           xts.p15 <- xts(n.p15, order.by = unique(as.Date(dp$ENTREE)))
+#'           plot(xts.p15, ylab = "Nombre de patients à 15h", main = "Nombre de patients présents à 15 heures")
+#'           lines(rollmean(x = xts.p15, k = 7), col = "red", lwd = 2)
+#'           
+#'           # à 2h du matin
+#'           dp$present.a.2h <- is.present.at(dp, "02:00:00")
+#'           n.p2 <- tapply(dp$present.a.2h, yday(as.Date(dp$ENTREE)), sum)
+#'           summary(n.p2)
+#'           xts.p2 <- xts(n.p2, order.by = unique(as.Date(dp$ENTREE)))
+#'           plot(xts.p2, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 2 heures du matin")
+#'           lines(rollmean(x = xts.p2, k = 7), col = "red", lwd = 2)
+#'           # pour les données de 2015, noter le pic à 2 heures du matin
+#'           
+#'           # à 8 heures
+#'           present.a.8h <- is.present.at(dp, "08:00:00")
+#'           n.p8 <- tapply(present.a.8h, yday(as.Date(dp$ENTREE)), sum)
+#'           summary(n.p8)
+#'           xts.p8 <- xts(n.p8, order.by = unique(as.Date(dp$ENTREE)))
+#'           plot(xts.p8, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 8 heures du matin")
+#'           lines(rollmean(x = xts.p8, k = 7), col = "red", lwd = 2)
+#' 
+is.present.at <- function(dp, heure = "15:00:00"){
+    # présent à 15 heures
+    limite <- hms(heure) # pour incrémenter d'une heure: hms("15:00:00") + as.period(dhours(1))
+    np <- dp$he < limite & dp$hs > limite
+    
+    return(np)
+}

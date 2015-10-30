@@ -21,6 +21,9 @@
 Non-standard license specification:
   GNU
 Standardizable: FALSE
+Packages listed in more than one of Depends, Imports, Suggests, Enhances:
+  ‘lubridate’ ‘xtable’ ‘openintro’ ‘plotrix’
+A package should be listed in only one of these fields.
 * checking top-level files ... NOTE
 Non-standard files/directories found at top level:
   ‘RPU2_1.pdf’ ‘Read-me.Rmd’ ‘Read-me.html’ ‘Rpu2.Rproj’
@@ -35,20 +38,8 @@ except perhaps in comments.
 Use \uxxxx escapes for other characters.
 * checking R files for syntax errors ... OK
 * checking whether the package can be loaded ... OK
-* checking whether the package can be loaded with stated dependencies ... WARNING
-Error : l'objet 'barplot' est introuvable pendant le chargement de l'espace de noms 'Rpu2'
-Erreur : le chargement du package ou de l'espace de noms a échoué pour ‘Rpu2’
-Exécution arrêtée
-
-It looks like this package (or one of its dependent packages) has an
-unstated dependence on a standard package.  All dependencies must be
-declared in DESCRIPTION.
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-* checking whether the package can be unloaded cleanly ... WARNING
-Error : l'objet 'barplot' est introuvable pendant le chargement de l'espace de noms 'Rpu2'
-Erreur : le chargement du package ou de l'espace de noms a échoué pour ‘Rpu2’
-Exécution arrêtée
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
 * checking whether the namespace can be loaded with stated dependencies ... WARNING
 Erreur : l'objet 'barplot' est introuvable pendant le chargement de l'espace de noms 'Rpu2'
 Exécution arrêtée
@@ -60,13 +51,26 @@ session will be unable to start.
 Probably some imports need to be declared in the NAMESPACE file.
 * checking whether the namespace can be unloaded cleanly ... OK
 * checking loading without being on the library search path ... OK
-* checking dependencies in R code ... NOTE
-Erreur : package or namespace load failed for ‘Rpu2’
-Séquence d'appel :
-2: stop(gettextf("package or namespace load failed for %s", sQuote(package)), 
-       call. = FALSE, domain = NA)
-1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
-Exécution arrêtée
+* checking dependencies in R code ... WARNING
+'::' or ':::' import not declared from: ‘xts’
+'library' or 'require' calls not declared from:
+  ‘plyr’ ‘xts’
+'library' or 'require' call to ‘lubridate’ which was already attached by Depends.
+  Please remove these calls from your code.
+'library' or 'require' calls in package code:
+  ‘plyr’ ‘xts’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+Namespaces in Imports field not imported from:
+  ‘dplyr’ ‘lubridate’ ‘openintro’ ‘plotrix’ ‘xtable’
+  All declared Imports should be used.
+Packages in Depends field not imported from:
+  ‘lubridate’ ‘openintro’ ‘plotrix’ ‘xtable’
+  These packages need to be imported from (in the NAMESPACE file)
+  for when this namespace is loaded but not attached.
+Unexported objects imported by ':::' calls:
+  ‘xts:::has.OHLC’ ‘xts:::is.OHLC’
+  See the note in ?`:::` about the use of this operator.
 * checking S3 generic/method consistency ... WARNING
 format:
   function(x, ...)
@@ -144,10 +148,12 @@ completude.time: no visible global function definition for ‘wday’
 completude.time: no visible global function definition for ‘year’
 completude.time: no visible global function definition for ‘week’
 datetime: no visible global function definition for ‘ymd_hms’
+df.duree.pas: no visible global function definition for ‘ymd_hms’
 duree.passage2: no visible global function definition for ‘ymd_hms’
 duree.passage2: no visible global function definition for ‘hms’
 horaire: no visible global function definition for ‘hms’
 horaire3: no visible global function definition for ‘hms’
+is.present.at: no visible global function definition for ‘hms’
 passage: no visible global function definition for ‘hms’
 passages.en.moins.de.4h: no visible global function definition for
   ‘ymd_hms’
@@ -194,11 +200,13 @@ completude.time.Rd: non-ASCII input and no declared encoding
 copyright.Rd: non-ASCII input and no declared encoding
 count.CIM10.Rd: non-ASCII input and no declared encoding
 datetime.Rd: non-ASCII input and no declared encoding
+df.duree.pas.Rd: non-ASCII input and no declared encoding
 duree.passage2.Rd: non-ASCII input and no declared encoding
 evolution.Rd: non-ASCII input and no declared encoding
 factor2table.Rd: non-ASCII input and no declared encoding
 finess2territoires.Rd: non-ASCII input and no declared encoding
 format.n.Rd: non-ASCII input and no declared encoding
+is.present.at.Rd: non-ASCII input and no declared encoding
 passage.Rd: non-ASCII input and no declared encoding
 passages.en.moins.de.4h.Rd: non-ASCII input and no declared encoding
 passages2.Rd: non-ASCII input and no declared encoding
@@ -235,12 +243,18 @@ tarru.Rd: non-ASCII input and no declared encoding
 teste.radar.Rd: non-ASCII input and no declared encoding
 week.rpu.Rd: non-ASCII input and no declared encoding
 week.variations.Rd: non-ASCII input and no declared encoding
-problems found in ‘add.territoire.Rd’, ‘analyse_type_etablissement.Rd’, ‘barplot.week.variations.Rd’, ‘completude.Rd’, ‘completude.time.Rd’, ‘copyright.Rd’, ‘count.CIM10.Rd’, ‘datetime.Rd’, ‘duree.passage2.Rd’, ‘evolution.Rd’, ‘factor2table.Rd’, ‘finess2territoires.Rd’, ‘format.n.Rd’, ‘passage.Rd’, ‘passages.en.moins.de.4h.Rd’, ‘passages2.Rd’, ‘pdsa.Rd’, ‘plot.xts2.Rd’, ‘print.summary.rpu.Rd’, ‘print.table.rpu.Rd’, ‘pyramide.age.Rd’, ‘radar.completude.Rd’, ‘reorder.dataframe.fedoru.Rd’, ‘reorder.vector.fedoru.Rd’, ‘resume.age.Rd’, ‘resume.age.sexe.Rd’, ‘resume.ccmu.Rd’, ‘resume.dateheure.Rd’, ‘resume.dp.Rd’, ‘resume.entree.Rd’, ‘resume.mode.sortie.Rd’, ‘resume.motif.Rd’, ‘resume.passages.Rd’, ‘resume.rpu.Rd’, ‘resume.sexe.Rd’, ‘rpu.par.jour2.Rd’, ‘rpu.par.mois.Rd’, ‘rpu2xts.Rd’, ‘summary.cp.Rd’, ‘summary.destination.Rd’, ‘summary.duree.passage.Rd’, ‘summary.orientation.Rd’, ‘summary.wday.Rd’, ‘synthese.completude.Rd’, ‘tab.completude.Rd’, ‘tarru.Rd’, ‘teste.radar.Rd’, ‘week.rpu.Rd’, ‘week.variations.Rd’
+problems found in ‘add.territoire.Rd’, ‘analyse_type_etablissement.Rd’, ‘barplot.week.variations.Rd’, ‘completude.Rd’, ‘completude.time.Rd’, ‘copyright.Rd’, ‘count.CIM10.Rd’, ‘datetime.Rd’, ‘df.duree.pas.Rd’, ‘duree.passage2.Rd’, ‘evolution.Rd’, ‘factor2table.Rd’, ‘finess2territoires.Rd’, ‘format.n.Rd’, ‘is.present.at.Rd’, ‘passage.Rd’, ‘passages.en.moins.de.4h.Rd’, ‘passages2.Rd’, ‘pdsa.Rd’, ‘plot.xts2.Rd’, ‘print.summary.rpu.Rd’, ‘print.table.rpu.Rd’, ‘pyramide.age.Rd’, ‘radar.completude.Rd’, ‘reorder.dataframe.fedoru.Rd’, ‘reorder.vector.fedoru.Rd’, ‘resume.age.Rd’, ‘resume.age.sexe.Rd’, ‘resume.ccmu.Rd’, ‘resume.dateheure.Rd’, ‘resume.dp.Rd’, ‘resume.entree.Rd’, ‘resume.mode.sortie.Rd’, ‘resume.motif.Rd’, ‘resume.passages.Rd’, ‘resume.rpu.Rd’, ‘resume.sexe.Rd’, ‘rpu.par.jour2.Rd’, ‘rpu.par.mois.Rd’, ‘rpu2xts.Rd’, ‘summary.cp.Rd’, ‘summary.destination.Rd’, ‘summary.duree.passage.Rd’, ‘summary.orientation.Rd’, ‘summary.wday.Rd’, ‘synthese.completude.Rd’, ‘tab.completude.Rd’, ‘tarru.Rd’, ‘teste.radar.Rd’, ‘week.rpu.Rd’, ‘week.variations.Rd’
 * checking Rd metadata ... OK
 * checking Rd line widths ... NOTE
 Rd file 'barplot.week.variations.Rd':
   \examples lines wider than 100 characters:
      barplot.week.variations(v[-length(v)], las = 2, main = "test", ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10),
+
+Rd file 'is.present.at.Rd':
+  \examples lines wider than 100 characters:
+               plot(xts.p15, ylab = "Nombre de patients à 15h", main = "Nombre de patients présents à 15 heures")
+               plot(xts.p2, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 2 heures du matin")
+               plot(xts.p8, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 8 heures du matin")
 
 Rd file 'plot.xts2.Rd':
   \usage lines wider than 90 characters:
@@ -388,6 +402,9 @@ Objects in \usage without \alias in documentation object 'rpu.par.jour2':
 Undocumented arguments in documentation object 'tarru'
   ‘rpu.region’
 
+Bad \usage lines found in documentation object 'is.present.at':
+  is.present.at((dp, heure = "15:00:00"))
+
 Functions with \usage entries need to have the appropriate \alias
 entries, and all their arguments documented.
 The \usage entries must correspond to syntactically valid R code.
@@ -454,4 +471,4 @@ Calls: week.variations -> diff
 Execution halted
 * checking PDF version of manual ... OK
 * DONE
-Status: 1 ERROR, 11 WARNINGs, 4 NOTEs
+Status: 1 ERROR, 10 WARNINGs, 3 NOTEs

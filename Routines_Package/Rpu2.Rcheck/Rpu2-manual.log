@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.23)  21 OCT 2015 20:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.23)  28 OCT 2015 13:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -732,9 +732,9 @@ Overfull \hbox (19.51749pt too wide) in paragraph at lines 73--82
 ge4", "n.dom", "n.hosp", "n.transfert",
  []
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+[3] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [3]
+)
 Overfull \hbox (126.78094pt too wide) in paragraph at lines 133--133
  []\T1/zi4/m/n/9 barplot.week.variations(v[-length(v)], las = 2, main = "test",
  ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10),[] 
@@ -777,10 +777,10 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [9]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
+) [10]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [10]
+)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
@@ -790,10 +790,39 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [12]
+Overfull \hbox (67.38104pt too wide) in paragraph at lines 582--582
+ []          \T1/zi4/m/n/9 plot(xts.p15, ylab = "Nombre de patients à 15h", mai
+n = "Nombre de patients présents à 15 heures")[] 
+ []
+
+
+Overfull \hbox (111.48105pt too wide) in paragraph at lines 590--590
+ []          \T1/zi4/m/n/9 plot(xts.p2, ylab = "Nombre de patients présents", m
+ain = "Nombre de patients présents à 2 heures du matin")[] 
+ []
+
+
+Overfull \hbox (111.48105pt too wide) in paragraph at lines 599--599
+ []          \T1/zi4/m/n/9 plot(xts.p8, ylab = "Nombre de patients présents", m
+ain = "Nombre de patients présents à 8 heures du matin")[] 
+ []
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
-Overfull \hbox (10.22803pt too wide) in paragraph at lines 595--597
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [13]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [14]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [15]
+Overfull \hbox (10.22803pt too wide) in paragraph at lines 730--732
 []\T1/ptm/m/n/10 n.so.conforme.dom, n.duree.passage.inf4h.dom, p.passages.en.mo
 ins.de.4h.dom, n.so.conforme.hosp,
  []
@@ -801,51 +830,15 @@ ins.de.4h.dom, n.so.conforme.hosp,
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
-Overfull \hbox (0.7078pt too wide) in paragraph at lines 619--621
+Overfull \hbox (0.7078pt too wide) in paragraph at lines 754--756
 \T1/ptm/m/n/10 par ymd_hms Trans-form dates stored as char-ac-ter or nu-meric v
 ec-tors to POSIXct
  []
 
-[13]
-Overfull \hbox (5.28091pt too wide) in paragraph at lines 643--643
+
+Overfull \hbox (5.28091pt too wide) in paragraph at lines 778--778
  []\T1/zi4/m/n/9 n.passages.nuit <- passages2(pop18$ENTREE, "nuit"); n.passages
 .nuit[1]; n.passages.nuit[2][] 
- []
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [14]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
-Overfull \hbox (161.78088pt too wide) in paragraph at lines 689--689
- []\T1/zi4/m/n/10 plot.xts2(x, y = NULL, type = "l", auto.grid = TRUE, major.ti
-cks = "auto", minor.ticks = TRUE, major.format = TRUE,[] 
- []
-
-
-Overfull \hbox (9.78088pt too wide) in paragraph at lines 690--690
- []\T1/zi4/m/n/10 bar.col = "grey", candle.col = "white", ann = TRUE, axes = TR
-UE, col = "black", ...)[] 
- []
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
-Overfull \hbox (28.681pt too wide) in paragraph at lines 730--730
- []       \T1/zi4/m/n/9 print.summary.rpu(x, cnames = c("Jour","n"), caption = 
-"Nombre de RPU par jour de semaine")[] 
- []
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [15]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
-Overfull \hbox (14.78088pt too wide) in paragraph at lines 775--775
- []\T1/zi4/m/n/10 pyramide.age(dx, cut = 5, gap = 1, cex = 0.8,col.h = "light g
-reen", col.f = "khaki1")[] 
  []
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
@@ -854,21 +847,34 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
+Overfull \hbox (161.78088pt too wide) in paragraph at lines 824--824
+ []\T1/zi4/m/n/10 plot.xts2(x, y = NULL, type = "l", auto.grid = TRUE, major.ti
+cks = "auto", minor.ticks = TRUE, major.format = TRUE,[] 
+ []
+
+
+Overfull \hbox (9.78088pt too wide) in paragraph at lines 825--825
+ []\T1/zi4/m/n/10 bar.col = "grey", candle.col = "white", ann = TRUE, axes = TR
+UE, col = "black", ...)[] 
+ []
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [17]
+Overfull \hbox (28.681pt too wide) in paragraph at lines 865--865
+ []       \T1/zi4/m/n/9 print.summary.rpu(x, cnames = c("Jour","n"), caption = 
+"Nombre de RPU par jour de semaine")[] 
+ []
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [18]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
-Overfull \hbox (25.14818pt too wide) in paragraph at lines 956--958
-\T1/ptm/m/n/10 "n.ccmup", "n.ccmud", "p.ccmu1", "p.ccmu2", "p.ccmu3", "p.ccmu4"
-, "p.ccmu5", "p.ccmup", "p.ccmud") 
+Overfull \hbox (14.78088pt too wide) in paragraph at lines 910--910
+ []\T1/zi4/m/n/10 pyramide.age(dx, cut = 5, gap = 1, cex = 0.8,col.h = "light g
+reen", col.f = "khaki1")[] 
  []
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
@@ -882,44 +888,50 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [20]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [21]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
+Overfull \hbox (25.14818pt too wide) in paragraph at lines 1091--1093
+\T1/ptm/m/n/10 "n.ccmup", "n.ccmud", "p.ccmu1", "p.ccmu2", "p.ccmu3", "p.ccmu4"
+, "p.ccmu5", "p.ccmup", "p.ccmud") 
+ []
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
-Overfull \hbox (70.18681pt too wide) in paragraph at lines 1125--1137
-\T1/ptm/m/n/10 d'un pas-sage en min-utes duree.mediane.passage durée mé-di-ane 
-d'un pas-sage en min-utes duree.moyenne.passage.dom
- []
-
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [22]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [23]
-Overfull \hbox (4.53748pt too wide) in paragraph at lines 1208--1210
-[]\T1/ptm/m/n/10 vecteur nommé: "N", "n.na", "n.rens", "p.rens", "n.hommes", "n
-.femmes", "p.hommes", "p.femmes",
- []
-
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [24]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
+Overfull \hbox (70.18681pt too wide) in paragraph at lines 1260--1272
+\T1/ptm/m/n/10 d'un pas-sage en min-utes duree.mediane.passage durée mé-di-ane 
+d'un pas-sage en min-utes duree.moyenne.passage.dom
+ []
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [25]
-Overfull \hbox (125.88098pt too wide) in paragraph at lines 1333--1333
- []\T1/zi4/m/n/9 legend("topleft", inset = c(0, -0.1), legend = c("Brut","Stand
-ardisé"), bty = "n", col = c("black","gray80"), pch = 15)[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+)
+Overfull \hbox (4.53748pt too wide) in paragraph at lines 1343--1345
+[]\T1/ptm/m/n/10 vecteur nommé: "N", "n.na", "n.rens", "p.rens", "n.hommes", "n
+.femmes", "p.hommes", "p.femmes",
  []
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
@@ -933,13 +945,10 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [27]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [28]
-Overfull \hbox (10.43814pt too wide) in paragraph at lines 1485--1490
-\T1/ptm/m/n/10 "n.ho", "n.hdt", "n.reo", "n.scam", "n.psa", "p.chir", "p.med", 
-"p.obst", "p.si", "p.sc", "p.rea", "p.uhcd",
+Overfull \hbox (125.88098pt too wide) in paragraph at lines 1468--1468
+ []\T1/zi4/m/n/9 legend("topleft", inset = c(0, -0.1), legend = c("Brut","Stand
+ardisé"), bty = "n", col = c("black","gray80"), pch = 15)[] 
  []
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
@@ -951,60 +960,80 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [30]
-Overfull \hbox (26.88101pt too wide) in paragraph at lines 1595--1595
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+)
+Overfull \hbox (10.43814pt too wide) in paragraph at lines 1620--1625
+\T1/ptm/m/n/10 "n.ho", "n.hdt", "n.reo", "n.scam", "n.psa", "p.chir", "p.med", 
+"p.obst", "p.si", "p.sc", "p.rea", "p.uhcd",
+ []
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [31]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [32]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+)
+Overfull \hbox (26.88101pt too wide) in paragraph at lines 1730--1730
  []      \T1/zi4/m/n/9 plot(t[,"DATE DE SORTIE"], type = "l", main = "Mode de s
 ortie", ylab = "Taux de completude")[] 
  []
 
 
-Overfull \hbox (0.781pt too wide) in paragraph at lines 1599--1599
+Overfull \hbox (0.781pt too wide) in paragraph at lines 1734--1734
  []     \T1/zi4/m/n/9 boxplot(t, las = 2, cex.axis = 0.8, ylab = "\% de complet
 ude", main = "Complétude RPU")[] 
  []
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [33]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [34]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [31]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [32] (./Rd2.ind
-[33]
+) [35] (./Rd2.ind
+[36]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 3.
 
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 74.
+(Font)              using `T1/zi4/m/n' instead on input line 84.
 
-[34
+[37
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1719.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1719.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1854.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1854.
  (./Rd2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1719.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1719.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1854.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1854.
 
 Package rerunfilecheck Info: File `Rd2.out' has not changed.
-(rerunfilecheck)             Checksum: D32E02752716A7DCD330673208835D70;3189.
+(rerunfilecheck)             Checksum: 9644DB7AB2441F2E3CD861B6FCB7AFAA;3395.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1719.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1854.
  ) 
 Here is how much of TeX's memory you used:
- 6890 strings out of 494958
- 101822 string characters out of 6179213
+ 6933 strings out of 494958
+ 102685 string characters out of 6179213
  169147 words of memory out of 5000000
- 9504 multiletter control sequences out of 15000+600000
- 40988 words of font info for 50 fonts, out of 8000000 for 9000
+ 9509 multiletter control sequences out of 15000+600000
+ 43878 words of font info for 52 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  38i,6n,34p,227b,592s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texliv
@@ -1015,10 +1044,10 @@ st/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
 mr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (34 pages, 141604 bytes).
+Output written on Rd2.pdf (37 pages, 145084 bytes).
 PDF statistics:
- 926 PDF objects out of 1000 (max. 8388607)
- 874 compressed objects within 9 object streams
- 410 named destinations out of 1000 (max. 500000)
- 433 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 995 PDF objects out of 1000 (max. 8388607)
+ 939 compressed objects within 10 object streams
+ 439 named destinations out of 1000 (max. 500000)
+ 465 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -136,6 +136,25 @@ Transforme des rubriques ENTREE et SORTIE en objet datetime
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 base::cat("datetime", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 cleanEx()
+nameEx("df.duree.pas")
+### * df.duree.pas
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: df.duree.pas
+### Title: Dataframe Dur<c3><a9>e de passage
+### Aliases: df.duree.pas
+
+### ** Examples
+
+df <- df.duree.pas(dx)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("df.duree.pas", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
 nameEx("evolution")
 ### * evolution
 
@@ -238,6 +257,52 @@ e <- datetime(dx$ENTREE); he <- horaire(e)
 
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 base::cat("horaire", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("is.present.at")
+### * is.present.at
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: is.present.at
+### Title: Un patient est-il pr<c3><a9>sent <c3><a0> une heure
+###   donn<c3><a9>e ?
+### Aliases: is.present.at
+
+### ** Examples
+
+dp <- df.duree.pas(dx)
+          dp$present.a.15h <- is.present.at(dp)
+          # nombre moyen de patients présents à 15h tous les jours
+          n.p15 <- tapply(dp$present.a.15h, yday(as.Date(dp$ENTREE)), sum)
+          summary(n.p15)
+          sd(n.p15)
+          # transformation en xts
+          xts.p15 <- xts(n.p15, order.by = unique(as.Date(dp$ENTREE)))
+          plot(xts.p15, ylab = "Nombre de patients à 15h", main = "Nombre de patients présents à 15 heures")
+          lines(rollmean(x = xts.p15, k = 7), col = "red", lwd = 2)
+
+          # à 2h du matin
+          dp$present.a.2h <- is.present.at(dp, "02:00:00")
+          n.p2 <- tapply(dp$present.a.2h, yday(as.Date(dp$ENTREE)), sum)
+          summary(n.p2)
+          xts.p2 <- xts(n.p2, order.by = unique(as.Date(dp$ENTREE)))
+          plot(xts.p2, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 2 heures du matin")
+          lines(rollmean(x = xts.p2, k = 7), col = "red", lwd = 2)
+          # pour les données de 2015, noter le pic à 2 heures du matin
+
+          # à 8 heures
+          present.a.8h <- is.present.at(dp, "08:00:00")
+          n.p8 <- tapply(present.a.8h, yday(as.Date(dp$ENTREE)), sum)
+          summary(n.p8)
+          xts.p8 <- xts(n.p8, order.by = unique(as.Date(dp$ENTREE)))
+          plot(xts.p8, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 8 heures du matin")
+          lines(rollmean(x = xts.p8, k = 7), col = "red", lwd = 2)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("is.present.at", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 cleanEx()
 nameEx("passage")
 ### * passage

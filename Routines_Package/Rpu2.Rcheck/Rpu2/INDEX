@@ -10,13 +10,17 @@ copyright               copyrigth
 count.CIM10             Combien de codes CIM10
 datetime                met une string date au format YYYY-MM-DD
                         HH:MM:SS
+df.duree.pas            Dataframe Durée de passage
 duree.passage2          Calcul de la duree de passage
 evolution               Evolution d'une annee sur l'autre
 factor2table            crée une table à 2 colonnes
 finess2territoires      réorganiser les FINESS par territoires de santé
 format.n                formate un nombre
 horaire                 extrait l'heure d'une date AAAA-MM-DD HH:MM:SS
+is.present.at           Un patient est-il présent à une heure donnée ?
 mn2h                    transforme des minutes en heure/mn
+n.isna                  Nombre de NA
+p.isna                  Pourcentage de NA
 passage                 Horaires de passages
 passages.en.moins.de.4h
                         Analyse les passages de moins de 4 heures.
