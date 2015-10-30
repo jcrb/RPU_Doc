@@ -748,3 +748,12 @@ desiner hors limites
 ```
 ref: http://stackoverflow.com/questions/3932038/plot-a-legend-outside-of-the-plotting-area-in-base-graphics
 
+
+Reordering groups in Likert plots with R
+----------------------------------------
+http://stackoverflow.com/questions/14415674/reordering-groups-in-likert-plots-with-r
+
+Divers
+======
+
+Error in readRDS(file) : unknown input format voir http://stackoverflow.com/questions/6473831/readrdsfile-in-r
