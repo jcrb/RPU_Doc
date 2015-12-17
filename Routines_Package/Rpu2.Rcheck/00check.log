@@ -1,0 +1,474 @@
+* using log directory ‘/home/jcb/Documents/Resural/Stat Resural/RPU_Doc/Routines_Package/Rpu2.Rcheck’
+* using R version 3.2.2 (2015-08-14)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using option ‘--as-cran’
+* checking for file ‘Rpu2/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘Rpu2’ version ‘0.1.2’
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘Rpu2’ can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking DESCRIPTION meta-information ... WARNING
+Non-standard license specification:
+  GNU
+Standardizable: FALSE
+Packages listed in more than one of Depends, Imports, Suggests, Enhances:
+  ‘lubridate’ ‘xtable’ ‘openintro’ ‘plotrix’
+A package should be listed in only one of these fields.
+* checking top-level files ... NOTE
+Non-standard files/directories found at top level:
+  ‘RPU2_1.pdf’ ‘Read-me.Rmd’ ‘Read-me.html’ ‘Rpu2.Rproj’
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... WARNING
+Found the following file with non-ASCII characters:
+  Rapport.R
+Portable packages must use only ASCII characters in their R code,
+except perhaps in comments.
+Use \uxxxx escapes for other characters.
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... WARNING
+Erreur : l'objet 'barplot' est introuvable pendant le chargement de l'espace de noms 'Rpu2'
+Exécution arrêtée
+
+A namespace must be able to be loaded with just the base namespace
+loaded: otherwise if the namespace gets loaded by a saved object, the
+session will be unable to start.
+
+Probably some imports need to be declared in the NAMESPACE file.
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking dependencies in R code ... WARNING
+'::' or ':::' import not declared from: ‘xts’
+'library' or 'require' calls not declared from:
+  ‘plyr’ ‘xts’
+'library' or 'require' call to ‘lubridate’ which was already attached by Depends.
+  Please remove these calls from your code.
+'library' or 'require' calls in package code:
+  ‘plyr’ ‘xts’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+Namespaces in Imports field not imported from:
+  ‘dplyr’ ‘lubridate’ ‘openintro’ ‘plotrix’ ‘xtable’
+  All declared Imports should be used.
+Packages in Depends field not imported from:
+  ‘lubridate’ ‘openintro’ ‘plotrix’ ‘xtable’
+  These packages need to be imported from (in the NAMESPACE file)
+  for when this namespace is loaded but not attached.
+Unexported objects imported by ':::' calls:
+  ‘xts:::has.OHLC’ ‘xts:::is.OHLC’
+  See the note in ?`:::` about the use of this operator.
+* checking S3 generic/method consistency ... WARNING
+format:
+  function(x, ...)
+format.n:
+  function(x)
+
+print:
+  function(x, ...)
+print.summary.rpu:
+  function(x, sens, cnames, rnames, caption, type, ref)
+
+print:
+  function(x, ...)
+print.table.rpu:
+  function(t, caption, type, ref)
+
+summary:
+  function(object, ...)
+summary.cp:
+  function(vx)
+
+summary:
+  function(object, ...)
+summary.destination:
+  function(dx, correction)
+
+summary:
+  function(object, ...)
+summary.orientation:
+  function(dx, correction)
+
+summary:
+  function(object, ...)
+summary.wday:
+  function(vx)
+
+barplot:
+  function(height, ...)
+barplot.week.variations:
+  function(x, coltitre, colmoins, colplus, xlab, cex.names, cex.col,
+           dx, ...)
+
+reorder:
+  function(x, ...)
+reorder.dataframe.fedoru:
+  function(dx)
+
+reorder:
+  function(x, ...)
+reorder.vector.fedoru:
+  function(dx)
+
+See section ‘Generic functions and methods’ in the ‘Writing R
+Extensions’ manual.
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.age’
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.dateheure’
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.transport’
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.ccmu’
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.passages’
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.mode.sortie’
+completude.time: no visible global function definition for ‘ddply’
+completude.time: no visible global function definition for ‘.’
+completude.time: no visible global function definition for ‘month’
+completude.time: no visible global function definition for ‘yday’
+completude.time: no visible global function definition for ‘wday’
+completude.time: no visible global function definition for ‘year’
+completude.time: no visible global function definition for ‘week’
+datetime: no visible global function definition for ‘ymd_hms’
+df.duree.pas: no visible global function definition for ‘ymd_hms’
+duree.passage2: no visible global function definition for ‘ymd_hms’
+duree.passage2: no visible global function definition for ‘hms’
+horaire: no visible global function definition for ‘hms’
+horaire3: no visible global function definition for ‘hms’
+is.present.at: no visible global function definition for ‘hms’
+passage: no visible global function definition for ‘hms’
+passages.en.moins.de.4h: no visible global function definition for
+  ‘ymd_hms’
+passages2: no visible global function definition for ‘ymd_hms’
+passages2: no visible global function definition for ‘hms’
+pdsa: no visible global function definition for ‘hms’
+plot.xts2: no visible global function definition for ‘axTicksByTime’
+plot.xts2: no visible global function definition for ‘.index’
+plot.xts2: no visible global function definition for
+  ‘plot.ohlc.candles’
+print.summary.rpu: no visible global function definition for
+  ‘print.xtable’
+print.summary.rpu: no visible global function definition for ‘xtable’
+print.table.rpu: no visible global function definition for
+  ‘print.xtable’
+print.table.rpu: no visible global function definition for ‘xtable’
+pyramide.age: no visible binding for global variable ‘n.rpu’
+pyramide.age: no visible global function definition for ‘pyramid.plot’
+radar.completude: no visible global function definition for
+  ‘radial.plot’
+radar.completude: no visible global function definition for ‘fadeColor’
+resume.motif: no visible binding for global variable ‘n’
+rpu.par.jour2: no visible global function definition for ‘yday’
+rpu.par.jour2: no visible global function definition for ‘rollmean’
+rpu.par.mois: no visible global function definition for ‘year’
+rpu2xts: no visible global function definition for ‘xts’
+summary.cp: no visible binding for global variable ‘is.cpals’
+summary.wday: no visible global function definition for ‘wday’
+synthese.completude: no visible global function definition for ‘ddply’
+synthese.completude: no visible global function definition for ‘.’
+synthese.completude: no visible binding for global variable ‘FINESS’
+tarru: no visible binding for global variable ‘is.cpals’
+week.rpu: no visible global function definition for ‘week’
+
+Found the following assignments to the global environment:
+File ‘Rpu2/R/Rapport.R’:
+  assign(".plot.xts", recordPlot(), .GlobalEnv)
+* checking Rd files ... WARNING
+add.territoire.Rd: non-ASCII input and no declared encoding
+analyse_type_etablissement.Rd: non-ASCII input and no declared encoding
+barplot.week.variations.Rd: non-ASCII input and no declared encoding
+completude.Rd: non-ASCII input and no declared encoding
+completude.time.Rd: non-ASCII input and no declared encoding
+copyright.Rd: non-ASCII input and no declared encoding
+count.CIM10.Rd: non-ASCII input and no declared encoding
+datetime.Rd: non-ASCII input and no declared encoding
+df.duree.pas.Rd: non-ASCII input and no declared encoding
+duree.passage2.Rd: non-ASCII input and no declared encoding
+evolution.Rd: non-ASCII input and no declared encoding
+factor2table.Rd: non-ASCII input and no declared encoding
+finess2territoires.Rd: non-ASCII input and no declared encoding
+format.n.Rd: non-ASCII input and no declared encoding
+is.present.at.Rd: non-ASCII input and no declared encoding
+passage.Rd: non-ASCII input and no declared encoding
+passages.en.moins.de.4h.Rd: non-ASCII input and no declared encoding
+passages2.Rd: non-ASCII input and no declared encoding
+pdsa.Rd: non-ASCII input and no declared encoding
+plot.xts2.Rd: non-ASCII input and no declared encoding
+print.summary.rpu.Rd: non-ASCII input and no declared encoding
+print.table.rpu.Rd: non-ASCII input and no declared encoding
+pyramide.age.Rd: non-ASCII input and no declared encoding
+radar.completude.Rd: non-ASCII input and no declared encoding
+reorder.dataframe.fedoru.Rd: non-ASCII input and no declared encoding
+reorder.vector.fedoru.Rd: non-ASCII input and no declared encoding
+resume.age.Rd: non-ASCII input and no declared encoding
+resume.age.sexe.Rd: non-ASCII input and no declared encoding
+resume.ccmu.Rd: non-ASCII input and no declared encoding
+resume.dateheure.Rd: non-ASCII input and no declared encoding
+resume.dp.Rd: non-ASCII input and no declared encoding
+resume.entree.Rd: non-ASCII input and no declared encoding
+resume.mode.sortie.Rd: non-ASCII input and no declared encoding
+resume.motif.Rd: non-ASCII input and no declared encoding
+resume.passages.Rd: non-ASCII input and no declared encoding
+resume.rpu.Rd: non-ASCII input and no declared encoding
+resume.sexe.Rd: non-ASCII input and no declared encoding
+rpu.par.jour2.Rd: non-ASCII input and no declared encoding
+rpu.par.mois.Rd: non-ASCII input and no declared encoding
+rpu2xts.Rd: non-ASCII input and no declared encoding
+summary.cp.Rd: non-ASCII input and no declared encoding
+summary.destination.Rd: non-ASCII input and no declared encoding
+summary.duree.passage.Rd: non-ASCII input and no declared encoding
+summary.orientation.Rd: non-ASCII input and no declared encoding
+summary.wday.Rd: non-ASCII input and no declared encoding
+synthese.completude.Rd: non-ASCII input and no declared encoding
+tab.completude.Rd: non-ASCII input and no declared encoding
+tarru.Rd: non-ASCII input and no declared encoding
+teste.radar.Rd: non-ASCII input and no declared encoding
+week.rpu.Rd: non-ASCII input and no declared encoding
+week.variations.Rd: non-ASCII input and no declared encoding
+problems found in ‘add.territoire.Rd’, ‘analyse_type_etablissement.Rd’, ‘barplot.week.variations.Rd’, ‘completude.Rd’, ‘completude.time.Rd’, ‘copyright.Rd’, ‘count.CIM10.Rd’, ‘datetime.Rd’, ‘df.duree.pas.Rd’, ‘duree.passage2.Rd’, ‘evolution.Rd’, ‘factor2table.Rd’, ‘finess2territoires.Rd’, ‘format.n.Rd’, ‘is.present.at.Rd’, ‘passage.Rd’, ‘passages.en.moins.de.4h.Rd’, ‘passages2.Rd’, ‘pdsa.Rd’, ‘plot.xts2.Rd’, ‘print.summary.rpu.Rd’, ‘print.table.rpu.Rd’, ‘pyramide.age.Rd’, ‘radar.completude.Rd’, ‘reorder.dataframe.fedoru.Rd’, ‘reorder.vector.fedoru.Rd’, ‘resume.age.Rd’, ‘resume.age.sexe.Rd’, ‘resume.ccmu.Rd’, ‘resume.dateheure.Rd’, ‘resume.dp.Rd’, ‘resume.entree.Rd’, ‘resume.mode.sortie.Rd’, ‘resume.motif.Rd’, ‘resume.passages.Rd’, ‘resume.rpu.Rd’, ‘resume.sexe.Rd’, ‘rpu.par.jour2.Rd’, ‘rpu.par.mois.Rd’, ‘rpu2xts.Rd’, ‘summary.cp.Rd’, ‘summary.destination.Rd’, ‘summary.duree.passage.Rd’, ‘summary.orientation.Rd’, ‘summary.wday.Rd’, ‘synthese.completude.Rd’, ‘tab.completude.Rd’, ‘tarru.Rd’, ‘teste.radar.Rd’, ‘week.rpu.Rd’, ‘week.variations.Rd’
+* checking Rd metadata ... OK
+* checking Rd line widths ... NOTE
+Rd file 'barplot.week.variations.Rd':
+  \examples lines wider than 100 characters:
+     barplot.week.variations(v[-length(v)], las = 2, main = "test", ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10),
+
+Rd file 'is.present.at.Rd':
+  \examples lines wider than 100 characters:
+               plot(xts.p15, ylab = "Nombre de patients à 15h", main = "Nombre de patients présents à 15 heures")
+               plot(xts.p2, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 2 heures du matin")
+               plot(xts.p8, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 8 heures du matin")
+
+Rd file 'plot.xts2.Rd':
+  \usage lines wider than 90 characters:
+     plot.xts2(x, y = NULL, type = "l", auto.grid = TRUE, major.ticks = "auto", minor.ticks = TRUE, major.format = TRUE,
+
+Rd file 'rpu.par.mois.Rd':
+  \examples lines wider than 100 characters:
+     legend("topleft", inset = c(0, -0.1), legend = c("Brut","Standardisé"), bty = "n", col = c("black","gray80"), pch = 15)
+
+These lines will be truncated in the PDF manual.
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... WARNING
+Functions or methods with usage in documentation object 'resume.age' but not in code:
+  summary.age
+
+Functions or methods with usage in documentation object 'resume.age.sexe' but not in code:
+  summary.age.sexe
+
+Functions or methods with usage in documentation object 'resume.ccmu' but not in code:
+  summary.ccmu
+
+Functions or methods with usage in documentation object 'resume.dateheure' but not in code:
+  summary.dateheure
+
+Functions or methods with usage in documentation object 'resume.dp' but not in code:
+  summary.dp
+
+Functions or methods with usage in documentation object 'resume.entree' but not in code:
+  summary.entree
+
+Functions or methods with usage in documentation object 'resume.mode.sortie' but not in code:
+  summary.mode.sortie
+
+Functions or methods with usage in documentation object 'resume.motif' but not in code:
+  summary.motif
+
+Functions or methods with usage in documentation object 'resume.passages' but not in code:
+  summary.passages
+
+Functions or methods with usage in documentation object 'resume.rpu' but not in code:
+  summary.rpu
+
+Functions or methods with usage in documentation object 'resume.sexe' but not in code:
+  summary.sexe
+
+Functions or methods with usage in documentation object 'resume.transport' but not in code:
+  summary.transport
+
+Functions or methods with usage in documentation object 'summary.duree.passage' but not in code:
+  summary.duree.passage
+
+Codoc mismatches from documentation object 'barplot.week.variations':
+barplot.week.variations
+  Code: function(x, coltitre = TRUE, colmoins = "red", colplus =
+                 "blue", xlab = "Semaines", cex.names = 0.8, cex.col =
+                 0.8, dx = 3, ...)
+  Docs: function()
+  Argument names in code not in docs:
+    x coltitre colmoins colplus xlab cex.names cex.col dx ...
+
+Codoc mismatches from documentation object 'rpu.par.jour2':
+rpu.par.jour
+  Code: function(dx)
+  Docs: function(d, roll = 7)
+  Argument names in code not in docs:
+    dx
+  Argument names in docs not in code:
+    d roll
+  Mismatches in argument names:
+    Position: 1 Code: dx Docs: d
+
+Codoc mismatches from documentation object 'rpu2xts':
+rpu2xts
+  Code: function(d)
+  Docs: function(dx)
+  Argument names in code not in docs:
+    d
+  Argument names in docs not in code:
+    dx
+  Mismatches in argument names:
+    Position: 1 Code: d Docs: dx
+
+* checking Rd \usage sections ... WARNING
+Documented arguments not in \usage in documentation object 'barplot.week.variations':
+  ‘x’ ‘coltitre’ ‘colmoins’ ‘colplus’ ‘xlab’ ‘cex.names’ ‘cex.col’ ‘dx’
+  ‘...’
+
+Undocumented arguments in documentation object 'plot.xts2'
+  ‘x’ ‘y’ ‘type’ ‘auto.grid’ ‘major.ticks’ ‘minor.ticks’ ‘major.format’
+  ‘bar.col’ ‘candle.col’ ‘ann’ ‘axes’ ‘col’ ‘...’
+
+Undocumented arguments in documentation object 'print.summary.rpu'
+  ‘caption’ ‘type’ ‘ref’
+
+Undocumented arguments in documentation object 'pyramide.age'
+  ‘cex’
+
+Undocumented arguments in documentation object 'radar.completude'
+  ‘titre’
+
+Objects in \usage without \alias in documentation object 'resume.age':
+  ‘summary.age’
+
+Objects in \usage without \alias in documentation object 'resume.age.sexe':
+  ‘summary.age.sexe’
+
+Objects in \usage without \alias in documentation object 'resume.ccmu':
+  ‘summary.ccmu’
+
+Objects in \usage without \alias in documentation object 'resume.dateheure':
+  ‘summary.dateheure’
+
+Objects in \usage without \alias in documentation object 'resume.dp':
+  ‘summary.dp’
+
+Objects in \usage without \alias in documentation object 'resume.entree':
+  ‘summary.entree’
+
+Objects in \usage without \alias in documentation object 'resume.mode.sortie':
+  ‘summary.mode.sortie’
+
+Objects in \usage without \alias in documentation object 'resume.motif':
+  ‘summary.motif’
+
+Objects in \usage without \alias in documentation object 'resume.passages':
+  ‘summary.passages’
+
+Objects in \usage without \alias in documentation object 'resume.rpu':
+  ‘summary.rpu’
+
+Objects in \usage without \alias in documentation object 'resume.sexe':
+  ‘summary.sexe’
+
+Objects in \usage without \alias in documentation object 'resume.transport':
+  ‘summary.transport’
+
+Undocumented arguments in documentation object 'rpu.par.jour2'
+  ‘roll’
+Documented arguments not in \usage in documentation object 'rpu.par.jour2':
+  ‘roll:’
+Objects in \usage without \alias in documentation object 'rpu.par.jour2':
+  ‘rpu.par.jour’
+
+Undocumented arguments in documentation object 'tarru'
+  ‘rpu.region’
+
+Bad \usage lines found in documentation object 'is.present.at':
+  is.present.at((dp, heure = "15:00:00"))
+
+Functions with \usage entries need to have the appropriate \alias
+entries, and all their arguments documented.
+The \usage entries must correspond to syntactically valid R code.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+S3 methods shown with full name in documentation object 'format.n':
+  ‘format.n’
+
+S3 methods shown with full name in documentation object 'plot.xts2':
+  ‘plot.xts2’
+
+S3 methods shown with full name in documentation object 'print.summary.rpu':
+  ‘print.summary.rpu’
+
+S3 methods shown with full name in documentation object 'print.table.rpu':
+  ‘print.table.rpu’
+
+S3 methods shown with full name in documentation object 'reorder.dataframe.fedoru':
+  ‘reorder.dataframe.fedoru’
+
+S3 methods shown with full name in documentation object 'reorder.vector.fedoru':
+  ‘reorder.vector.fedoru’
+
+S3 methods shown with full name in documentation object 'summary.cp':
+  ‘summary.cp’
+
+S3 methods shown with full name in documentation object 'summary.destination':
+  ‘summary.destination’
+
+S3 methods shown with full name in documentation object 'summary.orientation':
+  ‘summary.orientation’
+
+S3 methods shown with full name in documentation object 'summary.wday':
+  ‘summary.wday’
+
+The \usage entries for S3 methods should use the \method markup and not
+their full name.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+* checking Rd contents ... WARNING
+Argument items with no description in Rd object 'copyright':
+  ‘titre’
+
+* checking for unstated dependencies in examples ... WARNING
+Warning: erreur d'analyse de code dans le fichier 'Rpu2-Ex.R' :
+107:12: unexpected symbol
+106: 
+107: Transforme des
+                ^
+* checking examples ... ERROR
+Running examples in ‘Rpu2-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: barplot.week.variations
+> ### Title: Variation du nombre de RPU par semaine
+> ### Aliases: barplot.week.variations
+> 
+> ### ** Examples
+> 
+> v <- week.variations(dx[dx$FINESS == "3Fr",])
+Error in diff(vx) : object 'dx' not found
+Calls: week.variations -> diff
+Execution halted
+* checking PDF version of manual ... OK
+* DONE
+Status: 1 ERROR, 10 WARNINGs, 3 NOTEs

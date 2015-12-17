@@ -1,0 +1,18 @@
+Package: Rpu2
+Type: Package
+Title: Routines pour RPU
+Version: 0.1.2
+Date: 2015-09-27
+Authors@R: person("JC", "Bartier", email = "jeanclaude.bartier@gmail.com", role = c("aut", "cre"))
+Maintainer: Jean-Claude Bartier <jeanclaude.bartier@gmail.com>
+Description: Ensemble de fonctions destinées à faciliter l'analyse des RPU.
+Depends:
+    R (>= 3.1.0), lubridate, xtable, openintro, plotrix
+License: GNU
+LazyData: true
+Imports:
+    dplyr,
+    lubridate,
+    xtable,
+    openintro,
+    plotrix
