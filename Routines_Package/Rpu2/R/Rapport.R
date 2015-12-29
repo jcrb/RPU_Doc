@@ -2118,3 +2118,32 @@ is.present.at <- function(dp, heure = "15:00:00"){
     
     return(np)
 }
+
+#===============================================
+#
+# isWE Est-ce un week-end ?
+#
+#===============================================
+#' @title Determine si la date/heure correspond à un week-end.
+#' @description retourne TRUE si on est en horaire de week-end et False sinon
+#' @usage isWE(date)
+#' @param date date/heure de type YYYY-MM-DD HH:MM:SS
+#' @details la période de WE s'étend du vendredi 20 heures au lundi 8 heures. Nécessite lubridate. 
+#' Ne traite qu'une date à la fois.
+#' @return boolean
+#' @examples isWE("2015-12-28 05:12:00") # TRUE
+#'           isWE(as.Date("2015-12-28 05:12:00")) # FALSE
+#' 
+isWE <- function(date){
+    jour <- tolower(weekdays(as.Date(date)))
+    if(jour %in% c("mardi", "mercredi", "jeudi"))
+        return(FALSE)
+    if(jour %in% c("samedi", "dimanche"))
+        return(TRUE)
+    heure <- hms(format(as.POSIXct(date), "%X"))
+    if(jour == "lundi" & heure < hms("08:00:00") | 
+           jour == "vendredi" & heure > hms("19:59:59"))
+        return(TRUE)
+    else
+        return(FALSE)
+}
