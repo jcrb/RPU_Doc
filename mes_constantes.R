@@ -29,8 +29,8 @@ pop75.als.2014 <- 155281 # 75 ans et plus
 
 # Autre source
 # ------------
-#Nombre de résidents dans la région. Estimation au 1er janvier 2014: 1868773
-#http://www.insee.fr/fr/themes/detail.asp?ref_id=estim-pop&reg_id=99 <- ce fichier donne la pop par région et département depuis 1975
+# Nombre de résidents dans la région. Estimation au 1er janvier 2014: 1868773
+# http://www.insee.fr/fr/themes/detail.asp?ref_id=estim-pop&reg_id=99 <- ce fichier donne la pop par région et département depuis 1975
 
 pop0<-21655
 pop1_75<-1677958

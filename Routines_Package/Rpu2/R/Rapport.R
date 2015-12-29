@@ -144,7 +144,7 @@ radar.completude <- function(completude, finess = NULL, titre = NULL){
 #' de l'ensemble des Finess présents dans dx.
 #' @usage synthese.completude(dx)
 #' @param dx dataframe de type RPU
-#' @details
+#' @details à compléter
 #'Le tableau comporte en ordonnée le
 #' nom des établissements, en abcisse les différents items du RPU et à l'intersection
 #' ligne/colonne la complétude correspondante. dx peut comprter un ou plusieurs Finess
@@ -1693,7 +1693,7 @@ passages.en.moins.de.4h <- function(dx){
 #'@param an (str) année du copyright (par défaut 2013)
 #'@param side coté de l'écriture (défaut = 4)
 #'@param line distance par rapport au bord. Défaut=-1, immédiatement à l'intérieur du cadre
-#'@param titre
+#'@param titre par défaut RESURAL
 #'@param cex taille du texte (défaut 0.8)
 #'@return "© 2012 Resural"
 #'@export
@@ -2011,6 +2011,7 @@ barplot.week.variations <- function(x, coltitre = TRUE, colmoins = "red", colplu
 #' @usage p.isna(x)
 #' @param x un vecteur quelconque
 #' @return un pourcentage
+#' @export
 #' 
 p.isna <- function(x){return(mean(is.na(x)))}
 
@@ -2026,6 +2027,7 @@ p.isna <- function(x){return(mean(is.na(x)))}
 #' @usage n.isna(x)
 #' @param x un vecteur quelconque
 #' @return en entier
+#' @export
 #' 
 n.isna <- function(x){return(sum(is.na(x)))}
 
@@ -2044,6 +2046,8 @@ n.isna <- function(x){return(sum(is.na(x)))}
 #' @param maxtime défaut = 3 (72 heures). Durée de passage maximale
 #' @return dataframe de type duree_passage
 #' @examples df <- df.duree.pas(dx)
+#' @export
+#' 
 df.duree.pas <- function(dx, unit = "mins", mintime = 0, maxtime = 3){
     pas <- dx[, c("ENTREE", "SORTIE", "MODE_SORTIE", "ORIENTATION", "AGE")]
     
@@ -2104,7 +2108,9 @@ df.duree.pas <- function(dx, unit = "mins", mintime = 0, maxtime = 3){
 #'           xts.p8 <- xts(n.p8, order.by = unique(as.Date(dp$ENTREE)))
 #'           plot(xts.p8, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 8 heures du matin")
 #'           lines(rollmean(x = xts.p8, k = 7), col = "red", lwd = 2)
-#' 
+#' @export
+#'
+
 is.present.at <- function(dp, heure = "15:00:00"){
     # présent à 15 heures
     limite <- hms(heure) # pour incrémenter d'une heure: hms("15:00:00") + as.period(dhours(1))

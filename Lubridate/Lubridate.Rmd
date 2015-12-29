@@ -1,0 +1,847 @@
+---
+title: "Lubridate"
+author: "JcB"
+date: "05/12/2014"
+output: html_document
+---
+
+Gestion des dates et du tmps avec R
+===================================
+
+Documentation
+-------------
+
+- [Using Dates and Times in R](http://www.noamross.net/blog/2014/2/10/using-times-and-dates-in-r---presentation-code.html)
+- [Lubridate](http://www.jstatsoft.org/v40/i03/paper)
+- [Lubridate-Site de Wickham](https://github.com/hadley/lubridate)
+- [Pot pourri](http://stackoverflow.com/tags/lubridate/hot)
+- [Wikibook](http://en.wikibooks.org/wiki/R_Programming/Times_and_Dates)
+- [Digital History Methods in R](http://dh-r.lincolnmullen.com/dates.html)
+- Package __HistData__ The HistData package provides a collection of small data sets
+    that are interesting and important in the history of statistics and data visualization.
+    The goal of the package is to make these available, both for instructional use
+    and for historical research.  Some of these present interesting challenges for graphics
+    or analysis in R.
+    
+    
+Lubridate
+=========
+
+Date-time data can be frustrating to work with in R. R commands for date-times are generally unintuitive and change depending on the type of date-time object being used. Moreover, the methods we use with date-times must be robust to time zones, leap days, daylight savings times, and other time related quirks, and R lacks these capabilities in some situations. Lubridate makes it easier to do the things R does with date-times and possible to do the things R does not. Specifically, lubridate provides:
+
+    a set of intuitive date-time related functions that work the same way for all common date-time classes (including those from chron, timeDate, zoo, xts, its, tis, timeSeries, fts, and tseries)
+
+    quick and easy parsing of date-times: ymd(), dmy(), mdy(), ...
+
+    simple functions to extract and modify components of a date-time, such as years, months, days, hours, minutes, and seconds: year(), month(), day(), ...
+
+    helper functions for handling time zones: with_tz(), force_tz()
+
+Lubridate also expands the type of mathematical operations that can be performed with date-time objects. It introduces three new time span classes borrowed from http://joda.org.
+
+    durations, which measure the exact amount of time between two points
+
+    periods, which accurately track clock times despite leap years, leap seconds, and day light savings time
+
+    intervals, a protean summary of the time information between two points
+
+
+
+Lubridate permet des calculs avec des durées relatives. Pour cela quatre variables sont introduites. Ce sont __instants__, __intervals__, __durations__, et __periods__.
+
+Instants
+--------
+
+An instant is a specic moment in time, such as January 1st, 2012. We create an instant each
+time we parse a date into
+R
+.
+```{r}
+start_2012 <- ymd_hms("2012-01-01 12:00:00")
+```
+
+lubridate ne crée pas une nouvelle classe pour cet objet. Il associe un objet datetime à un instant. On peut tester si un objet est un instant avec _is.instant()_.
+Par exemple:
+```{r}
+is.instant(start_2012)
+```
+On peut ausi récupéréer le temps courant avec _now()_, et le jour courant avec _today()_
+
+Intervalles
+-----------
+
+Un intervalle est le temps qui sépare deux instants. C'est une longueur non ambigue que l'on peut calculer avec exactitude. On crée un objet intervalle en soustrayant deux instants ou en utilisant la fonction _new_interval()_. 
+```{r}
+start_2011 <- ymd_hms("2011-01-01 12:00:00")
+start_2010 <- ymd_hms("2010-01-01 12:00:00")
+span <- start_2011 - start_2010
+```
+
+On peut accéder aux limites d'un intervale avec __int_start()__ et __int_end()__.
+```{r}
+int_start(span)
+int_end(span)
+ start_2010 + span
+```
+Si on ajoute un itervalle à une autre date, lubridate transforme d'abord l'intervalle en __durée__.
+```{r}
+start_2011 + span
+```
+En général on obtient le résultat attendu mais la précision ne peut ^etre garantie qu'en convertissant d'abord l'intervalle en durée ou en période. On peut convertir n'importe quel laps de temps en intervalle en l'associant à une date de départ avec __as.interval__:
+```{r}
+as.interval(difftime(start_2011, start_2010), ymd("2010-03-05"))
+```
+
+
+
+Periods
+-------
+
+Les Périodes enregistrent un laps de temps dans des unités de plus grandes que les secondes, comme année, mois, semaines, jours,
+heures et minutes. Pour plus de commodité, nous pouvons également créer une période qui n' utilise que les secondes, mais
+une telle période aurait les mêmes propriétés qu'une durée.
+lubridate introduit l classe période pour modéliser les périodes. Nous construisons un objet période avec les fonctions years()
+,months(), weeks(), days(), hours(), minutes(), et seconds()
+
+```{r}
+months(3)
+
+months(3) + days(2)
+```
+Ces fonctions ne contiennent pas de "d" dans leur nom, parce qu'ielles ne créent pas de durées, elles n' ont plus de longueurs uniformes (mesuré en secondes). Par exemple, months (2) a la longueur de deux mois, même si la durée de deux mois change en fonction du moment où la période commence. Pour cette raison, nous ne pouvons pas calculer exactement combien de temps une période fera de secondes tant qu'on ne sait pas quand elle se produit. Cependant, nous pouvons toujours effectuer les calculs de date-temps avec des périodes. Lorsque nous ajoutons ou retranchons une période à un instant donné, la période se greffe sur cet instant. L'instant nous dit quand la période se produit, ce qui nous permet de calculer sa longueur exacte en secondes.
+ex: on définit une période d'une semaine. Venderdi dans une semaine à un sens précis car vendredi dimensionne la période.
+En conséquence, nous pouvons utiliser les périodes pour modéliser avec précision des temps d'horloge sans savoir quand des événements
+comme des secondes intercalaires, jour bissextile, et les changements de la DST se produire.
+
+```{r}
+start_2012 + years(1)
+
+start_2012 + dyears(1)
+```
+
+nous pouvons également convertir d'autre période de temps avec la fonction as.period()
+
+```{r}
+as.period(span)
+```
+Les _periodes_ peuvent ^etre ajoutées aux _instants_, _intervalles_, et d'autres _périodes_ mais pas à des _durées_.
+
+
+Date and time using R
+=====================
+
+by Bonnie Dixon, 10 February 2014
+
+Today at the Davis R Users’ Group, Bonnie Dixon gave a tutorial on the various ways to handle dates and times in R. Bonnie provided this great script which walks through essential classes, functions, and packages. Here it is piped through knitr::spin. The original R script can be found as a gist here.
+Date/time classes
+
+Three date/time classes are built-in in R, Date, POSIXct, and POSIXlt.
+Date
+
+This is the class to use if you have only dates, but no times, in your data.
+
+create a date:
+
+dt1 <- as.Date("2012-07-22")
+dt1
+
+## [1] "2012-07-22"
+
+non-standard formats must be specified:
+
+dt2 <- as.Date("04/20/2011", format = "%m/%d/%Y")
+dt2
+
+## [1] "2011-04-20"
+
+dt3 <- as.Date("October 6, 2010", format = "%B %d, %Y")
+dt3
+
+## [1] "2010-10-06"
+
+see list of format symbols:
+
+`?`(strptime)
+
+calculations with dates:
+
+find the difference between dates:
+
+dt1 - dt2
+
+## Time difference of 459 days
+
+difftime(dt1, dt2, units = "weeks")
+
+## Time difference of 65.57 weeks
+
+Add or subtract days:
+
+dt2 + 10
+
+## [1] "2011-04-30"
+
+dt2 - 10
+
+## [1] "2011-04-10"
+
+create a vector of dates and find the intervals between them:
+
+three.dates <- as.Date(c("2010-07-22", "2011-04-20", "2012-10-06"))
+three.dates
+
+## [1] "2010-07-22" "2011-04-20" "2012-10-06"
+
+diff(three.dates)
+
+## Time differences in days
+## [1] 272 535
+
+create a sequence of dates:
+
+six.weeks <- seq(dt1, length = 6, by = "week")
+six.weeks
+
+## [1] "2012-07-22" "2012-07-29" "2012-08-05" "2012-08-12" "2012-08-19"
+## [6] "2012-08-26"
+
+six.weeks <- seq(dt1, length = 6, by = 14)
+six.weeks
+
+## [1] "2012-07-22" "2012-08-05" "2012-08-19" "2012-09-02" "2012-09-16"
+## [6] "2012-09-30"
+
+six.weeks <- seq(dt1, length = 6, by = "2 weeks")
+six.weeks
+
+## [1] "2012-07-22" "2012-08-05" "2012-08-19" "2012-09-02" "2012-09-16"
+## [6] "2012-09-30"
+
+see the internal integer representation
+
+unclass(dt1)
+
+## [1] 15543
+
+dt1 - as.Date("1970-01-01")
+
+## Time difference of 15543 days
+
+POSIXct
+
+If you have times in your data, this is usually the best class to use.
+
+create some POSIXct objects:
+
+tm1 <- as.POSIXct("2013-07-24 23:55:26")
+tm1
+
+## [1] "2013-07-24 23:55:26 PDT"
+
+tm2 <- as.POSIXct("25072013 08:32:07", format = "%d%m%Y %H:%M:%S")
+tm2
+
+## [1] "2013-07-25 08:32:07 PDT"
+
+specify the time zone:
+
+tm3 <- as.POSIXct("2010-12-01 11:42:03", tz = "GMT")
+tm3
+
+## [1] "2010-12-01 11:42:03 GMT"
+
+some calculations with times
+
+compare times:
+
+tm2 > tm1
+
+## [1] TRUE
+
+Add or subtract seconds:
+
+tm1 + 30
+
+## [1] "2013-07-24 23:55:56 PDT"
+
+tm1 - 30
+
+## [1] "2013-07-24 23:54:56 PDT"
+
+find the difference between times:
+
+tm2 - tm1
+
+## Time difference of 8.611 hours
+
+automatically adjusts for daylight savings time:
+
+as.POSIXct("2013-03-10 08:32:07") - as.POSIXct("2013-03-09 23:55:26")
+
+## Time difference of 7.611 hours
+
+Get the current time (in POSIXct by default):
+
+Sys.time()
+
+## [1] "2014-02-10 18:26:01 PST"
+
+see the internal integer representation:
+
+unclass(tm1)
+
+## [1] 1.375e+09
+## attr(,"tzone")
+## [1] ""
+
+difftime(tm1, as.POSIXct("1970-01-01 00:00:00", tz = "UTC"), units = "secs")
+
+## Time difference of 1.375e+09 secs
+
+POSIXlt
+
+This class enables easy extraction of specific componants of a time. (“ct” stand for calender time and “lt” stands for local time. “lt” also helps one remember that POXIXlt objects are lists.)
+
+create a time:
+
+tm1.lt <- as.POSIXlt("2013-07-24 23:55:26")
+tm1.lt
+
+## [1] "2013-07-24 23:55:26"
+
+unclass(tm1.lt)
+
+## $sec
+## [1] 26
+## 
+## $min
+## [1] 55
+## 
+## $hour
+## [1] 23
+## 
+## $mday
+## [1] 24
+## 
+## $mon
+## [1] 6
+## 
+## $year
+## [1] 113
+## 
+## $wday
+## [1] 3
+## 
+## $yday
+## [1] 204
+## 
+## $isdst
+## [1] 1
+
+unlist(tm1.lt)
+
+##   sec   min  hour  mday   mon  year  wday  yday isdst 
+##    26    55    23    24     6   113     3   204     1
+
+extract componants of a time object:
+
+tm1.lt$sec
+
+## [1] 26
+
+tm1.lt$wday
+
+## [1] 3
+
+truncate or round off the time:
+
+trunc(tm1.lt, "days")
+
+## [1] "2013-07-24"
+
+trunc(tm1.lt, "mins")
+
+## [1] "2013-07-24 23:55:00"
+
+chron
+
+This class is a good option when you don’t need to deal with timezones. It requires the package chron.
+
+require(chron)
+
+## Loading required package: chron
+## 
+## Attaching package: 'chron'
+## 
+## The following objects are masked from 'package:lubridate':
+## 
+##     days, hours, minutes, seconds, years
+
+create some times:
+
+tm1.c <- as.chron("2013-07-24 23:55:26")
+tm1.c
+
+## [1] (07/24/13 23:55:26)
+
+tm2.c <- as.chron("07/25/13 08:32:07", "%m/%d/%y %H:%M:%S")
+tm2.c
+
+## [1] (07/25/13 08:32:07)
+
+extract just the date:
+
+dates(tm1.c)
+
+##     day  
+## 07/24/13
+
+compare times:
+
+tm2.c > tm1.c
+
+## [1] TRUE
+
+add days:
+
+tm1.c + 10
+
+## [1] (08/03/13 23:55:26)
+
+calculate the differene between times:
+
+tm2.c - tm1.c
+
+## [1] 08:36:41
+
+difftime(tm2.c, tm1.c, units = "hours")
+
+## Time difference of 8.611 hours
+
+does not adjust for daylight savings time:
+
+as.chron("2013-03-10 08:32:07") - as.chron("2013-03-09 23:55:26")
+
+## [1] 08:36:41
+
+Detach the chron package as it will interfere with lubridate later in this script.
+
+detach("package:chron", unload = TRUE)
+
+Summary of date/time classes
+
+    When you just have dates, use Date.
+    When you have times, POSIXct is usually the best,
+    but POSIXlt enables easy extraction of specific components
+    and chron is simplest when you don’t need to deal with timezones and daylight savings time.
+
+Manipulating times and dates
+lubridate
+
+This package is a wrapper for POSIXct with more intuitive syntax.
+
+require(lubridate)
+
+create a time:
+
+tm1.lub <- ymd_hms("2013-07-24 23:55:26")
+tm1.lub
+
+## [1] "2013-07-24 23:55:26 UTC"
+
+tm2.lub <- mdy_hm("07/25/13 08:32")
+tm2.lub
+
+## [1] "2013-07-25 08:32:00 UTC"
+
+tm3.lub <- ydm_hm("2013-25-07 4:00am")
+tm3.lub
+
+## [1] "2013-07-25 04:00:00 UTC"
+
+tm4.lub <- dmy("26072013")
+tm4.lub
+
+## [1] "2013-07-26 UTC"
+
+some manipulations: extract or reassign componants:
+
+year(tm1.lub)
+
+## [1] 2013
+
+week(tm1.lub)
+
+## [1] 30
+
+wday(tm1.lub, label = TRUE)
+
+## [1] Wed
+## Levels: Sun < Mon < Tues < Wed < Thurs < Fri < Sat
+
+hour(tm1.lub)
+
+## [1] 23
+
+tz(tm1.lub)
+
+## [1] "UTC"
+
+second(tm2.lub) <- 7
+tm2.lub
+
+## [1] "2013-07-25 08:32:07 UTC"
+
+converting to decimal hours can facilitate some types of calculations:
+
+tm1.dechr <- hour(tm1.lub) + minute(tm1.lub)/60 + second(tm1.lub)/3600
+tm1.dechr
+
+## [1] 23.92
+
+Lubridate distinguishes between four types of objects: instants, intervals, durations, and periods. An instant is a specific moment in time. Intervals, durations, and periods are all ways of recording time spans.
+
+Dates and times parsed in lubridate are instants:
+
+is.instant(tm1.lub)
+
+## [1] TRUE
+
+round an instant:
+
+round_date(tm1.lub, "minute")
+
+## [1] "2013-07-24 23:55:00 UTC"
+
+round_date(tm1.lub, "day")
+
+## [1] "2013-07-25 UTC"
+
+get the current time or date as an instant:
+
+now()
+
+## [1] "2014-02-10 18:26:02 PST"
+
+today()
+
+## [1] "2014-02-10"
+
+Note that lubridate uses UTC time zones as default.
+
+see an instant in a different time zone:
+
+with_tz(tm1.lub, "America/Los_Angeles")
+
+## [1] "2013-07-24 16:55:26 PDT"
+
+change the time zone of an instant (keeping the same clock time):
+
+force_tz(tm1.lub, "America/Los_Angeles")
+
+## [1] "2013-07-24 23:55:26 PDT"
+
+some calculations with instants. Note that the units are seconds:
+
+tm2.lub - tm1.lub
+
+## Time difference of 8.611 hours
+
+tm2.lub > tm1.lub
+
+## [1] TRUE
+
+tm1.lub + 30
+
+## [1] "2013-07-24 23:55:56 UTC"
+
+An interval is the span of time that occurs between two specified instants.
+
+in.bed <- as.interval(tm1.lub, tm2.lub)
+in.bed
+
+## [1] 2013-07-24 23:55:26 UTC--2013-07-25 08:32:07 UTC
+
+Check whether a certain instant occured with a specified interval:
+
+tm3.lub %within% in.bed
+
+## [1] TRUE
+
+tm4.lub %within% in.bed
+
+## [1] FALSE
+
+determine whether two intervals overlap:
+
+daylight <- as.interval(ymd_hm("2013-07-25 06:03"), ymd_hm("2013-07-25 20:23"))
+daylight
+
+## [1] 2013-07-25 06:03:00 UTC--2013-07-25 20:23:00 UTC
+
+int_overlaps(in.bed, daylight)
+
+## [1] TRUE
+
+A duration is a time span not anchored to specific start and end times. It has an exact, fixed length, and is stored internally in seconds.
+
+create some durations:
+
+ten.minutes <- dminutes(10)
+ten.minutes
+
+## [1] "600s (~10 minutes)"
+
+five.days <- ddays(5)
+five.days
+
+## [1] "432000s (~5 days)"
+
+one.year <- dyears(1)
+one.year
+
+## [1] "31536000s (~365 days)"
+
+as.duration(in.bed)
+
+## [1] "31001s (~8.61 hours)"
+
+arithmatic with durations:
+
+tm1.lub - ten.minutes
+
+## [1] "2013-07-24 23:45:26 UTC"
+
+five.days + dhours(12)
+
+## [1] "475200s (~5.5 days)"
+
+ten.minutes/as.duration(in.bed)
+
+## [1] 0.01935
+
+A period is a time span not anchored to specific start and end times, and measured in units larger than seconds with inexact lengths. create some periods:
+
+three.weeks <- weeks(3)
+three.weeks
+
+## [1] "21d 0H 0M 0S"
+
+four.hours <- hours(4)
+four.hours
+
+## [1] "4H 0M 0S"
+
+arithmatic with periods:
+
+tm4.lub + three.weeks
+
+## [1] "2013-08-16 UTC"
+
+sabbatical <- months(6) + days(12)
+sabbatical
+
+## [1] "6m 12d 0H 0M 0S"
+
+three.weeks/sabbatical
+
+## estimate only: convert to intervals for accuracy
+
+## [1] 0.108
+
+Calculating mean clock times
+
+Say we have a vector of clock times in decimal hours, and we want to calculate the mean clock time.
+
+bed.times <- c(23.9, 0.5, 22.7, 0.1, 23.3, 1.2, 23.6)
+bed.times
+
+## [1] 23.9  0.5 22.7  0.1 23.3  1.2 23.6
+
+mean(bed.times)  # doesn't work
+
+## [1] 13.61
+
+The clock has a circular scale, which ends where it begins, so we need to use circular statistics. (For more info on circular statistics see http://en.wikipedia.org/wiki/Mean_of_circular_quantities.)
+
+Get the package, psych.
+
+require(psych)
+circadian.mean(bed.times)
+
+## [1] 23.9
+
+An example of using times and dates in a data frame
+
+Here is a data frame with a week of hypothetical times of going to bed and getting up for one person, and the total amount of time sleep time obtained each night according to a sleep monitoring device.
+
+sleep <- data.frame(bed.time = ymd_hms("2013-09-01 23:05:24", "2013-09-02 22:51:09", 
+    "2013-09-04 00:09:16", "2013-09-04 23:43:31", "2013-09-06 00:17:41", "2013-09-06 22:42:27", 
+    "2013-09-08 00:22:27"), rise.time = ymd_hms("2013-09-02 08:03:29", "2013-09-03 07:34:21", 
+    "2013-09-04 07:45:06", "2013-09-05 07:07:17", "2013-09-06 08:17:13", "2013-09-07 06:52:11", 
+    "2013-09-08 07:15:19"), sleep.time = dhours(c(6.74, 7.92, 7.01, 6.23, 6.34, 
+    7.42, 6.45)))
+sleep
+
+##              bed.time           rise.time           sleep.time
+## 1 2013-09-01 23:05:24 2013-09-02 08:03:29 24264s (~6.74 hours)
+## 2 2013-09-02 22:51:09 2013-09-03 07:34:21 28512s (~7.92 hours)
+## 3 2013-09-04 00:09:16 2013-09-04 07:45:06 25236s (~7.01 hours)
+## 4 2013-09-04 23:43:31 2013-09-05 07:07:17 22428s (~6.23 hours)
+## 5 2013-09-06 00:17:41 2013-09-06 08:17:13 22824s (~6.34 hours)
+## 6 2013-09-06 22:42:27 2013-09-07 06:52:11 26712s (~7.42 hours)
+## 7 2013-09-08 00:22:27 2013-09-08 07:15:19 23220s (~6.45 hours)
+
+We want to calculate sleep efficiency, the percent of time in bed spent asleep.
+
+sleep$efficiency <- round(sleep$sleep.time/(sleep$rise.time - sleep$bed.time) * 
+    100, 1)
+sleep
+
+##              bed.time           rise.time           sleep.time efficiency
+## 1 2013-09-01 23:05:24 2013-09-02 08:03:29 24264s (~6.74 hours)       75.2
+## 2 2013-09-02 22:51:09 2013-09-03 07:34:21 28512s (~7.92 hours)       90.8
+## 3 2013-09-04 00:09:16 2013-09-04 07:45:06 25236s (~7.01 hours)       92.3
+## 4 2013-09-04 23:43:31 2013-09-05 07:07:17 22428s (~6.23 hours)       84.2
+## 5 2013-09-06 00:17:41 2013-09-06 08:17:13 22824s (~6.34 hours)       79.3
+## 6 2013-09-06 22:42:27 2013-09-07 06:52:11 26712s (~7.42 hours)       90.9
+## 7 2013-09-08 00:22:27 2013-09-08 07:15:19 23220s (~6.45 hours)       93.7
+
+Now let’s calculate the mean of each column:
+
+colMeans(sleep)  # doesn't work
+
+## Error: 'x' must be numeric
+
+circadian.mean(hour(sleep$bed.time) + minute(sleep$bed.time)/60 + second(sleep$bed.time)/3600)
+
+## [1] 23.6
+
+circadian.mean(hour(sleep$rise.time) + minute(sleep$rise.time)/60 + second(sleep$rise.time)/3600)
+
+## [1] 7.559
+
+mean(sleep$sleep.time)/3600
+
+## [1] 6.873
+
+mean(sleep$efficiency)
+
+## [1] 86.63
+
+We can also plot sleep duration and efficiency across the week:
+
+par(mar = c(5, 4, 4, 4))
+plot(round_date(sleep$rise.time, "day"), sleep$efficiency, type = "o", col = "blue", 
+    xlab = "Morning", ylab = NA)
+par(new = TRUE)
+plot(round_date(sleep$rise.time, "day"), sleep$sleep.time/3600, type = "o", 
+    col = "red", axes = FALSE, ylab = NA, xlab = NA)
+axis(side = 4)
+mtext(side = 4, line = 2.5, col = "red", "Sleep duration")
+mtext(side = 2, line = 2.5, col = "blue", "Sleep efficiency")
+
+plot of chunk unnamed-chunk-50plot of chunk unnamed-chunk-50
+
+More resources on times and dates
+----------------------------------
+
+- date and time using R 
+  - (http://www.stat.berkeley.edu/classes/s133/dates.html)
+  - http://science.nature.nps.gov/im/datamgmt/statistics/r/fundamentals/dates.cfm
+  - http://en.wikibooks.org/wiki/R_Programming/Times_and_Dates
+  
+- time zone and daylight saving time info:
+  - http://www.timeanddate.com/
+  - http://www.wikiwand.com/en/List_of_tz_database_time_zones
+  - http://www.twinsun.com/tz/tz-link.htm
+  - Also see the R help file at ?Sys.timezone
+
+
+
+Circular time plots in R
+========================
+
+[source](http://rstudio-pubs-static.s3.amazonaws.com/3369_998f8b2d788e4a0384ae565c4280aa47.html)
+
+Circular plots can help us to see patterns of activity that depend on the time of day. This is a short demonstration of visualizing events by time-of-day using ggplot2 and circular packages. We'll also use lubridate to work with dates/times. This was inspired by a response on [stackoverflow](http://stackoverflow.com/a/2083230/1700987). It's also partly an excuse to try out R Markdown.
+
+First, let's load our packages and generate some random event data
+
+```{r}
+library(lubridate)
+library(ggplot2)   # use at least 0.9.3 for theme_minimal()
+
+## generate random data in POSIX date-time format
+set.seed(44)
+N=500
+events <- as.POSIXct("2011-01-01", tz="GMT") + 
+              days(floor(365*runif(N))) + 
+              hours(floor(24*rnorm(N))) +  # using rnorm here
+              minutes(floor(60*runif(N))) +
+              seconds(floor(60*runif(N)))
+```
+Next, we organize the events a little. We're going to bin the events by hour and, to add some color, we'll categorize events based on whether they were during the 'workday' (defined here as 9 thru 5pm).
+
+```{r}
+# extract hour with lubridate function
+hour_of_event <- hour(events)
+# make a dataframe
+eventdata <- data.frame(datetime = events, eventhour = hour_of_event)
+# determine if event is in business hours
+eventdata$Workday <- eventdata$eventhour %in% seq(9, 17)
+```
+
+Plotting with ggplot2 package
+-----------------------------
+
+Our first method of plotting is from ggplot2. I am a fan of theme_minimal(), which is new to ggplot2 0.9.3. If you are using an older version, you can substitute theme_bw() below.
+
+```{r}
+ggplot(eventdata, aes(x = eventhour, fill = Workday)) + geom_histogram(breaks = seq(0, 
+    24), width = 2, colour = "grey") + coord_polar(start = 0) + theme_minimal() + 
+    scale_fill_brewer() + ylab("Count") + ggtitle("Events by Time of day") + 
+    scale_x_continuous("", limits = c(0, 24), breaks = seq(0, 24), labels = seq(0, 
+        24))
+```
+Plotting with circular package
+-------------------------------
+
+Other alternative plotting methods can be found in the package circular. These seem a little more fussy compared to ggplot2 in that plots required hand-tuning to make them look reasonable. In particular, I needed to play with the prop argument, which is a numerical constant determining the radii of the sectors, and shrink, which controls the size of the plotted circle. And I never did figure out how to make it display bins in different colors.
+
+```{r}
+library(circular)
+
+# make our data into circular class from package circular
+eventdata$eventhour <- circular(hour_of_event%%24, # convert to 24 hrs
+      units="hours", template="clock24")
+
+# plot a rose diagram, setting prop(ortion) argument after trial-n-error
+rose.diag(eventdata$eventhour, bin = 24, col = "lightblue", main = "Events by Hour (sqrt scale)", 
+    prop = 3)
+
+```
+
+
+The default for rose.diag() is to display the squareroot of the values being plotted, which is often helpful for visualizing counts. We can also make the scale linear if we want the peaks to really stand out by setting radii.scale = "linear". Also, rose.diag() lets us add points to the surface of our plot, which is a little redundant here, but which could be useful if we had another variable to display:
+
+```{r}
+# redundantly add points to surface; we need to adjust parameters like
+# shrink, cex, and prop
+rp <- rose.diag(eventdata$eventhour, bin = 24, col = "lightblue", main = "Events by Hour (linear scale)", 
+    prop = 12, radii.scale = "linear", shrink = 1.5, cex = 0.8)
+points(eventdata$eventhour, plot.info = rp, col = "grey", stack = TRUE)
+```
+Finally, we can estimate the density and plot it more conventionally. The function circular.density() is needed since our data “wrap around”. A problem with density plots is that your average person can't read the y-axis, so let's just hide the numbers with yaxt='n' and try to clearly label the plot instead.
+
+```{r}
+# estimate density, class is still circular not density
+bw <- 10 * bw.nrd0(eventdata$eventhour)  # may not be best bw: experiment
+dens <- density.circular(eventdata$eventhour, bw = bw)  # bw must be given
+
+# returns NULL for some reason
+plot(dens, plot.type = "line", join = TRUE, main = "Probability of Event by Hour", 
+    xlab = "Hour", ylab = "", yaxt = "n")
+
+```
+

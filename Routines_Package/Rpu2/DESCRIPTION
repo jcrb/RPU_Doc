@@ -7,7 +7,11 @@ Authors@R: person("JC", "Bartier", email = "jeanclaude.bartier@gmail.com", role 
 Maintainer: Jean-Claude Bartier <jeanclaude.bartier@gmail.com>
 Description: Ensemble de fonctions destinées à faciliter l'analyse des RPU.
 Depends:
-    R (>= 3.1.0), lubridate, xtable, openintro, plotrix
+    R (>= 3.1.0),
+    lubridate,
+    xtable,
+    openintro,
+    plotrix
 License: GNU
 LazyData: true
 Imports:
@@ -16,3 +20,4 @@ Imports:
     xtable,
     openintro,
     plotrix
+RoxygenNote: 5.0.1
