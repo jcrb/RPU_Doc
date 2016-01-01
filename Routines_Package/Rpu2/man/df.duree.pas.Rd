@@ -5,8 +5,18 @@
 \title{Dataframe Durée de passage}
 \usage{
 df.duree.pas(dx, unit = "mins", mintime = 0, maxtime = 3)
+
+df.duree.pas(dx, unit = "mins", mintime = 0, maxtime = 3)
 }
 \arguments{
+\item{dx}{un dataframe de type RPU}
+
+\item{unit}{unité de temps. Défaut = mins}
+
+\item{mintime}{défaut = 0. Durée de passage minimale}
+
+\item{maxtime}{défaut = 3 (72 heures). Durée de passage maximale}
+
 \item{dx}{un dataframe de type RPU}
 
 \item{unit}{unité de temps. Défaut = mins}
@@ -17,12 +27,31 @@ df.duree.pas(dx, unit = "mins", mintime = 0, maxtime = 3)
 }
 \value{
 dataframe de type duree_passage
+
+dataframe de type duree_passage
 }
 \description{
 fabrique à partir d'un dataframe de type RPU, un dataframe de type duree_passage comportant les colonnes suivantes:
 date/heure d'ebtree, date/heure de sortie, durée de passage (en minutes par défaut), l'heure d'entrée (HMS), l'heure de sortie
+
+fabrique à partir d'un dataframe de type RPU, un dataframe de type duree_passage comportant les colonnes suivantes:
+date/heure d'entree, date/heure de sortie, durée de passage (en minutes par défaut), l'heure d'entrée (HMS), l'heure de sortie
+}
+\details{
+# nombre de patients présents à une heure précide. Par exemple combien de patients sont présents à 15 heures?
+Ce sont tous les patients arrivés avant 15 heures et repartis après 15 heures
+On part d'un dataframe formé de deux colonnes (ENTREE et SORIE) où chaque couple est complet => il faut éliminer les couples
+incomplets.
+# usage:
+- créer un dataframe "duree de passage" avec df.duree.pas Ce dataframe est l'objet de base à partir duquel d'autres
+  fonctions vont agir
+- la fonction is.present.at permet de créer un vecteur de présence d'un patient à une heure donnée, et de la le nombre de 
+  patients présents à une heure donné sum(is.present.at), ou le nombre de patients présents à une heure donnée pour 
+  chaque jour de l'année (tapply) puis de tracer le graphe de présence
+Nécessite lubridate, Rpu2
 }
 \examples{
+df <- df.duree.pas(dx)
 df <- df.duree.pas(dx)
 }
 
