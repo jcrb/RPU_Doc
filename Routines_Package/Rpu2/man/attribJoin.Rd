@@ -19,6 +19,9 @@ a <- attribJoin(df = cp.hus, spdf = cp67, df.field = "CP", spdf.field = "ID")
 
 \item{spdf.field}{variable de jointure (objet spatial)}
 }
+\value{
+SpatialPolygonDataFrame
+}
 \description{
 cette fonction réalise une jonction entre une table attributaire (daframe 
 associé à un shapefile) et des données externes contenues dans un tableau. La procédure

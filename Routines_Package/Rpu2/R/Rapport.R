@@ -2168,6 +2168,7 @@ isWE <- function(date){
 #' @param spdf objet spatial 
 #' @param df.field variable de jointure (tableau externe)
 #' @param spdf.field variable de jointure (objet spatial)
+#' @return SpatialPolygonDataFrame
 #' @export
 #'
 attribJoin <- function(df, spdf, df.field, spdf.field){
