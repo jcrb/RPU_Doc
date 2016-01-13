@@ -1,0 +1,8 @@
+Territoire de vie
+=================
+
+Différence avec bassin de vie ?
+
+[insee](http://www.insee.fr/fr/themes/document.asp?ref_id=ip1519)
+
+Fichier __ip1519__ feuillet 2: liste des territoires de vie.

@@ -1,0 +1,7 @@
+Aménagement du territoire
+=========================
+
+Le site de [l'observatoire des territoires](http://www.observatoire-des-territoires.gouv.fr/observatoire-des-territoires/fr) contient de nombreuses données de santé (médecins, infirmiers, dentistes...) en fonction de plusieurs niveau de découpages (bassins de vie...).
+
+Propose notamment une [nomenclature des communes](http://www.datar.gouv.fr/observatoire-des-territoires/fr/table-communale-de-passage-aux-zonages-administratifs-d-tudes-ou-de-politiques-publiques-supra-commu#node-2198) avec leur appartenance au différents territoires nationaux (de la région au pole urbain) et européens.
+
