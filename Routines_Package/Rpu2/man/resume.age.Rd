@@ -4,7 +4,7 @@
 \alias{resume.age}
 \title{Resume du vecteur des AGE}
 \usage{
-summary.age(vx)
+resume.age(vx)
 }
 \arguments{
 \item{vx}{vecteur char AGE}

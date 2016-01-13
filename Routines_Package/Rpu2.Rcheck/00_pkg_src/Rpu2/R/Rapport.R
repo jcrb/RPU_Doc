@@ -10,7 +10,7 @@
 #'                                           deux chiffres significatifs
 #' @usage format.n(x)  
 #' @param x un nombre entier ou décimal                                        
-#' @examples format.n(7890.14) -> "7 890,14"
+#' @examples format.n(7890.14) # "7 890,14"
 #' @export
 
 format.n <- function(x){
@@ -35,7 +35,7 @@ format.n <- function(x){
 #' @family RPU
 #' @return vecteur des taux de complétude
 #' @export
-
+#' 
 completude <- function(dx, calcul = "percent", tri = FALSE){
     # calcul du % ou de la somme
     percent <- function(x){round(100 * mean(!is.na(x)),2)}
@@ -85,16 +85,16 @@ completude <- function(dx, calcul = "percent", tri = FALSE){
 #' @title dessine un graphe en etoile
 #' @description  dessine un graphe en étoile à partir des données retournées par "completude"
 #' @usage radar.completude(completude, finess = NULL, titre = NULL)
-#'@author JcB 2013-02-01
-#'@keywords spider, diagramme étoile
-#'@family RPU
-#'@param completude taux de completude global calculé par la fonction completude
-#'@param finess character: nom de l'établissement. NULL (defaut) => tout le datafame
-#'@return diagramme en étoile
-#'@examples radar.completude(completude(dx))
-#'@examples radar.completude(completude(dwis), "Wissembourg")
-#'@export
-
+#' @author JcB 2013-02-01
+#' @keywords spider, diagramme étoile
+#' @family RPU
+#' @param completude taux de completude global calculé par la fonction completude
+#' @param finess character: nom de l'établissement. NULL (defaut) => tout le datafame
+#' @return diagramme en étoile
+#' @examples radar.completude(completude(dx))
+#' @examples radar.completude(completude(dwis), "Wissembourg")
+#' @export
+#'
 radar.completude <- function(completude, finess = NULL, titre = NULL){
     # library("openintro")
     # library("plotrix")
@@ -144,7 +144,7 @@ radar.completude <- function(completude, finess = NULL, titre = NULL){
 #' de l'ensemble des Finess présents dans dx.
 #' @usage synthese.completude(dx)
 #' @param dx dataframe de type RPU
-#' @details
+#' @details à compléter
 #'Le tableau comporte en ordonnée le
 #' nom des établissements, en abcisse les différents items du RPU et à l'intersection
 #' ligne/colonne la complétude correspondante. dx peut comprter un ou plusieurs Finess
@@ -1693,7 +1693,7 @@ passages.en.moins.de.4h <- function(dx){
 #'@param an (str) année du copyright (par défaut 2013)
 #'@param side coté de l'écriture (défaut = 4)
 #'@param line distance par rapport au bord. Défaut=-1, immédiatement à l'intérieur du cadre
-#'@param titre
+#'@param titre par défaut RESURAL
 #'@param cex taille du texte (défaut 0.8)
 #'@return "© 2012 Resural"
 #'@export
@@ -2011,6 +2011,7 @@ barplot.week.variations <- function(x, coltitre = TRUE, colmoins = "red", colplu
 #' @usage p.isna(x)
 #' @param x un vecteur quelconque
 #' @return un pourcentage
+#' @export
 #' 
 p.isna <- function(x){return(mean(is.na(x)))}
 
@@ -2026,6 +2027,7 @@ p.isna <- function(x){return(mean(is.na(x)))}
 #' @usage n.isna(x)
 #' @param x un vecteur quelconque
 #' @return en entier
+#' @export
 #' 
 n.isna <- function(x){return(sum(is.na(x)))}
 
@@ -2044,6 +2046,8 @@ n.isna <- function(x){return(sum(is.na(x)))}
 #' @param maxtime défaut = 3 (72 heures). Durée de passage maximale
 #' @return dataframe de type duree_passage
 #' @examples df <- df.duree.pas(dx)
+#' @export
+#' 
 df.duree.pas <- function(dx, unit = "mins", mintime = 0, maxtime = 3){
     pas <- dx[, c("ENTREE", "SORTIE", "MODE_SORTIE", "ORIENTATION", "AGE")]
     
@@ -2104,6 +2108,170 @@ df.duree.pas <- function(dx, unit = "mins", mintime = 0, maxtime = 3){
 #'           xts.p8 <- xts(n.p8, order.by = unique(as.Date(dp$ENTREE)))
 #'           plot(xts.p8, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 8 heures du matin")
 #'           lines(rollmean(x = xts.p8, k = 7), col = "red", lwd = 2)
+#' @export
+#'
+
+is.present.at <- function(dp, heure = "15:00:00"){
+    # présent à 15 heures
+    limite <- hms(heure) # pour incrémenter d'une heure: hms("15:00:00") + as.period(dhours(1))
+    np <- dp$he < limite & dp$hs > limite
+    
+    return(np)
+}
+
+#===============================================
+#
+# isWE Est-ce un week-end ?
+#
+#===============================================
+#' @title Determine si la date/heure correspond à un week-end.
+#' @description retourne TRUE si on est en horaire de week-end et False sinon
+#' @usage isWE(date)
+#' @param date date/heure de type YYYY-MM-DD HH:MM:SS
+#' @details la période de WE s'étend du vendredi 20 heures au lundi 8 heures. Nécessite lubridate. 
+#' Ne traite qu'une date à la fois.
+#' @return boolean
+#' @examples isWE("2015-12-28 05:12:00") # TRUE
+#'           isWE(as.Date("2015-12-28 05:12:00")) # FALSE
+#' @export
+#' 
+isWE <- function(date){
+    jour <- tolower(weekdays(as.Date(date)))
+    if(jour %in% c("mardi", "mercredi", "jeudi"))
+        return(FALSE)
+    if(jour %in% c("samedi", "dimanche"))
+        return(TRUE)
+    heure <- hms(format(as.POSIXct(date), "%X"))
+    if(jour == "lundi" & heure < hms("08:00:00") | 
+           jour == "vendredi" & heure > hms("19:59:59"))
+        return(TRUE)
+    else
+        return(FALSE)
+}
+
+#------------------------------------------------------------------
+#
+#   attribJoin
+#
+#------------------------------------------------------------------
+#' @title Jonction d'une table attributaire et un dataframe
+#' @description cette fonction réalise une jonction entre une table attributaire (daframe 
+#'associé à un shapefile) et des données externes contenues dans un tableau. La procédure
+#'utilise match qui ne modifie pas l'ordre des lignes de la table attributaire (contrairement 
+#'à merge). L'ordre des lignes de la table attributaire doit impérativement correspondre à 
+#'l'ordre de la composante cartographique.
+#' @usage a <- attribJoin(df = cp.hus, spdf = cp67, df.field = "CP", spdf.field = "ID")
+#'       b <- a@data
+#' @author groupe ElementR
+#' @source R et espace p.196
+#' @param df le tableau externe
+#' @param spdf objet spatial 
+#' @param df.field variable de jointure (tableau externe)
+#' @param spdf.field variable de jointure (objet spatial)
+#' @return SpatialPolygonDataFrame
+#' @export
+#'
+attribJoin <- function(df, spdf, df.field, spdf.field){
+    if(is.factor(spdf@data[, spdf.field]) == TRUE){
+        spdf@data[, spdf.field] <- as.character(spdf@data[, spdf.field])
+    }
+    if(is.factor(df[, df.field]) == TRUE){
+        df[, df.field] <- as.character(df[, df.field])
+    }
+    spdf@data <- data.frame(spdf@data, df[match(spdf@data[, spdf.field], df[, df.field]),])
+    return(spdf)
+}
+
+
+#------------------------------------------------------------------
+#
+#   df.duree.pas
+#
+#------------------------------------------------------------------
+#' @title Dataframe Durée de passage
+#' @description fabrique à partir d'un dataframe de type RPU, un dataframe de type duree_passage comportant les colonnes suivantes:
+#' date/heure d'entree, date/heure de sortie, durée de passage (en minutes par défaut), l'heure d'entrée (HMS), l'heure de sortie
+#' @usage df.duree.pas(dx, unit = "mins", mintime = 0, maxtime = 3)
+#' @param dx un dataframe de type RPU
+#' @param unit unité de temps. Défaut = mins
+#' @param mintime défaut = 0. Durée de passage minimale
+#' @param maxtime défaut = 3 (72 heures). Durée de passage maximale
+#' @details # nombre de patients présents à une heure précide. Par exemple combien de patients sont présents à 15 heures?
+#' Ce sont tous les patients arrivés avant 15 heures et repartis après 15 heures
+#' On part d'un dataframe formé de deux colonnes (ENTREE et SORIE) où chaque couple est complet => il faut éliminer les couples
+#' incomplets.
+#' # usage:
+#' - créer un dataframe "duree de passage" avec df.duree.pas Ce dataframe est l'objet de base à partir duquel d'autres
+#'   fonctions vont agir
+#' - la fonction is.present.at permet de créer un vecteur de présence d'un patient à une heure donnée, et de la le nombre de 
+#'   patients présents à une heure donné sum(is.present.at), ou le nombre de patients présents à une heure donnée pour 
+#'   chaque jour de l'année (tapply) puis de tracer le graphe de présence
+#' Nécessite lubridate, Rpu2
+#' @return dataframe de type duree_passage
+#' @examples df <- df.duree.pas(dx)
+#' @export
+#' 
+df.duree.pas <- function(dx, unit = "mins", mintime = 0, maxtime = 3){
+    pas <- dx[, c("ENTREE", "SORTIE", "MODE_SORTIE", "ORIENTATION", "AGE")]
+    
+    # on ne conserve que les couples complets
+    pas2 <- pas[complete.cases(pas[, c("ENTREE", "SORTIE")]),]
+    
+    # calcul de la rurée de passage
+    e <- ymd_hms(pas2$ENTREE)
+    s <- ymd_hms(pas2$SORTIE)
+    pas2$duree <- as.numeric(difftime(s, e, units = unit))
+    
+    # on ne garde que les passages dont la durées > 0 et < ou = 72 heures
+    pas3 <- pas2[pas2$duree > mintime & pas2$duree < maxtime * 24 * 60 + 1,]
+    
+    # mémorise les heures d'entrée et de sortie
+    pas3$he <- horaire(pas3$ENTREE)
+    pas3$hs <- horaire(pas3$SORTIE)
+    
+    return(pas3)
+    
+}
+
+#------------------------------------------------------------------
+#
+#   is.present.at
+#
+#------------------------------------------------------------------
+#' @title Un patient est-il présent à une heure donnée ?
+#' @description Crée le vecteur des personnes présentes à une heure donnée
+#' @usage is.present.at((dp, heure = "15:00:00"))
+#' @param dp dataframe de type duree_passage
+#' @param heure heure au format HH:MM:SS. C'es l'heure à laquelle on veut mesurer les passages
+#' @return np vecteur de boolean: TRUE si présent à l'heure analysee et FALSE sinon
+#' @examples dp <- df.duree.pas(dx)
+#'           dp$present.a.15h <- is.present.at(dp)
+#'           # nombre moyen de patients présents à 15h tous les jours
+#'           n.p15 <- tapply(dp$present.a.15h, yday(as.Date(dp$ENTREE)), sum)
+#'           summary(n.p15)
+#'           sd(n.p15)
+#'           # transformation en xts
+#'           xts.p15 <- xts(n.p15, order.by = unique(as.Date(dp$ENTREE)))
+#'           plot(xts.p15, ylab = "Nombre de patients à 15h", main = "Nombre de patients présents à 15 heures")
+#'           lines(rollmean(x = xts.p15, k = 7), col = "red", lwd = 2)
+#'           
+#'           # à 2h du matin
+#'           dp$present.a.2h <- is.present.at(dp, "02:00:00")
+#'           n.p2 <- tapply(dp$present.a.2h, yday(as.Date(dp$ENTREE)), sum)
+#'           summary(n.p2)
+#'           xts.p2 <- xts(n.p2, order.by = unique(as.Date(dp$ENTREE)))
+#'           plot(xts.p2, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 2 heures du matin")
+#'           lines(rollmean(x = xts.p2, k = 7), col = "red", lwd = 2)
+#'           # pour les données de 2015, noter le pic à 2 heures du matin
+#'           
+#'           # à 8 heures
+#'           present.a.8h <- is.present.at(dp, "08:00:00")
+#'           n.p8 <- tapply(present.a.8h, yday(as.Date(dp$ENTREE)), sum)
+#'           summary(n.p8)
+#'           xts.p8 <- xts(n.p8, order.by = unique(as.Date(dp$ENTREE)))
+#'           plot(xts.p8, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 8 heures du matin")
+#'           lines(rollmean(x = xts.p8, k = 7), col = "red", lwd = 2)
+#' @export
 #' 
 is.present.at <- function(dp, heure = "15:00:00"){
     # présent à 15 heures

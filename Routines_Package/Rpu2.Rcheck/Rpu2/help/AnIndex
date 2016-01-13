@@ -1,5 +1,6 @@
 add.territoire	add.territoire
 analyse_type_etablissement	analyse_type_etablissement
+attribJoin	attribJoin
 barplot.week.variations	barplot.week.variations
 completude	completude
 completude.time	completude.time
@@ -14,6 +15,7 @@ finess2territoires	finess2territoires
 format.n	format.n
 horaire	horaire
 is.present.at	is.present.at
+isWE	isWE
 mn2h	mn2h
 n.isna	n.isna
 p.isna	p.isna

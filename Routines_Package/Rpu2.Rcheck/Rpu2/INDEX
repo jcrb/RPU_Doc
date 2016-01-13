@@ -1,6 +1,8 @@
 add.territoire          Crée une colonne TERRITOIRE
 analyse_type_etablissement
                         Analyse etablissement
+attribJoin              Jonction d'une table attributaire et un
+                        dataframe
 barplot.week.variations
                         Variation du nombre de RPU par semaine
 completude              taux de completude global.
@@ -18,6 +20,8 @@ finess2territoires      réorganiser les FINESS par territoires de santé
 format.n                formate un nombre
 horaire                 extrait l'heure d'une date AAAA-MM-DD HH:MM:SS
 is.present.at           Un patient est-il présent à une heure donnée ?
+isWE                    Determine si la date/heure correspond à un
+                        week-end.
 mn2h                    transforme des minutes en heure/mn
 n.isna                  Nombre de NA
 p.isna                  Pourcentage de NA

@@ -8,12 +8,12 @@
 #'                                           une virgule décimale
 #'                                           pas de notation scientifique
 #'                                           deux chiffres significatifs
-#' @usage format.n(x)  
+#' @usage format_n(x)  
 #' @param x un nombre entier ou décimal                                        
-#' @examples format.n(7890.14) -> "7 890,14"
+#' @examples format_n(7890.14) # "7 890,14"
 #' @export
 
-format.n <- function(x){
+format_n <- function(x){
     return(format(x, big.mark = " ", decimal.mark = ",", scientific = FALSE, digits = 2))
 }
 
@@ -32,10 +32,9 @@ format.n <- function(x){
 #' @details todo
 #' @author JcB 2013-02-01
 #' @keywords complétude
+#' @export
 #' @family RPU
 #' @return vecteur des taux de complétude
-#' @export
-#' 
 completude <- function(dx, calcul = "percent", tri = FALSE){
     # calcul du % ou de la somme
     percent <- function(x){round(100 * mean(!is.na(x)),2)}
@@ -91,11 +90,11 @@ completude <- function(dx, calcul = "percent", tri = FALSE){
 #' @param completude taux de completude global calculé par la fonction completude
 #' @param finess character: nom de l'établissement. NULL (defaut) => tout le datafame
 #' @return diagramme en étoile
-#' @examples radar.completude(completude(dx))
-#' @examples radar.completude(completude(dwis), "Wissembourg")
 #' @export
-#'
-radar.completude <- function(completude, finess = NULL, titre = NULL){
+#' @examples radar.completude(completude(dx))
+#'          radar.completude(completude(dwis), "Wissembourg")
+#'          
+radar_completude <- function(completude, finess = NULL, titre = NULL){
     # library("openintro")
     # library("plotrix")
     par(cex.axis = 0.8, cex.lab = 0.8) #' taille des caractères
@@ -971,7 +970,7 @@ resume.dp <- function(vx){
 #===============================================
 #' @title Resume du vecteur des AGE
 #' @description résumé du vecteur vx des AGE
-#' @usage summary.age(vx)
+#' @usage resume.age(vx)
 #' @param vx vecteur char AGE
 #' @examples summary.dp(dx$AGE)
 #' @return "n", "n.na", "p.na", "n.rens", "p.rens","n.inf1an", "n.inf15ans", "n.inf18ans", "n.75ans", "n.85ans", "n.90ans",
@@ -1115,7 +1114,7 @@ tarru <- function(cp, pop.region, rpu.region){
 
 #===============================================
 #
-# summary.wday
+# resume.wday
 #
 #===============================================
 #' @title Nombre de RPU par jour de semaine
@@ -1128,7 +1127,7 @@ tarru <- function(cp, pop.region, rpu.region){
 #' @details La semaine américaine est modifiée pour correspondre à la semaine française commençant un lundi.
 #' @export
 #' 
-summary.wday <- function(vx){
+resume.wday <- function(vx){
     a <- tapply(as.Date(vx), wday(as.Date(vx), label = TRUE), length)
     names(a) <- c("Dim","Lun","Mar","Mer","Jeu","Ven","Sam")
     b <- a[2:7]
@@ -1138,7 +1137,7 @@ summary.wday <- function(vx){
 
 #===============================================
 #
-# summary.cp
+# resume.cp
 #
 #===============================================
 #' @title resume du vecteur CODE_POSTAL (cp)
@@ -1152,7 +1151,7 @@ summary.wday <- function(vx){
 #'          - nb d'étrangers
 #' @export
 #' 
-summary.cp <- function(vx){
+resume.cp <- function(vx){
     n <- length(vx) # nb de valeurs
     n.na <- sum(is.na(vx)) # nb de valeurs non renseignées
     p.na <- mean(is.na(vx)) # % de valeurs non renseignées
@@ -1304,7 +1303,7 @@ analyse_type_etablissement <- function(es){
 #' @title Resume de la DESTINATION
 #' @description résumé du vecteur vx des DESTINATION. En cas d'hospitalisation, il y a quatre destinations possibles:
 #' MCO, SSR, SLD et PSY. En ca  de sortie au domicile: HAD et Structure médico-sociale (EHPAD)
-#' @usage summary.destination(dx, correction = TRUE)
+#' @usage resume.destination(dx, correction = TRUE)
 #' @param dx dataframe RPU
 #' @param correction = TRUE: on ne retient que les destinations 
 #'                           correspondant à une hospitalisation
@@ -1312,7 +1311,7 @@ analyse_type_etablissement <- function(es){
 #' @details MANQUE LE SUMMARY DU VECTEUR.
 #' @export
 
-summary.destination <- function(dx, correction = TRUE){
+resume.destination <- function(dx, correction = TRUE){
     if(correction == TRUE){
         vx <- dx$DESTINATION[dx$MODE_SORTIE %in% c("Mutation","Transfert")]
     }
@@ -1338,7 +1337,7 @@ summary.destination <- function(dx, correction = TRUE){
 #===============================================
 #' @title Resume de ORIENTATION
 #' @description résumé du vecteur vx des ORIENTATION
-#' @usage summary.orientation(dx, correction = TRUE)
+#' @usage resume.orientation(dx, correction = TRUE)
 #' @param dx dataframe RPU
 #' @param correction = TRUE: on ne retient que les orientation 
 #'                           correspondant à une hospitalisation
@@ -1349,7 +1348,7 @@ summary.destination <- function(dx, correction = TRUE){
 #' "p.reo", "p.scam", "p.psa"
 #' @export
 
-summary.orientation <- function(dx, correction = TRUE){
+resume.orientation <- function(dx, correction = TRUE){
     if(correction == TRUE){
         vx <- dx$ORIENTATION[dx$MODE_SORTIE %in% c("Mutation","Transfert")]
     }

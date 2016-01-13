@@ -16,6 +16,17 @@ non nulles. Percent = \% de réponses non nulles.}
 }
 \value{
 vecteur des taux de complétude
+complétude brute. Des corrections sont nécessaires pour DESTINATION
+correction pour Destination et Orientation
+Les items DESTINATION et ORIENTATION ne s'appliquent qu'aux patients hspitalisés. 
+On appelle hospitalisation les RPU pour lequels la rubrique MODE_SORTIE = MUTATION ou TRANSFERT. 
+Pour les sorties à domicile, ces rubriques ne peuvent pas être complétées ce qui entraine 
+une sous estimation importante du taux de complétude pour ces deux rubriques. 
+On ne retient donc que le sous ensemble des patients hospitalisés pour lesquels les rubriques 
+DESTINATION et ORIENTATION doivent être renseignées.
+Correction pour DP. Cette rubrique ne peut pas être remplie dans le cas où ORIENTATION =
+FUGUE, PSA, SCAM, REO
+completude <- completude[-c(1,7)]
 }
 \description{
 Pour chacune des rubriques RPU calcule le taux de réponse (complétude)
@@ -27,7 +38,7 @@ todo
 JcB 2013-02-01
 }
 \seealso{
-Other RPU: \code{\link{radar.completude}}
+Other RPU: \code{\link{radar_completude}}
 }
 \keyword{complétude}
 

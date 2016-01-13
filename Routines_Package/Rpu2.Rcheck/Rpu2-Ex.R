@@ -51,13 +51,14 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 ### ** Examples
 
 v <- week.variations(dx[dx$FINESS == "3Fr",])
-barplot.week.variations(v[-length(v)], las = 2, main = "test", ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10),
+barplot.week.variations(v[-length(v)], las = 2, main = "test", ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10), 
 ylab = "Variations hebdomadaires")
 
 ###
 v <- week.variations(week.rpu(dx[dx$FINESS == "Col",]))
-barplot.week.variations(v[-length(v)], las = 2, main = "CH Colmar - 2015",
+barplot.week.variations(v[-length(v)], las = 2, main = "CH Colmar - 2015", 
 ylim = c(min(v[-length(v)])-10, max(v[-length(v)])+10), ylab = "Variations hebdomadaires", dx = 5)
+
 
 
 
@@ -81,14 +82,14 @@ load("~/Documents/Resural/Stat Resural/RPU_2014/rpu2015d0112_provisoire.Rda")
        # old
        sav <- d15[d15$FINESS == "Sav",] # Saverne 2015
        t3 <- ddply(sav, .(month(as.Date(sav$ENTREE))), completude) # completude par mois
-
+       
        # new
        library(xts)
        t3 <- completude.time(d15, "Sav", "day")
        a <- seq(as.Date("2015-01-01"), length.out = nrow(t3), by = 1)
        x <- xts(t3, order.by = a)
        plot(x[, "DP"], main = "CH Saverne - DIAGNOSTIC PRINCIPAL", ylab = "% de complétude")
-
+       
        # TODO: tableau de complétude par mois et par Finess:
        t3 <- ddply(dx, .(dx$FINESS, month(as.Date(dx$ENTREE))), completude)
        # Application: rpu2014/Analyse/Completude/Analyse_completude
@@ -111,6 +112,8 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 ### ** Examples
 
 count.CIM10(dx[dx$FINESS == "Col", "MOTIF"])
+ @export
+
 
 
 
@@ -148,6 +151,7 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 
 ### ** Examples
 
+df <- df.duree.pas(dx)
 df <- df.duree.pas(dx)
 
 
@@ -193,7 +197,7 @@ a <- c(1,2,3,4,5,5,5,5,1,1,2); factor2table(a); print.table.rpu(a)
      #      3     1  9.09
      #      4     1  9.09
      #      5     4 36.36
-     #
+     #     
      #     factor2table(pop18$GRAVITE, TRUE)
 
 
@@ -232,7 +236,7 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 
 ### ** Examples
 
-format.n(7890.14) -> "7 890,14"
+format.n(7890.14) # "7 890,14"
 
 
 
@@ -281,7 +285,7 @@ dp <- df.duree.pas(dx)
           xts.p15 <- xts(n.p15, order.by = unique(as.Date(dp$ENTREE)))
           plot(xts.p15, ylab = "Nombre de patients à 15h", main = "Nombre de patients présents à 15 heures")
           lines(rollmean(x = xts.p15, k = 7), col = "red", lwd = 2)
-
+          
           # à 2h du matin
           dp$present.a.2h <- is.present.at(dp, "02:00:00")
           n.p2 <- tapply(dp$present.a.2h, yday(as.Date(dp$ENTREE)), sum)
@@ -290,7 +294,34 @@ dp <- df.duree.pas(dx)
           plot(xts.p2, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 2 heures du matin")
           lines(rollmean(x = xts.p2, k = 7), col = "red", lwd = 2)
           # pour les données de 2015, noter le pic à 2 heures du matin
-
+          
+          # à 8 heures
+          present.a.8h <- is.present.at(dp, "08:00:00")
+          n.p8 <- tapply(present.a.8h, yday(as.Date(dp$ENTREE)), sum)
+          summary(n.p8)
+          xts.p8 <- xts(n.p8, order.by = unique(as.Date(dp$ENTREE)))
+          plot(xts.p8, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 8 heures du matin")
+          lines(rollmean(x = xts.p8, k = 7), col = "red", lwd = 2)
+dp <- df.duree.pas(dx)
+          dp$present.a.15h <- is.present.at(dp)
+          # nombre moyen de patients présents à 15h tous les jours
+          n.p15 <- tapply(dp$present.a.15h, yday(as.Date(dp$ENTREE)), sum)
+          summary(n.p15)
+          sd(n.p15)
+          # transformation en xts
+          xts.p15 <- xts(n.p15, order.by = unique(as.Date(dp$ENTREE)))
+          plot(xts.p15, ylab = "Nombre de patients à 15h", main = "Nombre de patients présents à 15 heures")
+          lines(rollmean(x = xts.p15, k = 7), col = "red", lwd = 2)
+          
+          # à 2h du matin
+          dp$present.a.2h <- is.present.at(dp, "02:00:00")
+          n.p2 <- tapply(dp$present.a.2h, yday(as.Date(dp$ENTREE)), sum)
+          summary(n.p2)
+          xts.p2 <- xts(n.p2, order.by = unique(as.Date(dp$ENTREE)))
+          plot(xts.p2, ylab = "Nombre de patients présents", main = "Nombre de patients présents à 2 heures du matin")
+          lines(rollmean(x = xts.p2, k = 7), col = "red", lwd = 2)
+          # pour les données de 2015, noter le pic à 2 heures du matin
+          
           # à 8 heures
           present.a.8h <- is.present.at(dp, "08:00:00")
           n.p8 <- tapply(present.a.8h, yday(as.Date(dp$ENTREE)), sum)
@@ -303,6 +334,26 @@ dp <- df.duree.pas(dx)
 
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 base::cat("is.present.at", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("isWE")
+### * isWE
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: isWE
+### Title: Determine si la date/heure correspond <c3><a0> un week-end.
+### Aliases: isWE
+
+### ** Examples
+
+isWE("2015-12-28 05:12:00") # TRUE
+          isWE(as.Date("2015-12-28 05:12:00")) # FALSE
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("isWE", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 cleanEx()
 nameEx("passage")
 ### * passage
@@ -393,7 +444,7 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 
 ### ** Examples
 
-print.table.rpu(t)
+  print.table.rpu(t)
          print.table.rpu(t, "table de test")
          print.table.rpu(t, "table de test", "html")
 
@@ -756,7 +807,7 @@ hus <- d15[d15$FINESS == hus,]
       t <- tab.completude(hus, d1, d2)
       plot(t[,"DATE DE SORTIE"], type = "l", main = "Mode de sortie", ylab = "Taux de completude")
       t.zoo <- zoo(t) # nécessite la librairie zoo
-      plot(xts(t.zoo$DP, order.by = as.Date(rownames(t.zoo))), las = 2,
+      plot(xts(t.zoo$DP, order.by = as.Date(rownames(t.zoo))), las = 2, 
              main = "Diagnostic principal", ylab = "Taux de completude", cex.axis = 0.8)
      boxplot(t, las = 2, cex.axis = 0.8, ylab = "% de completude", main = "Complétude RPU")
 
@@ -821,6 +872,7 @@ s <- week.rpu(dx)
 tot <- sum(s) # nombre total de RPU
 p = s/tot # % de RPU par semaine
 summary(p)
+
 
 
 
