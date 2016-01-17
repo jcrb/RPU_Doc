@@ -72,11 +72,6 @@ Unexported objects imported by ':::' calls:
   ‘xts:::has.OHLC’ ‘xts:::is.OHLC’
   See the note in ?`:::` about the use of this operator.
 * checking S3 generic/method consistency ... WARNING
-format:
-  function(x, ...)
-format.n:
-  function(x)
-
 print:
   function(x, ...)
 print.summary.rpu:
@@ -86,26 +81,6 @@ print:
   function(x, ...)
 print.table.rpu:
   function(t, caption, type, ref)
-
-summary:
-  function(object, ...)
-summary.cp:
-  function(vx)
-
-summary:
-  function(object, ...)
-summary.destination:
-  function(dx, correction)
-
-summary:
-  function(object, ...)
-summary.orientation:
-  function(dx, correction)
-
-summary:
-  function(object, ...)
-summary.wday:
-  function(vx)
 
 barplot:
   function(height, ...)
@@ -130,6 +105,10 @@ Extensions’ manual.
 * checking R code for possible problems ... NOTE
 analyse_type_etablissement: no visible global function definition for
   ‘summary.age’
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.cp’
+analyse_type_etablissement: no visible global function definition for
+  ‘summary.wday’
 analyse_type_etablissement: no visible global function definition for
   ‘summary.dateheure’
 analyse_type_etablissement: no visible global function definition for
@@ -165,28 +144,30 @@ plot.xts2: no visible global function definition for ‘axTicksByTime’
 plot.xts2: no visible global function definition for ‘.index’
 plot.xts2: no visible global function definition for
   ‘plot.ohlc.candles’
+print.summary.rpu: no visible global function definition for ‘format.n’
 print.summary.rpu: no visible global function definition for
   ‘print.xtable’
 print.summary.rpu: no visible global function definition for ‘xtable’
 print.table.rpu: no visible global function definition for
   ‘print.xtable’
 print.table.rpu: no visible global function definition for ‘xtable’
-pyramide.age: no visible binding for global variable ‘n.rpu’
 pyramide.age: no visible global function definition for ‘pyramid.plot’
-radar.completude: no visible global function definition for
+radar_completude: no visible global function definition for
   ‘radial.plot’
-radar.completude: no visible global function definition for ‘fadeColor’
+radar_completude: no visible global function definition for ‘fadeColor’
+resume.cp: no visible binding for global variable ‘is.cpals’
 resume.motif: no visible binding for global variable ‘n’
+resume.wday: no visible global function definition for ‘wday’
 rpu.par.jour2: no visible global function definition for ‘yday’
 rpu.par.jour2: no visible global function definition for ‘rollmean’
 rpu.par.mois: no visible global function definition for ‘year’
 rpu2xts: no visible global function definition for ‘xts’
-summary.cp: no visible binding for global variable ‘is.cpals’
-summary.wday: no visible global function definition for ‘wday’
 synthese.completude: no visible global function definition for ‘ddply’
 synthese.completude: no visible global function definition for ‘.’
 synthese.completude: no visible binding for global variable ‘FINESS’
 tarru: no visible binding for global variable ‘is.cpals’
+teste.radar: no visible global function definition for
+  ‘radar.completude’
 week.rpu: no visible global function definition for ‘week’
 
 Found the following assignments to the global environment:
@@ -207,7 +188,7 @@ duree.passage2.Rd: non-ASCII input and no declared encoding
 evolution.Rd: non-ASCII input and no declared encoding
 factor2table.Rd: non-ASCII input and no declared encoding
 finess2territoires.Rd: non-ASCII input and no declared encoding
-format.n.Rd: non-ASCII input and no declared encoding
+format_n.Rd: non-ASCII input and no declared encoding
 is.present.at.Rd: non-ASCII input and no declared encoding
 isWE.Rd: non-ASCII input and no declared encoding
 passage.Rd: non-ASCII input and no declared encoding
@@ -218,35 +199,35 @@ plot.xts2.Rd: non-ASCII input and no declared encoding
 print.summary.rpu.Rd: non-ASCII input and no declared encoding
 print.table.rpu.Rd: non-ASCII input and no declared encoding
 pyramide.age.Rd: non-ASCII input and no declared encoding
-radar.completude.Rd: non-ASCII input and no declared encoding
+radar_completude.Rd: non-ASCII input and no declared encoding
 reorder.dataframe.fedoru.Rd: non-ASCII input and no declared encoding
 reorder.vector.fedoru.Rd: non-ASCII input and no declared encoding
 resume.age.Rd: non-ASCII input and no declared encoding
 resume.age.sexe.Rd: non-ASCII input and no declared encoding
 resume.ccmu.Rd: non-ASCII input and no declared encoding
+resume.cp.Rd: non-ASCII input and no declared encoding
 resume.dateheure.Rd: non-ASCII input and no declared encoding
+resume.destination.Rd: non-ASCII input and no declared encoding
 resume.dp.Rd: non-ASCII input and no declared encoding
 resume.entree.Rd: non-ASCII input and no declared encoding
 resume.mode.sortie.Rd: non-ASCII input and no declared encoding
 resume.motif.Rd: non-ASCII input and no declared encoding
+resume.orientation.Rd: non-ASCII input and no declared encoding
 resume.passages.Rd: non-ASCII input and no declared encoding
 resume.rpu.Rd: non-ASCII input and no declared encoding
 resume.sexe.Rd: non-ASCII input and no declared encoding
+resume.wday.Rd: non-ASCII input and no declared encoding
 rpu.par.jour2.Rd: non-ASCII input and no declared encoding
 rpu.par.mois.Rd: non-ASCII input and no declared encoding
 rpu2xts.Rd: non-ASCII input and no declared encoding
-summary.cp.Rd: non-ASCII input and no declared encoding
-summary.destination.Rd: non-ASCII input and no declared encoding
 summary.duree.passage.Rd: non-ASCII input and no declared encoding
-summary.orientation.Rd: non-ASCII input and no declared encoding
-summary.wday.Rd: non-ASCII input and no declared encoding
 synthese.completude.Rd: non-ASCII input and no declared encoding
 tab.completude.Rd: non-ASCII input and no declared encoding
 tarru.Rd: non-ASCII input and no declared encoding
 teste.radar.Rd: non-ASCII input and no declared encoding
 week.rpu.Rd: non-ASCII input and no declared encoding
 week.variations.Rd: non-ASCII input and no declared encoding
-problems found in ‘add.territoire.Rd’, ‘analyse_type_etablissement.Rd’, ‘attribJoin.Rd’, ‘barplot.week.variations.Rd’, ‘completude.Rd’, ‘completude.time.Rd’, ‘copyright.Rd’, ‘count.CIM10.Rd’, ‘datetime.Rd’, ‘df.duree.pas.Rd’, ‘duree.passage2.Rd’, ‘evolution.Rd’, ‘factor2table.Rd’, ‘finess2territoires.Rd’, ‘format.n.Rd’, ‘is.present.at.Rd’, ‘isWE.Rd’, ‘passage.Rd’, ‘passages.en.moins.de.4h.Rd’, ‘passages2.Rd’, ‘pdsa.Rd’, ‘plot.xts2.Rd’, ‘print.summary.rpu.Rd’, ‘print.table.rpu.Rd’, ‘pyramide.age.Rd’, ‘radar.completude.Rd’, ‘reorder.dataframe.fedoru.Rd’, ‘reorder.vector.fedoru.Rd’, ‘resume.age.Rd’, ‘resume.age.sexe.Rd’, ‘resume.ccmu.Rd’, ‘resume.dateheure.Rd’, ‘resume.dp.Rd’, ‘resume.entree.Rd’, ‘resume.mode.sortie.Rd’, ‘resume.motif.Rd’, ‘resume.passages.Rd’, ‘resume.rpu.Rd’, ‘resume.sexe.Rd’, ‘rpu.par.jour2.Rd’, ‘rpu.par.mois.Rd’, ‘rpu2xts.Rd’, ‘summary.cp.Rd’, ‘summary.destination.Rd’, ‘summary.duree.passage.Rd’, ‘summary.orientation.Rd’, ‘summary.wday.Rd’, ‘synthese.completude.Rd’, ‘tab.completude.Rd’, ‘tarru.Rd’, ‘teste.radar.Rd’, ‘week.rpu.Rd’, ‘week.variations.Rd’
+problems found in ‘add.territoire.Rd’, ‘analyse_type_etablissement.Rd’, ‘attribJoin.Rd’, ‘barplot.week.variations.Rd’, ‘completude.Rd’, ‘completude.time.Rd’, ‘copyright.Rd’, ‘count.CIM10.Rd’, ‘datetime.Rd’, ‘df.duree.pas.Rd’, ‘duree.passage2.Rd’, ‘evolution.Rd’, ‘factor2table.Rd’, ‘finess2territoires.Rd’, ‘format_n.Rd’, ‘is.present.at.Rd’, ‘isWE.Rd’, ‘passage.Rd’, ‘passages.en.moins.de.4h.Rd’, ‘passages2.Rd’, ‘pdsa.Rd’, ‘plot.xts2.Rd’, ‘print.summary.rpu.Rd’, ‘print.table.rpu.Rd’, ‘pyramide.age.Rd’, ‘radar_completude.Rd’, ‘reorder.dataframe.fedoru.Rd’, ‘reorder.vector.fedoru.Rd’, ‘resume.age.Rd’, ‘resume.age.sexe.Rd’, ‘resume.ccmu.Rd’, ‘resume.cp.Rd’, ‘resume.dateheure.Rd’, ‘resume.destination.Rd’, ‘resume.dp.Rd’, ‘resume.entree.Rd’, ‘resume.mode.sortie.Rd’, ‘resume.motif.Rd’, ‘resume.orientation.Rd’, ‘resume.passages.Rd’, ‘resume.rpu.Rd’, ‘resume.sexe.Rd’, ‘resume.wday.Rd’, ‘rpu.par.jour2.Rd’, ‘rpu.par.mois.Rd’, ‘rpu2xts.Rd’, ‘summary.duree.passage.Rd’, ‘synthese.completude.Rd’, ‘tab.completude.Rd’, ‘tarru.Rd’, ‘teste.radar.Rd’, ‘week.rpu.Rd’, ‘week.variations.Rd’
 * checking Rd metadata ... OK
 * checking Rd line widths ... NOTE
 Rd file 'barplot.week.variations.Rd':
@@ -274,14 +255,17 @@ These lines will be truncated in the PDF manual.
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... OK
 * checking for code/documentation mismatches ... WARNING
-Functions or methods with usage in documentation object 'resume.age' but not in code:
-  summary.age
+Functions or methods with usage in documentation object 'radar_completude' but not in code:
+  radar.completude
 
 Functions or methods with usage in documentation object 'resume.age.sexe' but not in code:
   summary.age.sexe
 
 Functions or methods with usage in documentation object 'resume.ccmu' but not in code:
   summary.ccmu
+
+Functions or methods with usage in documentation object 'resume.cp' but not in code:
+  summary.cp
 
 Functions or methods with usage in documentation object 'resume.dateheure' but not in code:
   summary.dateheure
@@ -309,6 +293,9 @@ Functions or methods with usage in documentation object 'resume.sexe' but not in
 
 Functions or methods with usage in documentation object 'resume.transport' but not in code:
   summary.transport
+
+Functions or methods with usage in documentation object 'resume.wday' but not in code:
+  summary.wday
 
 Functions or methods with usage in documentation object 'summary.duree.passage' but not in code:
   summary.duree.passage
@@ -366,17 +353,19 @@ Undocumented arguments in documentation object 'print.summary.rpu'
 Undocumented arguments in documentation object 'pyramide.age'
   ‘cex’
 
-Undocumented arguments in documentation object 'radar.completude'
+Undocumented arguments in documentation object 'radar_completude'
   ‘titre’
-
-Objects in \usage without \alias in documentation object 'resume.age':
-  ‘summary.age’
+Objects in \usage without \alias in documentation object 'radar_completude':
+  ‘radar.completude’
 
 Objects in \usage without \alias in documentation object 'resume.age.sexe':
   ‘summary.age.sexe’
 
 Objects in \usage without \alias in documentation object 'resume.ccmu':
   ‘summary.ccmu’
+
+Objects in \usage without \alias in documentation object 'resume.cp':
+  ‘summary.cp’
 
 Objects in \usage without \alias in documentation object 'resume.dateheure':
   ‘summary.dateheure’
@@ -405,6 +394,9 @@ Objects in \usage without \alias in documentation object 'resume.sexe':
 Objects in \usage without \alias in documentation object 'resume.transport':
   ‘summary.transport’
 
+Objects in \usage without \alias in documentation object 'resume.wday':
+  ‘summary.wday’
+
 Undocumented arguments in documentation object 'rpu.par.jour2'
   ‘roll’
 Documented arguments not in \usage in documentation object 'rpu.par.jour2':
@@ -424,9 +416,6 @@ entries, and all their arguments documented.
 The \usage entries must correspond to syntactically valid R code.
 See chapter ‘Writing R documentation files’ in the ‘Writing R
 Extensions’ manual.
-S3 methods shown with full name in documentation object 'format.n':
-  ‘format.n’
-
 S3 methods shown with full name in documentation object 'plot.xts2':
   ‘plot.xts2’
 
@@ -441,18 +430,6 @@ S3 methods shown with full name in documentation object 'reorder.dataframe.fedor
 
 S3 methods shown with full name in documentation object 'reorder.vector.fedoru':
   ‘reorder.vector.fedoru’
-
-S3 methods shown with full name in documentation object 'summary.cp':
-  ‘summary.cp’
-
-S3 methods shown with full name in documentation object 'summary.destination':
-  ‘summary.destination’
-
-S3 methods shown with full name in documentation object 'summary.orientation':
-  ‘summary.orientation’
-
-S3 methods shown with full name in documentation object 'summary.wday':
-  ‘summary.wday’
 
 The \usage entries for S3 methods should use the \method markup and not
 their full name.

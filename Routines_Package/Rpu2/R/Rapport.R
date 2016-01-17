@@ -1074,6 +1074,7 @@ pyramide.age <- function(dx, cut = 5, gap = 1, cex = 0.8,col.h = "light green", 
     # découpage du vecteur AGE en classes
     max = max(dx$AGE, na.rm = TRUE) 
     min = min(dx$AGE, na.rm = TRUE)
+    n.rpu <- nrow(dx)
     a <- cut(dx$AGE, seq(from = min, to = max, by = cut), include.lowest = TRUE, right = FALSE)
     # division en 2 classes
     h <- as.vector(100 * table(a[dx$SEXE == "M"])/n.rpu)
