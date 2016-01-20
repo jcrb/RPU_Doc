@@ -27,6 +27,25 @@ pop.68.2014 <- 758357
 
 pop75.als.2014 <- 155281 # 75 ans et plus
 
+# 2015
+#-----
+# Les populations légales millésimées 2012 ont été en vigueur le 1er janvier 2015. 
+# Elles ont pour date de référence statistique le 1er janvier 2012.
+
+pop.als.tot.2015 <- 1124434 + 771668
+pop.67.2015 <- 1124434 # Population totale (Population municipale : 1 104 667)
+pop.67.2015 <- 771668 # Population totale (Population municipale : 755 202)
+
+# 2016
+#-----
+# Les populations légales 2013 entrent en vigueur le 1er janvier 2016.
+# Elles sont disponibles pour les circonscriptions administratives existant au 1er janvier 2015 
+# dans leurs limites territoriales à cette date.
+
+pop.als.tot.2016 <- 1128825 + 774976
+pop.67.2016 <- 1128825 # Population totale (Population municipale : 1 109 460)
+pop.67.2016 <- 774976 # Population totale (Population municipale : 758 723)
+
 # Autre source
 # ------------
 # Nombre de résidents dans la région. Estimation au 1er janvier 2014: 1868773
