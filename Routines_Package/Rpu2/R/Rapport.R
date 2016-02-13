@@ -2185,7 +2185,7 @@ attribJoin <- function(df, spdf, df.field, spdf.field){
 
 #------------------------------------------------------------------
 #
-#   df.duree.pas
+#   df.duree.pas.old
 #
 #------------------------------------------------------------------
 #' @title Dataframe Durée de passage
@@ -2196,22 +2196,11 @@ attribJoin <- function(df, spdf, df.field, spdf.field){
 #' @param unit unité de temps. Défaut = mins
 #' @param mintime défaut = 0. Durée de passage minimale
 #' @param maxtime défaut = 3 (72 heures). Durée de passage maximale
-#' @details # nombre de patients présents à une heure précide. Par exemple combien de patients sont présents à 15 heures?
-#' Ce sont tous les patients arrivés avant 15 heures et repartis après 15 heures
-#' On part d'un dataframe formé de deux colonnes (ENTREE et SORIE) où chaque couple est complet => il faut éliminer les couples
-#' incomplets.
-#' # usage:
-#' - créer un dataframe "duree de passage" avec df.duree.pas Ce dataframe est l'objet de base à partir duquel d'autres
-#'   fonctions vont agir
-#' - la fonction is.present.at permet de créer un vecteur de présence d'un patient à une heure donnée, et de la le nombre de 
-#'   patients présents à une heure donné sum(is.present.at), ou le nombre de patients présents à une heure donnée pour 
-#'   chaque jour de l'année (tapply) puis de tracer le graphe de présence
-#' Nécessite lubridate, Rpu2
 #' @return dataframe de type duree_passage
 #' @examples df <- df.duree.pas(dx)
 #' @export
 #' 
-df.duree.pas <- function(dx, unit = "mins", mintime = 0, maxtime = 3){
+df.duree.pas.old <- function(dx, unit = "mins", mintime = 0, maxtime = 3){
     pas <- dx[, c("ENTREE", "SORTIE", "MODE_SORTIE", "ORIENTATION", "AGE")]
     
     # on ne conserve que les couples complets
