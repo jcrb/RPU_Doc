@@ -12,5 +12,5 @@ LazyData: true
 Imports: dplyr, lubridate, xtable, openintro, plotrix
 RoxygenNote: 5.0.1
 NeedsCompilation: no
-Packaged: 2016-01-17 18:40:44 UTC; jcb
+Packaged: 2016-02-17 13:04:11 UTC; jcb
 Author: JC Bartier [aut, cre]

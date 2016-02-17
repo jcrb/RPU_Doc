@@ -2,7 +2,7 @@
 * using R version 3.2.3 (2015-12-10)
 * using platform: x86_64-pc-linux-gnu (64-bit)
 * using session charset: UTF-8
-* using option ‘--as-cran’
+* using options ‘--run-donttest --as-cran’
 * checking for file ‘Rpu2/DESCRIPTION’ ... OK
 * checking extension type ... Package
 * this is package ‘Rpu2’ version ‘0.1.3’
@@ -77,11 +77,6 @@ print:
 print.summary.rpu:
   function(x, sens, cnames, rnames, caption, type, ref)
 
-print:
-  function(x, ...)
-print.table.rpu:
-  function(t, caption, type, ref)
-
 barplot:
   function(height, ...)
 barplot.week.variations:
@@ -103,22 +98,6 @@ Extensions’ manual.
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
 * checking R code for possible problems ... NOTE
-analyse_type_etablissement: no visible global function definition for
-  ‘summary.age’
-analyse_type_etablissement: no visible global function definition for
-  ‘summary.cp’
-analyse_type_etablissement: no visible global function definition for
-  ‘summary.wday’
-analyse_type_etablissement: no visible global function definition for
-  ‘summary.dateheure’
-analyse_type_etablissement: no visible global function definition for
-  ‘summary.transport’
-analyse_type_etablissement: no visible global function definition for
-  ‘summary.ccmu’
-analyse_type_etablissement: no visible global function definition for
-  ‘summary.passages’
-analyse_type_etablissement: no visible global function definition for
-  ‘summary.mode.sortie’
 completude.time: no visible global function definition for ‘ddply’
 completude.time: no visible global function definition for ‘.’
 completude.time: no visible global function definition for ‘month’
@@ -128,6 +107,7 @@ completude.time: no visible global function definition for ‘year’
 completude.time: no visible global function definition for ‘week’
 datetime: no visible global function definition for ‘ymd_hms’
 df.duree.pas: no visible global function definition for ‘ymd_hms’
+df.duree.pas.old: no visible global function definition for ‘ymd_hms’
 duree.passage2: no visible global function definition for ‘ymd_hms’
 duree.passage2: no visible global function definition for ‘hms’
 horaire: no visible global function definition for ‘hms’
@@ -148,9 +128,9 @@ print.summary.rpu: no visible global function definition for ‘format.n’
 print.summary.rpu: no visible global function definition for
   ‘print.xtable’
 print.summary.rpu: no visible global function definition for ‘xtable’
-print.table.rpu: no visible global function definition for
+print_table_rpu: no visible global function definition for
   ‘print.xtable’
-print.table.rpu: no visible global function definition for ‘xtable’
+print_table_rpu: no visible global function definition for ‘xtable’
 pyramide.age: no visible global function definition for ‘pyramid.plot’
 radar_completude: no visible global function definition for
   ‘radial.plot’
@@ -184,6 +164,7 @@ copyright.Rd: non-ASCII input and no declared encoding
 count.CIM10.Rd: non-ASCII input and no declared encoding
 datetime.Rd: non-ASCII input and no declared encoding
 df.duree.pas.Rd: non-ASCII input and no declared encoding
+df.duree.pas.old.Rd: non-ASCII input and no declared encoding
 duree.passage2.Rd: non-ASCII input and no declared encoding
 evolution.Rd: non-ASCII input and no declared encoding
 factor2table.Rd: non-ASCII input and no declared encoding
@@ -197,7 +178,7 @@ passages2.Rd: non-ASCII input and no declared encoding
 pdsa.Rd: non-ASCII input and no declared encoding
 plot.xts2.Rd: non-ASCII input and no declared encoding
 print.summary.rpu.Rd: non-ASCII input and no declared encoding
-print.table.rpu.Rd: non-ASCII input and no declared encoding
+print_table_rpu.Rd: non-ASCII input and no declared encoding
 pyramide.age.Rd: non-ASCII input and no declared encoding
 radar_completude.Rd: non-ASCII input and no declared encoding
 reorder.dataframe.fedoru.Rd: non-ASCII input and no declared encoding
@@ -227,7 +208,7 @@ tarru.Rd: non-ASCII input and no declared encoding
 teste.radar.Rd: non-ASCII input and no declared encoding
 week.rpu.Rd: non-ASCII input and no declared encoding
 week.variations.Rd: non-ASCII input and no declared encoding
-problems found in ‘add.territoire.Rd’, ‘analyse_type_etablissement.Rd’, ‘attribJoin.Rd’, ‘barplot.week.variations.Rd’, ‘completude.Rd’, ‘completude.time.Rd’, ‘copyright.Rd’, ‘count.CIM10.Rd’, ‘datetime.Rd’, ‘df.duree.pas.Rd’, ‘duree.passage2.Rd’, ‘evolution.Rd’, ‘factor2table.Rd’, ‘finess2territoires.Rd’, ‘format_n.Rd’, ‘is.present.at.Rd’, ‘isWE.Rd’, ‘passage.Rd’, ‘passages.en.moins.de.4h.Rd’, ‘passages2.Rd’, ‘pdsa.Rd’, ‘plot.xts2.Rd’, ‘print.summary.rpu.Rd’, ‘print.table.rpu.Rd’, ‘pyramide.age.Rd’, ‘radar_completude.Rd’, ‘reorder.dataframe.fedoru.Rd’, ‘reorder.vector.fedoru.Rd’, ‘resume.age.Rd’, ‘resume.age.sexe.Rd’, ‘resume.ccmu.Rd’, ‘resume.cp.Rd’, ‘resume.dateheure.Rd’, ‘resume.destination.Rd’, ‘resume.dp.Rd’, ‘resume.entree.Rd’, ‘resume.mode.sortie.Rd’, ‘resume.motif.Rd’, ‘resume.orientation.Rd’, ‘resume.passages.Rd’, ‘resume.rpu.Rd’, ‘resume.sexe.Rd’, ‘resume.wday.Rd’, ‘rpu.par.jour2.Rd’, ‘rpu.par.mois.Rd’, ‘rpu2xts.Rd’, ‘summary.duree.passage.Rd’, ‘synthese.completude.Rd’, ‘tab.completude.Rd’, ‘tarru.Rd’, ‘teste.radar.Rd’, ‘week.rpu.Rd’, ‘week.variations.Rd’
+problems found in ‘add.territoire.Rd’, ‘analyse_type_etablissement.Rd’, ‘attribJoin.Rd’, ‘barplot.week.variations.Rd’, ‘completude.Rd’, ‘completude.time.Rd’, ‘copyright.Rd’, ‘count.CIM10.Rd’, ‘datetime.Rd’, ‘df.duree.pas.Rd’, ‘df.duree.pas.old.Rd’, ‘duree.passage2.Rd’, ‘evolution.Rd’, ‘factor2table.Rd’, ‘finess2territoires.Rd’, ‘format_n.Rd’, ‘is.present.at.Rd’, ‘isWE.Rd’, ‘passage.Rd’, ‘passages.en.moins.de.4h.Rd’, ‘passages2.Rd’, ‘pdsa.Rd’, ‘plot.xts2.Rd’, ‘print.summary.rpu.Rd’, ‘print_table_rpu.Rd’, ‘pyramide.age.Rd’, ‘radar_completude.Rd’, ‘reorder.dataframe.fedoru.Rd’, ‘reorder.vector.fedoru.Rd’, ‘resume.age.Rd’, ‘resume.age.sexe.Rd’, ‘resume.ccmu.Rd’, ‘resume.cp.Rd’, ‘resume.dateheure.Rd’, ‘resume.destination.Rd’, ‘resume.dp.Rd’, ‘resume.entree.Rd’, ‘resume.mode.sortie.Rd’, ‘resume.motif.Rd’, ‘resume.orientation.Rd’, ‘resume.passages.Rd’, ‘resume.rpu.Rd’, ‘resume.sexe.Rd’, ‘resume.wday.Rd’, ‘rpu.par.jour2.Rd’, ‘rpu.par.mois.Rd’, ‘rpu2xts.Rd’, ‘summary.duree.passage.Rd’, ‘synthese.completude.Rd’, ‘tab.completude.Rd’, ‘tarru.Rd’, ‘teste.radar.Rd’, ‘week.rpu.Rd’, ‘week.variations.Rd’
 * checking Rd metadata ... OK
 * checking Rd line widths ... NOTE
 Rd file 'barplot.week.variations.Rd':
@@ -340,8 +321,8 @@ Documented arguments not in \usage in documentation object 'barplot.week.variati
   ‘x’ ‘coltitre’ ‘colmoins’ ‘colplus’ ‘xlab’ ‘cex.names’ ‘cex.col’ ‘dx’
   ‘...’
 
-Duplicated \argument entries in documentation object 'df.duree.pas':
-  ‘dx’ ‘unit’ ‘mintime’ ‘maxtime’
+Objects in \usage without \alias in documentation object 'df.duree.pas.old':
+  ‘df.duree.pas’
 
 Undocumented arguments in documentation object 'plot.xts2'
   ‘x’ ‘y’ ‘type’ ‘auto.grid’ ‘major.ticks’ ‘minor.ticks’ ‘major.format’
@@ -421,9 +402,6 @@ S3 methods shown with full name in documentation object 'plot.xts2':
 
 S3 methods shown with full name in documentation object 'print.summary.rpu':
   ‘print.summary.rpu’
-
-S3 methods shown with full name in documentation object 'print.table.rpu':
-  ‘print.table.rpu’
 
 S3 methods shown with full name in documentation object 'reorder.dataframe.fedoru':
   ‘reorder.dataframe.fedoru’

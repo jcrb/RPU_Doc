@@ -195,6 +195,20 @@ ref: http://www.omegahat.org/RCurl/FAQ.html
 
 Création d'un tableau avec *cbind* et une matrice (et xtable pour pdf): voir exhaustivité des données
 
+Pour supprimer des lignes vides dans une matrice:
+```
+# sample data
+m <- matrix(c(1,2,NA,NaN,1,Inf,-1,1,9,3),5)
+# remove all rows with non-finite values
+m[!rowSums(!is.finite(m)),]
+# replace all non-finite values with 0
+m[!is.finite(m)] <- 0
+```
+Pour supprimer des colonnes vides:
+```
+m[, !colSums(!is.finite(m))]
+```
+
 ### Tables
 
 #### Tables trop larges
@@ -323,6 +337,8 @@ Pour supprimer les commantaires commenant par %: print(xtable, comment = FALSE) 
 stargazer(as.data.frame(a2[1:length(a)]),summary=TRUE,digit.separator=" ",digits=2,median=TRUE,iqr=TRUE)
 
 stargazer(as.data.frame(data$total),summary=TRUE,digit.separator=" ",digits=2, median=TRUE, iqr=TRUE, title ="Totalité des passages: résumé des principales caractéristiques")
+
+Pour supprimer le commentaire en début de tableau, rajouter header=FALSE (http://stackoverflow.com/questions/16465255/how-to-suppress-stargazer-information-in-output-file)
 
 #### Séparateur de milliers:
 ```{}

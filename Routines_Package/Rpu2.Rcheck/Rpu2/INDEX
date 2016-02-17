@@ -13,6 +13,7 @@ count.CIM10             Combien de codes CIM10
 datetime                met une string date au format YYYY-MM-DD
                         HH:MM:SS
 df.duree.pas            Dataframe Durée de passage
+df.duree.pas.old        Dataframe Durée de passage
 duree.passage2          Calcul de la duree de passage
 evolution               Evolution d'une annee sur l'autre
 factor2table            crée une table à 2 colonnes
@@ -32,7 +33,7 @@ passages2               Nombre de RPU sur une plage horaire donnee
 pdsa                    Determine si on est en horaire de PDS.
 plot.xts2               plot.xts en couleur
 print.summary.rpu       Imprime un summary.rpu
-print.table.rpu         Imprime une table avec xtable.
+print_table_rpu         Imprime une table avec xtable.
 pyramide.age            pyramide des ages
 radar_completude        dessine un graphe en etoile
 reorder.dataframe.fedoru

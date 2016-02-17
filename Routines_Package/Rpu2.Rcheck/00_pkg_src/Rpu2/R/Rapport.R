@@ -1196,21 +1196,21 @@ analyse_type_etablissement <- function(es){
     # nombre de passages déclarés
     n.passages <- nrow(es)
     
-    s <- summary.age(es$AGE)# summary
+    s <- resume.age(es$AGE)# summary
     # Nombre de RPU avec un âge renseigné
     n.age.ren <- s["n.rens"]
     n.inf1an <- s["n.inf1an"]
     n.inf15ans <- s["n.inf15ans"]
     n.75ans <- s["n.75ans"]
     
-    s <- summary.cp(es$CODE_POSTAL)
+    s <- resume.cp(es$CODE_POSTAL)
     # Nombre de RPU avec un code postal renseigné
     n.cp.rens <- s["n.rens"]
     # Nombre ne veant pas de la région
     n.etrangers <- s["n.etrangers"]
     
     # par jour de semaine
-    s <- summary.wday(es$ENTREE)
+    s <- resume.wday(es$ENTREE)
     n.lun <- s[1]
     n.mar <- s[2]
     n.mer <- s[3]
@@ -1228,11 +1228,11 @@ analyse_type_etablissement <- function(es){
     n.pds <- t["PDSS"] + t["PDSWE"]
     
     #Nombre de RPU avec une date et heure d'entrée renseignées
-    s <- summary.dateheure(es$ENTREE)
+    s <- resume.dateheure(es$ENTREE)
     n.h.rens <- s["n.rens"]
     
     # nombre avec moyen de transport renseigné
-    s <- summary.transport(es$TRANSPORT)
+    s <- resume.transport(es$TRANSPORT)
     n.trans.rens <- s["n.rens"]
     n.fo <- s["n.fo"]
     n.heli <- s["n.heli"]
@@ -1242,7 +1242,7 @@ analyse_type_etablissement <- function(es){
     n.ambu <- s["n.ambu"]
     
     # nombre avec CCMU renseigné
-    s <- summary.ccmu(es$GRAVITE)
+    s <- resume.ccmu(es$GRAVITE)
     n.ccmu.rens <- s["n.rens"]
     n.ccmu1 <- s["n.ccmu1"]
     n.ccmu2 <- s["n.ccmu2"]
@@ -1254,7 +1254,7 @@ analyse_type_etablissement <- function(es){
     n.ccmu45 <- n.ccmu4 + n.ccmu5
     
     # nombre de sorties conformes
-    s <- summary.passages(duree.passage2(es))
+    s <- resume.passages(duree.passage2(es))
     n.sorties.conf <- s["n.conforme"]
     mean.passage <- s["duree.moyenne.passage"]
     median.passage <- s["duree.mediane.passage"]
@@ -1268,7 +1268,7 @@ analyse_type_etablissement <- function(es){
     n.deces <- s["n.deces"]
     
     # Nombre de RPU avec un mode de sortie renseigné
-    s <- summary.mode.sortie(es$MODE_SORTIE)
+    s <- resume.mode.sortie(es$MODE_SORTIE)
     n.mode.sortie <- s["n.rens"]
     n.dom2 <- s["n.dom"]
     n.transfert2 <- s["n.transfert"]
@@ -1533,24 +1533,24 @@ resume.rpu <- function(dx){
 
 #===============================================
 #
-# print.table.rpu
+# print_table_rpu
 #
 #===============================================
 #' @title Imprime une table avec xtable.
 #' @description imprime une table avec xtable. Par défaut l'environnement est du type latex, le
 #'              séparateur de milliers est l'espace et la virgule décimale
-#' @usage print.table.rpu(t, caption = "", type = "latex", ref = "")             
+#' @usage print_table_rpu(t, caption = "", type = "latex", ref = "")             
 #' @param t un objet de type table
 #' @param caption une légende. Mettre c("légende", "sommaire") si nécessaire
 #' @param type "latex" ou "html"
 #' @param ref référence du tableau (latex)
 #' 
-#' @examples   print.table.rpu(t)
-#'          print.table.rpu(t, "table de test")
-#'          print.table.rpu(t, "table de test", "html")
+#' @examples   print_table_rpu(t)
+#'          print_table_rpu(t, "table de test")
+#'          print_table_rpu(t, "table de test", "html")
 #' @export
 
-print.table.rpu <- function(t, caption = "", type = "latex", ref = ""){
+print_table_rpu <- function(t, caption = "", type = "latex", ref = ""){
     print.xtable(xtable(t, caption = caption), 
                  type = type, 
                  format.args=list(big.mark = " ", decimal.mark = ","), 
@@ -1607,7 +1607,7 @@ print.summary.rpu <- function(x, sens = "colonne", cnames = NULL, rnames = NULL,
 #' @param vx un vecteur de facteurs ou d'entiers
 #' @param pc si TRUE crée une colonne de \%
 #' @return une table
-#' @examples a <- c(1,2,3,4,5,5,5,5,1,1,2); factor2table(a); print.table.rpu(a)
+#' @examples a <- c(1,2,3,4,5,5,5,5,1,1,2); factor2table(a); print_table_rpu(a)
 #'      #        Fréq.     %
 #'      #      1     3 27.27
 #'      #      2     2 18.18
@@ -2185,7 +2185,7 @@ attribJoin <- function(df, spdf, df.field, spdf.field){
 
 #------------------------------------------------------------------
 #
-#   df.duree.pas
+#   df.duree.pas.old
 #
 #------------------------------------------------------------------
 #' @title Dataframe Durée de passage
@@ -2196,22 +2196,11 @@ attribJoin <- function(df, spdf, df.field, spdf.field){
 #' @param unit unité de temps. Défaut = mins
 #' @param mintime défaut = 0. Durée de passage minimale
 #' @param maxtime défaut = 3 (72 heures). Durée de passage maximale
-#' @details # nombre de patients présents à une heure précide. Par exemple combien de patients sont présents à 15 heures?
-#' Ce sont tous les patients arrivés avant 15 heures et repartis après 15 heures
-#' On part d'un dataframe formé de deux colonnes (ENTREE et SORIE) où chaque couple est complet => il faut éliminer les couples
-#' incomplets.
-#' # usage:
-#' - créer un dataframe "duree de passage" avec df.duree.pas Ce dataframe est l'objet de base à partir duquel d'autres
-#'   fonctions vont agir
-#' - la fonction is.present.at permet de créer un vecteur de présence d'un patient à une heure donnée, et de la le nombre de 
-#'   patients présents à une heure donné sum(is.present.at), ou le nombre de patients présents à une heure donnée pour 
-#'   chaque jour de l'année (tapply) puis de tracer le graphe de présence
-#' Nécessite lubridate, Rpu2
 #' @return dataframe de type duree_passage
 #' @examples df <- df.duree.pas(dx)
 #' @export
 #' 
-df.duree.pas <- function(dx, unit = "mins", mintime = 0, maxtime = 3){
+df.duree.pas.old <- function(dx, unit = "mins", mintime = 0, maxtime = 3){
     pas <- dx[, c("ENTREE", "SORTIE", "MODE_SORTIE", "ORIENTATION", "AGE")]
     
     # on ne conserve que les couples complets

@@ -18,7 +18,7 @@ une table
 crée une table à 2 colonnes: fréquence et pourcentage
 }
 \examples{
-a <- c(1,2,3,4,5,5,5,5,1,1,2); factor2table(a); print.table.rpu(a)
+a <- c(1,2,3,4,5,5,5,5,1,1,2); factor2table(a); print_table_rpu(a)
      #        Fréq.     \%
      #      1     3 27.27
      #      2     2 18.18

@@ -8,6 +8,7 @@ copyright	copyright
 count.CIM10	count.CIM10
 datetime	datetime
 df.duree.pas	df.duree.pas
+df.duree.pas.old	df.duree.pas.old
 duree.passage2	duree.passage2
 evolution	evolution
 factor2table	factor2table
@@ -25,7 +26,7 @@ passages2	passages2
 pdsa	pdsa
 plot.xts2	plot.xts2
 print.summary.rpu	print.summary.rpu
-print.table.rpu	print.table.rpu
+print_table_rpu	print_table_rpu
 pyramide.age	pyramide.age
 radar_completude	radar_completude
 reorder.dataframe.fedoru	reorder.dataframe.fedoru

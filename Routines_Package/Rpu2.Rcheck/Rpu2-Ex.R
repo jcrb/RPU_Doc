@@ -152,12 +152,30 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 ### ** Examples
 
 df <- df.duree.pas(dx)
-df <- df.duree.pas(dx)
 
 
 
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 base::cat("df.duree.pas", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("df.duree.pas.old")
+### * df.duree.pas.old
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: df.duree.pas.old
+### Title: Dataframe Dur<c3><a9>e de passage
+### Aliases: df.duree.pas.old
+
+### ** Examples
+
+df <- df.duree.pas(dx)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("df.duree.pas.old", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 cleanEx()
 nameEx("evolution")
 ### * evolution
@@ -190,7 +208,7 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 
 ### ** Examples
 
-a <- c(1,2,3,4,5,5,5,5,1,1,2); factor2table(a); print.table.rpu(a)
+a <- c(1,2,3,4,5,5,5,5,1,1,2); factor2table(a); print_table_rpu(a)
      #        Fréq.     %
      #      1     3 27.27
      #      2     2 18.18
@@ -432,26 +450,26 @@ x <- ummary.wday(es$ENTREE))
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 base::cat("print.summary.rpu", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 cleanEx()
-nameEx("print.table.rpu")
-### * print.table.rpu
+nameEx("print_table_rpu")
+### * print_table_rpu
 
 flush(stderr()); flush(stdout())
 
 base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-### Name: print.table.rpu
+### Name: print_table_rpu
 ### Title: Imprime une table avec xtable.
-### Aliases: print.table.rpu
+### Aliases: print_table_rpu
 
 ### ** Examples
 
-  print.table.rpu(t)
-         print.table.rpu(t, "table de test")
-         print.table.rpu(t, "table de test", "html")
+  print_table_rpu(t)
+         print_table_rpu(t, "table de test")
+         print_table_rpu(t, "table de test", "html")
 
 
 
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-base::cat("print.table.rpu", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+base::cat("print_table_rpu", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 cleanEx()
 nameEx("resume.age")
 ### * resume.age
