@@ -230,13 +230,17 @@ densite <- function(place, year, quoi = NULL){
 #   is.cpals                  =
 #                             =
 #==============================
-#'@ est-ce un code postal alsacien ?
-#'@param cp code postal
-#'@return TRUE ou FALSE
-#'@usage is.cpals(as.factor("67550")), is.cpals("56000")
+#' @title Est-ce un code postal alsacien ?
+#' @description Détermine si un CP appartient à la région Alsace
+#' @usage is.cpals(cp)
+#' @param cp code postal ou un vecteur de codes postaux
+#' @return TRUE ou FALSE
+#' @examples  is.cpals(as.factor("67550")), is.cpals("56000")
+#' a <- is.cpals(dx$CODE_POSTAL)
 #'
 
 is.cpals <- function(cp){
     ifelse(as.character(cp) >  "66999" & as.character(cp) < "69000", TRUE, FALSE)
 }
+
 

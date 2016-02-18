@@ -1560,13 +1560,13 @@ print_table_rpu <- function(t, caption = "", type = "latex", ref = ""){
 
 #===============================================
 #
-# print.summary.rpu
+# imprime.resume.rpu
 #
 #===============================================
 #' 
 #' @title Imprime un summary.rpu
 #' @description imprime un objet de type summary.rpu, en ligne eou en colonne (défaut) avec xtable.
-#' @usage print.summary.rpu(x, sens = "colonne", cnames = NULL, rnames = NULL,
+#' @usage imprime.resume.rpu(x, sens = "colonne", cnames = NULL, rnames = NULL,
 #'                          caption = "", type = "latex", ref = "")
 #' @param x un vecteur nommé
 #' @param sens 'colonne' = vertical, 'ligne' = horizontal
@@ -1576,14 +1576,14 @@ print_table_rpu <- function(t, caption = "", type = "latex", ref = ""){
 #'        print.summary.rpu(x, cnames = c("Jour","n"), caption = "Nombre de RPU par jour de semaine")
 #' @export
 #' 
-print.summary.rpu <- function(x, sens = "colonne", cnames = NULL, rnames = NULL, caption = "", type = "latex", ref = ""){
+imprime.resume.rpu <- function(x, sens = "colonne", cnames = NULL, rnames = NULL, caption = "", type = "latex", ref = ""){
     y <- names(x)
     z <- as.numeric(x)
     p <- z/sum(z) # pourcentage
     if(sens == "colonne"){
-        t <- cbind(y, format.n(z), round(p*100,2))
+        t <- cbind(y, format_n(z), round(p*100,2))
     }else{
-        t <- rbind(y, format.n(z))
+        t <- rbind(y, format_n(z))
     }
     if(!is.null(cnames)) colnames(t) <- cnames
     if(!is.null(rnames)) rownames(t) <- rnames
@@ -2268,4 +2268,22 @@ is.present.at <- function(dp, heure = "15:00:00"){
     np <- dp$he < limite & dp$hs > limite
     
     return(np)
+}
+
+#------------------------------------------------------------------
+#
+#   is.cpals
+#
+#------------------------------------------------------------------
+#' @title Est-ce un code postal alsacien ?
+#' @description Détermine si un CP appartient à la région Alsace
+#' @usage is.cpals(cp)
+#' @param cp code postal ou un vecteur de codes postaux
+#' @return TRUE ou FALSE
+#' @examples  is.cpals(as.factor("67550")), is.cpals("56000")
+#' a <- is.cpals(dx$CODE_POSTAL)
+#'
+
+is.cpals <- function(cp){
+    ifelse(as.character(cp) >  "66999" & as.character(cp) < "69000", TRUE, FALSE)
 }
