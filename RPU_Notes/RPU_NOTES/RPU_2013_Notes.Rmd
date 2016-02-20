@@ -99,6 +99,25 @@ R - RStudio
 $\pm \Sexpr{x}$ (ne pas oublier les parenthèses)
 ```
 
+if else
+-------
+Ne jamais mettre else en début de ligne (après newline) car provoque une erreur:
+```
+In particular, you should not have a newline between } and else to avoid a syntax error in entering a if ... else construct at the keyboard or via source. For that reason, one (somewhat extreme) attitude of defensive programming is to always use braces, e.g., for if clauses. 
+```
+ref: https://stat.ethz.ch/R-manual/R-devel/library/base/html/Control.html
+
+```
+An else statement should always be surrounded on the
+            same line by curly braces.
+          
+if (condition) {
+  one or more lines
+} else {
+  one or more lines
+}
+```
+ref: https://google.github.io/styleguide/Rguide.xml#curlybraces
 
 Utilisation du nom de l'ordinateur pour définir un chemin d'accès:
 ------------------------------------------------------------------
