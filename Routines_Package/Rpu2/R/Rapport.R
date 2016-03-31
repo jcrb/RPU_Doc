@@ -2038,7 +2038,7 @@ n.isna <- function(x){return(sum(is.na(x)))}
 #===============================================
 #' @title Dataframe Durée de passage
 #' @description fabrique à partir d'un dataframe de type RPU, un dataframe de type duree_passage comportant les colonnes suivantes:
-#' date/heure d'ebtree, date/heure de sortie, durée de passage (en minutes par défaut), l'heure d'entrée (HMS), l'heure de sortie
+#' date/heure d'entree, date/heure de sortie, durée de passage (en minutes par défaut), l'heure d'entrée (HMS), l'heure de sortie, le FINESS
 #' @usage df.duree.pas(dx, unit = "mins", mintime = 0, maxtime = 3)
 #' @param dx un dataframe de type RPU
 #' @param unit unité de temps. Défaut = mins
@@ -2049,7 +2049,7 @@ n.isna <- function(x){return(sum(is.na(x)))}
 #' @export
 #' 
 df.duree.pas <- function(dx, unit = "mins", mintime = 0, maxtime = 3){
-    pas <- dx[, c("ENTREE", "SORTIE", "MODE_SORTIE", "ORIENTATION", "AGE")]
+    pas <- dx[, c("ENTREE", "SORTIE", "MODE_SORTIE", "ORIENTATION", "AGE", "FINESS")]
     
     # on ne conserve que les couples complets
     pas2 <- pas[complete.cases(pas[, c("ENTREE", "SORTIE")]),]

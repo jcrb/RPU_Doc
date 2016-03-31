@@ -20,7 +20,7 @@ dataframe de type duree_passage
 }
 \description{
 fabrique à partir d'un dataframe de type RPU, un dataframe de type duree_passage comportant les colonnes suivantes:
-date/heure d'ebtree, date/heure de sortie, durée de passage (en minutes par défaut), l'heure d'entrée (HMS), l'heure de sortie
+date/heure d'entree, date/heure de sortie, durée de passage (en minutes par défaut), l'heure d'entrée (HMS), l'heure de sortie, le FINESS
 }
 \examples{
 df <- df.duree.pas(dx)
