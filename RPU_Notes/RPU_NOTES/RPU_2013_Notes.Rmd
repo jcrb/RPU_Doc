@@ -739,6 +739,25 @@ plot(d.xts$taux, axes = F, ylim = c(0, 100),  col = "blue", main="")
 axis(4, ylim = c(0, 100),  col = "blue" ) # utilise l'axe de droite. Prévoir plus de marge
 ```
 
+Personaliser l'axe des x
+========================
+
+- empêcher de dessinner l'axe des x [source](activite_tension.R)
+```
+plot(..., xaxt = "n")
+```
+la partie délicate est l'axe des x qui est dessiné à part avec axis. 
+On redéfinit l'abcisse des points à tracer en créant une séquence de dates 
+espacées de 7 jours. Chaque date correspondra à une abcisse
+```
+at <- seq(as.Date(min(rpu.jour$date)), as.Date(max(rpu.jour$date)), 7)
+```
+finalement on dessine l'axe des x (1), en mettant une graduation (at) selon le vecteur précédamment définit et qui s'affichera sous forme jour + mois (format)
+```
+axis(1, at, format(at, "%b %d"), las = 2, cex.axis = 0.7)
+```
+  
+
 Ajouter une légende à un graphique
 ----------------------------------
 ```{}
