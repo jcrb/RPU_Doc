@@ -1,7 +1,7 @@
 Package: Rpu2
 Type: Package
 Title: Routines pour RPU
-Version: 0.1.5
+Version: 0.1.6
 Date: 2016-03-30
 Authors@R: person("JC", "Bartier", email = "jeanclaude.bartier@gmail.com", role = c("aut", "cre"))
 Maintainer: Jean-Claude Bartier <jeanclaude.bartier@gmail.com>
