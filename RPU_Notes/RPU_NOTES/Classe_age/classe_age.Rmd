@@ -1,0 +1,70 @@
+---
+title: "Groupes de classes d'age"
+author: "JcB"
+date: "25 avril 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Pour chaque finess on divise les RPU en 3 classes d'âge:
+
+- ped < 18ans
+- ger > 74 ans
+- adt 18 à 74 ans
+
+Procédure:
+
+- in ajoute au dataframe des RPU d'une année, une nuvelle colonne appelée __age2__
+```
+d13$age2 <- ifelse(d13$AGE < 18, "ped", ifelse(d13$AGE > 74, "ger", "adt"))
+table(d13$age2)
+```
+
+- on applique la méthode tapply avec la fonction table pour obtenir 13 listes contenant chacune une table par finess. Chaque table comporte 1 ligne et 3 colonnes correspondant à chacune des 3 classes d'âge
+```
+t <- tapply(d13$age2, d13$FINESS, table)
+```
+
+Par exemple la liste 1 correspondant à 3FR
+```
+t[[1]]
+```
+
+Pour retrouver le nom des ES, il suffit de consulter le nom de l'objet tapply
+```
+names(t)
+```
+
+- Il faut regrouper les 13 tables en une seule, plus facile à manipuler
+```
+n <- length(t)
+x <- NULL; for(i in 1:n){x = rbind(x, t[[i]])}
+rownames(x) <- names(t)
+x
+```
+
+- enfin on calcule la proportion de chaque classe d'âge
+```
+round(prop.table(x, 1) * 100, 2)
+```
+Le total de chaque ligne est bien égal à 100%
+
+```
+      adt   ger   ped
+3Fr 67.07 10.85 22.07
+Alk 62.03 14.80 23.17
+Col 52.83 12.61 34.56
+Dia 67.69 13.62 18.70
+Geb 62.68 10.69 26.63
+Hag 65.29 22.39 12.32
+Hus 68.15 30.83  1.02
+Mul 53.61 12.92 33.47
+Odi 69.36  5.57 25.07
+Sel 57.92 13.77 28.30
+Wis 59.19 18.12 22.69
+Sav 51.11 14.17 34.72
+Hsr 49.74 13.04 37.21
+``
