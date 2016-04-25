@@ -573,6 +573,9 @@ ref: R in action pp 225-230
 
 Boxplot
 =======
+
+Boxplot: afficher la moyenne
+----------------------------
 extrait de Uffler2014. Dessine une boxplot et rajoute les moyennes sous forme de points et de textes:
 ```{}
 means <- tapply(motivation, CSP, mean, na.rm=TRUE)
@@ -581,6 +584,31 @@ boxplot(motivation ~ CSP, xlab="CSP", ylab="Score de motivation", main="Motivati
 points(1:length(means), means, pch = 23, cex = 0.75, bg = "red")
 text(1:length(means) , means + 10, labels = formatC(means, format = "f", digits = 1),pos = 1, cex = 0.9, col = "blue")
 ```
+
+Boxplot: trier (reorder)
+------------------------
+Pour rendre le graphique plus parlant, on réorganise les boxplots pour qu'ils soient affichés par moyenne d'age croissante. D'abord on réorganise les FINESS avec la fonction *reorder* qui demande trois paramétres: le variable factor é reorganiser (finess), la variable qui servira de supoort é la réorganisation (age) et la fonction de tri (mean). S'agissant de la moyenne ne pas oublier na.rm=TRUE pour éviter un affichage aberrant. Puis on affiche les boxplots par ordre de moyenne d'age croissant. 
+```{}
+a<-with(d1,reorder(FINESS,AGE,mean,na.rm=TRUE))
+boxplot(AGE~a,data=d1,xlab="Etablissement",ylab="Age (années)",col="orange")
+```
+
+Boxplot: réorganiser par ordre croissant
+----------------------------------------
+on veut affichher sous forme de boxplot le temps de passage dans les différents ES d'Alsace. On dispose d'un dataframe destemps moyens de passage par jour (ligne) et par finess (colonne). Avec apply on détermine la valeur médiane (ou moyenne) pour chaque colonne et on les trie. Puis on réorganise le dataframe initial avant de le boxplotter:
+```{}
+# par ordre croissant de médiane
+s <- sort(apply(ahet3.moy.jour, 2, median, na.rm = T)) # tri des médianes
+d <- ahet3.moy.jour[, names(s)] # réorder des colonnes du dataframe
+boxplot(d, las = 2, main = "Durées moyenne de passage")
+
+# idem par ordre croissant des moyennes
+d <- ahet3.moy.jour[, names(sort(apply(ahet3.moy.jour, 2, mean, na.rm = T)))]
+boxplot(d, las = 2, main = "Durées moyenne de passage")
+```
+
+Divers
+======
 
 Pour supprimer la notation scientifique:
 ------------------------------------------

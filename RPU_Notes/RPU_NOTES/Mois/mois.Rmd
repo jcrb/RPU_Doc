@@ -1,0 +1,170 @@
+---
+title: "Analyse des mpois dans R"
+author: "JcB"
+date: "24 avril 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = "", message = FALSE)
+```
+
+Les libraries
+=============
+Il y a deux librairies pour analyser les mois en R:
+
+```{r, echo=FALSE}
+library(lubridate)
+source("mois.R")
+```
+
+
+- base: __months__: travaille avec des noms de mois traduits automatiquement en français mais utilise l'ordre alphabétique ce qui déorganise les résultats. L'argument _abbreviate_ = TRUE retourne le nom abbrégé
+```{r}
+months(as.Date("2016-01-05"))
+months(as.Date("2016-01-05"), abbreviate = TRUE)
+```
+
+- lubridate: __month__: respecte l'ordre calendaire mais ne tient pas compte de _Locale_. Retourne le n° du mois (1 à 12) ou son nom abrégé si _label = TRUE_, ou son nom complet si _abbr = FALSE_.
+```{r}
+month(as.Date("2016-01-05"))
+month(as.Date("2016-01-05"), label = TRUE)
+month(as.Date("2016-01-05"), label = TRUE, abbr = FALSE)
+
+```
+
+Les opérations
+==============
+
+Nombre de jours dans un mois
+----------------------------
+Pour déterminer le nombre de jours dans le mois  on crée une séquence qui doit inclure le mois suivant. [SOURCE: https://stat.ethz.ch/pipermail/r-help/2007-August/138116.html](https://stat.ethz.ch/pipermail/r-help/2007-August/138116.html)
+
+```
+anc <- 2016
+debut <- as.Date(paste0(anc, "-01-01"))
+fin <- as.Date(paste0(anc + 1, "-01-01"))
+n.j <- as.integer(diff(seq(debut, fin, by = "month")))
+
+# 31 29 31 30 31 30 31 31 30 31 30 31
+
+#'@ fonction
+nb.jours.mois <- function(anc){
+    debut <- as.Date(paste0(anc, "-01-01"))
+    fin <- as.Date(paste0(anc + 1, "-01-01"))
+    n.j <- as.integer(diff(seq(debut, fin, by = "month")))
+    n.j
+}
+```
+
+Total par mois (non corrigé)
+----------------------------
+Il vaut mieux utiliser la fonction 'month' de Lubridate qui conserve l'ordre calendaire des mois plutôt que 'months' qui retourne les résultats en ordre dispersé. Par contre le nom des mois est en anglais.
+```
+t <- tapply(as.Date(dx$ENTREE), month(as.Date(dx$ENTREE), label = TRUE), length)
+
+names(t) <- c("janvier","février","mars", "avril","mai","juin","juillet", "août", "septembre","octobre", "novembre", "décembre")
+```
+
+Total par mois standard
+-----------------------
+
+Calcul du nombre de RPU par mois standard de 30 jours. Il faut diviser le nombre de RPU par le nombre de jours dans le mois puis multiplier le résultat par 30. On supprime les valeurs de t égales à NA, correspondant aux mois manquants.
+
+```
+# t est le vecteur du nombre de RPU par mois
+l <- length(t[!is.na(t)]) # nb de mois non nuls depuis le début de l'année
+t.corrige <- t[1:l] * 30 / n.j[1:l]
+```
+#'@ standardise le nombre de RPU sur un mpois de 30 jours
+#'@ data vx vecteur de 12 mois nombre de RPU par ùmois
+#'@ data anc année courante
+#'@ return nb de RPU par mois de 30 jour
+standard.month <- function(vx, anc){
+    n.j <- nb.jours.mois(anc)
+    l <- length(vx[!is.na(vx)]) # nb de mois non nuls depuis le début de l'année
+    vx.corrige <- vx[1:l] * 30 / n.j[1:l]
+    vx.corrige
+}
+
+RPU par mois et par FINESS
+--------------------------
+Produit un tableau rectangulaire, en ligne lesmois de l'année, en colonne les FINESS.. Les tableaux sont enregistré dans __DATA/MONTH/RPU_YYYY.Rda__
+
+```
+m2016 <- tapply(as.Date(d16$ENTREE), list(month(as.Date(d16$ENTREE)), d16$FINESS), length)
+
+save(m2016, file = "../DATA/MONTH/RPU_2014_mois.Rda")
+```
+
+Comparaison du nb de RPU par mois sur 3 ans: ex. 3Fr
+----------------------------------------------------
+On récupère les tableaux correspondants aux 3 années (cf. RPU par mois et par FINESS). Dans chaque tableau on récupère les chiffres correspondant au Finess désiré. On obtient 3 vecteurs appelés respectivement a, b et c. On cherche les valeurs maximales et minimales pour le graphique.
+
+NB: l'année 2016 incomlète a été masquée
+
+```{r}
+# lit les dataframes n de RPU par mois et par Finess déjà archivés
+load("../../../../DATA/MONTH/RPU_2013_mois.Rda") # m2013
+load("../../../../DATA/MONTH/RPU_2014_mois.Rda") # m2014
+load("../../../../DATA/MONTH/RPU_2015_mois.Rda") # m2015
+
+# calcule le même dataframe pour l'années en cours
+# load("../../../../DATA/RPU_2016/rpu2016d0112.Rda")
+# m2016 <- tapply(as.Date(d16$ENTREE), list(month(as.Date(d16$ENTREE)), d16$FINESS), length)
+
+finess <- "Hag"
+anc <- 2015
+
+a <- m2014[, finess]
+b <- m2015[, finess]
+# c <- m2016[, finess]
+
+# correcton pour avoir des mois corrigés
+a <- standard.month(a, 2014)
+b <- standard.month(b, 2015)
+# c <- standard.month(c, 2016)
+
+# valeurs min et max. Utilisé pour calibrer le graphique. Noter l'utilisation pour déterminer me max de 3 vecteurs simultannément.
+mini <- min(c(a,b), na.rm=TRUE) # ,c
+maxi <- max(c(a,b), na.rm=TRUE)  # ,c
+
+# première courbe (2014)
+plot(a, type = "l", lwd = 3, col = 5, ylim = c(mini, maxi), xlim = c(1,12), xaxt = "n", ylab = "nombre de RPU", xlab = "mois", main = paste0(finess, " - Nombre de passages par mois"))
+# pour avoir 12 graduations:
+axis(1, at = 1:12)
+
+# courbes suivantes:
+# lines(c, type = "l", lwd = 3, col = 6) # 2016
+lines(b, type = "l", lwd = 3, col = 3)
+
+# légende:
+# legend("bottomright", legend = c(anc, anc-1, anc-2), lty = 1, lwd = 3, col = c(6,3,5), bty = "n")
+legend("bottomright", legend = c(anc, anc-1), lty = 1, lwd = 3, col = c(3, 5), bty = "n")
+```
+
+Les données présentées sont calculées en mois constants, ce qu permet de gommer l'effet mois court (février) ou long."court (février) ou long."
+
+
+Représentation graphique
+========================
+
+A vec la fonction Hist
+----------------------
+
+Avec le fonction Barplot
+------------------------
+
+```
+barplot(t.corrige, main = "Nombre de RPU par mois standards de 30 jours", col = "cornflowerblue")
+
+t2 <- rbind(t,t.corrige)
+barplot(t2, beside = TRUE, cex.names = 0.7)
+```
+
+Avec la fonction Lines
+----------------------
+
+
+
+
