@@ -2241,6 +2241,7 @@ df.duree.pas.old <- function(dx, unit = "mins", mintime = 0, maxtime = 3){
 #' @return TRUE ou FALSE
 #' @examples  is.cpals(as.factor("67550")), is.cpals("56000")
 #' a <- is.cpals(dx$CODE_POSTAL)
+#' @export
 #'
 
 is.cpals <- function(cp){

@@ -243,4 +243,15 @@ is.cpals <- function(cp){
     ifelse(as.character(cp) >  "66999" & as.character(cp) < "69000", TRUE, FALSE)
 }
 
+# variante avec expression régulières: library(stringr)
+# Pattern Alsace
+# Alsace <- "[6][78][0-9]{3}"
+# Pattern lorrain: 54 (Meurthe & Moselle), 55 (Meuse), 57 (Moselle), 88 (Vosges)
+# Lorraine <- ""(54|55|57|88)[0-9]{3}"[0-9]{3}"
+# # Patern Champagne-Ardennes: 08 (Ardennes), 10 (Aube), 51 (Marne), 52 (haute-Marne)
+# CA <- "(08|10|51|52)[0-9]{3}"
+# Applications
+# a <- str_subset(as.character(d15$CODE_POSTAL), CA) # retourne une liste de caractères
+# a <- str_detect(as.character(d15$CODE_POSTAL), pattern) # retourne un vecteur de boolean
+
 

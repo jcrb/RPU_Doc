@@ -112,7 +112,7 @@ text(b, c-4000, pp, col = "red")
 text(b, 500, paste(r, "RPU/j"))
 ```
 
-![](year_files/figure-html/passages_annuels-1.png)
+![](year_files/figure-html/passages_annuels-1.png)<!-- -->
 
 
 
